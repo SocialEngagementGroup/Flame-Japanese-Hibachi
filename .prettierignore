@@ -1,0 +1,7 @@
+.next
+.cache
+node_modules
+build
+out
+.env
+.env.*

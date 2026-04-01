@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-flame-green: #3B892F;
+  --color-flame-green: #3b892f;
   --color-flame-dark: #070907;
-  --color-flame-gold: #D2A22C;
-  --color-flame-light: #F4F4F4;
+  --color-flame-gold: #d2a22c;
+  --color-flame-light: #f4f4f4;
   --font-sans: var(--font-sans), ui-sans-serif, system-ui;
   --font-serif: var(--font-serif), ui-serif, Georgia, serif;
 }
