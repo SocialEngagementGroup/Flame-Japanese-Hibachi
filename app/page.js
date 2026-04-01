@@ -52,8 +52,8 @@ export default function ComingSoon() {
           <div className="w-16 sm:w-24 md:w-32 h-0.5 md:h-1 bg-flame-green mt-8 sm:mt-10 md:mt-12 mb-6 sm:mb-8 md:mb-10 shadow-[0_0_8px_rgba(59,137,47,0.8)]"></div>
 
           <p className="font-sans text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl font-light tracking-wide max-w-lg md:max-w-2xl mx-auto leading-relaxed md:leading-loose">
-            Experience the ultimate taste of Japanese hibachi right where you
-            are.
+            Experience the ultimate premium taste of Japanese hibachi right
+            where you are.
             <span className="block mt-2 text-white font-medium italic">
               Flavor by design.
             </span>
