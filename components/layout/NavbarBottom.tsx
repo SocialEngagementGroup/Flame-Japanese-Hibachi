@@ -83,12 +83,12 @@ const NavbarBottom = () => {
         <div className="hidden lg:flex flex-none items-center h-full z-20">
           <Link
             href="/order"
-            className="bg-primary hover:bg-secondary text-white w-[160px] h-[44px] flex items-center justify-center font-black text-[14px] tracking-[1.5px] transition-all uppercase"
+            className="bg-primary hover:bg-secondary text-white w-[140px] xl:w-[160px] h-[44px] flex items-center justify-center font-black text-[14px] tracking-[1.5px] transition-all uppercase"
           >
             ORDER NOW
           </Link>
-          {/* Alignment spacer for the top Cart icon */}
-          <div className="w-[56px] xl:w-[64px] shrink-0" />
+          {/* Alignment spacer - adjusted to 56px to match Icon(24) + Gap(32) */}
+          <div className="w-[56px] shrink-0" />
         </div>
       </div>
     </section>
