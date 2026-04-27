@@ -15,22 +15,8 @@ export default function ComingSoon() {
         <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-flame-dark to-transparent z-10"></div>
       </div>
 
-      {/* Header with Logo */}
-      <header className="relative z-20 w-full py-8 px-6 md:px-12 flex justify-center md:justify-start">
-        <div className="flex flex-col items-center md:items-start group cursor-default">
-          <div className="flex items-center gap-1.5 md:gap-2">
-            <span className="text-flame-green text-2xl md:text-3xl lg:text-4xl pb-1 md:pb-2 tracking-tighter">
-              🔥
-            </span>
-            <h1 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold tracking-widest text-flame-light uppercase transition-all duration-300">
-              Flame
-            </h1>
-          </div>
-          <p className="text-flame-gold font-sans text-[0.6rem] md:text-xs tracking-[0.25em] md:tracking-[0.3em] font-bold uppercase mt-1 pl-1 md:pl-2">
-            Japanese Hibachi
-          </p>
-        </div>
-      </header>
+      {/* Empty space for Navbar */}
+      <div className="h-20 md:h-24"></div>
 
       {/* Main Content */}
       <div className="relative z-20 flex flex-col items-center justify-center w-full px-4 sm:px-6 flex-1 -mt-10 md:mt-0">
