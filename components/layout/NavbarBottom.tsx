@@ -87,6 +87,8 @@ const NavbarBottom = () => {
           >
             ORDER NOW
           </Link>
+          {/* Alignment spacer for the top Cart icon */}
+          <div className="w-[56px] xl:w-[64px] shrink-0" />
         </div>
       </div>
     </section>
