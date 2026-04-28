@@ -38,7 +38,6 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="dark"
           disableTransitionOnChange
-          suppressHydrationWarning
         >
           <header className="fixed top-0 left-0 w-full z-50">
             <Navbar />
