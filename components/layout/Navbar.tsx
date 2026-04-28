@@ -75,15 +75,15 @@ const Navbar = () => {
         {/* Center: Mobile Logo / Desktop Links */}
         <div className="flex-none flex items-center justify-center">
           {/* Mobile Logo - Absolute Centered */}
-          <div className="min-[1100px]:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ml-[10px]">
+          <div className="min-[1100px]:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !ml-[35px]">
             <Link href="/" className="flex items-center">
               <img
                 src="/site-logo/FJH-logo-white.png"
                 alt="Flame Japanese Hibachi"
-                width={130}
-                height={54}
+                width={164}
+                height={68}
                 className="object-contain"
-                style={{ width: '130px', height: '54px' }}
+                style={{ height: '68px', width: 'auto' }}
               />
             </Link>
           </div>
