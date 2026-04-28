@@ -126,7 +126,7 @@ const Navbar = () => {
           </button>
 
           {/* Sign In - Desktop Only */}
-          <button className="hidden min-[1100px]:flex border-2 border-white text-white w-[90px] min-[1440px]:w-[100px] h-[32px] min-[1440px]:h-[35px] items-center justify-center hover:bg-white hover:text-black transition-all text-[11px] min-[1440px]:text-[14px] font-black tracking-[1.2px] uppercase">
+          <button className="hidden min-[1100px]:flex border-2 border-white text-white w-[140px] h-[32px] min-[1440px]:h-[35px] items-center justify-center hover:bg-white hover:text-black transition-all text-[11px] min-[1440px]:text-[14px] font-black tracking-[1.2px] uppercase">
             SIGN IN
           </button>
 
