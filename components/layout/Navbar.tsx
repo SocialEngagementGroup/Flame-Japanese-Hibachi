@@ -43,40 +43,39 @@ const Navbar = () => {
     { name: "JOIN FLAME", href: "/join" },
   ];
 
-  if (!mounted) return null;
+
 
   return (
     <nav
       className={`transition-all duration-300 font-serif bg-black ${isScrolled
         ? "py-3"
-        : "py-5"
+        : "max-[1100px]:py-5 py-0"
         }`}
     >
-      <div className="w-full px-4 md:px-12 flex items-center relative">
-        {/* Left: Mobile Sign In / Desktop Logo Spacer */}
-        <div className="flex-1 flex justify-start items-center z-10">
-          <button className="lg:hidden border-2 border-white text-white w-[65px] h-[28px] flex items-center justify-center hover:bg-white hover:text-black transition-all text-[9px] font-black tracking-[1px] uppercase">
+      <div className="w-full px-4 md:px-12 flex items-center justify-between relative">
+        {/* Left: Mobile Sign In / Desktop Logo */}
+        <div className="flex-none flex justify-start items-center z-10">
+          <button className="max-[1100px]:flex hidden border-2 border-white text-white w-[100px] h-[30px] items-center justify-center hover:bg-white hover:text-black transition-all text-[14px] font-black tracking-[1px] uppercase">
             SIGN IN
           </button>
 
-          <div className="hidden lg:block flex-none w-[190px]">
+          <div className="hidden min-[1100px]:block">
             <Link href="/" className="flex items-center group">
               <img
                 src="/site-logo/FJH-logo-white.png"
                 alt="Flame Japanese Hibachi"
                 width={190}
                 height={72}
-                className="object-contain brightness-100 transition-all"
-                style={{ width: '190px', height: '72px' }}
+                className="object-contain brightness-100 transition-all w-[165px] h-[62px] min-[1440px]:w-[190px] min-[1440px]:h-[72px]"
               />
             </Link>
           </div>
         </div>
 
         {/* Center: Mobile Logo / Desktop Links */}
-        <div className="flex-1 lg:flex-[2] flex items-center justify-center">
+        <div className="flex-none flex items-center justify-center">
           {/* Mobile Logo - Absolute Centered */}
-          <div className="lg:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="min-[1100px]:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <Link href="/" className="flex items-center">
               <img
                 src="/site-logo/FJH-logo-white.png"
@@ -90,14 +89,14 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden lg:flex items-center justify-center gap-8 xl:gap-12">
+          <div className="hidden min-[1100px]:flex items-center justify-center gap-6 min-[1440px]:gap-12">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-white hover:text-primary text-[13px] xl:text-[14px] font-black tracking-[1.2px] leading-[16px] transition-colors relative group uppercase transition-all duration-300 ${isActive ? "text-primary" : ""
+                  className={`text-white hover:text-primary text-[11px] min-[1440px]:text-[14px] font-black tracking-[1.2px] leading-[16px] transition-colors relative group uppercase transition-all duration-300 ${isActive ? "text-primary" : ""
                     }`}
                 >
                   {link.name}
@@ -110,38 +109,42 @@ const Navbar = () => {
         </div>
 
         {/* Right: Actions */}
-        <div className="flex-1 flex items-center justify-end gap-6 lg:gap-8 z-10">
+        <div className="flex-none flex items-center justify-end gap-6 min-[1100px]:gap-8 z-10">
           {/* Find a Flame */}
-          <button className="hidden lg:flex items-center gap-2 text-white hover:text-primary transition-colors">
-            <MapPin size={20} strokeWidth={2.5} />
-            <span className="text-[14px] font-black tracking-[1.2px] uppercase">FIND A FLAME</span>
+          <button className="hidden min-[1100px]:flex items-center gap-1.5 min-[1440px]:gap-2 text-white hover:text-primary transition-colors">
+            <MapPin size={17} className="min-[1440px]:w-5 min-[1440px]:h-5" strokeWidth={2.5} />
+            <span className="text-[11px] min-[1440px]:text-[14px] font-black tracking-[1.2px] uppercase">FIND A FLAME</span>
           </button>
 
           {/* Theme Toggle - Desktop Only */}
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="hidden lg:flex text-white hover:text-primary transition-colors p-1"
+            className="hidden min-[1100px]:flex text-white hover:text-primary transition-colors p-1"
             aria-label="Toggle Theme"
           >
-            {theme === "dark" ? <Sun size={22} /> : <Moon size={22} />}
+            {mounted ? (theme === "dark" ? <Sun size={19} className="min-[1440px]:w-[22px] min-[1440px]:h-[22px]" /> : <Moon size={19} className="min-[1440px]:w-[22px] min-[1440px]:h-[22px]" />) : <div className="w-[19px] h-[19px] min-[1440px]:w-[22px] min-[1440px]:h-[22px]" />}
           </button>
 
           {/* Sign In - Desktop Only */}
-          <button className="hidden lg:flex border-2 border-white text-white w-[140px] xl:w-[160px] h-[44px] items-center justify-center hover:bg-white hover:text-black transition-all text-[14px] font-black tracking-[1.2px] uppercase">
+          <button className="hidden min-[1100px]:flex border-2 border-white text-white w-[90px] min-[1440px]:w-[100px] h-[32px] min-[1440px]:h-[35px] items-center justify-center hover:bg-white hover:text-black transition-all text-[11px] min-[1440px]:text-[14px] font-black tracking-[1.2px] uppercase">
             SIGN IN
           </button>
 
           {/* Cart - Desktop Only */}
-          <button className="hidden lg:block relative text-white hover:text-primary transition-colors">
-            <ShoppingCart size={24} strokeWidth={2.5} />
-            <span className="absolute -top-1.5 -right-2 bg-primary text-white text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full shadow-lg">
+          <button className="hidden min-[1100px]:block relative text-white hover:text-primary transition-colors">
+            <img
+              src="/site-logo/shop-card-icon.png"
+              alt="Cart"
+              className="w-5 h-5 min-[1440px]:w-6 min-[1440px]:h-6 object-contain brightness-100"
+            />
+            <span className="absolute -top-1.5 -right-2 bg-primary text-white text-[9px] font-black w-4 h-4 min-[1440px]:w-5 min-[1440px]:h-5 flex items-center justify-center rounded-full shadow-lg">
               0
             </span>
           </button>
 
           {/* Mobile Menu Toggle */}
           <button
-            className={`lg:hidden absolute right-4 top-1/2 -translate-y-1/2 text-white p-2 z-50 transition-all active:scale-95 ${isMobileMenuOpen ? "hidden" : "block"
+            className={`min-[1100px]:hidden absolute right-4 top-1/2 -translate-y-1/2 text-white p-2 z-50 transition-all active:scale-95 ${isMobileMenuOpen ? "hidden" : "block"
               }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
@@ -153,7 +156,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`lg:hidden fixed inset-0 bg-black/98 backdrop-blur-xl transition-all duration-300 ease-in-out z-40 ${isMobileMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+        className={`min-[1100px]:hidden fixed inset-0 bg-black/98 backdrop-blur-xl transition-all duration-300 ease-in-out z-40 ${isMobileMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
           }`}
       >
         <button

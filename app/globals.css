@@ -55,6 +55,8 @@
 }
 
 @theme {
+  --breakpoint-lg: 1100px;
+
   /* Mapping variables to Tailwind utility colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
