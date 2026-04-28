@@ -29,7 +29,8 @@
   --flame-gold: #d2a22c;
 }
 
-.dark {
+.dark,
+[data-theme='dark'] {
   /* Dark Mode Palette */
   --background: #000000;
   --foreground: #ffffff;
