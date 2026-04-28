@@ -122,7 +122,11 @@ const Navbar = () => {
             className="hidden min-[1100px]:flex text-white hover:text-primary transition-colors p-1"
             aria-label="Toggle Theme"
           >
-            {mounted ? (theme === "dark" ? <Sun size={19} className="min-[1440px]:w-[22px] min-[1440px]:h-[22px]" /> : <Moon size={19} className="min-[1440px]:w-[22px] min-[1440px]:h-[22px]" />) : <div className="w-[19px] h-[19px] min-[1440px]:w-[22px] min-[1440px]:h-[22px]" />}
+            {mounted ? (
+              theme === "dark" ? <Sun size={19} className="min-[1440px]:w-[22px] min-[1440px]:h-[22px]" /> : <Moon size={19} className="min-[1440px]:w-[22px] min-[1440px]:h-[22px]" />
+            ) : (
+              <div className="w-[19px] h-[19px] min-[1440px]:w-[22px] min-[1440px]:h-[22px]" />
+            )}
           </button>
 
           {/* Sign In - Desktop Only */}
@@ -193,7 +197,11 @@ const Navbar = () => {
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="text-white hover:text-primary transition-colors flex flex-col items-center gap-2"
               >
-                {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
+                {mounted ? (
+                  theme === "dark" ? <Sun size={24} /> : <Moon size={24} />
+                ) : (
+                  <div className="w-6 h-6" />
+                )}
                 <span className="text-[10px] font-bold tracking-widest uppercase">THEME</span>
               </button>
 

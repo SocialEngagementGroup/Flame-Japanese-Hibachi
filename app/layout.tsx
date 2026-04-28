@@ -2,6 +2,7 @@ import { Raleway, Work_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import NavbarBottom from "@/components/layout/NavbarBottom";
+import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 
 const workSans = Work_Sans({
@@ -32,20 +33,21 @@ export default function RootLayout({
       className={`${workSans.variable} ${raleway.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="h-full bg-background text-foreground flex flex-col font-sans selection:bg-primary selection:text-primary-foreground">
+      <body suppressHydrationWarning className="h-full bg-background text-foreground flex flex-col font-sans selection:bg-primary selection:text-primary-foreground">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
           disableTransitionOnChange
+          suppressHydrationWarning
         >
           <header className="fixed top-0 left-0 w-full z-50">
             <Navbar />
             <NavbarBottom />
           </header>
-          <main className="flex-1 pt-[140px] md:pt-[170px]">
+          <main className="flex-1 pt-[100px] md:pt-[115px]">
             {children}
           </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
