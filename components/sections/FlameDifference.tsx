@@ -43,18 +43,18 @@ const FlameDifference = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`flex flex-col items-center justify-center text-center p-4 md:p-8 transition-all duration-300 border border-white/5 w-full aspect-[281/375] ${feature.isPrimary ? "bg-primary" : "bg-[#111111] hover:bg-[#1a1a1a]"
+              className={`flex flex-col items-center justify-center text-center p-3 md:p-8 transition-all duration-300 border border-white/5 w-full aspect-[3/4] min-[1100px]:aspect-[281/375] ${feature.isPrimary ? "bg-primary" : "bg-[#111111] hover:bg-[#1a1a1a]"
                 }`}
             >
               <img
                 src={feature.icon}
                 alt={feature.title}
-                className="w-[80px] h-[80px] md:w-[126px] md:h-[120px] object-contain mb-4 md:mb-6"
+                className="w-[60px] h-[60px] md:w-[126px] md:h-[120px] object-contain mb-3 md:mb-6"
               />
-              <h3 className="text-white font-serif text-[16px] md:text-[24px] font-black uppercase tracking-[1px] mb-2 md:mb-4 min-h-[40px] md:min-h-[64px] flex items-center text-center">
+              <h3 className="text-white font-serif text-[13px] sm:text-[16px] md:text-[24px] font-black uppercase tracking-[1px] mb-2 md:mb-4 min-h-[36px] md:min-h-[64px] flex items-center text-center">
                 {feature.title}
               </h3>
-              <p className={`text-[11px] md:text-[18px] leading-relaxed max-w-[240px] ${feature.isPrimary ? "text-white/90" : "text-gray-400"
+              <p className={`text-[10px] sm:text-[12px] md:text-[18px] leading-snug md:leading-relaxed max-w-[240px] ${feature.isPrimary ? "text-white/90" : "text-gray-400"
                 }`}>
                 {feature.description}
               </p>
