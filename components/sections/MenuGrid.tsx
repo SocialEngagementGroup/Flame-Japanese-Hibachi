@@ -8,31 +8,37 @@ const categories = [
     name: "BUILD YOUR OWN PLATTER",
     href: "/menu/platter",
     image: "/BG/Homepage-menu/BUILD YOUR OWN PLATTER.png",
+    mobileImage: "/BG/Homepage-menu/build-your-own-platter-mobile.png",
   },
   {
     name: "HIBACHI",
     href: "/menu/hibachi",
     image: "/BG/Homepage-menu/HIBACHI.png",
+    mobileImage: "/BG/Homepage-menu/hibachi-mobile.png",
   },
   {
     name: "FLAME COMBO",
     href: "/menu/combo",
     image: "/BG/Homepage-menu/FLAME COMBO.png",
+    mobileImage: "/BG/Homepage-menu/flame-combo-mobile.png",
   },
   {
     name: "BENTO",
     href: "/menu/bento",
     image: "/BG/Homepage-menu/BENTO.png",
+    mobileImage: "/BG/Homepage-menu/bento-mobile.png",
   },
   {
     name: "SUSHI",
     href: "/menu/sushi",
     image: "/BG/Homepage-menu/SUSHI.png",
+    mobileImage: "/BG/Homepage-menu/sushi-mobile.png",
   },
   {
     name: "WINGS / TENDERS",
     href: "/menu/wings",
     image: "/BG/Homepage-menu/WINGS  TENDERS.png",
+    mobileImage: "/BG/Homepage-menu/wings-tenders-mobile.png",
   },
   {
     name: "FLAME LOADED FRIES",
@@ -79,12 +85,17 @@ const MenuGrid = () => {
               href={cat.href}
               className="group relative aspect-[378.67/278] overflow-hidden bg-card"
             >
-              {/* Background Image */}
-              <img
-                src={cat.image}
-                alt={cat.name}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+              {/* Responsive image: mobile-specific crop on small screens */}
+              <picture className="absolute inset-0 w-full h-full">
+                {cat.mobileImage && (
+                  <source media="(max-width: 768px)" srcSet={cat.mobileImage} />
+                )}
+                <img
+                  src={cat.image}
+                  alt={cat.name}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </picture>
 
               {/* Text — left on desktop, center on mobile */}
               <div className="absolute inset-0 flex items-end justify-center md:justify-start pb-3 md:pb-4 px-2 md:px-4">
