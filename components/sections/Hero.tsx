@@ -36,7 +36,7 @@ const Hero = () => {
 
           <Link
             href="/order"
-            className="flex md:inline-flex w-[280px] md:w-auto items-center justify-center bg-primary hover:bg-secondary text-white px-8 md:px-12 py-4 md:py-5 text-[14px] md:text-[16px] font-black tracking-[2px] transition-all uppercase active:scale-[0.98]"
+            className="flex md:inline-flex w-[179px] md:w-auto items-center justify-center bg-primary hover:bg-secondary text-white px-8 md:px-12 py-4 md:py-5 text-[14px] md:text-[16px] font-black tracking-[2px] transition-all uppercase active:scale-[0.98]"
           >
             ORDER NOW
           </Link>

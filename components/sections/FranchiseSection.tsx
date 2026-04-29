@@ -8,10 +8,10 @@ const FranchiseSection = () => {
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="font-serif text-[28px] md:text-[40px] font-black uppercase tracking-[1px] text-white leading-tight mb-4">
           BECOME A FLAME JAPANESE HIBACHI <br />
-          <span className="text-primary">FRANCHISE</span>
+          FRANCHISE
         </h2>
-        <p className="text-gray-400 text-[14px] md:text-[16px] mb-12 uppercase tracking-[2px]">
-          Join the hottest brand in Japanese fusion cuisine.
+        <p className="text-gray-300 text-[12px] md:text-[14px] mb-12 uppercase tracking-[2px] font-bold">
+          JOIN THE FASTEST GROWING HIBACHI BRAND IN THE NATION
         </p>
 
         <form className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
@@ -20,7 +20,7 @@ const FranchiseSection = () => {
             <input 
               type="text" 
               placeholder="John Doe"
-              className="w-full bg-black border border-white/10 px-6 py-4 text-white text-[14px] focus:border-primary outline-none transition-all"
+              className="w-full bg-transparent border border-[#ff7a00] px-6 py-4 text-[#ff7a00] placeholder:text-[#ff7a00] text-[14px] outline-none transition-all"
             />
           </div>
           <div className="space-y-2">
@@ -28,7 +28,7 @@ const FranchiseSection = () => {
             <input 
               type="tel" 
               placeholder="+1 (555) 000-0000"
-              className="w-full bg-black border border-white/10 px-6 py-4 text-white text-[14px] focus:border-primary outline-none transition-all"
+              className="w-full bg-transparent border border-[#ff7a00] px-6 py-4 text-[#ff7a00] placeholder:text-[#ff7a00] text-[14px] outline-none transition-all"
             />
           </div>
           <div className="space-y-2">
@@ -36,7 +36,7 @@ const FranchiseSection = () => {
             <input 
               type="email" 
               placeholder="john@example.com"
-              className="w-full bg-black border border-white/10 px-6 py-4 text-white text-[14px] focus:border-primary outline-none transition-all"
+              className="w-full bg-transparent border border-[#ff7a00] px-6 py-4 text-[#ff7a00] placeholder:text-[#ff7a00] text-[14px] outline-none transition-all"
             />
           </div>
           <div className="space-y-2">
@@ -44,13 +44,13 @@ const FranchiseSection = () => {
             <input 
               type="text" 
               placeholder="City, State"
-              className="w-full bg-black border border-white/10 px-6 py-4 text-white text-[14px] focus:border-primary outline-none transition-all"
+              className="w-full bg-transparent border border-[#ff7a00] px-6 py-4 text-[#ff7a00] placeholder:text-[#ff7a00] text-[14px] outline-none transition-all"
             />
           </div>
           
           <button 
             type="submit" 
-            className="md:col-span-2 bg-primary hover:bg-white hover:text-black text-white py-5 text-[14px] font-black tracking-[3px] uppercase mt-4 transition-all"
+            className="md:col-span-2 bg-[#ff7a00] hover:bg-[#e66e00] text-black py-5 text-[14px] font-black tracking-[3px] uppercase mt-4 transition-all"
           >
             SUBMIT APPLICATION
           </button>
