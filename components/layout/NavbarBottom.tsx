@@ -14,28 +14,28 @@ const NavbarBottom = () => {
 
   return (
     <section className="w-full bg-[#242323] py-0 flex items-center h-[50px] overflow-hidden">
-      <div className="w-full px-6 md:px-12 flex items-center h-full relative">
+      <div className="w-full pl-6 pr-0 md:px-12 flex items-center h-full relative">
         {/* Social Icons - Left Aligned */}
         <div className="flex-none flex items-center gap-2.5 sm:gap-5 text-white z-20 -ml-2 sm:ml-0">
-          <Link href="https://facebook.com" target="_blank" className="hover:opacity-80 transition-all">
+          <Link href="https://facebook.com" target="_blank" className="hover:opacity-80 transition-all flex items-center justify-center">
             <img src="/socialicon-navbr/facebook.svg" alt="Facebook" className="w-[18px] h-[18px] sm:w-6 sm:h-6 object-contain brightness-0 invert" />
           </Link>
 
-          <Link href="https://instagram.com" target="_blank" className="hover:opacity-80 transition-all">
+          <Link href="https://instagram.com" target="_blank" className="hover:opacity-80 transition-all flex items-center justify-center">
             <img src="/socialicon-navbr/instagram.svg" alt="Instagram" className="w-[18px] h-[18px] sm:w-6 sm:h-6 object-contain brightness-0 invert" />
           </Link>
 
-          <Link href="https://tiktok.com" target="_blank" className="hover:opacity-80 transition-all flex items-center">
+          <Link href="https://tiktok.com" target="_blank" className="hover:opacity-80 transition-all flex items-center justify-center">
             <img src="/socialicon-navbr/tiktok.svg" alt="TikTok" className="w-[18px] h-[18px] sm:w-6 sm:h-6 object-contain brightness-0 invert" />
           </Link>
 
-          <Link href="https://youtube.com" target="_blank" className="hover:opacity-80 transition-all">
+          <Link href="https://youtube.com" target="_blank" className="hover:opacity-80 transition-all flex items-center justify-center">
             <img src="/socialicon-navbr/youtube.svg" alt="YouTube" className="w-[18px] h-[18px] sm:w-6 sm:h-6 object-contain brightness-0 invert" />
           </Link>
         </div>
 
         {/* Location Marquee - Fills the gap */}
-        <div className="flex-1 overflow-hidden relative h-full flex items-center mx-4 sm:mx-8">
+        <div className="flex-1 overflow-hidden relative h-full flex items-center ml-4 mr-0 sm:mx-8">
           <div className="animate-marquee whitespace-nowrap flex items-center gap-6 sm:gap-20">
             {[...Array(4)].map((_, i) => (
               <div key={i} className="flex items-center gap-6 sm:gap-20">
