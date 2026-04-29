@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="w-full bg-[#131313] pt-20 pb-10 px-6 md:px-12 border-t border-white/5">
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-12 lg:gap-8 mb-20 w-full text-center lg:text-left">
-          
+
           {/* Logo and About (Box 1) */}
           <div className="flex flex-col items-center lg:items-start w-full lg:w-auto">
             <img
@@ -104,27 +104,26 @@ const Footer = () => {
 
 const SocialIcons = () => {
   const iconClass = "hover:opacity-80 transition-opacity flex items-center justify-center w-[36px] h-[36px]";
-  const imgClass = "w-[24px] h-[24px] object-contain brightness-0 invert";
+  const baseImgClass = "object-contain brightness-0 invert";
+  const standardImgClass = `w-[24px] h-[24px] ${baseImgClass}`;
+  const smallImgClass = `w-[21px] h-[21px] -translate-y-[2px] ${baseImgClass}`;
 
   return (
     <>
+      <Link href="mailto:info@flamehibachi.com" className={iconClass}>
+        <img src="/socialicon-navbr/envelope.svg" alt="Email" className={smallImgClass} />
+      </Link>
       <Link href="https://facebook.com" target="_blank" className={iconClass}>
-        <img src="/socialicon-navbr/facebook.svg" alt="Facebook" className={imgClass} />
+        <img src="/socialicon-navbr/facebook.svg" alt="Facebook" className={standardImgClass} />
       </Link>
       <Link href="https://instagram.com" target="_blank" className={iconClass}>
-        <img src="/socialicon-navbr/instagram.svg" alt="Instagram" className={imgClass} />
+        <img src="/socialicon-navbr/instagram.svg" alt="Instagram" className={standardImgClass} />
       </Link>
       <Link href="https://tiktok.com" target="_blank" className={iconClass}>
-        <img src="/socialicon-navbr/tiktok.svg" alt="TikTok" className={imgClass} />
+        <img src="/socialicon-navbr/tiktok.svg" alt="TikTok" className={standardImgClass} />
       </Link>
       <Link href="https://youtube.com" target="_blank" className={iconClass}>
-        <img src="/socialicon-navbr/youtube.svg" alt="YouTube" className={imgClass} />
-      </Link>
-      <Link href="mailto:info@flamehibachi.com" className={iconClass}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-          <rect width="20" height="16" x="2" y="4" rx="2" />
-          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-        </svg>
+        <img src="/socialicon-navbr/youtube.svg" alt="YouTube" className={smallImgClass} />
       </Link>
     </>
   );

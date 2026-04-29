@@ -58,14 +58,11 @@ const Navbar = () => {
           <button className="max-[1100px]:flex hidden border-2 border-white text-white w-[100px] h-[30px] items-center justify-center hover:bg-white hover:text-black transition-all text-[14px] font-black tracking-[1px] uppercase">
             SIGN IN
           </button>
-
-          <div className="hidden min-[1100px]:block">
+          <div className="block min-[1100px]:block">
             <Link href="/" className="flex items-center group">
               <img
                 src="/site-logo/FJH-logo-white.png"
                 alt="Flame Japanese Hibachi"
-                width={190}
-                height={72}
                 className="object-contain brightness-100 transition-all w-[165px] h-[62px] min-[1440px]:w-[190px] min-[1440px]:h-[72px]"
               />
             </Link>
@@ -80,8 +77,6 @@ const Navbar = () => {
               <img
                 src="/site-logo/FJH-logo-white.png"
                 alt="Flame Japanese Hibachi"
-                width={164}
-                height={68}
                 className="object-contain"
                 style={{ height: '68px', width: 'auto' }}
               />
