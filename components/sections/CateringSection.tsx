@@ -1,37 +1,139 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+
+import "swiper/css";
+
+const slides = [
+  {
+    image: "/BG/Homepage-menu/HIBACHI.png",
+    label: "CATERING SPECIAL",
+    title: "Classic Hibachi Experience",
+    href: "/menu",
+  },
+  {
+    image: "/BG/Homepage-menu/SUSHI.png",
+    label: "WEEKEND PERKS",
+    title: "Double Flame Points",
+    href: "/menu",
+  },
+  {
+    image: "/BG/Homepage-menu/FLAME COMBO.png",
+    label: "WEEKEND PERKS",
+    title: "Double Flame Points",
+    href: "/menu",
+  },
+  {
+    image: "/BG/Homepage-menu/BENTO.png",
+    label: "CATERING SPECIAL",
+    title: "Signature Bento Box",
+    href: "/menu",
+  },
+  {
+    image: "/BG/Homepage-menu/WINGS  TENDERS.png",
+    label: "WEEKEND PERKS",
+    title: "Crispy Wings & Tenders",
+    href: "/menu",
+  },
+  {
+    image: "/BG/Homepage-menu/FLAME LOADED FRIES.png",
+    label: "CATERING SPECIAL",
+    title: "Flame Loaded Fries",
+    href: "/menu",
+  },
+];
 
 const CateringSection = () => {
+  const swiperRef = useRef<SwiperType | null>(null);
+
   return (
-    <section className="relative w-full h-[500px] overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/hero-bg.png"
-          alt="Catering Background"
-          className="w-full h-full object-cover grayscale opacity-50"
-        />
-        <div className="absolute inset-0 bg-black/60 z-10" />
+    <section className="w-full py-10 md:py-16 overflow-hidden bg-[#F0EDED] dark:bg-black">
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 md:px-12 mb-6 md:mb-8">
+        <h2 className="text-black dark:text-white text-[22px] md:text-[40px] font-black uppercase leading-tight">
+          CATER WITH US <br className="hidden md:block" />
+          <span className="text-primary">FOR YOUR NEXT EVENT</span>
+        </h2>
+
+        {/* Arrow Buttons */}
+        <div className="flex gap-2 shrink-0">
+          <button
+            onClick={() => swiperRef.current?.slidePrev()}
+            className="w-9 h-9 md:w-11 md:h-11 bg-white text-black flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+            aria-label="Previous"
+          >
+            &#8592;
+          </button>
+          <button
+            onClick={() => swiperRef.current?.slideNext()}
+            className="w-9 h-9 md:w-11 md:h-11 bg-white text-black flex items-center justify-center hover:bg-primary hover:text-white transition-all"
+            aria-label="Next"
+          >
+            &#8594;
+          </button>
+        </div>
       </div>
 
-      <div className="relative z-20 h-full w-full flex flex-col items-center justify-center text-center px-6">
-        <h2 className="text-white font-serif text-[40px] md:text-[60px] font-black uppercase leading-none mb-6">
-          CATER WITH US <br />
-          FOR NEXT EVENT
-        </h2>
-        
-        <p className="text-gray-300 text-[14px] md:text-[16px] max-w-xl mb-10 leading-relaxed font-sans uppercase tracking-widest">
-          From office lunches to wedding receptions, bring Flame Japanese Hibachi flavor to your next gathering.
-        </p>
-
-        <Link
-          href="/catering"
-          className="bg-white text-black hover:bg-primary hover:text-white px-10 py-4 text-[14px] font-black tracking-[2px] transition-all uppercase"
+      {/* Swiper Slider */}
+      <div className="px-4 md:px-12">
+        <Swiper
+          modules={[Navigation]}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          spaceBetween={16}
+          slidesPerView={1}
+          grabCursor={true}
+          breakpoints={{
+            500: {
+              slidesPerView: 1,
+              spaceBetween: 16,
+            },
+            768: {
+              slidesPerView: 2.5,
+              spaceBetween: 16,
+            },
+          }}
         >
-          CATERING MENU
-        </Link>
+          {slides.map((slide, i) => (
+            <SwiperSlide key={i}>
+              <Link
+                href={slide.href}
+                className="relative block w-full h-[340px] md:h-[500px] overflow-hidden group"
+              >
+                {/* Image */}
+                <img
+                  src={slide.image}
+                  alt={slide.label}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                {/* Text — bottom left */}
+                <div className="absolute bottom-0 left-0 p-5 md:p-7">
+                  <p className="text-primary text-[11px] md:text-[12px] font-normal tracking-[3px] uppercase mb-2">
+                    {slide.label}
+                  </p>
+                  <h3 className="text-white text-[20px] md:text-[36px] font-semibold uppercase leading-tight mb-4">
+                    {slide.title}
+                  </h3>
+                  <span
+                    className="inline-flex items-center justify-center bg-primary text-white uppercase tracking-[2px] transition-all hover:opacity-90"
+                    style={{ width: "150.88px", height: "43px", fontSize: "14px", fontWeight: 400 }}
+                  >
+                    LEARN MORE
+                  </span>
+                </div>
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </section>
   );

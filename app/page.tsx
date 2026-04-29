@@ -4,6 +4,7 @@ import MenuGrid from "@/components/sections/MenuGrid";
 import FlameDifference from "@/components/sections/FlameDifference";
 import SignatureItems from "@/components/sections/SignatureItems";
 import FranchiseSection from "@/components/sections/FranchiseSection";
+import CateringSection from "@/components/sections/CateringSection";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <MenuGrid />
       <FlameDifference />
       <SignatureItems />
+      <CateringSection />
       <FranchiseSection />
     </main>
   );
