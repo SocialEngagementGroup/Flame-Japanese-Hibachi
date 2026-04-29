@@ -4,65 +4,98 @@ import React from "react";
 import Link from "next/link";
 
 const categories = [
-  { name: "BUILD YOUR OWN PLATTER", href: "/menu/platter" },
-  { name: "HIBACHI", href: "/menu/hibachi" },
-  { name: "FLAME COMBO", href: "/menu/combo" },
-  { name: "BENTO", href: "/menu/bento" },
-  { name: "SUSHI", href: "/menu/sushi" },
-  { name: "WINGS / TENDERS", href: "/menu/wings" },
-  { name: "FLAME LOADED FRIES", href: "/menu/fries" },
-  { name: "BOBA TEA / SMOOTHIES / DRINKS", href: "/menu/drinks" },
-  { name: "ADD ONS", href: "/menu/addons" },
+  {
+    name: "BUILD YOUR OWN PLATTER",
+    href: "/menu/platter",
+    image: "/BG/Homepage-menu/BUILD YOUR OWN PLATTER.png",
+  },
+  {
+    name: "HIBACHI",
+    href: "/menu/hibachi",
+    image: "/BG/Homepage-menu/HIBACHI.png",
+  },
+  {
+    name: "FLAME COMBO",
+    href: "/menu/combo",
+    image: "/BG/Homepage-menu/FLAME COMBO.png",
+  },
+  {
+    name: "BENTO",
+    href: "/menu/bento",
+    image: "/BG/Homepage-menu/BENTO.png",
+  },
+  {
+    name: "SUSHI",
+    href: "/menu/sushi",
+    image: "/BG/Homepage-menu/SUSHI.png",
+  },
+  {
+    name: "WINGS / TENDERS",
+    href: "/menu/wings",
+    image: "/BG/Homepage-menu/WINGS  TENDERS.png",
+  },
+  {
+    name: "FLAME LOADED FRIES",
+    href: "/menu/fries",
+    image: "/BG/Homepage-menu/FLAME LOADED FRIES.png",
+  },
+  {
+    name: "BOBA TEA / SMOOTHIES / DRINKS",
+    href: "/menu/drinks",
+    image: "/BG/Homepage-menu/BOBA TEA  SMOOTHIES  Drinks.png",
+  },
+  {
+    name: "ADD ONS",
+    href: "/menu/addons",
+    image: "/BG/Homepage-menu/ADD ONS.png",
+  },
 ];
 
 const MenuGrid = () => {
   return (
-    <section className="w-full bg-black py-10 px-6 md:px-12">
-      <div className="max-w-[1440px] mx-auto">
+    <section className="w-full bg-background py-10 px-4 md:px-12 transition-colors duration-300">
+      <div className="max-w-[1806px] mx-auto">
+
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
-          <h2 className="font-serif text-[24px] md:text-[32px] font-black uppercase tracking-[1px]">
-            <span className="text-white">FLAME JAPANESE </span>
-            <span className="text-primary">MENU</span>
+        <div className="flex justify-center md:justify-between items-center mb-6 gap-4">
+          <h2 className="font-serif text-[24px] md:text-[48px] font-black uppercase tracking-[1px] leading-none text-center md:text-left w-full md:w-auto">
+            <span className="text-foreground transition-colors duration-300">FLAME JAPANESE </span>
+            <span className="text-primary transition-colors duration-300">MENU</span>
           </h2>
-          
-          <Link 
-            href="/menu" 
-            className="text-white text-[11px] font-bold uppercase tracking-[2px] border-b border-white pb-1 hover:text-primary hover:border-primary transition-all"
+
+          <Link
+            href="/menu"
+            className="hidden md:block text-foreground text-[11px] font-bold uppercase tracking-[2px] border-b border-foreground pb-1 hover:text-primary hover:border-primary transition-all whitespace-nowrap"
           >
             VIEW FULL MENU
           </Link>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+        {/* Grid - 3 cols, aspect ratio 378.67×278 */}
+        <div className="grid grid-cols-3 gap-1.5 md:gap-3">
           {categories.map((cat, index) => (
-            <Link 
-              key={index} 
+            <Link
+              key={index}
               href={cat.href}
-              className="group relative aspect-[378.67/278] overflow-hidden bg-zinc-900"
+              className="group relative aspect-[378.67/278] overflow-hidden bg-card"
             >
-              {/* Background Image (Placeholder for now) */}
+              {/* Background Image */}
               <img
-                src="/hero-bg.png"
+                src={cat.image}
                 alt={cat.name}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              
-              {/* Text Overlay Container */}
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <div className="relative z-10">
-                  <h3 className="text-white font-serif text-[18px] md:text-[22px] font-black leading-tight uppercase tracking-[1px] drop-shadow-md">
-                    {cat.name}
-                  </h3>
-                </div>
-                
-                {/* Subtle corner accent like in the mockup */}
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 -translate-x-12 translate-y-12 rotate-45 pointer-events-none group-hover:bg-primary/20 transition-all duration-500" />
+
+              {/* Text — left on desktop, center on mobile */}
+              <div className="absolute inset-0 flex items-end justify-center md:justify-start pb-3 md:pb-4 px-2 md:px-4">
+                <h3 className="text-white font-serif text-[15px] md:text-[24px] font-black uppercase tracking-[0.5px] leading-tight text-center md:text-left">
+                  {cat.name}
+                </h3>
               </div>
             </Link>
           ))}
         </div>
+
       </div>
     </section>
   );
