@@ -83,7 +83,7 @@ const MenuGrid = () => {
             <Link
               key={index}
               href={cat.href}
-              className="group relative aspect-[378.67/278] overflow-hidden bg-card"
+              className="group relative aspect-[185.67/200] md:aspect-[378.67/278] overflow-hidden bg-card"
             >
               {/* Responsive image: mobile-specific crop on small screens */}
               <picture className="absolute inset-0 w-full h-full">
@@ -99,7 +99,7 @@ const MenuGrid = () => {
 
               {/* Text — left on desktop, center on mobile */}
               <div className="absolute inset-0 flex items-end justify-center md:justify-start pb-3 md:pb-4 px-2 md:px-4">
-                <h3 className="text-white font-serif text-[15px] md:text-[24px] font-black uppercase tracking-[0.5px] leading-tight text-center md:text-left">
+                <h3 className="text-white font-serif text-[13px] md:text-[24px] font-black uppercase tracking-[0.5px] leading-tight text-center md:text-left">
                   {cat.name}
                 </h3>
               </div>
