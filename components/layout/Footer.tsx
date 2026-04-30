@@ -11,9 +11,12 @@ const Footer = () => {
 
           {/* Logo and About (Box 1) */}
           <div className="flex flex-col items-center lg:items-start w-full lg:w-auto">
-            <img
-              src="/site-logo/FJH-logo-white.png"
-              alt="Flame Japanese Hibachi"
+            <video
+              src="/site-logo/logo.webm"
+              autoPlay
+              loop
+              muted
+              playsInline
               className="h-12 lg:h-16 object-contain mb-6"
             />
             <p className="text-gray-400 text-[11px] lg:text-[13px] leading-relaxed mb-8 max-w-[280px]">
