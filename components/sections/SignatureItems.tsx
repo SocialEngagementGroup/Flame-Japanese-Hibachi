@@ -33,10 +33,10 @@ const SignatureItems = () => {
   return (
     <section className="w-full bg-[#FFFFFF] dark:bg-black py-20 px-4 md:px-12 overflow-hidden transition-colors duration-300">
       <div className="max-w-[1595px] mx-auto">
-        <h2 className="font-serif text-[28px] md:text-[40px] font-black uppercase tracking-[1px] text-center mb-16">
+        <h3 className="heading-h3 text-center mb-16">
           <span className="text-[#1C1B1B] dark:text-white transition-colors duration-300">MOST LOVED FLAME </span>
           <span className="text-primary">SIGNATURE ITEMS</span>
-        </h2>
+        </h3>
 
         <div className="w-full overflow-hidden md:overflow-visible">
           <div
@@ -52,10 +52,10 @@ const SignatureItems = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
-                <h3 className="text-[#1C1B1B] dark:text-white font-serif text-[16px] md:text-[20px] font-black uppercase tracking-[1px] leading-tight mb-2 transition-colors duration-300">
+                <h4 className="heading-h4 text-[#1C1B1B] dark:text-white mb-2 transition-colors duration-300">
                   {item.name}
-                </h3>
-                <p className="text-primary font-serif font-black text-[14px] md:text-[16px]">
+                </h4>
+                <p className="item-price">
                   {item.price}
                 </p>
               </div>

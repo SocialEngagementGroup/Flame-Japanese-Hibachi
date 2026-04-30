@@ -54,10 +54,10 @@ const CateringSection = () => {
     <section className="w-full py-10 md:py-16 overflow-hidden bg-[#F0EDED] dark:bg-black">
       {/* Header */}
       <div className="flex items-center justify-between px-4 md:px-12 mb-6 md:mb-8">
-        <h2 className="text-black dark:text-white text-[22px] md:text-[40px] font-black uppercase leading-tight">
+        <h3 className="heading-h3 text-black dark:text-white leading-tight">
           CATER WITH US <br className="hidden md:block" />
           <span className="text-primary">FOR YOUR NEXT EVENT</span>
-        </h2>
+        </h3>
 
         {/* Arrow Buttons */}
         <div className="flex gap-2 shrink-0">
@@ -117,16 +117,13 @@ const CateringSection = () => {
 
                 {/* Text — bottom left */}
                 <div className="absolute bottom-0 left-0 p-5 md:p-7">
-                  <p className="text-primary text-[11px] md:text-[12px] font-normal tracking-[3px] uppercase mb-2">
+                  <p className="item-label mb-2">
                     {slide.label}
                   </p>
-                  <h3 className="text-white text-[20px] md:text-[36px] font-semibold uppercase leading-tight mb-4">
+                  <h5 className="heading-h5 mb-4">
                     {slide.title}
-                  </h3>
-                  <span
-                    className="inline-flex items-center justify-center bg-primary text-white uppercase tracking-[2px] transition-all hover:opacity-90"
-                    style={{ width: "150.88px", height: "43px", fontSize: "14px", fontWeight: 400 }}
-                  >
+                  </h5>
+                  <span className="secondary-button">
                     LEARN MORE
                   </span>
                 </div>

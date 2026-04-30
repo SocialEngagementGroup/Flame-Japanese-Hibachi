@@ -5,6 +5,7 @@ import FlameDifference from "@/components/sections/FlameDifference";
 import SignatureItems from "@/components/sections/SignatureItems";
 import FranchiseSection from "@/components/sections/FranchiseSection";
 import CateringSection from "@/components/sections/CateringSection";
+import LocationsSection from "@/components/sections/LocationsSection";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <FlameDifference />
       <SignatureItems />
       <CateringSection />
+      <LocationsSection />
       <FranchiseSection />
     </main>
   );

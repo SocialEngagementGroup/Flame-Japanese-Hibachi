@@ -7,7 +7,7 @@ const HeroCTA = () => {
   return (
     <section className="w-full bg-background py-5 transition-colors duration-300">
       <div className="w-[95%] max-w-[1440px] mx-auto md:px-12 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
-        <h2 className="font-serif text-[18px] md:text-[22px] font-black uppercase tracking-[2px] text-foreground whitespace-nowrap transition-colors duration-300">
+        <h2 className="heading-h2 whitespace-nowrap">
           JOIN FLAME HIBACHI NOW
         </h2>
 
