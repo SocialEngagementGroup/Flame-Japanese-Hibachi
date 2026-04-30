@@ -6,17 +6,17 @@ const items = [
   {
     name: "CHICKEN BEEF SHRIMP FLAME COMBO",
     price: "$24.99",
-    image: "/BG/Homepage-menu/FLAME COMBO.png",
+    image: "/homepage/menu/FLAME COMBO.png",
   },
   {
     name: "SALMON AND SHRIMP FLAME COMBO",
     price: "$26.99",
-    image: "/BG/Homepage-menu/HIBACHI.png",
+    image: "/homepage/menu/HIBACHI.png",
   },
   {
     name: "CHICKEN HIBACHI",
     price: "$18.99",
-    image: "/BG/Homepage-menu/BUILD YOUR OWN PLATTER.png",
+    image: "/homepage/menu/BUILD YOUR OWN PLATTER.png",
   },
 ];
 
@@ -31,9 +31,9 @@ const SignatureItems = () => {
   }, []);
 
   return (
-    <section className="w-full bg-[#FFFFFF] dark:bg-black py-20 px-4 md:px-12 overflow-hidden transition-colors duration-300">
+    <section className="w-full bg-[#FFFFFF] dark:bg-black py-5 md:py-20 px-4 md:px-12 overflow-hidden transition-colors duration-300">
       <div className="max-w-[1595px] mx-auto">
-        <h3 className="heading-h3 text-center mb-16">
+        <h3 className="heading-h3 text-center mb-7 md:mb-16">
           <span className="text-[#1C1B1B] dark:text-white transition-colors duration-300">MOST LOVED FLAME </span>
           <span className="text-primary">SIGNATURE ITEMS</span>
         </h3>

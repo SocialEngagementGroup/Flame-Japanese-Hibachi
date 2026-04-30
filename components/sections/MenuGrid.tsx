@@ -7,63 +7,63 @@ const categories = [
   {
     name: "BUILD YOUR OWN PLATTER",
     href: "/menu/platter",
-    image: "/BG/Homepage-menu/BUILD YOUR OWN PLATTER.png",
-    mobileImage: "/BG/Homepage-menu/build-your-own-platter-mobile.png",
+    image: "/homepage/menu/BUILD YOUR OWN PLATTER.png",
+    mobileImage: "/homepage/menu/build-your-own-platter-mobile.png",
   },
   {
     name: "HIBACHI",
     href: "/menu/hibachi",
-    image: "/BG/Homepage-menu/HIBACHI.png",
-    mobileImage: "/BG/Homepage-menu/hibachi-mobile.png",
+    image: "/homepage/menu/HIBACHI.png",
+    mobileImage: "/homepage/menu/hibachi-mobile.png",
   },
   {
     name: "FLAME COMBO",
     href: "/menu/combo",
-    image: "/BG/Homepage-menu/FLAME COMBO.png",
-    mobileImage: "/BG/Homepage-menu/flame-combo-mobile.png",
+    image: "/homepage/menu/FLAME COMBO.png",
+    mobileImage: "/homepage/menu/flame-combo-mobile.png",
   },
   {
     name: "BENTO",
     href: "/menu/bento",
-    image: "/BG/Homepage-menu/BENTO.png",
-    mobileImage: "/BG/Homepage-menu/bento-mobile.png",
+    image: "/homepage/menu/BENTO.png",
+    mobileImage: "/homepage/menu/bento-mobile.png",
   },
   {
     name: "SUSHI",
     href: "/menu/sushi",
-    image: "/BG/Homepage-menu/SUSHI.png",
-    mobileImage: "/BG/Homepage-menu/sushi-mobile.png",
+    image: "/homepage/menu/SUSHI.png",
+    mobileImage: "/homepage/menu/sushi-mobile.png",
   },
   {
     name: "WINGS / TENDERS",
     href: "/menu/wings",
-    image: "/BG/Homepage-menu/WINGS  TENDERS.png",
-    mobileImage: "/BG/Homepage-menu/wings-tenders-mobile.png",
+    image: "/homepage/menu/WINGS  TENDERS.png",
+    mobileImage: "/homepage/menu/wings-tenders-mobile.png",
   },
   {
     name: "FLAME LOADED FRIES",
     href: "/menu/fries",
-    image: "/BG/Homepage-menu/FLAME LOADED FRIES.png",
+    image: "/homepage/menu/FLAME LOADED FRIES.png",
   },
   {
     name: "BOBA TEA / SMOOTHIES / DRINKS",
     href: "/menu/drinks",
-    image: "/BG/Homepage-menu/BOBA TEA  SMOOTHIES  Drinks.png",
+    image: "/homepage/menu/BOBA TEA  SMOOTHIES  Drinks.png",
   },
   {
     name: "ADD ONS",
     href: "/menu/addons",
-    image: "/BG/Homepage-menu/ADD ONS.png",
+    image: "/homepage/menu/ADD ONS.png",
   },
 ];
 
 const MenuGrid = () => {
   return (
-    <section className="w-full bg-background py-10 px-4 md:px-12 transition-colors duration-300">
+    <section className="w-full bg-background py-5 md:py-20 px-4 md:px-12 transition-colors duration-300">
       <div className="max-w-[1806px] mx-auto">
 
         {/* Header */}
-        <div className="flex justify-center md:justify-between items-center mb-6 gap-4">
+        <div className="flex justify-center md:justify-between items-center mb-7 md:mb-16 gap-4">
           <h3 className="heading-h3 text-center md:text-left w-full md:w-auto">
             <span className="text-foreground transition-colors duration-300">FLAME JAPANESE </span>
             <span className="text-primary transition-colors duration-300">MENU</span>
@@ -78,7 +78,7 @@ const MenuGrid = () => {
         </div>
 
         {/* Grid - 3 cols, aspect ratio 378.67×278 */}
-        <div className="grid grid-cols-3 gap-1.5 md:gap-3">
+        <div className="grid grid-cols-3 gap-1.5 md:gap-5">
           {categories.map((cat, index) => (
             <Link
               key={index}
@@ -98,7 +98,7 @@ const MenuGrid = () => {
               </picture>
 
               {/* Text — left on desktop, center on mobile */}
-              <div className="absolute inset-0 flex items-end justify-center md:justify-start pb-3 md:pb-4 px-2 md:px-4">
+              <div className="absolute inset-0 flex items-end justify-center md:justify-start pb-4 md:pb-8 px-4 md:px-8">
                 <h4 className="heading-h4 text-white text-center md:text-left">
                   {cat.name}
                 </h4>

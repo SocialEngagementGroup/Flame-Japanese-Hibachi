@@ -35,7 +35,6 @@ const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { name: "HOME", href: "/" },
     { name: "MENU", href: "/menu" },
     { name: "CATERING", href: "/catering" },
     { name: "LOCATIONS", href: "/locations" },
@@ -58,7 +57,7 @@ const Navbar = () => {
           <button className="max-[1100px]:flex hidden border-2 border-white text-white w-[100px] h-[30px] items-center justify-center hover:bg-white hover:text-black transition-all text-[14px] font-black tracking-[1px] uppercase">
             SIGN IN
           </button>
-          <div className="block min-[1100px]:block">
+          <div className="hidden min-[1100px]:block">
             <Link href="/" className="flex items-center group">
               <img
                 src="/site-logo/FJH-logo-white.png"

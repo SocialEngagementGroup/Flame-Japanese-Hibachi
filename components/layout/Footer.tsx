@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="w-full bg-[#131313] pt-20 pb-10 px-6 md:px-12 border-t border-white/5">
       <div className="max-w-[1440px] mx-auto">
-        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-12 lg:gap-8 mb-20 w-full text-center lg:text-left">
+        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-16 lg:gap-12 mb-20 w-full text-center lg:text-left">
 
           {/* Logo and About (Box 1) */}
           <div className="flex flex-col items-center lg:items-start w-full lg:w-auto">
@@ -29,7 +29,7 @@ const Footer = () => {
             {/* Company Links (Box 2) */}
             <div className="flex flex-col items-center lg:items-start">
               <h4 className="text-gray-500 font-black text-[10px] tracking-[2px] uppercase mb-6">COMPANY</h4>
-              <ul className="space-y-4">
+              <ul className="space-y-6">
                 {["VALUES", "CAREERS", "INVESTORS"].map((link) => (
                   <li key={link}>
                     <Link href="#" className="text-gray-400 hover:text-white text-[11px] font-bold uppercase tracking-widest transition-colors">
@@ -43,7 +43,7 @@ const Footer = () => {
             {/* Service Links (Box 3) */}
             <div className="flex flex-col items-center lg:items-start">
               <h4 className="text-gray-500 font-black text-[10px] tracking-[2px] uppercase mb-6">SERVICE</h4>
-              <ul className="space-y-4">
+              <ul className="space-y-6">
                 {["CATERING", "GIFT CARDS", "SUPPORT"].map((link) => (
                   <li key={link}>
                     <Link href="#" className="text-gray-400 hover:text-white text-[11px] font-bold uppercase tracking-widest transition-colors">

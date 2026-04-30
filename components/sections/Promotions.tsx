@@ -24,9 +24,9 @@ const promos = [
 
 const Promotions = () => {
   return (
-    <section className="w-full bg-black py-20 px-6 md:px-12">
+    <section className="w-full bg-black py-5 md:py-20 px-6 md:px-12">
       <div className="max-w-[1440px] mx-auto">
-        <div className="flex justify-between items-end mb-12">
+        <div className="flex justify-between items-end mb-7 md:mb-16">
           <h2 className="font-serif text-[28px] md:text-[36px] font-black uppercase tracking-[1px]">
             <span className="text-white">FLAME MONTHLY </span>
             <span className="text-primary">PROMOTIONS</span>
