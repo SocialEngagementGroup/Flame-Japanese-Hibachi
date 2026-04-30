@@ -10,37 +10,37 @@ import "swiper/css";
 
 const slides = [
   {
-    image: "/BG/Homepage-menu/HIBACHI.png",
+    image: "/homepage/menu/HIBACHI.png",
     label: "CATERING SPECIAL",
     title: "Classic Hibachi Experience",
     href: "/menu",
   },
   {
-    image: "/BG/Homepage-menu/SUSHI.png",
+    image: "/homepage/menu/SUSHI.png",
     label: "WEEKEND PERKS",
     title: "Double Flame Points",
     href: "/menu",
   },
   {
-    image: "/BG/Homepage-menu/FLAME COMBO.png",
+    image: "/homepage/menu/FLAME COMBO.png",
     label: "WEEKEND PERKS",
     title: "Double Flame Points",
     href: "/menu",
   },
   {
-    image: "/BG/Homepage-menu/BENTO.png",
+    image: "/homepage/menu/BENTO.png",
     label: "CATERING SPECIAL",
     title: "Signature Bento Box",
     href: "/menu",
   },
   {
-    image: "/BG/Homepage-menu/WINGS  TENDERS.png",
+    image: "/homepage/menu/WINGS  TENDERS.png",
     label: "WEEKEND PERKS",
     title: "Crispy Wings & Tenders",
     href: "/menu",
   },
   {
-    image: "/BG/Homepage-menu/FLAME LOADED FRIES.png",
+    image: "/homepage/menu/FLAME LOADED FRIES.png",
     label: "CATERING SPECIAL",
     title: "Flame Loaded Fries",
     href: "/menu",
@@ -51,9 +51,9 @@ const CateringSection = () => {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <section className="w-full py-10 md:py-16 overflow-hidden bg-[#F0EDED] dark:bg-black">
+    <section className="w-full py-5 md:py-20 overflow-hidden bg-[#F0EDED] dark:bg-black">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 md:px-12 mb-6 md:mb-8">
+      <div className="flex items-center justify-between px-4 md:px-12 mb-7 md:mb-16">
         <h3 className="heading-h3 text-black dark:text-white leading-tight">
           CATER WITH US <br className="hidden md:block" />
           <span className="text-primary">FOR YOUR NEXT EVENT</span>

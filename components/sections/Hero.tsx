@@ -9,12 +9,12 @@ const Hero = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/hero-bg-desk.png"
+          src="/homepage/hero/hero-bg-desk.png"
           alt="Flame Japanese Hibachi Hero"
           className="hidden md:block w-full h-full object-cover"
         />
         <img
-          src="/hero-bg-mob.png"
+          src="/homepage/hero/hero-bg-mob.png"
           alt="Flame Japanese Hibachi Hero Mobile"
           className="block md:hidden w-full h-full object-cover"
         />

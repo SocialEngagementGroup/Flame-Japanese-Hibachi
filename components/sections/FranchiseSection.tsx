@@ -4,9 +4,9 @@ import React from "react";
 
 const FranchiseSection = () => {
   return (
-    <section className="w-full bg-white dark:bg-[#111111] py-24 px-6 md:px-12 transition-colors duration-300">
+    <section className="w-full bg-[#F0EDED] dark:bg-black py-5 md:py-20 px-6 md:px-12 transition-colors duration-300">
       <div className="max-w-[1430px] mx-auto text-center">
-        <h3 className="heading-h3 text-[#1C1B1B] dark:text-white mb-4 transition-colors duration-300">
+        <h3 className="heading-h3 text-[#1C1B1B] dark:text-white mb-7 md:mb-16 transition-colors duration-300">
           BECOME A FLAME JAPANESE HIBACHI <br />
           FRANCHISE
         </h3>

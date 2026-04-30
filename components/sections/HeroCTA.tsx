@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const HeroCTA = () => {
   return (
-    <section className="w-full bg-background py-5 transition-colors duration-300">
-      <div className="w-[95%] max-w-[1440px] mx-auto md:px-12 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+    <section className="w-full bg-background py-5 md:py-20 transition-colors duration-300">
+      <div className="w-[95%] max-w-[1440px] mx-auto md:px-12 flex flex-col md:flex-row items-center justify-center gap-0 md:gap-6 md:gap-12">
         <h2 className="heading-h2 whitespace-nowrap">
           JOIN FLAME HIBACHI NOW
         </h2>
