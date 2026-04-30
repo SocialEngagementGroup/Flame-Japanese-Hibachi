@@ -12,6 +12,8 @@ const Navbar = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const desktopVideoRef = React.useRef<HTMLVideoElement>(null);
+  const mobileVideoRef = React.useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -19,6 +21,14 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
+
+    if (desktopVideoRef.current) {
+      desktopVideoRef.current.play().catch((e) => console.log("Desktop video autoplay error:", e));
+    }
+    if (mobileVideoRef.current) {
+      mobileVideoRef.current.play().catch((e) => console.log("Mobile video autoplay error:", e));
+    }
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -60,11 +70,12 @@ const Navbar = () => {
           <div className="hidden min-[1100px]:block">
             <Link href="/" className="flex items-center group">
               <video
+                ref={desktopVideoRef}
                 src="/site-logo/logo.webm"
-                autoPlay
-                loop
-                muted
-                playsInline
+                autoPlay={true}
+                loop={true}
+                muted={true}
+                playsInline={true}
                 className="object-contain brightness-100 transition-all"
                 style={{ width: '270px', height: '65px' }}
               />
@@ -78,11 +89,12 @@ const Navbar = () => {
           <div className="min-[1100px]:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !ml-[35px]">
             <Link href="/" className="flex items-center">
               <video
+                ref={mobileVideoRef}
                 src="/site-logo/logo.webm"
-                autoPlay
-                loop
-                muted
-                playsInline
+                autoPlay={true}
+                loop={true}
+                muted={true}
+                playsInline={true}
                 className="object-contain"
                 style={{ width: '270px', height: '65px' }}
               />

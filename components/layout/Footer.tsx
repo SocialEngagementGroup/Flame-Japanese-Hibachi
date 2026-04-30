@@ -1,9 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 
 const Footer = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((e) => console.log("Footer video autoplay error:", e));
+    }
+  }, []);
   return (
     <footer className="w-full bg-[#131313] pt-20 pb-10 px-6 md:px-12 border-t border-white/5">
       <div className="max-w-[1440px] mx-auto">
@@ -12,11 +19,12 @@ const Footer = () => {
           {/* Logo and About (Box 1) */}
           <div className="flex flex-col items-center lg:items-start w-full lg:w-auto">
             <video
+              ref={videoRef}
               src="/site-logo/logo.webm"
-              autoPlay
-              loop
-              muted
-              playsInline
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              playsInline={true}
               className="h-12 lg:h-16 object-contain mb-6"
             />
             <p className="text-gray-400 text-[11px] lg:text-[13px] leading-relaxed mb-8 max-w-[280px]">
