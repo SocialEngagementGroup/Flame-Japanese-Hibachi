@@ -6,10 +6,10 @@ const FranchiseSection = () => {
   return (
     <section className="w-full bg-white dark:bg-[#111111] py-24 px-6 md:px-12 transition-colors duration-300">
       <div className="max-w-[1430px] mx-auto text-center">
-        <h2 className="font-serif text-[28px] md:text-[40px] font-black uppercase tracking-[1px] text-[#1C1B1B] dark:text-white leading-tight mb-4 transition-colors duration-300">
+        <h3 className="heading-h3 text-[#1C1B1B] dark:text-white mb-4 transition-colors duration-300">
           BECOME A FLAME JAPANESE HIBACHI <br />
           FRANCHISE
-        </h2>
+        </h3>
         <p className="text-gray-700 dark:text-gray-300 text-[12px] md:text-[14px] mb-12 uppercase tracking-[2px] font-bold transition-colors duration-300">
           JOIN THE FASTEST GROWING HIBACHI BRAND IN THE NATION
         </p>

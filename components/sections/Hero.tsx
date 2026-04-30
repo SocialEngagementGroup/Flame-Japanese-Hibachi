@@ -24,19 +24,19 @@ const Hero = () => {
 
       {/* Content Container */}
       <div className="relative z-20 h-full w-full max-w-[1440px] mx-auto px-6 md:px-12 flex flex-col justify-center">
-        <div className="max-w-2xl text-white text-center md:text-left flex flex-col items-center md:items-start mx-auto md:mx-0">
-          <p className="font-sans text-[11px] md:text-[24px] font-medium tracking-[4px] md:tracking-[2px] uppercase mb-4 text-primary drop-shadow-md">
+        <div className="max-w-2xl flex flex-col items-center lg:items-start mx-auto lg:mx-0">
+          <p className="hero-paragraph mb-4">
             SIZZLING PERFECTION, EVERY TIME.
           </p>
 
-          <h1 className="font-serif text-[48px] lg:text-[96px] font-extrabold leading-[1.1] uppercase mb-10 tracking-[1px] drop-shadow-lg">
+          <h1 className="heading-h1 mb-10">
             IGNITE YOUR <br />
             <span className="text-white">SENSES.</span>
           </h1>
 
           <Link
             href="/order"
-            className="flex md:inline-flex w-[179px] md:w-auto items-center justify-center bg-primary hover:bg-secondary text-white px-8 md:px-12 py-4 md:py-5 text-[14px] md:text-[16px] font-black tracking-[2px] transition-all uppercase active:scale-[0.98]"
+            className="hero-button"
           >
             ORDER NOW
           </Link>

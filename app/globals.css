@@ -113,3 +113,194 @@
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Reusable SEO-Friendly Heading and UI Classes */
+.heading-h1 {
+  color: #FFF;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 53px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1100px) {
+  .heading-h1 {
+    text-align: left;
+    font-size: 96px;
+    line-height: 96px;
+    letter-spacing: -4.8px;
+  }
+}
+
+.heading-h2 {
+  color: #FFF;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 40px;
+  letter-spacing: -0.9px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1100px) {
+  .heading-h2 {
+    text-align: left;
+    font-size: 24px;
+    line-height: 40px;
+    letter-spacing: -0.9px;
+  }
+}
+
+.heading-h3 {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+@media (min-width: 1100px) {
+  .heading-h3 {
+    font-size: 48px;
+  }
+}
+
+.heading-h4 {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+@media (min-width: 1100px) {
+  .heading-h4 {
+    font-size: 24px;
+  }
+}
+
+.box-description {
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+@media (min-width: 1100px) {
+  .box-description {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+}
+
+.item-price {
+  color: var(--primary);
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: 14px;
+}
+
+@media (min-width: 1100px) {
+  .item-price {
+    font-size: 16px;
+  }
+}
+
+.item-label {
+  color: #FF7808;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.heading-h5 {
+  color: #FFF;
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 23px;
+  letter-spacing: -0.9px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1100px) {
+  .heading-h5 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: normal;
+  }
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: #FFF;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 400;
+  width: 150.88px;
+  height: 43px;
+}
+
+.secondary-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.hero-paragraph {
+  color: #FF7808;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 4.8px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1100px) {
+  .hero-paragraph {
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.hero-button {
+  width: 179.55px;
+  height: 52px;
+  background: #FF7808;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.hero-button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+

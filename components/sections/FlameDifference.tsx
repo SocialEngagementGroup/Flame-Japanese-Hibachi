@@ -33,11 +33,11 @@ const FlameDifference = () => {
   return (
     <section className="w-full bg-[#FFFFFF] dark:bg-black py-20 px-4 md:px-12 transition-colors duration-300">
       <div className="max-w-[1806px] mx-auto">
-        <h2 className="font-serif text-[28px] md:text-[36px] font-black uppercase tracking-[1px] text-center mb-16">
+        <h3 className="heading-h3 text-center mb-16">
           <span className="text-black dark:text-white transition-colors duration-300">THE </span>
           <span className="text-primary">FLAME </span>
           <span className="text-black dark:text-white transition-colors duration-300">DIFFERENCE</span>
-        </h2>
+        </h3>
 
         <div className="grid grid-cols-2 min-[1100px]:grid-cols-4 gap-3 md:gap-6 w-full">
           {features.map((feature, index) => {
@@ -58,12 +58,12 @@ const FlameDifference = () => {
                     isFirst ? "![filter:brightness(0)_invert(1)]" : "group-hover:![filter:brightness(0)_invert(1)]"
                   }`}
                 />
-                <h3 className={`font-serif text-[13px] sm:text-[16px] md:text-[24px] font-black uppercase tracking-[1px] mb-2 md:mb-4 min-h-[36px] md:min-h-[64px] flex items-center text-center transition-colors duration-300 ${
+                <h4 className={`heading-h4 mb-2 md:mb-4 min-h-[36px] md:min-h-[64px] flex items-center text-center transition-colors duration-300 ${
                   isFirst ? "text-white" : "text-[#1C1B1B] dark:text-white group-hover:!text-white"
                 }`}>
                   {feature.title}
-                </h3>
-                <p className={`text-[10px] sm:text-[12px] md:text-[18px] leading-snug md:leading-relaxed max-w-[240px] transition-colors duration-300 ${
+                </h4>
+                <p className={`box-description max-w-[240px] transition-colors duration-300 ${
                   isFirst ? "text-white/90" : "text-[#717171] dark:text-gray-400 group-hover:!text-white/90"
                 }`}>
                   {feature.description}
