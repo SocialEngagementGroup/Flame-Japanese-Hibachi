@@ -59,10 +59,14 @@ const Navbar = () => {
           </button>
           <div className="hidden min-[1100px]:block">
             <Link href="/" className="flex items-center group">
-              <img
-                src="/site-logo/FJH-logo-white.png"
-                alt="Flame Japanese Hibachi"
-                className="object-contain brightness-100 transition-all w-[165px] h-[62px] min-[1440px]:w-[190px] min-[1440px]:h-[72px]"
+              <video
+                src="/site-logo/logo.webm"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="object-contain brightness-100 transition-all"
+                style={{ width: '270px', height: '65px' }}
               />
             </Link>
           </div>
@@ -73,11 +77,14 @@ const Navbar = () => {
           {/* Mobile Logo - Absolute Centered */}
           <div className="min-[1100px]:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !ml-[35px]">
             <Link href="/" className="flex items-center">
-              <img
-                src="/site-logo/FJH-logo-white.png"
-                alt="Flame Japanese Hibachi"
+              <video
+                src="/site-logo/logo.webm"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="object-contain"
-                style={{ height: '68px', width: 'auto' }}
+                style={{ width: '270px', height: '65px' }}
               />
             </Link>
           </div>
