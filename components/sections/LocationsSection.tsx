@@ -48,7 +48,7 @@ const LocationsSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleCardClick = (loc: any) => {
+  const handleCardClick = (loc: typeof activeLocations[0]) => {
     window.open(googleMapsUrl(loc.address), "_blank");
   };
 
@@ -113,7 +113,9 @@ const LocationsSection = () => {
             {activeLocations.map((loc, index) => (
               <div
                 key={loc.id}
-                ref={(el) => (cardRefs.current[index] = el)}
+                ref={(el) => {
+                  cardRefs.current[index] = el;
+                }}
                 data-index={index}
                 onClick={() => handleCardClick(loc)}
                 className={`w-full min-h-[244px] p-[var(--space-lg)] border transition-all cursor-pointer group flex flex-col justify-center relative overflow-hidden ${selectedLocation.id === loc.id
