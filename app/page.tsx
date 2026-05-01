@@ -9,7 +9,7 @@ import LocationsSection from "@/components/sections/LocationsSection";
 
 export default function Home() {
   return (
-    <main className="flex flex-col w-full">
+    <div className="flex flex-col w-full">
       <Hero />
       <HeroCTA />
       <MenuGrid />
@@ -18,6 +18,6 @@ export default function Home() {
       <CateringSection />
       <LocationsSection />
       <FranchiseSection />
-    </main>
+    </div>
   );
 }

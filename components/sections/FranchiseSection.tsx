@@ -4,23 +4,23 @@ import React from "react";
 
 const FranchiseSection = () => {
   return (
-    <section className="w-full bg-[#F0EDED] dark:bg-black py-5 md:py-20 px-6 md:px-12 transition-colors duration-300">
+    <section className="w-full bg-[#F0EDED] dark:bg-black py-[var(--space-2xl)] px-[var(--space-lg)] transition-colors duration-300">
       <div className="max-w-[1430px] mx-auto text-center">
-        <h3 className="heading-h3 text-[#1C1B1B] dark:text-white mb-7 md:mb-16 transition-colors duration-300">
+        <h3 className="heading-h3 text-[#1C1B1B] dark:text-white mb-[var(--space-xl)] transition-colors duration-300">
           BECOME A FLAME JAPANESE HIBACHI <br />
           FRANCHISE
         </h3>
-        <p className="text-gray-700 dark:text-gray-300 text-[12px] md:text-[14px] mb-12 uppercase tracking-[2px] font-bold transition-colors duration-300">
+        <p className="text-gray-700 dark:text-gray-300 text-[var(--font-small)] mb-[var(--space-lg)] uppercase tracking-[2px] font-bold transition-colors duration-300">
           JOIN THE FASTEST GROWING HIBACHI BRAND IN THE NATION
         </p>
 
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+        <form className="grid grid-cols-1 md:grid-cols-2 gap-[var(--gap-md)] text-left">
           <div className="space-y-2">
             <label className="text-[#1C1B1B] dark:text-gray-500 text-[10px] font-black uppercase tracking-widest ml-1 transition-colors duration-300">FULL NAME</label>
             <input
               type="text"
               placeholder="John Doe"
-              className="w-full bg-transparent border border-[#ff7a00] px-6 py-4 text-[#ff7a00] placeholder:text-[#ff7a00] text-[14px] outline-none transition-all"
+              className="w-full bg-transparent border border-[#ff7a00] px-[var(--space-md)] py-[var(--space-md)] text-[#ff7a00] placeholder:text-[#ff7a00] text-[var(--font-body)] outline-none transition-all"
             />
           </div>
           <div className="space-y-2">

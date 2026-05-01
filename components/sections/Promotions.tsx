@@ -24,10 +24,10 @@ const promos = [
 
 const Promotions = () => {
   return (
-    <section className="w-full bg-black py-5 md:py-20 px-6 md:px-12">
+    <section className="w-full bg-black py-[var(--space-2xl)] px-[var(--space-lg)]">
       <div className="max-w-[1440px] mx-auto">
-        <div className="flex justify-between items-end mb-7 md:mb-16">
-          <h2 className="font-serif text-[28px] md:text-[36px] font-black uppercase tracking-[1px]">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-[var(--space-xl)] gap-6">
+          <h2 className="heading-h3 text-center md:text-left">
             <span className="text-white">FLAME MONTHLY </span>
             <span className="text-primary">PROMOTIONS</span>
           </h2>
@@ -42,7 +42,7 @@ const Promotions = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-[var(--gap-md)]">
           {promos.map((promo, index) => (
             <div key={index} className="group relative aspect-[378.67/278] overflow-hidden bg-zinc-900">
               <img
@@ -51,10 +51,10 @@ const Promotions = () => {
                 className="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100"
               />
               <div className="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black/80 to-transparent">
-                <h3 className="text-white font-serif text-[20px] font-black uppercase leading-tight mb-2">
+                <h3 className="text-white font-serif text-[var(--font-h4)] font-black uppercase leading-tight mb-2">
                   {promo.name}
                 </h3>
-                <p className="text-primary font-black text-[14px]">
+                <p className="text-primary font-black text-[var(--font-small)]">
                   {promo.description}
                 </p>
                 

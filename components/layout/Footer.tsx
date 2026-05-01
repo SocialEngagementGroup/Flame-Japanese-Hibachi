@@ -12,9 +12,9 @@ const Footer = () => {
     }
   }, []);
   return (
-    <footer className="w-full bg-[#131313] pt-20 pb-10 px-6 md:px-12 border-t border-white/5">
+    <footer className="w-full bg-[#131313] pt-[var(--space-2xl)] pb-[var(--space-xl)] px-[var(--space-lg)] border-t border-white/5">
       <div className="max-w-[1440px] mx-auto">
-        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-16 lg:gap-12 mb-20 w-full text-center lg:text-left">
+        <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-[var(--gap-lg)] mb-[var(--space-2xl)] w-full text-center lg:text-left">
 
           {/* Logo and About (Box 1) */}
           <div className="flex flex-col items-center lg:items-start w-full lg:w-auto">
@@ -25,9 +25,9 @@ const Footer = () => {
               loop={true}
               muted={true}
               playsInline={true}
-              className="h-12 lg:h-16 object-contain mb-6"
+              className="h-12 lg:h-16 object-contain mb-6 lg:-ml-[25px]"
             />
-            <p className="text-gray-400 text-[11px] lg:text-[13px] leading-relaxed mb-8 max-w-[280px]">
+            <p className="text-gray-400 text-[var(--font-small)] leading-relaxed mb-[var(--space-lg)] max-w-[280px]">
               Experience the heat of the grill and the precision of the blade. Authentic Japanese flavors, modern theater.
             </p>
             {/* Desktop Social Icons */}
@@ -36,7 +36,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-row justify-center gap-16 w-full lg:w-auto lg:contents">
+          <div className="flex flex-row justify-center gap-[var(--gap-lg)] w-full lg:w-auto lg:contents">
             {/* Company Links (Box 2) */}
             <div className="flex flex-col items-center lg:items-start">
               <h4 className="text-gray-500 font-black text-[10px] tracking-[2px] uppercase mb-6">COMPANY</h4>
