@@ -51,9 +51,9 @@ const CateringSection = () => {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <section className="w-full py-5 md:py-20 overflow-hidden bg-[#F0EDED] dark:bg-black">
+    <section className="w-full py-[var(--space-2xl)] overflow-hidden bg-[#F0EDED] dark:bg-black">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 md:px-12 mb-7 md:mb-16">
+      <div className="flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
         <h3 className="heading-h3 text-black dark:text-white leading-tight">
           CATER WITH US <br className="hidden md:block" />
           <span className="text-primary">FOR YOUR NEXT EVENT</span>
@@ -79,7 +79,7 @@ const CateringSection = () => {
       </div>
 
       {/* Swiper Slider */}
-      <div className="px-4 md:px-12">
+      <div className="px-[var(--space-lg)]">
         <Swiper
           modules={[Navigation]}
           onSwiper={(swiper) => {
@@ -103,7 +103,7 @@ const CateringSection = () => {
             <SwiperSlide key={i}>
               <Link
                 href={slide.href}
-                className="relative block w-full h-[340px] md:h-[500px] overflow-hidden group"
+                className="relative block w-full h-[clamp(340px,50vh,500px)] overflow-hidden group"
               >
                 {/* Image */}
                 <img

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="relative h-[65vh] min-h-[480px] md:h-[78vh] md:min-h-[600px] w-full overflow-hidden">
+    <section className="relative h-[clamp(480px,81vh,800px)] w-full overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -23,13 +23,13 @@ const Hero = () => {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-20 h-full w-full max-w-[1440px] mx-auto px-6 md:px-12 flex flex-col justify-center">
-        <div className="max-w-2xl flex flex-col items-center lg:items-start mx-auto lg:mx-0">
-          <p className="hero-paragraph mb-4">
+      <div className="relative z-20 h-full w-full max-w-[1440px] mx-auto px-[var(--space-lg)] flex flex-col justify-center">
+        <div className="max-w-[65ch] flex flex-col items-center lg:items-start mx-auto lg:mx-0">
+          <p className="hero-paragraph mb-[var(--space-sm)]">
             SIZZLING PERFECTION, EVERY TIME.
           </p>
 
-          <h1 className="heading-h1 mb-10">
+          <h1 className="heading-h1 mb-[var(--space-xl)]">
             IGNITE YOUR <br />
             <span className="text-white">SENSES.</span>
           </h1>

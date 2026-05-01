@@ -59,11 +59,11 @@ const categories = [
 
 const MenuGrid = () => {
   return (
-    <section className="w-full bg-background py-5 md:py-20 px-4 md:px-12 transition-colors duration-300">
-      <div className="max-w-[1806px] mx-auto">
+    <section className="w-full bg-background py-[var(--space-2xl)] px-[var(--space-lg)] transition-colors duration-300">
+      <div className="max-w-[1800px] mx-auto">
 
         {/* Header */}
-        <div className="flex justify-center md:justify-between items-center mb-7 md:mb-16 gap-4">
+        <div className="flex justify-center md:justify-between items-center mb-[var(--space-xl)] gap-4">
           <h3 className="heading-h3 text-center md:text-left w-full md:w-auto">
             <span className="text-foreground transition-colors duration-300">FLAME JAPANESE </span>
             <span className="text-primary transition-colors duration-300">MENU</span>
@@ -77,13 +77,13 @@ const MenuGrid = () => {
           </Link>
         </div>
 
-        {/* Grid - 3 cols, aspect ratio 378.67×278 */}
-        <div className="grid grid-cols-3 gap-1.5 md:gap-5">
+        {/* Grid - Fixed 3 columns with standardized gap */}
+        <div className="grid grid-cols-3 gap-[var(--gap-sm)]">
           {categories.map((cat, index) => (
             <Link
               key={index}
               href={cat.href}
-              className="group relative aspect-[185.67/200] md:aspect-[378.67/278] overflow-hidden bg-card"
+              className="group relative aspect-[378.67/278] overflow-hidden bg-card"
             >
               {/* Responsive image: mobile-specific crop on small screens */}
               <picture className="absolute inset-0 w-full h-full">
@@ -93,13 +93,13 @@ const MenuGrid = () => {
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover"
                 />
               </picture>
 
-              {/* Text — left on desktop, center on mobile */}
-              <div className="absolute inset-0 flex items-end justify-center md:justify-start pb-4 md:pb-8 px-4 md:px-8">
-                <h4 className="heading-h4 text-white text-center md:text-left">
+              {/* Text — Centered on mobile, bottom-left on desktop */}
+              <div className="absolute inset-0 flex items-center justify-center md:items-end md:justify-start pb-2 md:pb-[var(--space-lg)] px-2 md:px-[var(--space-lg)] bg-black/20 md:bg-transparent">
+                <h4 className="heading-h4 text-white text-center md:text-left scale-[0.8] md:scale-100">
                   {cat.name}
                 </h4>
               </div>

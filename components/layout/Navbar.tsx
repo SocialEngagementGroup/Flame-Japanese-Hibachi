@@ -56,18 +56,15 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`transition-all duration-300 font-serif bg-black ${isScrolled
-        ? "py-3"
-        : "max-[1100px]:py-5 py-0"
-        }`}
+      className={`transition-all duration-300 font-serif bg-black py-5 md:py-0`}
     >
-      <div className="w-full px-4 md:px-12 flex items-center justify-between relative">
+      <div className="w-full px-[var(--space-lg)] flex items-center justify-between relative">
         {/* Left: Mobile Sign In / Desktop Logo */}
         <div className="flex-none flex justify-start items-center z-10">
           <button className="max-[1100px]:flex hidden border-2 border-white text-white w-[100px] h-[30px] items-center justify-center hover:bg-white hover:text-black transition-all text-[14px] font-black tracking-[1px] uppercase">
             SIGN IN
           </button>
-          <div className="hidden min-[1100px]:block">
+          <div className="hidden min-[1100px]:block -ml-[50px]">
             <Link href="/" className="flex items-center group">
               <video
                 ref={desktopVideoRef}
@@ -86,7 +83,7 @@ const Navbar = () => {
         {/* Center: Mobile Logo / Desktop Links */}
         <div className="flex-none flex items-center justify-center">
           {/* Mobile Logo - Absolute Centered */}
-          <div className="min-[1100px]:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !ml-[35px]">
+          <div className="min-[1100px]:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <Link href="/" className="flex items-center">
               <video
                 ref={mobileVideoRef}
@@ -102,14 +99,14 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden min-[1100px]:flex items-center justify-center gap-6 min-[1440px]:gap-12">
+          <div className="hidden min-[1100px]:flex items-center justify-center gap-[var(--gap-lg)] max-[1300px]:gap-[12px]">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-white hover:text-primary text-[11px] min-[1440px]:text-[14px] font-black tracking-[1.2px] leading-[16px] transition-colors relative group uppercase transition-all duration-300 ${isActive ? "text-primary" : ""
+                  className={`text-white hover:text-primary text-[var(--font-small)] max-[1300px]:text-[14px] font-black tracking-[1.2px] leading-[16px] transition-colors relative group uppercase transition-all duration-300 ${isActive ? "text-primary" : ""
                     }`}
                 >
                   {link.name}
@@ -122,11 +119,11 @@ const Navbar = () => {
         </div>
 
         {/* Right: Actions */}
-        <div className="flex-none flex items-center justify-end gap-6 min-[1100px]:gap-8 z-10">
+        <div className="flex-none flex items-center justify-end gap-[var(--gap-md)] max-[1300px]:gap-[10px] z-10">
           {/* Find a Flame */}
-          <button className="hidden min-[1100px]:flex items-center gap-1.5 min-[1440px]:gap-2 text-white hover:text-primary transition-colors">
-            <MapPin size={17} className="min-[1440px]:w-5 min-[1440px]:h-5" strokeWidth={2.5} />
-            <span className="text-[11px] min-[1440px]:text-[14px] font-black tracking-[1.2px] uppercase">FIND A FLAME</span>
+          <button className="hidden min-[1100px]:flex items-center gap-[var(--gap-xs)] text-white hover:text-primary transition-colors">
+            <MapPin size={17} className="w-[18px] h-[18px] max-[1300px]:w-[14px] max-[1300px]:h-[14px]" strokeWidth={2.5} />
+            <span className="text-[var(--font-small)] max-[1300px]:text-[14px] font-black tracking-[1.2px] uppercase">FIND A FLAME</span>
           </button>
 
           {/* Theme Toggle - Desktop Only */}
@@ -136,14 +133,14 @@ const Navbar = () => {
             aria-label="Toggle Theme"
           >
             {mounted ? (
-              theme === "dark" ? <Sun size={19} className="min-[1440px]:w-[22px] min-[1440px]:h-[22px]" /> : <Moon size={19} className="min-[1440px]:w-[22px] min-[1440px]:h-[22px]" />
+              theme === "dark" ? <Sun size={19} className="max-[1300px]:w-[14px] max-[1300px]:h-[14px] min-[1440px]:w-[22px] min-[1440px]:h-[22px]" /> : <Moon size={19} className="max-[1300px]:w-[14px] max-[1300px]:h-[14px] min-[1440px]:w-[22px] min-[1440px]:h-[22px]" />
             ) : (
-              <div className="w-[19px] h-[19px] min-[1440px]:w-[22px] min-[1440px]:h-[22px]" />
+              <div className="w-[19px] h-[19px] max-[1300px]:w-[14px] max-[1300px]:h-[14px] min-[1440px]:w-[22px] min-[1440px]:h-[22px]" />
             )}
           </button>
 
           {/* Sign In - Desktop Only */}
-          <button className="hidden min-[1100px]:flex border-2 border-white text-white w-[140px] h-[32px] min-[1440px]:h-[35px] items-center justify-center hover:bg-white hover:text-black transition-all text-[11px] min-[1440px]:text-[14px] font-black tracking-[1.2px] uppercase">
+          <button className="hidden min-[1100px]:flex border-2 border-white text-white w-[147.31px] h-[36px] max-[1300px]:w-[125px] max-[1300px]:h-[32px] items-center justify-center hover:bg-white hover:text-black transition-all text-[16px] max-[1300px]:text-[14px] font-medium tracking-[1.2px] uppercase">
             SIGN IN
           </button>
 
@@ -152,9 +149,9 @@ const Navbar = () => {
             <img
               src="/site-logo/shop-card-icon.png"
               alt="Cart"
-              className="w-5 h-5 min-[1440px]:w-6 min-[1440px]:h-6 object-contain brightness-100"
+              className="w-6 h-6 object-contain brightness-100"
             />
-            <span className="absolute -top-1.5 -right-2 bg-primary text-white text-[9px] font-black w-4 h-4 min-[1440px]:w-5 min-[1440px]:h-5 flex items-center justify-center rounded-full shadow-lg">
+            <span className="absolute -top-1.5 -right-2 bg-primary text-white text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full shadow-lg">
               0
             </span>
           </button>
