@@ -83,7 +83,7 @@ const Navbar = () => {
         {/* Center: Mobile Logo / Desktop Links */}
         <div className="flex-none flex items-center justify-center">
           {/* Mobile Logo - Absolute Centered */}
-          <div className="min-[1100px]:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-[480px]:ml-[34px]">
+          <div className="mobile-logo-wrapper min-[1100px]:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <Link href="/" className="flex items-center">
               <video
                 ref={mobileVideoRef}

@@ -300,3 +300,9 @@
     padding-block: 20px !important;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  .mobile-logo-wrapper {
+    margin-left: 25px !important;
+  }
+}
