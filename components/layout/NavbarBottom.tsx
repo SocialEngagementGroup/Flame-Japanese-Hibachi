@@ -43,7 +43,7 @@ const NavbarBottom = () => {
 
         {/* Location Marquee - Fills the gap */}
         <div className="flex-1 overflow-hidden relative h-full flex items-center ml-4 mr-0 sm:mx-8">
-          <div className="animate-marquee [animation-duration:45s] whitespace-nowrap flex items-center gap-16">
+          <div className="animate-marquee [animation-duration:80s] whitespace-nowrap flex items-center gap-16">
             {[...Array(3)].flatMap((_, i) =>
               locations.map((loc, idx) => (
                 <div key={`${i}-${idx}`} className="flex items-center gap-2 text-white/90 text-[var(--font-small)] font-bold tracking-[1.5px] uppercase">

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const HeroCTA = () => {
   return (
-    <section className="w-full bg-background py-1 md:py-2 transition-colors duration-300">
+    <section className="w-full max-w-[1980px] mx-auto bg-background py-1 md:py-2 transition-colors duration-300">
       <div className="w-[95%] max-w-[1440px] mx-auto md:px-12 flex flex-col md:flex-row items-center justify-center gap-0 md:gap-6 md:gap-12">
         <h2 className="heading-h2 whitespace-nowrap">
           JOIN FLAME HIBACHI NOW

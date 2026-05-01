@@ -4,7 +4,7 @@ import React from "react";
 
 const FranchiseSection = () => {
   return (
-    <section className="w-full bg-[#F0EDED] dark:bg-black py-[var(--space-2xl)] px-[var(--space-lg)] transition-colors duration-300">
+    <section className="w-full max-w-[1980px] mx-auto bg-[#F0EDED] dark:bg-black py-[var(--space-2xl)] px-[var(--space-lg)] transition-colors duration-300">
       <div className="max-w-[1430px] mx-auto text-center">
         <h3 className="heading-h3 text-[#1C1B1B] dark:text-white mb-[var(--space-xl)] transition-colors duration-300">
           BECOME A FLAME JAPANESE HIBACHI <br />
@@ -28,7 +28,7 @@ const FranchiseSection = () => {
             <input
               type="tel"
               placeholder="+1 (555) 000-0000"
-              className="w-full bg-transparent border border-[#ff7a00] px-6 py-4 text-[#ff7a00] placeholder:text-[#ff7a00] text-[14px] outline-none transition-all"
+              className="w-full bg-transparent border border-[#ff7a00] px-[var(--space-md)] py-[var(--space-md)] text-[#ff7a00] placeholder:text-[#ff7a00] text-[var(--font-body)] outline-none transition-all"
             />
           </div>
           <div className="space-y-2">
@@ -36,7 +36,7 @@ const FranchiseSection = () => {
             <input
               type="email"
               placeholder="john@example.com"
-              className="w-full bg-transparent border border-[#ff7a00] px-6 py-4 text-[#ff7a00] placeholder:text-[#ff7a00] text-[14px] outline-none transition-all"
+              className="w-full bg-transparent border border-[#ff7a00] px-[var(--space-md)] py-[var(--space-md)] text-[#ff7a00] placeholder:text-[#ff7a00] text-[var(--font-body)] outline-none transition-all"
             />
           </div>
           <div className="space-y-2">
@@ -44,7 +44,7 @@ const FranchiseSection = () => {
             <input
               type="text"
               placeholder="City, State"
-              className="w-full bg-transparent border border-[#ff7a00] px-6 py-4 text-[#ff7a00] placeholder:text-[#ff7a00] text-[14px] outline-none transition-all"
+              className="w-full bg-transparent border border-[#ff7a00] px-[var(--space-md)] py-[var(--space-md)] text-[#ff7a00] placeholder:text-[#ff7a00] text-[var(--font-body)] outline-none transition-all"
             />
           </div>
 

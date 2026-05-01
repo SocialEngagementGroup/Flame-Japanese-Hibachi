@@ -39,7 +39,7 @@ export default function RootLayout({
           defaultTheme="dark"
           disableTransitionOnChange
         >
-          <header className="fixed top-0 left-0 w-full z-50">
+          <header className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[1980px] z-50">
             <Navbar />
             <NavbarBottom />
           </header>

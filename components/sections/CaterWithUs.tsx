@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const CaterWithUs = () => {
   return (
-    <section className="relative w-full h-[400px] md:h-[600px] lg:h-[700px] overflow-hidden">
+    <section className="relative w-full max-w-[1980px] mx-auto h-[400px] md:h-[600px] lg:h-[700px] overflow-hidden">
       {/* Background Images */}
       <div className="absolute inset-0 z-0">
         <picture>

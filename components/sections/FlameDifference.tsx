@@ -31,7 +31,7 @@ const features = [
 
 const FlameDifference = () => {
   return (
-    <section className="w-full bg-[#FFFFFF] dark:bg-black py-[var(--space-2xl)] px-[var(--space-lg)] transition-colors duration-300">
+    <section className="w-full max-w-[1980px] mx-auto bg-[#FFFFFF] dark:bg-black py-[var(--space-2xl)] px-[var(--space-lg)] transition-colors duration-300">
       <div className="max-w-[1806px] mx-auto">
         <h3 className="heading-h3 text-center mb-[var(--space-xl)]">
           <span className="text-black dark:text-white transition-colors duration-300">
@@ -56,15 +56,15 @@ const FlameDifference = () => {
                   src={feature.icon}
                   alt={feature.title}
                   className={`w-[clamp(50px,10vw,120px)] h-[clamp(50px,10vw,120px)] object-contain mb-2 md:mb-[var(--space-md)] transition-all duration-300 ${isFirst
-                      ? "[filter:invert(48%)_sepia(94%)_saturate(2682%)_hue-rotate(2deg)_brightness(103%)_contrast(103%)] group-hover:![filter:brightness(0)_invert(1)]"
-                      : "group-hover:![filter:brightness(0)_invert(1)]"
+                    ? "[filter:invert(48%)_sepia(94%)_saturate(2682%)_hue-rotate(2deg)_brightness(103%)_contrast(103%)] group-hover:![filter:brightness(0)_invert(1)]"
+                    : "group-hover:![filter:brightness(0)_invert(1)]"
                     }`}
                 />
 
                 <h4
                   className={`heading-h4 mb-2 md:mb-4 min-h-[36px] md:min-h-[64px] flex items-center text-center transition-colors duration-300 ${isFirst
-                      ? "text-[#1C1B1B] dark:text-white group-hover:!text-white"
-                      : "text-[#1C1B1B] dark:text-white group-hover:!text-white"
+                    ? "text-[#1C1B1B] dark:text-white group-hover:!text-white"
+                    : "text-[#1C1B1B] dark:text-white group-hover:!text-white"
                     }`}
                 >
                   {feature.title}
@@ -72,8 +72,8 @@ const FlameDifference = () => {
 
                 <p
                   className={`box-description max-w-[240px] transition-colors duration-300 ${isFirst
-                      ? "text-[#717171] dark:text-gray-400 group-hover:!text-white/90"
-                      : "text-[#717171] dark:text-gray-400 group-hover:!text-white/90"
+                    ? "text-[#717171] dark:text-gray-400 group-hover:!text-white/90"
+                    : "text-[#717171] dark:text-gray-400 group-hover:!text-white/90"
                     }`}
                 >
                   {feature.description}
