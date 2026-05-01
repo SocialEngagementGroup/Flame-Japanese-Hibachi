@@ -53,7 +53,7 @@ const LocationsSection = () => {
   };
 
   return (
-    <section className="w-full bg-[#F0EDED] dark:bg-black px-[var(--space-lg)] relative overflow-visible py-[var(--space-2xl)] transition-colors duration-300">
+    <section className="w-full max-w-[1980px] mx-auto bg-[#F0EDED] dark:bg-black px-[var(--space-lg)] relative overflow-visible py-[var(--space-2xl)] transition-colors duration-300">
       <div className="max-w-[1800px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[var(--gap-lg)] items-start">
         {/* Left Side: Sticky Info and Map */}
         <div className="lg:sticky lg:top-24 self-start">
@@ -109,7 +109,7 @@ const LocationsSection = () => {
         {/* Right Side: Desktop (Scrollable) / Mobile (Horizontal Slider) */}
         <div className="w-full flex flex-col items-center lg:items-end lg:py-0">
           {/* Desktop Version */}
-          <div className="hidden lg:block w-full max-w-[900px] space-y-6">
+          <div className="hidden lg:block w-full max-w-[900px] space-y-6 pb-[438px]">
             {activeLocations.map((loc, index) => (
               <div
                 key={loc.id}
@@ -119,8 +119,8 @@ const LocationsSection = () => {
                 data-index={index}
                 onClick={() => handleCardClick(loc)}
                 className={`w-full min-h-[244px] p-[var(--space-lg)] border transition-all cursor-pointer group flex flex-col justify-center relative overflow-hidden ${selectedLocation.id === loc.id
-                    ? "bg-zinc-900 border-primary"
-                    : "bg-[#1C1B1B] border-white/5 hover:bg-zinc-900"
+                  ? "bg-zinc-900 border-primary"
+                  : "bg-[#1C1B1B] border-white/5 hover:bg-zinc-900"
                   }`}
               >
                 {/* Background Accent */}
@@ -128,9 +128,6 @@ const LocationsSection = () => {
 
                 <div className="flex justify-between items-start mb-4">
                   <span className="text-primary text-[10px] font-black tracking-[3px] uppercase font-sans">OPEN NOW</span>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
-                  </div>
                 </div>
 
                 <h4 className={`heading-h4 transition-colors leading-tight max-w-[90%] mb-6 uppercase ${selectedLocation.id === loc.id ? "text-primary" : "text-white group-hover:text-primary"
@@ -182,7 +179,6 @@ const LocationsSection = () => {
                   >
                     <div className="flex justify-between items-start mb-4">
                       <span className="text-primary text-[10px] font-black tracking-[3px] uppercase font-sans">OPEN NOW</span>
-                      <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
                     </div>
 
                     <h4 className={`heading-h4 mb-4 leading-tight uppercase ${selectedLocation.id === loc.id ? "text-primary" : "text-white"

@@ -59,7 +59,7 @@ const categories = [
 
 const MenuGrid = () => {
   return (
-    <section className="w-full bg-background py-[var(--space-2xl)] px-[var(--space-lg)] transition-colors duration-300">
+    <section className="w-full max-w-[1980px] mx-auto bg-background py-[var(--space-lg)] px-[var(--space-lg)] transition-colors duration-300">
       <div className="max-w-[1800px] mx-auto">
 
         {/* Header */}

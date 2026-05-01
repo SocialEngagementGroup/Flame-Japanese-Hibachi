@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import type { Swiper as SwiperType } from "swiper";
 
 import "swiper/css";
@@ -51,7 +52,7 @@ const CateringSection = () => {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <section className="w-full py-[var(--space-2xl)] overflow-hidden bg-[#F0EDED] dark:bg-black">
+    <section className="w-full max-w-[1980px] mx-auto py-[var(--space-2xl)] overflow-hidden bg-[#F0EDED] dark:bg-black">
       {/* Header */}
       <div className="flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
         <h3 className="heading-h3 text-black dark:text-white leading-tight">
@@ -66,14 +67,14 @@ const CateringSection = () => {
             className="w-9 h-9 md:w-11 md:h-11 bg-white text-black flex items-center justify-center hover:bg-primary hover:text-white transition-all"
             aria-label="Previous"
           >
-            &#8592;
+            <FaArrowLeftLong size={20} />
           </button>
           <button
             onClick={() => swiperRef.current?.slideNext()}
             className="w-9 h-9 md:w-11 md:h-11 bg-white text-black flex items-center justify-center hover:bg-primary hover:text-white transition-all"
             aria-label="Next"
           >
-            &#8594;
+            <FaArrowRightLong size={20} />
           </button>
         </div>
       </div>
