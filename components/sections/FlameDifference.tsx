@@ -50,12 +50,12 @@ const FlameDifference = () => {
             return (
               <div
                 key={index}
-                className="group flex flex-col items-center justify-center text-center p-[var(--space-lg)] transition-all duration-300 border w-full aspect-[3/4] min-[1100px]:aspect-[281/375] bg-[#EBEBEB] dark:bg-[#131313] border-transparent dark:border-white/5 hover:bg-primary dark:hover:bg-primary"
+                className="group flex flex-col items-center justify-center text-center p-3 md:p-[var(--space-lg)] transition-all duration-300 border w-full h-full aspect-[3/4.2] min-[1100px]:aspect-[281/375] bg-[#EBEBEB] dark:bg-[#131313] border-transparent dark:border-white/5 hover:bg-primary dark:hover:bg-primary"
               >
                 <img
                   src={feature.icon}
                   alt={feature.title}
-                  className={`w-[clamp(60px,10vw,120px)] h-[clamp(60px,10vw,120px)] object-contain mb-[var(--space-md)] transition-all duration-300 ${isFirst
+                  className={`w-[clamp(50px,10vw,120px)] h-[clamp(50px,10vw,120px)] object-contain mb-2 md:mb-[var(--space-md)] transition-all duration-300 ${isFirst
                       ? "[filter:invert(48%)_sepia(94%)_saturate(2682%)_hue-rotate(2deg)_brightness(103%)_contrast(103%)] group-hover:![filter:brightness(0)_invert(1)]"
                       : "group-hover:![filter:brightness(0)_invert(1)]"
                     }`}
