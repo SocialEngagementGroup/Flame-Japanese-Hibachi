@@ -3,6 +3,7 @@ import HeroCTA from "@/components/sections/HeroCTA";
 import MenuGrid from "@/components/sections/MenuGrid";
 import FlameDifference from "@/components/sections/FlameDifference";
 import SignatureItems from "@/components/sections/SignatureItems";
+import CaterWithUs from "@/components/sections/CaterWithUs";
 import FranchiseSection from "@/components/sections/FranchiseSection";
 import CateringSection from "@/components/sections/CateringSection";
 import LocationsSection from "@/components/sections/LocationsSection";
@@ -15,6 +16,7 @@ export default function Home() {
       <MenuGrid />
       <FlameDifference />
       <SignatureItems />
+      <CaterWithUs />
       <CateringSection />
       <LocationsSection />
       <FranchiseSection />

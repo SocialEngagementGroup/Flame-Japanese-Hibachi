@@ -294,3 +294,9 @@
   filter: brightness(1.1);
   transform: translateY(-2px);
 }
+
+@media only screen and (max-width: 1099px) {
+  nav {
+    padding-block: 20px !important;
+  }
+}
