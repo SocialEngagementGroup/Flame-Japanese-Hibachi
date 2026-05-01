@@ -20,14 +20,14 @@ const Footer = () => {
           <div className="flex flex-col items-center lg:items-start w-full lg:w-auto">
             <video
               ref={videoRef}
-              src="/site-logo/logo.webm"
+              src="/site-logo/logo-v2.webm"
               autoPlay={true}
               loop={true}
               muted={true}
               playsInline={true}
-              className="h-12 lg:h-16 object-contain mb-6 lg:-ml-[25px]"
+              className="h-12 lg:h-16 object-contain mb-6"
             />
-            <p className="text-gray-400 text-[var(--font-small)] leading-relaxed mb-[var(--space-lg)] max-w-[280px]">
+            <p className="text-gray-400 text-[var(--font-small)] leading-relaxed mb-[var(--space-lg)] max-w-[420px]">
               Experience the heat of the grill and the precision of the blade. Authentic Japanese flavors, modern theater.
             </p>
             {/* Desktop Social Icons */}
@@ -38,7 +38,7 @@ const Footer = () => {
 
           <div className="flex flex-row justify-center gap-[var(--gap-lg)] w-full lg:w-auto lg:contents">
             {/* Company Links (Box 2) */}
-            <div className="flex flex-col items-center lg:items-start">
+            <div className="flex flex-col items-center lg:items-start lg:mt-[88px]">
               <h4 className="text-gray-500 font-black text-[10px] tracking-[2px] uppercase mb-6">COMPANY</h4>
               <ul className="space-y-6">
                 {["VALUES", "CAREERS", "INVESTORS"].map((link) => (
@@ -52,7 +52,7 @@ const Footer = () => {
             </div>
 
             {/* Service Links (Box 3) */}
-            <div className="flex flex-col items-center lg:items-start">
+            <div className="flex flex-col items-center lg:items-start lg:mt-[88px]">
               <h4 className="text-gray-500 font-black text-[10px] tracking-[2px] uppercase mb-6">SERVICE</h4>
               <ul className="space-y-6">
                 {["CATERING", "GIFT CARDS", "SUPPORT"].map((link) => (
@@ -67,11 +67,11 @@ const Footer = () => {
           </div>
 
           {/* App Download (Box 4) */}
-          <div className="flex flex-col items-center lg:items-end w-full lg:w-auto">
+          <div className="flex flex-col items-center lg:items-end w-full lg:w-auto lg:mt-[88px]">
             <h4 className="text-gray-500 font-black text-[10px] tracking-[2px] uppercase mb-6">DOWNLOAD OUR APP</h4>
             <div className="flex flex-col gap-4 w-full sm:w-auto items-center lg:items-end">
-              <img src="https://placehold.co/180x50/111111/FFFFFF/png?text=App+Store" alt="Download on the App Store" className="h-[45px] object-contain border border-white/20 cursor-pointer hover:border-white transition-colors" />
-              <img src="https://placehold.co/180x50/111111/FFFFFF/png?text=Google+Play" alt="Get it on Google Play" className="h-[45px] object-contain border border-white/20 cursor-pointer hover:border-white transition-colors" />
+              <img src="/footer-apps/app-store.svg" alt="Download on the App Store" className="h-[48px] object-contain cursor-pointer hover:opacity-80 transition-opacity" />
+              <img src="/footer-apps/google-play.svg" alt="Get it on Google Play" className="h-[48px] object-contain cursor-pointer hover:opacity-80 transition-opacity" />
             </div>
           </div>
 
