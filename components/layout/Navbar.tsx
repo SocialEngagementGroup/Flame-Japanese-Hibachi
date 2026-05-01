@@ -52,30 +52,31 @@ const Navbar = () => {
     { name: "JOIN FLAME", href: "/join" },
   ];
 
-
-
   return (
     <nav
-      className={`transition-all duration-300 font-serif bg-black py-5 md:py-0`}
+      className={`transition-all duration-300 font-serif bg-black py-5 md:py-0 border-b border-white/5 relative z-50`}
     >
       <div className="w-full px-[var(--space-lg)] flex items-center justify-between relative">
         {/* Left: Mobile Sign In / Desktop Logo */}
         <div className="flex-none flex justify-start items-center z-10">
-          <button className="max-[1100px]:flex hidden border-2 border-white text-white w-[100px] h-[30px] items-center justify-center hover:bg-white hover:text-black transition-all text-[14px] font-black tracking-[1px] uppercase">
+          <button className="max-[1100px]:flex hidden border-2 border-white text-white w-[100px] max-[500px]:w-[85px] h-[30px] max-[500px]:h-[26px] items-center justify-center hover:bg-white hover:text-black transition-all text-[14px] max-[500px]:text-[12px] font-black tracking-[1px] uppercase">
             SIGN IN
           </button>
           <div className="hidden min-[1100px]:block">
             <Link href="/" className="flex items-center group">
               <video
                 ref={desktopVideoRef}
-                src="/site-logo/logo-v2.webm"
-                autoPlay={true}
-                loop={true}
-                muted={true}
-                playsInline={true}
+                autoPlay
+                loop
+                muted
+                playsInline
+                poster="/site-logo/FJH-logo-white.png"
                 className="object-contain brightness-100 transition-all"
                 style={{ width: '190px', height: '72px' }}
-              />
+              >
+                <source src="/site-logo/logo-v2.webm" type="video/webm" />
+                <img src="/site-logo/FJH-logo-white.png" alt="Flame Japanese Hibachi" className="w-[190px] h-[72px] object-contain" />
+              </video>
             </Link>
           </div>
         </div>
@@ -87,14 +88,17 @@ const Navbar = () => {
             <Link href="/" className="flex items-center">
               <video
                 ref={mobileVideoRef}
-                src="/site-logo/logo-v2.webm"
-                autoPlay={true}
-                loop={true}
-                muted={true}
-                playsInline={true}
+                autoPlay
+                loop
+                muted
+                playsInline
+                poster="/site-logo/FJH-logo-white.png"
                 className="object-contain"
                 style={{ width: '190px', height: '72px' }}
-              />
+              >
+                <source src="/site-logo/logo-v2.webm" type="video/webm" />
+                <img src="/site-logo/FJH-logo-white.png" alt="Flame Japanese Hibachi" className="w-[190px] h-[72px] object-contain" />
+              </video>
             </Link>
           </div>
 
@@ -163,73 +167,90 @@ const Navbar = () => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle Menu"
           >
-            <Menu size={28} strokeWidth={2.5} />
+            <Menu className="w-7 h-7 max-[500px]:w-[23px] max-[500px]:h-[23px]" strokeWidth={2.5} />
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`min-[1100px]:hidden fixed inset-0 bg-black/98 backdrop-blur-xl transition-all duration-300 ease-in-out z-40 ${isMobileMenuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+        className={`min-[1100px]:hidden fixed inset-0 bg-black transition-all duration-300 z-[9999] h-screen w-screen ${isMobileMenuOpen ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible"
           }`}
       >
         <button
           onClick={() => setIsMobileMenuOpen(false)}
-          className="absolute right-6 top-6 text-white hover:text-primary transition-colors p-2 z-50"
+          className="absolute right-6 top-6 text-white hover:text-primary transition-colors p-2 z-[10000]"
           aria-label="Close Menu"
         >
-          <X size={32} strokeWidth={2.5} />
+          <X className="w-8 h-8 max-[500px]:w-[27px] max-[500px]:h-[27px]" strokeWidth={2.5} />
         </button>
 
-        <div className="flex flex-col items-center justify-center h-full gap-5 px-6 pt-20">
-          {navLinks.map((link, index) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`text-white text-base font-bold tracking-[2px] uppercase hover:text-primary transition-all duration-300 ${isActive ? "text-primary" : ""
-                  } ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
-                style={{ transitionDelay: `${index * 50}ms` }}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
+        <div className="flex flex-col items-center justify-start h-full gap-8 max-[500px]:gap-[27px] px-6 pt-24 max-[500px]:pt-[70px] overflow-y-auto bg-black">
+          {/* Logo in Menu Overlay */}
+          <div className={`transition-all duration-700 delay-100 ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}`}>
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              poster="/site-logo/FJH-logo-white.png"
+              className="object-contain w-[200px] h-[80px] max-[500px]:w-[170px] max-[500px]:h-[68px]"
+            >
+              <source src="/site-logo/logo-v2.webm" type="video/webm" />
+              <img src="/site-logo/FJH-logo-white.png" alt="Flame Japanese Hibachi" className="w-[200px] h-[80px] max-[500px]:w-[170px] max-[500px]:h-[68px] object-contain" />
+            </video>
+          </div>
 
-          <div className="w-full max-w-[240px] h-[1px] bg-white/10 my-4" />
+          <div className="flex flex-col items-center gap-7 max-[500px]:gap-[22px] w-full mt-8 max-[500px]:mt-6">
+            {navLinks.map((link, index) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`text-white text-2xl max-[500px]:text-[19px] font-black tracking-[3px] max-[500px]:tracking-[2px] uppercase hover:text-primary transition-all duration-300 ${isActive ? "text-primary" : ""
+                    } ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+                  style={{ transitionDelay: `${(index + 2) * 100}ms` }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </div>
 
-          <div className="flex flex-col items-center gap-6 w-full">
+          <div className="w-full max-w-[280px] max-[500px]:max-w-[240px] h-[1px] bg-white/20 my-6 max-[500px]:my-4" />
+
+          <div className="flex flex-col items-center gap-8 max-[500px]:gap-[27px] w-full pb-10">
             {/* Theme & Cart Row */}
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-12 max-[500px]:gap-10">
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="text-white hover:text-primary transition-colors flex flex-col items-center gap-2"
               >
                 {mounted ? (
-                  theme === "dark" ? <Sun size={24} /> : <Moon size={24} />
+                  theme === "dark" ? <Sun className="w-7 h-7 max-[500px]:w-[23px] max-[500px]:h-[23px]" /> : <Moon className="w-7 h-7 max-[500px]:w-[23px] max-[500px]:h-[23px]" />
                 ) : (
-                  <div className="w-6 h-6" />
+                  <div className="w-7 h-7 max-[500px]:w-[23px] max-[500px]:h-[23px]" />
                 )}
-                <span className="text-[10px] font-bold tracking-widest uppercase">THEME</span>
+                <span className="text-[12px] max-[500px]:text-[11px] font-bold tracking-widest uppercase">THEME</span>
               </button>
 
               <button className="relative text-white hover:text-primary transition-colors flex flex-col items-center gap-2">
-                <ShoppingCart size={24} strokeWidth={2.5} />
-                <span className="absolute -top-1 -right-1 bg-primary text-white text-[9px] font-black w-4 h-4 flex items-center justify-center rounded-full">
+                <ShoppingCart className="w-7 h-7 max-[500px]:w-[23px] max-[500px]:h-[23px]" strokeWidth={2.5} />
+                <span className="absolute -top-1 -right-1 bg-primary text-white text-[10px] max-[500px]:text-[9px] font-black w-5 h-5 max-[500px]:w-4 max-[500px]:h-4 flex items-center justify-center rounded-full">
                   0
                 </span>
-                <span className="text-[10px] font-bold tracking-widest uppercase">CART</span>
+                <span className="text-[12px] max-[500px]:text-[11px] font-bold tracking-widest uppercase">CART</span>
               </button>
             </div>
 
-            <button className="flex items-center gap-2 text-white hover:text-primary transition-colors text-sm font-bold tracking-widest uppercase">
-              <MapPin size={18} />
+            <button className="flex items-center gap-3 max-[500px]:gap-2 text-white hover:text-primary transition-colors text-base max-[500px]:text-sm font-black tracking-widest uppercase mt-4 max-[500px]:mt-2">
+              <MapPin className="w-[22px] h-[22px] max-[500px]:w-[18px] max-[500px]:h-[18px]" />
               <span>FIND A FLAME</span>
             </button>
 
-            <button className="bg-primary text-white w-full max-w-[240px] py-4 font-black tracking-[2px] uppercase text-[15px] hover:bg-white hover:text-black transition-all shadow-lg shadow-primary/20">
+            <button className="bg-primary text-white w-full max-w-[280px] max-[500px]:max-w-[240px] py-5 max-[500px]:py-4 font-black tracking-[3px] max-[500px]:tracking-[2px] uppercase text-[16px] max-[500px]:text-[14px] hover:bg-white hover:text-black transition-all shadow-xl shadow-primary/30 mt-4 max-[500px]:mt-2">
               ORDER NOW
             </button>
           </div>
