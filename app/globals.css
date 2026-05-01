@@ -147,6 +147,15 @@
   filter: invert(62%) sepia(93%) saturate(3015%) hue-rotate(345deg) brightness(101%) contrast(106%);
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Reusable SEO-Friendly Heading and UI Classes */
 .heading-h1 {
   color: #FFF;

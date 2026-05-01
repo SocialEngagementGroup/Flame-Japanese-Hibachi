@@ -8,8 +8,15 @@ const NavbarBottom = () => {
     "BALTIMORE, MD",
     "MANASSAS, VA",
     "LAUREL, MD",
+    "PASADENA, MD",
     "ALEXANDRIA, VA",
     "FORESTHILL, VA",
+    "TAMARAC, FL",
+    "SEVEN CORNERS, VA",
+    "NORTHERN PKWY, MD",
+    "PHILADELPHIA, PA",
+    "ROYAL PALM BEACH, FL",
+    "ABERDEEN, MD",
   ];
 
   return (
@@ -36,17 +43,15 @@ const NavbarBottom = () => {
 
         {/* Location Marquee - Fills the gap */}
         <div className="flex-1 overflow-hidden relative h-full flex items-center ml-4 mr-0 sm:mx-8">
-          <div className="animate-marquee whitespace-nowrap flex items-center gap-[var(--gap-lg)]">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="flex items-center gap-6 sm:gap-20">
-                {locations.map((loc, idx) => (
-                  <div key={`${i}-${idx}`} className="flex items-center gap-2 text-white/90 text-[var(--font-small)] font-bold tracking-[1.5px] uppercase">
-                    <img src="/locainicon/pin1.png" alt="Location" className="w-3 h-3 sm:w-4 sm:h-4 object-contain brightness-100" />
-                    <span>{loc}</span>
-                  </div>
-                ))}
-              </div>
-            ))}
+          <div className="animate-marquee [animation-duration:45s] whitespace-nowrap flex items-center gap-16">
+            {[...Array(3)].flatMap((_, i) =>
+              locations.map((loc, idx) => (
+                <div key={`${i}-${idx}`} className="flex items-center gap-2 text-white/90 text-[var(--font-small)] font-bold tracking-[1.5px] uppercase">
+                  <img src="/locainicon/pin1.png" alt="Location" className="w-3 h-3 sm:w-4 sm:h-4 object-contain brightness-100" />
+                  <span>{loc}</span>
+                </div>
+              ))
+            )}
           </div>
           {/* Gradients for smooth transition */}
           <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#242323] to-transparent z-10" />
