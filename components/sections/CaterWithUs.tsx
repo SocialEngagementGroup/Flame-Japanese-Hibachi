@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const CaterWithUs = () => {
   return (
-    <section className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
+    <section className="relative w-full h-[400px] md:h-[600px] lg:h-[700px] overflow-hidden">
       {/* Background Images */}
       <div className="absolute inset-0 z-0">
         <picture>
@@ -26,7 +26,7 @@ const CaterWithUs = () => {
           CATER WITH US<br />
           FOR NEXT EVENT
         </h2>
-        
+
         <p className="text-white text-[16px] md:text-[20px] font-medium max-w-[650px] mb-8 md:mb-10 leading-relaxed">
           From office lunches to wedding receptions, we bring the hibachi theater and world-class sushi to you.
         </p>
