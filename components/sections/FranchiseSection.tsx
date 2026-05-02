@@ -20,7 +20,7 @@ const FranchiseSection = () => {
             <input
               type="text"
               placeholder="John Doe"
-              className="w-full bg-transparent border border-[#ff7a00] px-[var(--space-md)] py-[var(--space-md)] text-[#ff7a00] placeholder:text-[#ff7a00] text-[var(--font-body)] outline-none transition-all"
+              className="w-full bg-transparent border border-primary px-[var(--space-md)] py-[var(--space-md)] text-primary placeholder:text-primary text-[var(--font-body)] outline-none transition-all"
             />
           </div>
           <div className="space-y-2">
@@ -28,7 +28,7 @@ const FranchiseSection = () => {
             <input
               type="tel"
               placeholder="+1 (555) 000-0000"
-              className="w-full bg-transparent border border-[#ff7a00] px-[var(--space-md)] py-[var(--space-md)] text-[#ff7a00] placeholder:text-[#ff7a00] text-[var(--font-body)] outline-none transition-all"
+              className="w-full bg-transparent border border-primary px-[var(--space-md)] py-[var(--space-md)] text-primary placeholder:text-primary text-[var(--font-body)] outline-none transition-all"
             />
           </div>
           <div className="space-y-2">
@@ -36,7 +36,7 @@ const FranchiseSection = () => {
             <input
               type="email"
               placeholder="john@example.com"
-              className="w-full bg-transparent border border-[#ff7a00] px-[var(--space-md)] py-[var(--space-md)] text-[#ff7a00] placeholder:text-[#ff7a00] text-[var(--font-body)] outline-none transition-all"
+              className="w-full bg-transparent border border-primary px-[var(--space-md)] py-[var(--space-md)] text-primary placeholder:text-primary text-[var(--font-body)] outline-none transition-all"
             />
           </div>
           <div className="space-y-2">
@@ -44,13 +44,13 @@ const FranchiseSection = () => {
             <input
               type="text"
               placeholder="City, State"
-              className="w-full bg-transparent border border-[#ff7a00] px-[var(--space-md)] py-[var(--space-md)] text-[#ff7a00] placeholder:text-[#ff7a00] text-[var(--font-body)] outline-none transition-all"
+              className="w-full bg-transparent border border-primary px-[var(--space-md)] py-[var(--space-md)] text-primary placeholder:text-primary text-[var(--font-body)] outline-none transition-all"
             />
           </div>
 
           <button
             type="submit"
-            className="md:col-span-2 bg-[#ff7a00] hover:bg-[#e66e00] text-white py-5 text-[14px] font-black tracking-[3px] uppercase mt-4 transition-all"
+            className="md:col-span-2 bg-primary hover:bg-primary/90 text-white py-5 text-[14px] font-black tracking-[3px] uppercase mt-4 transition-all"
           >
             SUBMIT APPLICATION
           </button>

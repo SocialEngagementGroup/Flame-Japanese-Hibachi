@@ -176,6 +176,7 @@ const Navbar = () => {
       <div
         className={`min-[1100px]:hidden fixed inset-0 bg-black transition-all duration-300 z-[9999] h-screen w-screen ${isMobileMenuOpen ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible"
           }`}
+        onClick={() => setIsMobileMenuOpen(false)}
       >
         <button
           onClick={() => setIsMobileMenuOpen(false)}
@@ -185,9 +186,14 @@ const Navbar = () => {
           <X className="w-8 h-8 max-[500px]:w-[27px] max-[500px]:h-[27px]" strokeWidth={2.5} />
         </button>
 
-        <div className="flex flex-col items-center justify-start h-full gap-8 max-[500px]:gap-[27px] px-6 pt-24 max-[500px]:pt-[70px] overflow-y-auto bg-black">
-          {/* Logo in Menu Overlay */}
-          <div className={`transition-all duration-700 delay-100 ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}`}>
+        <div 
+          className="flex flex-col items-center justify-start h-full gap-8 max-[500px]:gap-[27px] px-6 pt-24 max-[500px]:pt-[70px] overflow-y-auto bg-black"
+        >
+          <Link 
+            href="/" 
+            className={`transition-all duration-700 delay-100 ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}`}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             <video
               autoPlay
               loop
@@ -199,7 +205,7 @@ const Navbar = () => {
               <source src="/site-logo/logo-v2.webm" type="video/webm" />
               <img src="/site-logo/FJH-logo-white.png" alt="Flame Japanese Hibachi" className="w-[200px] h-[80px] max-[500px]:w-[170px] max-[500px]:h-[68px] object-contain" />
             </video>
-          </div>
+          </Link>
 
           <div className="flex flex-col items-center gap-7 max-[500px]:gap-[22px] w-full mt-8 max-[500px]:mt-6">
             {navLinks.map((link, index) => {
@@ -236,7 +242,7 @@ const Navbar = () => {
                 <span className="text-[12px] max-[500px]:text-[11px] font-bold tracking-widest uppercase">THEME</span>
               </button>
 
-              <button className="relative text-white hover:text-primary transition-colors flex flex-col items-center gap-2">
+              <button className="relative text-white hover:text-primary transition-colors flex flex-col items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
                 <ShoppingCart className="w-7 h-7 max-[500px]:w-[23px] max-[500px]:h-[23px]" strokeWidth={2.5} />
                 <span className="absolute -top-1 -right-1 bg-primary text-white text-[10px] max-[500px]:text-[9px] font-black w-5 h-5 max-[500px]:w-4 max-[500px]:h-4 flex items-center justify-center rounded-full">
                   0
@@ -245,12 +251,18 @@ const Navbar = () => {
               </button>
             </div>
 
-            <button className="flex items-center gap-3 max-[500px]:gap-2 text-white hover:text-primary transition-colors text-base max-[500px]:text-sm font-black tracking-widest uppercase mt-4 max-[500px]:mt-2">
+            <button 
+              className="flex items-center gap-3 max-[500px]:gap-2 text-white hover:text-primary transition-colors text-base max-[500px]:text-sm font-black tracking-widest uppercase mt-4 max-[500px]:mt-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               <MapPin className="w-[22px] h-[22px] max-[500px]:w-[18px] max-[500px]:h-[18px]" />
               <span>FIND A FLAME</span>
             </button>
 
-            <button className="bg-primary text-white w-full max-w-[280px] max-[500px]:max-w-[240px] py-5 max-[500px]:py-4 font-black tracking-[3px] max-[500px]:tracking-[2px] uppercase text-[16px] max-[500px]:text-[14px] hover:bg-white hover:text-black transition-all shadow-xl shadow-primary/30 mt-4 max-[500px]:mt-2">
+            <button 
+              className="bg-primary text-white w-full max-w-[280px] max-[500px]:max-w-[240px] py-5 max-[500px]:py-4 font-black tracking-[3px] max-[500px]:tracking-[2px] uppercase text-[16px] max-[500px]:text-[14px] hover:bg-white hover:text-black transition-all shadow-xl shadow-primary/30 mt-4 max-[500px]:mt-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               ORDER NOW
             </button>
           </div>
