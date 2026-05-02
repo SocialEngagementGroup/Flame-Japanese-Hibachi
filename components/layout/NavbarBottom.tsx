@@ -24,19 +24,19 @@ const NavbarBottom = () => {
       <div className="w-full px-[var(--space-lg)] flex items-center h-full relative">
         {/* Social Icons - Left Aligned */}
         <div className="flex-none flex items-center gap-2.5 sm:gap-5 text-white z-20 -ml-2 sm:ml-0">
-          <Link href="https://facebook.com" target="_blank" className="hover:opacity-80 transition-all flex items-center justify-center">
+          <Link href="https://www.facebook.com/flamejapanesehibachi" target="_blank" className="hover:opacity-80 transition-all flex items-center justify-center">
             <img src="/socialicon-navbr/facebook.svg" alt="Facebook" className="w-[18px] h-[18px] sm:w-6 sm:h-6 object-contain brightness-0 invert" />
           </Link>
 
-          <Link href="https://instagram.com" target="_blank" className="hover:opacity-80 transition-all flex items-center justify-center">
+          <Link href="https://www.instagram.com/flamejapanesehibachi?igsh=MTNmNHMycXo0ZHl2bA%3D%3D&utm_source=qr" target="_blank" className="hover:opacity-80 transition-all flex items-center justify-center">
             <img src="/socialicon-navbr/instagram.svg" alt="Instagram" className="w-[18px] h-[18px] sm:w-6 sm:h-6 object-contain brightness-0 invert" />
           </Link>
 
-          <Link href="https://tiktok.com" target="_blank" className="hover:opacity-80 transition-all flex items-center justify-center">
+          <Link href="https://www.tiktok.com/@flame.japanese.hi?_r=1&_t=ZT-95mfJglR2ez" target="_blank" className="hover:opacity-80 transition-all flex items-center justify-center">
             <img src="/socialicon-navbr/tiktok.svg" alt="TikTok" className="w-[18px] h-[18px] sm:w-6 sm:h-6 object-contain brightness-0 invert" />
           </Link>
 
-          <Link href="https://youtube.com" target="_blank" className="hover:opacity-80 transition-all flex items-center justify-center">
+          <Link href="https://www.youtube.com/@flamejapanesehibachi" target="_blank" className="hover:opacity-80 transition-all flex items-center justify-center">
             <img src="/socialicon-navbr/youtube.svg" alt="YouTube" className="w-[18px] h-[18px] sm:w-6 sm:h-6 object-contain brightness-0 invert" />
           </Link>
         </div>

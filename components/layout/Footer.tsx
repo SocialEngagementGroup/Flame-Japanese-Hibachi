@@ -121,19 +121,19 @@ const SocialIcons = () => {
 
   return (
     <>
-      <Link href="mailto:info@flamehibachi.com" className={iconClass}>
+      <Link href="mailto:ask@flamejapanesehibachi.com" className={iconClass}>
         <img src="/socialicon-navbr/envelope.svg" alt="Email" className={smallImgClass} />
       </Link>
-      <Link href="https://facebook.com" target="_blank" className={iconClass}>
+      <Link href="https://www.facebook.com/flamejapanesehibachi" target="_blank" className={iconClass}>
         <img src="/socialicon-navbr/facebook.svg" alt="Facebook" className={standardImgClass} />
       </Link>
-      <Link href="https://instagram.com" target="_blank" className={iconClass}>
+      <Link href="https://www.instagram.com/flamejapanesehibachi?igsh=MTNmNHMycXo0ZHl2bA%3D%3D&utm_source=qr" target="_blank" className={iconClass}>
         <img src="/socialicon-navbr/instagram.svg" alt="Instagram" className={standardImgClass} />
       </Link>
-      <Link href="https://tiktok.com" target="_blank" className={iconClass}>
+      <Link href="https://www.tiktok.com/@flame.japanese.hi?_r=1&_t=ZT-95mfJglR2ez" target="_blank" className={iconClass}>
         <img src="/socialicon-navbr/tiktok.svg" alt="TikTok" className={standardImgClass} />
       </Link>
-      <Link href="https://youtube.com" target="_blank" className={iconClass}>
+      <Link href="https://www.youtube.com/@flamejapanesehibachi" target="_blank" className={iconClass}>
         <img src="/socialicon-navbr/youtube.svg" alt="YouTube" className={smallImgClass} />
       </Link>
     </>

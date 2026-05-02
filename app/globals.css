@@ -9,7 +9,7 @@
   --card: #f9f9fb;
   --card-foreground: #0a0a0a;
 
-  --primary: #ff7a00;
+  --primary: #FF7808;
   --primary-foreground: #ffffff;
 
   --secondary: #ff9124;
@@ -18,12 +18,12 @@
   --muted: #f1f1f3;
   --muted-foreground: #666666;
 
-  --accent: #d2a22c;
+  --accent: #FF7808;
   --accent-foreground: #ffffff;
 
   --border: #e2e2e8;
   --input: #e2e2e8;
-  --ring: #ff7a00;
+  --ring: #FF7808;
 
   /* Brand specific legacy colors */
   --flame-green: #3b892f;
@@ -56,13 +56,13 @@
 .dark,
 [data-theme='dark'] {
   /* Dark Mode Palette */
-  --background: #000000;
+  --background: #070907;
   --foreground: #ffffff;
 
   --card: #111111;
   --card-foreground: #ffffff;
 
-  --primary: #ff7a00;
+  --primary: #FF7808;
   --primary-foreground: #ffffff;
 
   --secondary: #e66e00;
@@ -71,12 +71,12 @@
   --muted: #1a1a1a;
   --muted-foreground: #a0a0a0;
 
-  --accent: #d2a22c;
+  --accent: #FF7808;
   --accent-foreground: #ffffff;
 
   --border: #262626;
   --input: #262626;
-  --ring: #ff7a00;
+  --ring: #FF7808;
 }
 
 @theme {
