@@ -46,11 +46,12 @@ const FlameDifference = () => {
         <div className="grid grid-cols-2 min-[1100px]:grid-cols-4 gap-[var(--gap-sm)] w-full">
           {features.map((feature, index) => {
             const isFirst = index === 0;
+            const isFlame = feature.title === "FRESH DAILY PREP";
 
             return (
               <div
                 key={index}
-                className="group flex flex-col items-center justify-center text-center p-3 md:p-[var(--space-lg)] transition-all duration-300 border w-full h-full aspect-[3/4.2] min-[1100px]:aspect-[281/375] bg-[#EBEBEB] dark:bg-[#131313] border-transparent dark:border-white/5 hover:bg-primary dark:hover:bg-primary"
+                className="group flex flex-col items-center justify-center text-center p-4 md:p-[var(--space-lg)] transition-all duration-300 border w-full h-full aspect-[1/1.3] md:aspect-[3/4.2] min-[1100px]:aspect-[281/375] bg-[#EBEBEB] dark:bg-[#131313] border-transparent dark:border-white/5 hover:bg-primary dark:hover:bg-primary"
               >
                 <video
                   src={feature.icon}
@@ -58,10 +59,12 @@ const FlameDifference = () => {
                   loop
                   muted
                   playsInline
-                  className={`w-[clamp(100px,20vw,240px)] h-[clamp(100px,20vw,240px)] object-contain mb-6 md:mb-[var(--space-md)] transition-all duration-300 ${isFirst
-                    ? "[filter:invert(48%)_sepia(94%)_saturate(2682%)_hue-rotate(2deg)_brightness(103%)_contrast(103%)] group-hover:![filter:brightness(0)_invert(1)]"
-                    : "group-hover:![filter:brightness(0)_invert(1)]"
-                    }`}
+                  className={`object-contain scale-[1.3] mb-4 md:mb-[var(--space-md)] transition-all duration-300 ${isFirst
+                    ? "[filter:invert(48%)_sepia(94%)_saturate(2682%)_hue-rotate(2deg)_brightness(103%)_contrast(103%)] group-hover:![filter:brightness(0)_invert(1)] w-[160px] h-[160px]"
+                    : isFlame 
+                      ? "-mt-[28px] w-[165px] h-[165px] group-hover:![filter:brightness(0)_invert(1)]"
+                      : "group-hover:![filter:brightness(0)_invert(1)] w-[160px] h-[160px]"
+                    } md:w-[clamp(140px,18vw,240px)] md:h-[clamp(140px,18vw,240px)]`}
                 />
 
                 <h4
