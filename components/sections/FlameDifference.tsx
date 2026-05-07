@@ -58,7 +58,7 @@ const FlameDifference = () => {
                   loop
                   muted
                   playsInline
-                  className={`w-[clamp(80px,15vw,200px)] h-[clamp(80px,15vw,200px)] object-contain mb-4 md:mb-[var(--space-md)] transition-all duration-300 ${isFirst
+                  className={`w-[clamp(100px,20vw,240px)] h-[clamp(100px,20vw,240px)] object-contain mb-6 md:mb-[var(--space-md)] transition-all duration-300 ${isFirst
                     ? "[filter:invert(48%)_sepia(94%)_saturate(2682%)_hue-rotate(2deg)_brightness(103%)_contrast(103%)] group-hover:![filter:brightness(0)_invert(1)]"
                     : "group-hover:![filter:brightness(0)_invert(1)]"
                     }`}
