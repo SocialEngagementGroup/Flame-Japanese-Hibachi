@@ -6,25 +6,25 @@ const features = [
   {
     title: "100% HALAL",
     description: "Every plate is served with stringent Halal standards.",
-    icon: "/homepage/difference/halalfood.svg",
+    icon: "/homepage/difference/halal.webm",
     isPrimary: true,
   },
   {
     title: "FRESH DAILY PREP",
     description: "Every plate is cooked fresh when you order.",
-    icon: "/homepage/difference/flame.svg",
+    icon: "/homepage/difference/fire.webm",
     isPrimary: false,
   },
   {
     title: "READY IN MINUTES",
     description: "Every plate is served hot in just a few minutes.",
-    icon: "/homepage/difference/thunder.svg",
+    icon: "/homepage/difference/bolt1.webm",
     isPrimary: false,
   },
   {
     title: "IN HOUSE SAUCE",
     description: "Every plate is served with our unique in-house sauces.",
-    icon: "/homepage/difference/food.svg",
+    icon: "/homepage/difference/sauce.webm",
     isPrimary: false,
   },
 ];
@@ -52,10 +52,13 @@ const FlameDifference = () => {
                 key={index}
                 className="group flex flex-col items-center justify-center text-center p-3 md:p-[var(--space-lg)] transition-all duration-300 border w-full h-full aspect-[3/4.2] min-[1100px]:aspect-[281/375] bg-[#EBEBEB] dark:bg-[#131313] border-transparent dark:border-white/5 hover:bg-primary dark:hover:bg-primary"
               >
-                <img
+                <video
                   src={feature.icon}
-                  alt={feature.title}
-                  className={`w-[clamp(50px,10vw,120px)] h-[clamp(50px,10vw,120px)] object-contain mb-2 md:mb-[var(--space-md)] transition-all duration-300 ${isFirst
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className={`w-[clamp(80px,15vw,200px)] h-[clamp(80px,15vw,200px)] object-contain mb-4 md:mb-[var(--space-md)] transition-all duration-300 ${isFirst
                     ? "[filter:invert(48%)_sepia(94%)_saturate(2682%)_hue-rotate(2deg)_brightness(103%)_contrast(103%)] group-hover:![filter:brightness(0)_invert(1)]"
                     : "group-hover:![filter:brightness(0)_invert(1)]"
                     }`}

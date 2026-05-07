@@ -12,39 +12,51 @@ import "swiper/css";
 const slides = [
   {
     image: "/homepage/menu/HIBACHI.png",
-    label: "CATERING SPECIAL",
-    title: "Classic Hibachi Experience",
+    label: "LIMITED SPECIAL",
+    title: "LUNCH RUSH BOX",
+    description: "$12.99",
     href: "/menu",
+    buttonText: "CLAIM OFFER",
   },
   {
     image: "/homepage/menu/SUSHI.png",
     label: "WEEKEND PERKS",
     title: "Double Flame Points",
+    description: "EARN 2X POINTS",
     href: "/menu",
+    buttonText: "LEARN MORE",
   },
   {
     image: "/homepage/menu/FLAME COMBO.png",
     label: "WEEKEND PERKS",
     title: "Double Flame Points",
+    description: "EARN 2X POINTS",
     href: "/menu",
+    buttonText: "LEARN MORE",
   },
   {
     image: "/homepage/menu/BENTO.png",
     label: "CATERING SPECIAL",
     title: "Signature Bento Box",
+    description: "STARTING AT $15.99",
     href: "/menu",
+    buttonText: "ORDER NOW",
   },
   {
     image: "/homepage/menu/WINGS  TENDERS.png",
     label: "WEEKEND PERKS",
     title: "Crispy Wings & Tenders",
+    description: "TRY OUR NEW SAUCES",
     href: "/menu",
+    buttonText: "VIEW MENU",
   },
   {
     image: "/homepage/menu/FLAME LOADED FRIES.png",
     label: "CATERING SPECIAL",
     title: "Flame Loaded Fries",
+    description: "A CROWD FAVORITE",
     href: "/menu",
+    buttonText: "ORDER NOW",
   },
 ];
 
@@ -52,12 +64,12 @@ const CateringSection = () => {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <section className="w-full max-w-[1980px] mx-auto py-[var(--space-2xl)] overflow-hidden bg-[#F0EDED] dark:bg-black">
+    <section className="w-full max-w-[1980px] mx-auto py-[var(--space-2xl)] overflow-hidden bg-black">
       {/* Header */}
       <div className="flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
-        <h3 className="heading-h3 text-black dark:text-white leading-tight">
-          CATER WITH US <br className="hidden md:block" />
-          <span className="text-primary">FOR YOUR NEXT EVENT</span>
+        <h3 className="heading-h3 text-center md:text-left">
+          <span className="text-white">FLAME MONTHLY </span>
+          <span className="text-primary">PROMOTIONS</span>
         </h3>
 
         {/* Arrow Buttons */}
@@ -121,11 +133,19 @@ const CateringSection = () => {
                   <p className="item-label mb-2">
                     {slide.label}
                   </p>
-                  <h5 className="heading-h5 mb-4">
+                  <h5 className="heading-h5 mb-1">
                     {slide.title}
                   </h5>
+                  {/* @ts-ignore */}
+                  {slide.description && (
+                    <p className="text-primary font-black text-[14px] md:text-[18px] mb-4">
+                      {/* @ts-ignore */}
+                      {slide.description}
+                    </p>
+                  )}
                   <span className="secondary-button">
-                    LEARN MORE
+                    {/* @ts-ignore */}
+                    {slide.buttonText || "LEARN MORE"}
                   </span>
                 </div>
               </Link>
