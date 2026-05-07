@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="relative h-[85dvh] md:h-[clamp(480px,81vh,800px)] w-full max-w-[1980px] mx-auto overflow-hidden">
+    <section className="relative h-[87dvh] md:h-[clamp(480px,81vh,800px)] w-full max-w-[1980px] mx-auto overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
