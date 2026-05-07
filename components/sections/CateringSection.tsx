@@ -27,7 +27,7 @@ const slides = [
     buttonText: "LEARN MORE",
   },
   {
-    image: "/homepage/menu/FLAME COMBO.png",
+    image: "/homepage/menu/SUSHI.png",
     label: "WEEKEND PERKS",
     title: "Double Flame Points",
     description: "EARN 2X POINTS",
@@ -65,12 +65,14 @@ const CateringSection = () => {
 
   return (
     <section className="w-full max-w-[1980px] mx-auto py-[var(--space-2xl)] overflow-hidden bg-black">
-      {/* Header */}
-      <div className="flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
-        <h3 className="heading-h3 text-center md:text-left">
-          <span className="text-white">FLAME MONTHLY </span>
-          <span className="text-primary">PROMOTIONS</span>
-        </h3>
+      {/* Container */}
+      <div className="max-w-[1440px] mx-auto">
+        {/* Header */}
+        <div className="flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
+          <h3 className="heading-h3 text-center md:text-left">
+            <span className="text-white">FLAME MONTHLY </span>
+            <span className="text-primary">PROMOTIONS</span>
+          </h3>
 
         {/* Arrow Buttons */}
         <div className="flex gap-2 shrink-0">
@@ -152,6 +154,7 @@ const CateringSection = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+      </div>
       </div>
     </section>
   );
