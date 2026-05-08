@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const CaterWithUs = () => {
   return (
-    <section className="relative w-full max-w-[1980px] mx-auto h-[400px] md:h-[600px] lg:h-[700px] overflow-hidden">
+    <section className="relative w-full h-[400px] md:h-[600px] lg:h-[700px] overflow-hidden">
       {/* Background Images */}
       <div className="absolute inset-0 z-0">
         <picture>
@@ -22,18 +22,18 @@ const CaterWithUs = () => {
 
       {/* Content */}
       <div className="relative z-20 h-full w-full max-w-[1440px] mx-auto px-[var(--space-lg)] flex flex-col justify-center items-center text-center">
-        <h2 className="text-[24px] md:text-[72px] font-black text-white mb-4 md:mb-6 uppercase leading-tight md:leading-[1.1]">
+        <h2 className="text-2xl md:text-7xl font-black text-white mb-4 md:mb-6 uppercase leading-tight md:leading-[1.1]">
           CATER WITH US<br />
           FOR NEXT EVENT
         </h2>
 
-        <p className="text-white text-[16px] md:text-[20px] font-medium max-w-[650px] mb-8 md:mb-10 leading-relaxed">
+        <p className="text-white text-base md:text-xl font-medium max-w-[650px] mb-8 md:mb-10 leading-relaxed">
           From office lunches to wedding receptions, we bring the hibachi theater and world-class sushi to you.
         </p>
 
         <Link
           href="/catering"
-          className="bg-white text-black font-black uppercase text-[14px] md:text-[16px] tracking-widest px-8 py-3 md:px-10 md:py-4 hover:bg-primary hover:text-white transition-all duration-300"
+          className="bg-white text-black font-black uppercase text-small md:text-base tracking-widest px-8 py-3 md:px-10 md:py-4 hover:bg-primary hover:text-white transition-all duration-300"
         >
           CATERING MENU
         </Link>

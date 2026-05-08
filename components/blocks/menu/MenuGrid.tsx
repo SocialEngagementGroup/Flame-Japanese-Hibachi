@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import { ORDER_URL } from "@/lib/constants";
 
 const categories = [
   {
@@ -59,7 +59,7 @@ const categories = [
 
 const MenuGrid = () => {
   return (
-    <section className="w-full max-w-[1980px] mx-auto bg-background py-[var(--space-lg)] px-[var(--space-lg)] transition-colors duration-300">
+    <section className="w-full bg-background py-[var(--space-lg)] px-[var(--space-lg)] transition-colors duration-300">
       <div className="max-w-[1800px] mx-auto">
 
         {/* Header */}
@@ -69,20 +69,24 @@ const MenuGrid = () => {
             <span className="text-primary transition-colors duration-300">MENU</span>
           </h3>
 
-          <Link
-            href="/menu"
-            className="hidden md:block text-foreground text-[11px] font-bold uppercase tracking-[2px] border-b border-foreground pb-1 hover:text-primary hover:border-primary transition-all whitespace-nowrap"
+          <a
+            href={ORDER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:block text-foreground text-small font-bold uppercase tracking-[2px] border-b border-foreground pb-1 hover:text-primary hover:border-primary transition-all whitespace-nowrap"
           >
             VIEW FULL MENU
-          </Link>
+          </a>
         </div>
 
         {/* Grid - Fixed 3 columns with standardized gap */}
         <div className="grid grid-cols-3 gap-[var(--gap-sm)]">
           {categories.map((cat, index) => (
-            <Link
+            <a
               key={index}
-              href={cat.href}
+              href={ORDER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative aspect-[275.67/280] md:aspect-[378.67/278] overflow-hidden bg-card"
             >
               {/* Responsive image: mobile-specific crop on small screens */}
@@ -103,7 +107,7 @@ const MenuGrid = () => {
                   {cat.name}
                 </h4>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
 
