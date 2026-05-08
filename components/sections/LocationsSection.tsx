@@ -8,14 +8,18 @@ import { activeLocations, comingSoonLocations } from "@/data/locationsData";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import dynamic from "next/dynamic";
+
+const CinematicLocationsMap = dynamic(() => import("@/components/map/CinematicLocationsMap"), {
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-zinc-900 animate-pulse" />
+});
 
 const LocationsSection = () => {
-  const [selectedLocation, setSelectedLocation] = useState(activeLocations[0]);
+  const [selectedLocation, setSelectedLocation] = useState<typeof activeLocations[0] | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
-    `Flame Japanese Hibachi ${selectedLocation.address}`
-  )}&t=k&z=17&ie=UTF8&iwloc=&output=embed`;
+  const mapRef = useRef<any>(null);
+  const lastUpdateRef = useRef<number>(0);
 
   const googleMapsUrl = (address: string) =>
     `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Flame Japanese Hibachi ${address}`)}`;
@@ -24,7 +28,7 @@ const LocationsSection = () => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-20% 0px -70% 0px", // Trigger when card is in the upper part of the scroll area
+      rootMargin: "-20% 0px -60% 0px",
       threshold: 0,
     };
 
@@ -33,7 +37,15 @@ const LocationsSection = () => {
         if (entry.isIntersecting) {
           const index = Number(entry.target.getAttribute("data-index"));
           if (!isNaN(index)) {
-            setSelectedLocation(activeLocations[index]);
+            const loc = activeLocations[index];
+            const now = Date.now();
+            
+            // Debounce state updates to prevent map jitter during fast scrolling
+            if (now - lastUpdateRef.current > 400) {
+              setSelectedLocation(loc);
+              mapRef.current?.flyToLocation(loc.id);
+              lastUpdateRef.current = now;
+            }
           }
         }
       });
@@ -68,20 +80,12 @@ const LocationsSection = () => {
               </p>
 
               {/* Map Container */}
-              <div className="w-full h-[400px] md:h-[500px] bg-zinc-200 dark:bg-zinc-900 border border-black/5 dark:border-white/5 relative overflow-hidden group mb-12 hidden md:block transition-colors duration-300 shadow-2xl">
-                <iframe
-                  title="Flame Japanese Hibachi Location Map"
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  scrolling="no"
-                  marginHeight={0}
-                  marginWidth={0}
-                  src={mapSrc}
-                  className="transition-all duration-700"
-                ></iframe>
-                {/* Overlay for aesthetic */}
-                <div className="absolute inset-0 pointer-events-none border-[10px] border-white/5 dark:border-black/5"></div>
+              <div className="w-full h-[400px] md:h-[600px] bg-zinc-200 dark:bg-zinc-900 border border-black/5 dark:border-white/5 relative overflow-hidden group mb-12 hidden md:block transition-colors duration-300 shadow-2xl">
+                <CinematicLocationsMap 
+                  ref={mapRef} 
+                  height="100%" 
+                  showUI={false} 
+                />
               </div>
 
               {/* Coming Soon Section */}
@@ -118,7 +122,7 @@ const LocationsSection = () => {
                 }}
                 data-index={index}
                 onClick={() => handleCardClick(loc)}
-                className={`w-full min-h-[244px] p-[var(--space-lg)] border transition-all cursor-pointer group flex flex-col justify-center relative overflow-hidden ${selectedLocation.id === loc.id
+                className={`w-full min-h-[244px] p-[var(--space-lg)] border transition-all cursor-pointer group flex flex-col justify-center relative overflow-hidden ${selectedLocation?.id === loc.id
                   ? "bg-zinc-900 border-primary"
                   : "bg-[#1C1B1B] border-white/5 hover:bg-zinc-900"
                   }`}
@@ -130,7 +134,7 @@ const LocationsSection = () => {
                   <span className="text-primary text-[10px] font-black tracking-[3px] uppercase font-sans">OPEN NOW</span>
                 </div>
 
-                <h4 className={`heading-h4 transition-colors leading-tight max-w-[90%] mb-6 uppercase ${selectedLocation.id === loc.id ? "text-primary" : "text-white group-hover:text-primary"
+                <h4 className={`heading-h4 transition-colors leading-tight max-w-[90%] mb-6 uppercase ${selectedLocation?.id === loc.id ? "text-primary" : "text-white group-hover:text-primary"
                   }`}>
                   {loc.name}
                   <span className="block text-[14px] font-normal text-gray-400 mt-1 normal-case">{loc.address}</span>
@@ -148,7 +152,7 @@ const LocationsSection = () => {
                 </div>
 
                 {/* Map Indicator */}
-                {selectedLocation.id === loc.id && (
+                {selectedLocation?.id === loc.id && (
                   <div className="absolute top-4 right-4 text-primary">
                     <MapPin size={20} className="animate-bounce" />
                   </div>
@@ -166,7 +170,9 @@ const LocationsSection = () => {
               loop={true}
               onSlideChange={(swiper) => {
                 const index = swiper.realIndex;
-                setSelectedLocation(activeLocations[index]);
+                const loc = activeLocations[index];
+                setSelectedLocation(loc);
+                mapRef.current?.flyToLocation(loc.id);
               }}
               className="w-full h-auto"
             >
@@ -174,14 +180,14 @@ const LocationsSection = () => {
                 <SwiperSlide key={loc.id}>
                   <div
                     onClick={() => handleCardClick(loc)}
-                    className={`w-full h-auto min-h-[244px] p-6 border flex flex-col justify-center relative overflow-hidden cursor-pointer ${selectedLocation.id === loc.id ? "bg-zinc-900 border-primary" : "bg-[#1C1B1B] border-white/5"
+                    className={`w-full h-auto min-h-[244px] p-6 border flex flex-col justify-center relative overflow-hidden cursor-pointer ${selectedLocation?.id === loc.id ? "bg-zinc-900 border-primary" : "bg-[#1C1B1B] border-white/5"
                       }`}
                   >
                     <div className="flex justify-between items-start mb-4">
                       <span className="text-primary text-[10px] font-black tracking-[3px] uppercase font-sans">OPEN NOW</span>
                     </div>
 
-                    <h4 className={`heading-h4 mb-4 leading-tight uppercase ${selectedLocation.id === loc.id ? "text-primary" : "text-white"
+                    <h4 className={`heading-h4 mb-4 leading-tight uppercase ${selectedLocation?.id === loc.id ? "text-primary" : "text-white"
                       }`}>
                       {loc.name}
                       <span className="block text-[12px] font-normal text-gray-400 mt-1 normal-case">{loc.address}</span>
@@ -202,19 +208,11 @@ const LocationsSection = () => {
               ))}
             </Swiper>
 
-            {/* Mobile Map Display */}
-            <div className="w-full h-[250px] mt-6 rounded-lg overflow-hidden border border-white/10">
-              <iframe
-                title="Flame Japanese Hibachi Mobile Map"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                scrolling="no"
-                marginHeight={0}
-                marginWidth={0}
-                src={mapSrc}
-                className=""
-              ></iframe>
+            <div className="w-full h-[350px] mt-6 rounded-lg overflow-hidden border border-white/10">
+              <CinematicLocationsMap 
+                height="100%" 
+                showUI={false} 
+              />
             </div>
           </div>
         </div>

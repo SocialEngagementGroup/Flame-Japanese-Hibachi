@@ -46,7 +46,6 @@ const FlameDifference = () => {
         <div className="grid grid-cols-2 min-[1100px]:grid-cols-4 gap-[var(--gap-sm)] w-full">
           {features.map((feature, index) => {
             const isFirst = index === 0;
-            const isFlame = feature.title === "FRESH DAILY PREP";
 
             return (
               <div
@@ -59,12 +58,10 @@ const FlameDifference = () => {
                   loop
                   muted
                   playsInline
-                  className={`object-contain scale-[1.3] mb-4 md:mb-[var(--space-md)] transition-all duration-300 ${isFirst
-                    ? "[filter:invert(48%)_sepia(94%)_saturate(2682%)_hue-rotate(2deg)_brightness(103%)_contrast(103%)] group-hover:![filter:brightness(0)_invert(1)] w-[160px] h-[160px]"
-                    : isFlame
-                      ? "w-[165px] h-[165px] group-hover:![filter:brightness(0)_invert(1)]"
-                      : "group-hover:![filter:brightness(0)_invert(1)] w-[160px] h-[160px]"
-                    } md:w-[clamp(140px,18vw,240px)] md:h-[clamp(140px,18vw,240px)]`}
+                  className={`object-contain w-[126px] h-[120px] mb-1 md:mb-2 transition-all duration-300 ${isFirst
+                    ? "[filter:invert(48%)_sepia(94%)_saturate(2682%)_hue-rotate(2deg)_brightness(103%)_contrast(103%)] group-hover:![filter:brightness(0)_invert(1)]"
+                    : "group-hover:![filter:brightness(0)_invert(1)]"
+                    }`}
                 />
 
                 <h4
