@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ShoppingCart, Menu, X, MapPin, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/providers/ThemeProvider";
 import { usePathname } from "next/navigation";
+import { ORDER_URL } from "@/lib/constants";
+import FindFlamePopup from "@/components/layout/FindFlamePopup";
 
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
@@ -12,6 +14,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isFindFlameOpen, setIsFindFlameOpen] = useState(false);
   const desktopVideoRef = React.useRef<HTMLVideoElement>(null);
   const mobileVideoRef = React.useRef<HTMLVideoElement>(null);
 
@@ -45,11 +48,11 @@ const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { name: "MENU", href: "/menu" },
-    { name: "CATERING", href: "/catering" },
-    { name: "LOCATIONS", href: "/locations" },
-    { name: "PROMOTIONS", href: "/promotions" },
-    { name: "JOIN FLAME", href: "/join" },
+    { name: "MENU", href: ORDER_URL, external: true },
+    { name: "CATERING", href: "/catering", external: false },
+    { name: "LOCATIONS", href: "/locations", external: false },
+    { name: "PROMOTIONS", href: ORDER_URL, external: true },
+    { name: "JOIN FLAME", href: ORDER_URL, external: true },
   ];
 
   return (
@@ -59,9 +62,9 @@ const Navbar = () => {
       <div className="w-full px-[var(--space-lg)] flex items-center justify-between relative">
         {/* Left: Mobile Sign In / Desktop Logo */}
         <div className="flex-none flex justify-start items-center z-10">
-          <button className="max-[1100px]:flex hidden border-2 border-white text-white w-[100px] max-[500px]:w-[85px] h-[30px] max-[500px]:h-[26px] items-center justify-center hover:bg-white hover:text-black transition-all text-[14px] max-[500px]:text-[12px] font-black tracking-[1px] uppercase">
+          <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="max-[1100px]:flex hidden border-2 border-white text-white w-[100px] max-[500px]:w-[85px] h-[30px] max-[500px]:h-[26px] items-center justify-center hover:bg-white hover:text-black transition-all text-small font-black tracking-[1px] uppercase">
             SIGN IN
-          </button>
+          </a>
           <div className="hidden min-[1100px]:block">
             <Link href="/" className="flex items-center group">
               <video
@@ -105,17 +108,20 @@ const Navbar = () => {
           {/* Desktop Links */}
           <div className="hidden min-[1100px]:flex items-center justify-center gap-[var(--gap-lg)] max-[1300px]:gap-[12px]">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`text-white hover:text-primary text-[var(--font-small)] max-[1300px]:text-[14px] font-black tracking-[1.2px] leading-[16px] transition-colors relative group uppercase transition-all duration-300 ${isActive ? "text-primary" : ""
-                    }`}
-                >
+              const isActive = !link.external && pathname === link.href;
+              const className = `text-white hover:text-primary text-small font-black tracking-[1.2px] leading-[16px] transition-colors relative group uppercase transition-all duration-300 ${isActive ? "text-primary" : ""}`;
+              const underline = (
+                <span className={`absolute -bottom-2 left-0 w-full h-[2.5px] bg-primary transition-transform duration-300 origin-left ${isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}></span>
+              );
+              return link.external ? (
+                <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" className={className}>
                   {link.name}
-                  <span className={`absolute -bottom-2 left-0 w-full h-[2.5px] bg-primary transition-transform duration-300 origin-left ${isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                    }`}></span>
+                  {underline}
+                </a>
+              ) : (
+                <Link key={link.name} href={link.href} className={className}>
+                  {link.name}
+                  {underline}
                 </Link>
               );
             })}
@@ -125,9 +131,12 @@ const Navbar = () => {
         {/* Right: Actions */}
         <div className="flex-none flex items-center justify-end gap-[var(--gap-md)] max-[1300px]:gap-[10px] z-10">
           {/* Find a Flame */}
-          <button className="hidden min-[1100px]:flex items-center gap-[var(--gap-xs)] text-white hover:text-primary transition-colors">
+          <button
+            onClick={() => setIsFindFlameOpen(true)}
+            className="hidden min-[1100px]:flex items-center gap-[var(--gap-xs)] text-white hover:text-primary transition-colors"
+          >
             <MapPin size={17} className="w-[18px] h-[18px] max-[1300px]:w-[14px] max-[1300px]:h-[14px]" strokeWidth={2.5} />
-            <span className="text-[var(--font-small)] max-[1300px]:text-[14px] font-black tracking-[1.2px] uppercase">FIND A FLAME</span>
+            <span className="text-small font-black tracking-[1.2px] uppercase">FIND A FLAME</span>
           </button>
 
           {/* Theme Toggle - Desktop Only */}
@@ -144,21 +153,21 @@ const Navbar = () => {
           </button>
 
           {/* Sign In - Desktop Only */}
-          <button className="hidden min-[1100px]:flex border-2 border-white text-white w-[147.31px] h-[36px] max-[1300px]:w-[125px] max-[1300px]:h-[32px] items-center justify-center hover:bg-white hover:text-black transition-all text-[16px] max-[1300px]:text-[14px] font-medium tracking-[1.2px] uppercase">
+          <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="hidden min-[1100px]:flex border-2 border-white text-white w-[147.31px] h-[36px] max-[1300px]:w-[125px] max-[1300px]:h-[32px] items-center justify-center hover:bg-white hover:text-black transition-all text-base max-[1300px]:text-small font-medium tracking-[1.2px] uppercase">
             SIGN IN
-          </button>
+          </a>
 
           {/* Cart - Desktop Only */}
-          <button className="hidden min-[1100px]:block relative text-white hover:text-primary transition-colors">
+          <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="hidden min-[1100px]:block relative text-white hover:text-primary transition-colors">
             <img
               src="/site-logo/shop-card-icon.png"
               alt="Cart"
               className="w-6 h-6 object-contain brightness-100"
             />
-            <span className="absolute -top-1.5 -right-2 bg-primary text-white text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full shadow-lg">
+            <span className="absolute -top-1.5 -right-2 bg-primary text-white text-small font-black w-5 h-5 flex items-center justify-center rounded-full shadow-lg">
               0
             </span>
-          </button>
+          </a>
 
           {/* Mobile Menu Toggle */}
           <button
@@ -209,14 +218,27 @@ const Navbar = () => {
 
           <div className="flex flex-col items-center gap-7 max-[500px]:gap-[22px] w-full mt-8 max-[500px]:mt-6">
             {navLinks.map((link, index) => {
-              const isActive = pathname === link.href;
-              return (
+              const isActive = !link.external && pathname === link.href;
+              const className = `text-white text-2xl max-[500px]:text-lg font-black tracking-[3px] max-[500px]:tracking-[2px] uppercase hover:text-primary transition-all duration-300 ${isActive ? "text-primary" : ""} ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`;
+              const style = { transitionDelay: `${(index + 2) * 100}ms` };
+              return link.external ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={className}
+                  style={style}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ) : (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-white text-2xl max-[500px]:text-[19px] font-black tracking-[3px] max-[500px]:tracking-[2px] uppercase hover:text-primary transition-all duration-300 ${isActive ? "text-primary" : ""
-                    } ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
-                  style={{ transitionDelay: `${(index + 2) * 100}ms` }}
+                  className={className}
+                  style={style}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
@@ -239,35 +261,49 @@ const Navbar = () => {
                 ) : (
                   <div className="w-7 h-7 max-[500px]:w-[23px] max-[500px]:h-[23px]" />
                 )}
-                <span className="text-[12px] max-[500px]:text-[11px] font-bold tracking-widest uppercase">THEME</span>
+                <span className="text-small font-bold tracking-widest uppercase">THEME</span>
               </button>
 
-              <button className="relative text-white hover:text-primary transition-colors flex flex-col items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+              <a
+                href={ORDER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative text-white hover:text-primary transition-colors flex flex-col items-center gap-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
                 <ShoppingCart className="w-7 h-7 max-[500px]:w-[23px] max-[500px]:h-[23px]" strokeWidth={2.5} />
-                <span className="absolute -top-1 -right-1 bg-primary text-white text-[10px] max-[500px]:text-[9px] font-black w-5 h-5 max-[500px]:w-4 max-[500px]:h-4 flex items-center justify-center rounded-full">
+                <span className="absolute -top-1 -right-1 bg-primary text-white text-small font-black w-5 h-5 max-[500px]:w-4 max-[500px]:h-4 flex items-center justify-center rounded-full">
                   0
                 </span>
-                <span className="text-[12px] max-[500px]:text-[11px] font-bold tracking-widest uppercase">CART</span>
-              </button>
+                <span className="text-small font-bold tracking-widest uppercase">CART</span>
+              </a>
             </div>
 
-            <button 
+            <button
               className="flex items-center gap-3 max-[500px]:gap-2 text-white hover:text-primary transition-colors text-base max-[500px]:text-sm font-black tracking-widest uppercase mt-4 max-[500px]:mt-2"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                setIsFindFlameOpen(true);
+              }}
             >
               <MapPin className="w-[22px] h-[22px] max-[500px]:w-[18px] max-[500px]:h-[18px]" />
               <span>FIND A FLAME</span>
             </button>
 
-            <button 
-              className="bg-primary text-white w-full max-w-[280px] max-[500px]:max-w-[240px] py-5 max-[500px]:py-4 font-black tracking-[3px] max-[500px]:tracking-[2px] uppercase text-[16px] max-[500px]:text-[14px] hover:bg-white hover:text-black transition-all shadow-xl shadow-primary/30 mt-4 max-[500px]:mt-2"
+            <a
+              href={ORDER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary text-white w-full max-w-[280px] max-[500px]:max-w-[240px] py-5 max-[500px]:py-4 font-black tracking-[3px] max-[500px]:tracking-[2px] uppercase text-base max-[500px]:text-small hover:bg-white hover:text-black transition-all shadow-xl shadow-primary/30 mt-4 max-[500px]:mt-2 text-center flex items-center justify-center"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               ORDER NOW
-            </button>
+            </a>
           </div>
         </div>
       </div>
+
+      <FindFlamePopup open={isFindFlameOpen} onClose={() => setIsFindFlameOpen(false)} />
     </nav>
   );
 };
