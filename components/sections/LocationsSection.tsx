@@ -16,7 +16,7 @@ const CinematicLocationsMap = dynamic(() => import("@/components/map/CinematicLo
 });
 
 const LocationsSection = () => {
-  const [selectedLocation, setSelectedLocation] = useState<typeof activeLocations[0] | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<typeof activeLocations[0] | null>(activeLocations[0]);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const mapRef = useRef<any>(null);
   const lastUpdateRef = useRef<number>(0);
@@ -24,40 +24,55 @@ const LocationsSection = () => {
   const googleMapsUrl = (address: string) =>
     `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Flame Japanese Hibachi ${address}`)}`;
 
-  // Intersection Observer for scroll-sync
+  // Scroll listener: fires exactly when a card's top edge hits the map box top
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "-20% 0px -60% 0px",
-      threshold: 0,
-    };
+    const handleScroll = () => {
+      const mapBox = document.getElementById("desktop-map-container");
+      if (!mapBox) return;
 
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = Number(entry.target.getAttribute("data-index"));
-          if (!isNaN(index)) {
-            const loc = activeLocations[index];
-            const now = Date.now();
-            
-            // Debounce state updates to prevent map jitter during fast scrolling
-            if (now - lastUpdateRef.current > 400) {
-              setSelectedLocation(loc);
-              mapRef.current?.flyToLocation(loc.id);
-              lastUpdateRef.current = now;
-            }
-          }
+      const triggerY = mapBox.getBoundingClientRect().top;
+      let bestIndex = -1;
+      let minDist = Infinity;
+
+      cardRefs.current.forEach((ref, index) => {
+        if (!ref) return;
+        const rect = ref.getBoundingClientRect();
+        // Card is active if the trigger line is inside it
+        if (rect.top <= triggerY + 2 && rect.bottom > triggerY + 2) {
+          bestIndex = index;
+        }
+        // Fallback: closest card top to trigger line
+        const dist = Math.abs(rect.top - triggerY);
+        if (dist < minDist) {
+          minDist = dist;
+          if (bestIndex === -1) bestIndex = index;
         }
       });
+
+      if (bestIndex !== -1) {
+        const now = Date.now();
+        if (now - lastUpdateRef.current > 300) {
+          const loc = activeLocations[bestIndex];
+          setSelectedLocation((prev) => {
+            if (prev?.id !== loc.id) {
+              mapRef.current?.flyToLocation(loc.id);
+              lastUpdateRef.current = now;
+              return loc;
+            }
+            return prev;
+          });
+        }
+      }
     };
 
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    handleScroll();
 
-    cardRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   const handleCardClick = (loc: typeof activeLocations[0]) => {
@@ -80,7 +95,7 @@ const LocationsSection = () => {
               </p>
 
               {/* Map Container */}
-              <div className="w-full h-[400px] md:h-[600px] bg-zinc-200 dark:bg-zinc-900 border border-black/5 dark:border-white/5 relative overflow-hidden group mb-12 hidden md:block transition-colors duration-300 shadow-2xl">
+              <div id="desktop-map-container" className="w-full h-[400px] md:h-[600px] bg-zinc-200 dark:bg-zinc-900 border border-black/5 dark:border-white/5 relative overflow-hidden group mb-12 hidden md:block transition-colors duration-300 shadow-2xl">
                 <CinematicLocationsMap 
                   ref={mapRef} 
                   height="100%" 
@@ -113,7 +128,18 @@ const LocationsSection = () => {
         {/* Right Side: Desktop (Scrollable) / Mobile (Horizontal Slider) */}
         <div className="w-full flex flex-col items-center lg:items-end lg:py-0">
           {/* Desktop Version */}
-          <div className="hidden lg:block w-full max-w-[900px] space-y-6 pb-[438px]">
+          <div className="hidden lg:block w-full max-w-[900px] pb-[438px]">
+            {/* Invisible spacer to align first card with map box top */}
+            <div className="invisible" aria-hidden="true">
+              <h3 className="heading-h3 mb-[var(--space-xl)]">
+                <span className="block">FIND YOUR</span>
+                <span className="block">FLAME</span>
+              </h3>
+              <p className="text-[14px] md:text-[16px] mb-10 max-w-sm leading-relaxed font-medium">
+                Experience the heat near you. Browse our active restaurants or see where we're striking next.
+              </p>
+            </div>
+            <div className="space-y-6">
             {activeLocations.map((loc, index) => (
               <div
                 key={loc.id}
@@ -122,8 +148,8 @@ const LocationsSection = () => {
                 }}
                 data-index={index}
                 onClick={() => handleCardClick(loc)}
-                className={`w-full min-h-[244px] p-[var(--space-lg)] border transition-all cursor-pointer group flex flex-col justify-center relative overflow-hidden ${selectedLocation?.id === loc.id
-                  ? "bg-zinc-900 border-primary"
+                className={`w-full min-h-[244px] p-[var(--space-lg)] border transition-all duration-300 cursor-pointer group flex flex-col justify-center relative overflow-hidden ${selectedLocation?.id === loc.id
+                  ? "bg-primary border-primary shadow-2xl shadow-primary/40 scale-[1.01] z-10"
                   : "bg-[#1C1B1B] border-white/5 hover:bg-zinc-900"
                   }`}
               >
@@ -131,21 +157,21 @@ const LocationsSection = () => {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-[60px] rounded-full -mr-16 -mt-16 group-hover:bg-primary/10 transition-all" />
 
                 <div className="flex justify-between items-start mb-4">
-                  <span className="text-primary text-[10px] font-black tracking-[3px] uppercase font-sans">OPEN NOW</span>
+                  <span className={`text-[10px] font-black tracking-[3px] uppercase font-sans ${selectedLocation?.id === loc.id ? "text-white" : "text-primary"}`}>OPEN NOW</span>
                 </div>
 
-                <h4 className={`heading-h4 transition-colors leading-tight max-w-[90%] mb-6 uppercase ${selectedLocation?.id === loc.id ? "text-primary" : "text-white group-hover:text-primary"
+                <h4 className={`heading-h4 transition-colors leading-tight max-w-[90%] mb-6 uppercase ${selectedLocation?.id === loc.id ? "text-white" : "text-white group-hover:text-primary"
                   }`}>
                   {loc.name}
-                  <span className="block text-[14px] font-normal text-gray-400 mt-1 normal-case">{loc.address}</span>
+                  <span className={`block text-[14px] font-normal mt-1 normal-case ${selectedLocation?.id === loc.id ? "text-white" : "text-gray-400"}`}>{loc.address}</span>
                 </h4>
 
                 <div className="flex flex-wrap gap-8 items-center">
-                  <div className="flex items-center gap-3 text-primary text-[12px] md:text-[14px]">
+                  <div className={`flex items-center gap-3 text-[12px] md:text-[14px] ${selectedLocation?.id === loc.id ? "text-white" : "text-primary"}`}>
                     <Phone size={16} />
                     <span className="font-bold">{loc.phone}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-primary text-[12px] md:text-[14px]">
+                  <div className={`flex items-center gap-3 text-[12px] md:text-[14px] ${selectedLocation?.id === loc.id ? "text-white" : "text-primary"}`}>
                     <Clock size={16} />
                     <span className="font-bold uppercase">{loc.hours}</span>
                   </div>
@@ -153,12 +179,13 @@ const LocationsSection = () => {
 
                 {/* Map Indicator */}
                 {selectedLocation?.id === loc.id && (
-                  <div className="absolute top-4 right-4 text-primary">
+                  <div className="absolute top-4 right-4 text-white">
                     <MapPin size={20} className="animate-bounce" />
                   </div>
                 )}
               </div>
             ))}
+            </div>
           </div>
 
           {/* Mobile Version (Slider) */}
