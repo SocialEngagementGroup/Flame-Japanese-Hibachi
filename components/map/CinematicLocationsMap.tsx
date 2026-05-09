@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState, useCallback, useImperativeHandle, forwardRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { activeLocations, comingSoonLocations, Location as ProjectLocation } from '@/data/locationsData';
+import { activeLocations, comingSoonLocations } from '@/data/locationsData';
 import { MapPin, Navigation, Clock, Phone } from 'lucide-react';
 
 // Leaflet configuration for Next.js
@@ -27,20 +27,33 @@ interface Location {
   isComingSoon?: boolean;
 }
 
-const mapProjectLocationToMapLocation = (loc: ProjectLocation): Location => ({
-  id: loc.id,
-  name: loc.name,
-  address: loc.address,
-  lat: loc.coordinates.lat,
-  lng: loc.coordinates.lng,
-  hours: loc.hours || 'Opening Soon',
-  phone: loc.phone || 'N/A',
-  isComingSoon: !!loc.status,
-});
+// Coordinates for each active location (lat/lng)
+const LOCATION_COORDS: Record<number, [number, number]> = {
+  1:  [39.3370, -76.5360], // Baltimore, MD
+  2:  [38.7443, -77.4760], // Manassas, VA
+  3:  [39.1074, -76.8723], // Laurel, MD
+  4:  [39.1401, -76.5791], // Pasadena, MD
+  5:  [38.7443, -77.0711], // Alexandria, VA
+  6:  [37.5407, -77.4360], // Forest Hill (Richmond), VA
+  7:  [26.2121, -80.2497], // Tamarac, FL
+  8:  [38.8721, -77.1468], // Seven Corners, VA
+  9:  [39.3413, -76.6800], // Northern Pkwy (Baltimore), MD
+  10: [40.0190, -75.1173], // Philadelphia, PA
+  11: [26.7123, -80.1918], // Royal Palm Beach, FL
+  12: [39.5151, -76.1641], // Aberdeen, MD
+};
 
-const PROJECT_LOCATIONS = [
-  ...activeLocations.map(mapProjectLocationToMapLocation),
-  ...comingSoonLocations.map(mapProjectLocationToMapLocation),
+const PROJECT_LOCATIONS: Location[] = [
+  ...activeLocations.map((loc) => ({
+    id: loc.id,
+    name: loc.name,
+    address: loc.address,
+    lat: (LOCATION_COORDS[loc.id] ?? [39.8283, -98.5795])[0],
+    lng: (LOCATION_COORDS[loc.id] ?? [39.8283, -98.5795])[1],
+    hours: loc.hours || 'Opening Soon',
+    phone: loc.phone || 'N/A',
+    isComingSoon: false,
+  })),
 ];
 
 const USA_CENTER: [number, number] = [39.8283, -98.5795];
