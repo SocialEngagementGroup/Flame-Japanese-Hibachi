@@ -76,14 +76,14 @@ const CateringSection = () => {
         <div className="hidden md:flex gap-2 shrink-0">
           <button
             onClick={() => swiperRef.current?.slidePrev()}
-            className="w-9 h-9 md:w-11 md:h-11 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary transition-all"
+            className="w-9 h-9 md:w-11 md:h-11 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary hover:scale-110 active:scale-95 transition-all"
             aria-label="Previous"
           >
             <FaArrowLeftLong size={20} />
           </button>
           <button
             onClick={() => swiperRef.current?.slideNext()}
-            className="w-9 h-9 md:w-11 md:h-11 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary transition-all"
+            className="w-9 h-9 md:w-11 md:h-11 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary hover:scale-110 active:scale-95 transition-all"
             aria-label="Next"
           >
             <FaArrowRightLong size={20} />
@@ -173,14 +173,14 @@ const CateringSection = () => {
         <div className="flex md:hidden justify-center gap-2 mt-[var(--space-md)]">
           <button
             onClick={() => swiperRef.current?.slidePrev()}
-            className="w-9 h-9 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary transition-all"
+            className="w-9 h-9 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary hover:scale-110 active:scale-95 transition-all"
             aria-label="Previous"
           >
             <FaArrowLeftLong size={20} />
           </button>
           <button
             onClick={() => swiperRef.current?.slideNext()}
-            className="w-9 h-9 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary transition-all"
+            className="w-9 h-9 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary hover:scale-110 active:scale-95 transition-all"
             aria-label="Next"
           >
             <FaArrowRightLong size={20} />

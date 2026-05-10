@@ -13,7 +13,7 @@ const workSans = Work_Sans({
 
 const raleway = Raleway({
   subsets: ["latin"],
-  variable: "--font-serif",
+  variable: "--font-serif-next",
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 

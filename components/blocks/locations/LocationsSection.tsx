@@ -178,14 +178,14 @@ const LocationsSection = () => {
           <div className="flex justify-center gap-2 mt-[var(--space-md)]">
             <button
               onClick={() => mobileSwiperRef.current?.slidePrev()}
-              className="w-9 h-9 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary transition-all"
+              className="w-9 h-9 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary hover:scale-110 active:scale-95 transition-all"
               aria-label="Previous"
             >
               <FaArrowLeftLong size={20} />
             </button>
             <button
               onClick={() => mobileSwiperRef.current?.slideNext()}
-              className="w-9 h-9 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary transition-all"
+              className="w-9 h-9 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary hover:scale-110 active:scale-95 transition-all"
               aria-label="Next"
             >
               <FaArrowRightLong size={20} />

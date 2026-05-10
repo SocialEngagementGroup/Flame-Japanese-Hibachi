@@ -53,7 +53,7 @@ type ContactSectionProps = {
 const ContactSection = ({
   heading = (
     <>
-      BECOME A <span className="text-primary">FLAME JAPANESE HIBACHI</span> FRANCHISE
+      REACH OUT TO US FOR  <span className="text-primary">ANY QUERIES</span>
     </>
   ),
   subheading = "JOIN THE FASTEST GROWING HIBACHI BRAND IN THE NATION",
