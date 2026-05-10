@@ -58,8 +58,8 @@ const SignatureItems = () => {
   return (
     <section className="w-full bg-[#FFFFFF] dark:bg-black py-[var(--space-2xl)] overflow-hidden transition-colors duration-300">
       {/* Header — constrained to content width */}
-      <div className="max-w-[1440px] mx-auto flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
-        <h3 className="heading-h3 text-center md:text-left">
+      <div className="w-full flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
+        <h3 className="heading-h3 text-left">
           <span className="text-[#1C1B1B] dark:text-white transition-colors duration-300">
             MOST LOVED FLAME{" "}
           </span>

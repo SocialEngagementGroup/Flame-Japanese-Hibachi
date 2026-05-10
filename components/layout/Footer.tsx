@@ -39,11 +39,11 @@ const Footer = () => {
           <div className="flex flex-row justify-center gap-[var(--gap-lg)] w-full lg:w-auto lg:contents">
             {/* Company Links (Box 2) */}
             <div className="flex flex-col items-center lg:items-start lg:mt-[88px]">
-              <h4 className="text-gray-500 font-black text-small tracking-[2px] uppercase mb-6">COMPANY</h4>
+              <h4 className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">COMPANY</h4>
               <ul className="space-y-6">
                 {["VALUES", "CAREERS", "INVESTORS"].map((link) => (
                   <li key={link}>
-                    <Link href="#" className="text-gray-400 hover:text-white text-small font-bold uppercase tracking-widest transition-colors">
+                    <Link href="#" className="font-serif font-normal text-[14px] leading-[22px] tracking-[1.2px] uppercase text-gray-400 hover:text-white transition-colors">
                       {link}
                     </Link>
                   </li>
@@ -53,11 +53,11 @@ const Footer = () => {
 
             {/* Service Links (Box 3) */}
             <div className="flex flex-col items-center lg:items-start lg:mt-[88px]">
-              <h4 className="text-gray-500 font-black text-small tracking-[2px] uppercase mb-6">SERVICE</h4>
+              <h4 className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">SERVICE</h4>
               <ul className="space-y-6">
                 {["CATERING", "GIFT CARDS", "SUPPORT"].map((link) => (
                   <li key={link}>
-                    <Link href="#" className="text-gray-400 hover:text-white text-small font-bold uppercase tracking-widest transition-colors">
+                    <Link href="#" className="font-serif font-normal text-[14px] leading-[22px] tracking-[1.2px] uppercase text-gray-400 hover:text-white transition-colors">
                       {link}
                     </Link>
                   </li>
@@ -68,7 +68,7 @@ const Footer = () => {
 
           {/* App Download (Box 4) */}
           <div className="flex flex-col items-center lg:items-end w-full lg:w-auto lg:mt-[88px]">
-            <h4 className="text-gray-500 font-black text-small tracking-[2px] uppercase mb-6">DOWNLOAD OUR APP</h4>
+            <h4 className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">DOWNLOAD OUR APP</h4>
             <div className="flex flex-col gap-4 w-full sm:w-auto items-center lg:items-end">
               <img src="/footer-apps/app-store.svg" alt="Download on the App Store" className="h-[48px] object-contain cursor-pointer hover:opacity-80 transition-opacity" />
               <img src="/footer-apps/google-play.svg" alt="Get it on Google Play" className="h-[48px] object-contain cursor-pointer hover:opacity-80 transition-opacity" />
@@ -87,16 +87,16 @@ const Footer = () => {
           {/* Desktop Left: Policies */}
           <div className="hidden md:flex justify-between items-center gap-6">
             <div className="flex gap-8">
-              <Link href="#" className="text-gray-600 hover:text-white text-small font-bold tracking-[2px] uppercase transition-colors">PRIVACY POLICY</Link>
-              <Link href="#" className="text-gray-600 hover:text-white text-small font-bold tracking-[2px] uppercase transition-colors">TERMS OF SERVICE</Link>
+              <Link href="#" className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-600 hover:text-white transition-colors">PRIVACY POLICY</Link>
+              <Link href="#" className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-600 hover:text-white transition-colors">TERMS OF SERVICE</Link>
             </div>
-            <p className="text-gray-600 text-small font-bold tracking-[2px] uppercase text-right">
+            <p className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-600 text-right">
               © {new Date().getFullYear()} FLAME JAPANESE HIBACHI. ALL RIGHTS RESERVED.
             </p>
           </div>
 
           {/* Mobile Layout: stacked centered */}
-          <div className="flex md:hidden flex-col items-center text-center gap-2 text-small text-gray-600 font-bold tracking-[2px] uppercase w-full">
+          <div className="flex md:hidden flex-col items-center text-center gap-2 font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-600 w-full">
             <Link href="#" className="hover:text-white transition-colors">PRIVACY POLICY</Link>
             <Link href="#" className="hover:text-white transition-colors">TERMS OF SERVICE</Link>
             <p>© {new Date().getFullYear()} FLAME JAPANESE HIBACHI. ALL RIGHTS RESERVED.</p>

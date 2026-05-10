@@ -10,12 +10,11 @@ import {
   getActiveLocations,
   getComingSoonLocations,
 } from "@/lib/api/locations";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const activeLocations = getActiveLocations();
 const comingSoonLocations = getComingSoonLocations();
-
-import "swiper/css";
-import "swiper/css/pagination";
 
 const LocationsSection = () => {
   const [selectedLocation, setSelectedLocation] = useState(activeLocations[0]);

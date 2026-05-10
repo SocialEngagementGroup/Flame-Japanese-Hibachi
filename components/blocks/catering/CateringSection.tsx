@@ -66,8 +66,8 @@ const CateringSection = () => {
   return (
     <section className="w-full py-[var(--space-2xl)] overflow-hidden bg-[#FFFFFF] dark:bg-black transition-colors duration-300">
       {/* Header — constrained to content width */}
-      <div className="max-w-[1440px] mx-auto flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
-          <h3 className="heading-h3 text-center md:text-left">
+      <div className="w-full flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
+          <h3 className="heading-h3 text-left">
             <span className="text-[#1C1B1B] dark:text-white transition-colors duration-300">FLAME MONTHLY </span>
             <span className="text-primary">PROMOTIONS</span>
           </h3>

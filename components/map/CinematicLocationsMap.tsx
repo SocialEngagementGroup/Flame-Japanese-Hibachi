@@ -1,20 +1,12 @@
 "use client";
 
 import React, { useEffect, useRef, useState, useCallback, useImperativeHandle, forwardRef } from 'react';
-import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { activeLocations, comingSoonLocations } from '@/data/locationsData';
 import { MapPin, Navigation, Clock, Phone } from 'lucide-react';
 
-// Leaflet configuration for Next.js
-// Fix default icon issues
-const DefaultIcon = L.icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
-L.Marker.prototype.options.icon = DefaultIcon;
+// NOTE: 'leaflet' is imported dynamically inside useEffect to avoid
+// module-level DOM access that crashes SSR / Fast Refresh.
 
 interface Location {
   id: string | number;
@@ -133,54 +125,71 @@ const CinematicLocationsMap = forwardRef<CinematicMapRef, {
     }, 1200); // Slight overlap with Stage 1 for fluid arc
   }, [isFlying]);
 
-  // Initialize map
+  // Initialize map — import Leaflet lazily inside useEffect so it never
+  // runs at module load time (which would crash SSR / Fast Refresh).
   useEffect(() => {
     if (!mapContainer.current || map.current) return;
 
-    // Create map centered on USA
-    map.current = L.map(mapContainer.current, {
-      center: USA_CENTER,
-      zoom: USA_ZOOM,
-      zoomControl: false,
-      attributionControl: false,
-      minZoom: 4,
+    let isMounted = true;
+
+    import('leaflet').then((L) => {
+      if (!isMounted || !mapContainer.current || map.current) return;
+
+      // Fix default icon paths for webpack bundling
+      const DefaultIcon = L.icon({
+        iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+        shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+      });
+      L.Marker.prototype.options.icon = DefaultIcon;
+
+      // Create map centered on USA
+      map.current = L.map(mapContainer.current, {
+        center: USA_CENTER,
+        zoom: USA_ZOOM,
+        zoomControl: false,
+        attributionControl: false,
+        minZoom: 4,
+      });
+
+      // Satellite imagery with noWrap to prevent tiling issues
+      L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+        maxZoom: 20,
+        noWrap: true,
+      }).addTo(map.current);
+
+      // Custom Red Pin Icon
+      const redPinIcon = L.divIcon({
+        className: 'custom-div-icon',
+        html: `
+          <div class="relative flex items-center justify-center">
+            <div class="absolute w-8 h-8 bg-red-600/30 rounded-full animate-ping"></div>
+            <div class="relative w-4 h-4 bg-red-600 border-2 border-white rounded-full shadow-lg"></div>
+          </div>
+        `,
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
+      });
+
+      // Add markers
+      PROJECT_LOCATIONS.forEach(loc => {
+        const marker = L.marker([loc.lat, loc.lng], { icon: redPinIcon })
+          .addTo(map.current!)
+          .on('click', () => flyToLocation(loc));
+
+        markers.current[loc.id] = marker;
+      });
+
+      // Initial view
+      if (initialLocationId) {
+        const startLoc = PROJECT_LOCATIONS.find(l => l.id === initialLocationId);
+        if (startLoc) flyToLocation(startLoc);
+      }
     });
-
-    // Satellite imagery with noWrap to prevent tiling issues
-    L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
-      maxZoom: 20,
-      noWrap: true,
-    }).addTo(map.current);
-
-    // Custom Red Pin Icon
-    const redPinIcon = L.divIcon({
-      className: 'custom-div-icon',
-      html: `
-        <div class="relative flex items-center justify-center">
-          <div class="absolute w-8 h-8 bg-red-600/30 rounded-full animate-ping"></div>
-          <div class="relative w-4 h-4 bg-red-600 border-2 border-white rounded-full shadow-lg"></div>
-        </div>
-      `,
-      iconSize: [32, 32],
-      iconAnchor: [16, 16],
-    });
-
-    // Add markers
-    PROJECT_LOCATIONS.forEach(loc => {
-      const marker = L.marker([loc.lat, loc.lng], { icon: redPinIcon })
-        .addTo(map.current!)
-        .on('click', () => flyToLocation(loc));
-      
-      markers.current[loc.id] = marker;
-    });
-
-    // Initial view
-    if (initialLocationId) {
-      const startLoc = PROJECT_LOCATIONS.find(l => l.id === initialLocationId);
-      if (startLoc) flyToLocation(startLoc);
-    }
 
     return () => {
+      isMounted = false;
       if (map.current) {
         map.current.remove();
         map.current = null;
