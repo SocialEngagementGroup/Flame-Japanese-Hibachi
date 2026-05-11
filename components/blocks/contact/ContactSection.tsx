@@ -45,14 +45,18 @@ const Field = ({
 };
 
 type ContactSectionProps = {
-  heading?: string;
-  subheading?: string;
+  heading?: React.ReactNode;
+  subheading?: React.ReactNode;
   submitLabel?: string;
 };
 
 const ContactSection = ({
-  heading = "REACH OUT TO US FOR ANY QUERIES",
-  subheading = "SEND US A MESSAGE",
+  heading = (
+    <>
+      REACH OUT TO US FOR  <span className="text-primary">ANY QUERIES</span>
+    </>
+  ),
+  subheading = "JOIN THE FASTEST GROWING HIBACHI BRAND IN THE NATION",
   submitLabel = "SUBMIT APPLICATION",
 }: ContactSectionProps) => {
   return (

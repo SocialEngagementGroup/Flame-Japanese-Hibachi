@@ -16,7 +16,7 @@ const HeroCTA = () => {
             href={ORDER_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 sm:flex-none flex items-center justify-center text-center bg-primary hover:bg-secondary text-white px-2 sm:px-6 py-3 text-small font-black tracking-[1px] sm:tracking-[1.5px] transition-all uppercase h-full sm:h-auto sm:whitespace-nowrap"
+            className="flex-1 sm:flex-none flex items-center justify-center text-center bg-primary hover:bg-secondary text-white px-2 sm:px-6 py-3 text-small font-bold tracking-[1px] sm:tracking-[1.5px] transition-all uppercase h-full sm:h-auto sm:whitespace-nowrap"
           >
             CREATE ACCOUNT OR SIGN IN
           </a>
@@ -25,7 +25,7 @@ const HeroCTA = () => {
             href={ORDER_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 sm:flex-none flex items-center justify-center text-center border border-foreground text-foreground hover:bg-foreground hover:text-background px-2 sm:px-6 py-3 text-small font-black tracking-[1px] sm:tracking-[1.5px] transition-all uppercase h-full sm:h-auto sm:whitespace-nowrap"
+            className="flex-1 sm:flex-none flex items-center justify-center text-center border border-foreground text-foreground hover:bg-foreground hover:text-background px-2 sm:px-6 py-3 text-small font-bold tracking-[1px] sm:tracking-[1.5px] transition-all uppercase h-full sm:h-auto sm:whitespace-nowrap"
           >
             REDEEM DISCOUNT CODE
           </a>

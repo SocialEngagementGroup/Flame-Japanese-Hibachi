@@ -62,7 +62,7 @@ const Navbar = () => {
       <div className="w-full px-[var(--space-lg)] flex items-center justify-between relative">
         {/* Left: Mobile Sign In / Desktop Logo */}
         <div className="flex-none flex justify-start items-center z-10">
-          <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="max-[1100px]:flex hidden border-2 border-white text-white w-[100px] max-[500px]:w-[85px] h-[30px] max-[500px]:h-[26px] items-center justify-center hover:bg-white hover:text-black transition-all text-small font-black tracking-[1px] uppercase">
+          <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="max-[1100px]:flex hidden border-2 border-white text-white w-[100px] max-[500px]:w-[85px] h-[30px] max-[500px]:h-[26px] items-center justify-center hover:bg-white hover:text-black hover:-translate-y-0.5 active:scale-[0.97] transition-all text-small font-black tracking-[1px] uppercase">
             SIGN IN
           </a>
           <div className="hidden min-[1100px]:block">
@@ -153,7 +153,7 @@ const Navbar = () => {
           </button>
 
           {/* Sign In - Desktop Only */}
-          <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="hidden min-[1100px]:flex border-2 border-white text-white w-[147.31px] h-[36px] max-[1300px]:w-[125px] max-[1300px]:h-[32px] items-center justify-center hover:bg-white hover:text-black transition-all text-base max-[1300px]:text-small font-medium tracking-[1.2px] uppercase">
+          <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="hidden min-[1100px]:flex border-2 border-white text-white w-[147.31px] h-[36px] max-[1300px]:w-[125px] max-[1300px]:h-[32px] items-center justify-center hover:bg-white hover:text-black hover:-translate-y-0.5 active:scale-[0.97] transition-all text-base max-[1300px]:text-small font-medium tracking-[1.2px] uppercase">
             SIGN IN
           </a>
 
@@ -294,7 +294,7 @@ const Navbar = () => {
               href={ORDER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-primary text-white w-full max-w-[280px] max-[500px]:max-w-[240px] py-5 max-[500px]:py-4 font-black tracking-[3px] max-[500px]:tracking-[2px] uppercase text-base max-[500px]:text-small hover:bg-white hover:text-black transition-all shadow-xl shadow-primary/30 mt-4 max-[500px]:mt-2 text-center flex items-center justify-center"
+              className="bg-primary text-white w-full max-w-[280px] max-[500px]:max-w-[240px] py-5 max-[500px]:py-4 font-black tracking-[3px] max-[500px]:tracking-[2px] uppercase text-base max-[500px]:text-small hover:bg-white hover:text-black hover:-translate-y-1 active:scale-[0.97] transition-all shadow-xl shadow-primary/30 mt-4 max-[500px]:mt-2 text-center flex items-center justify-center"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               ORDER NOW

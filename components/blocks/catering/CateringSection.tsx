@@ -66,8 +66,8 @@ const CateringSection = () => {
   return (
     <section className="w-full py-[var(--space-2xl)] overflow-hidden bg-[#FFFFFF] dark:bg-black transition-colors duration-300">
       {/* Header — constrained to content width */}
-      <div className="max-w-[1440px] mx-auto flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
-          <h3 className="heading-h3 text-center md:text-left">
+      <div className="w-full flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
+          <h3 className="heading-h3 text-left">
             <span className="text-[#1C1B1B] dark:text-white transition-colors duration-300">FLAME MONTHLY </span>
             <span className="text-primary">PROMOTIONS</span>
           </h3>
@@ -76,14 +76,14 @@ const CateringSection = () => {
         <div className="hidden md:flex gap-2 shrink-0">
           <button
             onClick={() => swiperRef.current?.slidePrev()}
-            className="w-9 h-9 md:w-11 md:h-11 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary transition-all"
+            className="w-9 h-9 md:w-11 md:h-11 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary hover:scale-110 active:scale-95 transition-all"
             aria-label="Previous"
           >
             <FaArrowLeftLong size={20} />
           </button>
           <button
             onClick={() => swiperRef.current?.slideNext()}
-            className="w-9 h-9 md:w-11 md:h-11 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary transition-all"
+            className="w-9 h-9 md:w-11 md:h-11 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary hover:scale-110 active:scale-95 transition-all"
             aria-label="Next"
           >
             <FaArrowRightLong size={20} />
@@ -173,14 +173,14 @@ const CateringSection = () => {
         <div className="flex md:hidden justify-center gap-2 mt-[var(--space-md)]">
           <button
             onClick={() => swiperRef.current?.slidePrev()}
-            className="w-9 h-9 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary transition-all"
+            className="w-9 h-9 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary hover:scale-110 active:scale-95 transition-all"
             aria-label="Previous"
           >
             <FaArrowLeftLong size={20} />
           </button>
           <button
             onClick={() => swiperRef.current?.slideNext()}
-            className="w-9 h-9 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary transition-all"
+            className="w-9 h-9 bg-[#1C1B1B] text-white dark:bg-white dark:text-black flex items-center justify-center hover:bg-primary hover:text-white dark:hover:bg-primary hover:scale-110 active:scale-95 transition-all"
             aria-label="Next"
           >
             <FaArrowRightLong size={20} />
