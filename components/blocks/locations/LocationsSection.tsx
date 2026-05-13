@@ -16,7 +16,17 @@ import "swiper/css/pagination";
 const activeLocations = getActiveLocations();
 const comingSoonLocations = getComingSoonLocations();
 
-const LocationsSection = () => {
+type LocationsSectionProps = {
+  leftHeader?: React.ReactNode;
+  hideMap?: boolean;
+  hideFindYourFlame?: boolean;
+};
+
+const LocationsSection = ({
+  leftHeader,
+  hideMap = false,
+  hideFindYourFlame = false,
+}: LocationsSectionProps = {}) => {
   const [selectedLocation, setSelectedLocation] = useState(activeLocations[0]);
   const [mapLoading, setMapLoading] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -96,32 +106,40 @@ const LocationsSection = () => {
     <section className="w-full bg-[#F0EDED] dark:bg-black px-[var(--space-lg)] relative overflow-visible py-[var(--space-2xl)] transition-colors duration-300">
       {/* MOBILE LAYOUT — heading → map → cards → coming soon → button */}
       <div className="lg:hidden max-w-[600px] mx-auto">
-        <h3 className="heading-h3 mb-[var(--space-md)]">
-          <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
-          <span className="text-primary">FLAME</span>
-        </h3>
-        <p className="text-gray-700 dark:text-gray-300 text-small leading-relaxed font-medium mb-[var(--space-lg)] transition-colors duration-300">
-          Experience the heat near you. Browse our active restaurants or see where we're striking next.
-        </p>
+        {leftHeader && <div className="mb-[var(--space-xl)]">{leftHeader}</div>}
+
+        {!hideFindYourFlame && (
+          <>
+            <h3 className="heading-h3 mb-[var(--space-md)]">
+              <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
+              <span className="text-primary">FLAME</span>
+            </h3>
+            <p className="text-gray-700 dark:text-gray-300 text-small leading-relaxed font-medium mb-[var(--space-lg)] transition-colors duration-300">
+              Experience the heat near you. Browse our active restaurants or see where we're striking next.
+            </p>
+          </>
+        )}
 
         {/* Mobile Map */}
-        <div className="w-full h-[220px] mb-[var(--space-lg)] overflow-hidden border border-black/5 dark:border-white/10 transition-colors duration-300 relative bg-zinc-200 dark:bg-zinc-900">
-          <iframe
-            title="Flame Japanese Hibachi Mobile Map"
-            width="100%"
-            height="100%"
-            frameBorder="0"
-            scrolling="no"
-            marginHeight={0}
-            marginWidth={0}
-            src={mapSrc}
-            onLoad={() => setMapLoading(false)}
-            className={`transition-opacity duration-500 ease-in-out ${mapLoading ? 'opacity-0' : 'opacity-100'}`}
-          ></iframe>
-          <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-500 ${mapLoading ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="w-6 h-6 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+        {!hideMap && (
+          <div className="w-full h-[220px] mb-[var(--space-lg)] overflow-hidden border border-black/5 dark:border-white/10 transition-colors duration-300 relative bg-zinc-200 dark:bg-zinc-900">
+            <iframe
+              title="Flame Japanese Hibachi Mobile Map"
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              scrolling="no"
+              marginHeight={0}
+              marginWidth={0}
+              src={mapSrc}
+              onLoad={() => setMapLoading(false)}
+              className={`transition-opacity duration-500 ease-in-out ${mapLoading ? 'opacity-0' : 'opacity-100'}`}
+            ></iframe>
+            <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-500 ${mapLoading ? 'opacity-100' : 'opacity-0'}`}>
+              <div className="w-6 h-6 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Mobile Cards Swiper */}
         <div className="mb-[var(--space-xl)]">
@@ -234,35 +252,43 @@ const LocationsSection = () => {
         <div id="desktop-sticky-container" className="lg:sticky lg:top-24 self-start">
           <div className="space-y-12">
             <div>
-              <h3 className="heading-h3 mb-[var(--space-xl)] whitespace-nowrap text-left">
-                <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
-                <span className="text-primary">FLAME</span>
-              </h3>
-              <p className="text-gray-700 dark:text-gray-300 text-base mb-10 max-w-sm leading-relaxed font-medium transition-colors duration-300">
-                Experience the heat near you. Browse our active restaurants or see where we're striking next.
-              </p>
+              {leftHeader && <div className="mb-[var(--space-xl)]">{leftHeader}</div>}
+
+              {!hideFindYourFlame && (
+                <>
+                  <h3 className="heading-h3 mb-[var(--space-xl)] whitespace-nowrap text-left">
+                    <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
+                    <span className="text-primary">FLAME</span>
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-300 text-base mb-10 max-w-sm leading-relaxed font-medium transition-colors duration-300">
+                    Experience the heat near you. Browse our active restaurants or see where we're striking next.
+                  </p>
+                </>
+              )}
 
               {/* Map Container */}
-              <div id="desktop-map-container" className="w-full h-[500px] bg-zinc-200 dark:bg-zinc-900 border border-black/5 dark:border-white/5 relative overflow-hidden group mb-12 transition-colors duration-300 shadow-2xl">
-                <iframe
-                  title="Flame Japanese Hibachi Location Map"
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  scrolling="no"
-                  marginHeight={0}
-                  marginWidth={0}
-                  src={mapSrc}
-                  onLoad={() => setMapLoading(false)}
-                  className={`transition-opacity duration-500 ease-in-out ${mapLoading ? 'opacity-0' : 'opacity-100'}`}
-                ></iframe>
-                {/* Loader */}
-                <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-500 ${mapLoading ? 'opacity-100' : 'opacity-0'}`}>
-                  <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+              {!hideMap && (
+                <div id="desktop-map-container" className="w-full h-[500px] bg-zinc-200 dark:bg-zinc-900 border border-black/5 dark:border-white/5 relative overflow-hidden group mb-12 transition-colors duration-300 shadow-2xl">
+                  <iframe
+                    title="Flame Japanese Hibachi Location Map"
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    scrolling="no"
+                    marginHeight={0}
+                    marginWidth={0}
+                    src={mapSrc}
+                    onLoad={() => setMapLoading(false)}
+                    className={`transition-opacity duration-500 ease-in-out ${mapLoading ? 'opacity-0' : 'opacity-100'}`}
+                  ></iframe>
+                  {/* Loader */}
+                  <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-500 ${mapLoading ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+                  </div>
+                  {/* Overlay for aesthetic */}
+                  <div className="absolute inset-0 pointer-events-none border-[10px] border-white/5 dark:border-black/5 z-10"></div>
                 </div>
-                {/* Overlay for aesthetic */}
-                <div className="absolute inset-0 pointer-events-none border-[10px] border-white/5 dark:border-black/5 z-10"></div>
-              </div>
+              )}
 
               {/* Coming Soon Section */}
               <div className="mt-12 relative">
@@ -290,16 +316,22 @@ const LocationsSection = () => {
 
         {/* Right Side: Desktop Scrollable Cards */}
         <div className="w-full flex flex-col items-end py-0">
-          <div className="block w-full max-w-[900px] pb-[438px]">
-            {/* Spacer — mirrors the left-column heading+paragraph height so the first card aligns with the map */}
+          <div className={`block w-full max-w-[900px] ${hideMap ? "" : "pb-[438px]"}`}>
+            {/* Spacer — mirrors the left-column heading height so the first card aligns with the map / leftHeader */}
             <div className="invisible" aria-hidden="true" id="desktop-spacer">
-              <h3 className="heading-h3 mb-[var(--space-xl)] whitespace-nowrap text-left">
-                <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
-                <span className="text-primary">FLAME</span>
-              </h3>
-              <p className="text-gray-700 dark:text-gray-300 text-base mb-10 max-w-sm leading-relaxed font-medium transition-colors duration-300">
-                Experience the heat near you. Browse our active restaurants or see where we're striking next.
-              </p>
+              {leftHeader ? (
+                <div className="mb-[var(--space-xl)]">{leftHeader}</div>
+              ) : (
+                <>
+                  <h3 className="heading-h3 mb-[var(--space-xl)] whitespace-nowrap text-left">
+                    <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
+                    <span className="text-primary">FLAME</span>
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-300 text-base mb-10 max-w-sm leading-relaxed font-medium transition-colors duration-300">
+                    Experience the heat near you. Browse our active restaurants or see where we're striking next.
+                  </p>
+                </>
+              )}
             </div>
             <div className="space-y-6">
               {activeLocations.map((loc, index) => (

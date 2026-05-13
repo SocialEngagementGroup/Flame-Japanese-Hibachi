@@ -53,6 +53,7 @@ const Navbar = () => {
     { name: "LOCATIONS", href: "/locations", external: false },
     { name: "PROMOTIONS", href: ORDER_URL, external: true },
     { name: "JOIN FLAME", href: ORDER_URL, external: true },
+    { name: "CONTACT", href: "/contact", external: false },
   ];
 
   return (
