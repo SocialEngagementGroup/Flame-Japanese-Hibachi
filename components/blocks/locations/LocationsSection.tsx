@@ -76,8 +76,18 @@ const LocationsSection = ({
         }
       });
 
-      // At the bottom of the page, force the last card to be active
-      const finalIndex = isAtBottom ? activeLocations.length - 1 : (bestIndex !== -1 ? bestIndex : closestIndex);
+      let finalIndex = isAtBottom ? activeLocations.length - 1 : (bestIndex !== -1 ? bestIndex : closestIndex);
+
+      // Force last card if we've scrolled 10px past the second-to-last card's activation point
+      if (finalIndex === activeLocations.length - 2 && activeLocations.length >= 2) {
+        const secondLastCard = cardRefs.current[activeLocations.length - 2];
+        if (secondLastCard) {
+          const rect = secondLastCard.getBoundingClientRect();
+          if (triggerY - rect.top > 12) {
+            finalIndex = activeLocations.length - 1;
+          }
+        }
+      }
 
       if (finalIndex !== -1) {
         setSelectedLocation((prev) => {
@@ -319,7 +329,7 @@ const LocationsSection = ({
 
         {/* Right Side: Desktop Scrollable Cards */}
         <div className="w-full flex flex-col items-start py-0">
-          <div className={`block w-full max-w-[900px] ${hideMap ? "" : "lg:pb-[81vh] pb-[var(--space-xl)]"}`}>
+          <div className={`block w-full max-w-[900px] ${hideMap ? "" : "lg:pb-[54vh] pb-[var(--space-xl)]"}`}>
             {/* Spacer — mirrors the left-column heading height so the first card aligns with the map / leftHeader */}
             <div className="invisible" aria-hidden="true" id="desktop-spacer">
               {leftHeader ? (

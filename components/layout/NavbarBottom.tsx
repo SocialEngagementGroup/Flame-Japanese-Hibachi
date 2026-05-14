@@ -51,10 +51,17 @@ const NavbarBottom = () => {
           <div className="animate-marquee [animation-duration:240s] whitespace-nowrap flex items-center gap-16 pr-16">
             {[...Array(2)].flatMap((_, i) =>
               locations.map((loc, idx) => (
-                <div key={`${i}-${idx}`} aria-hidden={i === 1} className="flex items-center gap-2 text-white/90 font-serif font-medium text-[14px] leading-[16px] tracking-[1.2px] uppercase">
+                <a
+                  key={`${i}-${idx}`}
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc + " Flame Japanese Hibachi")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-hidden={i === 1}
+                  className="flex items-center gap-2 text-white/90 hover:text-primary transition-colors font-serif font-medium text-[14px] leading-[16px] tracking-[1.2px] uppercase"
+                >
                   <img src="/locainicon/pin1.png" alt="Location" className="w-3 h-3 sm:w-4 sm:h-4 object-contain brightness-100" />
                   <span>{loc}</span>
-                </div>
+                </a>
               ))
             )}
           </div>
