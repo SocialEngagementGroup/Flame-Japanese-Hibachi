@@ -70,8 +70,12 @@ const Footer = () => {
           <div className="flex flex-col items-center lg:items-end w-full lg:w-auto lg:mt-[88px]">
             <h4 className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">DOWNLOAD OUR APP</h4>
             <div className="flex flex-col gap-4 w-full sm:w-auto items-center lg:items-end">
-              <img src="/footer-apps/app-store.svg" alt="Download on the App Store" className="h-[48px] object-contain cursor-pointer hover:opacity-80 transition-opacity" />
-              <img src="/footer-apps/google-play.svg" alt="Get it on Google Play" className="h-[48px] object-contain cursor-pointer hover:opacity-80 transition-opacity" />
+              <Link href="https://apps.apple.com/us/app/flame-japanese-hibachi/id6756082762" target="_blank">
+                <img src="/footer-apps/app-store.svg" alt="Download on the App Store" className="h-[48px] object-contain cursor-pointer hover:opacity-80 transition-opacity" />
+              </Link>
+              <Link href="https://play.google.com/store/apps/details?id=com.storefrontconsumer.flame.japanese.hibachi&hl=en&pli=1" target="_blank">
+                <img src="/footer-apps/google-play.svg" alt="Get it on Google Play" className="h-[48px] object-contain cursor-pointer hover:opacity-80 transition-opacity" />
+              </Link>
             </div>
           </div>
 

@@ -52,34 +52,37 @@ const LocationsSection = ({
       // The trigger line is exactly the top of the map box
       const triggerY = mapBox.getBoundingClientRect().top;
 
+      // Check if we are at the bottom of the page
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+
       let bestIndex = -1;
       let minDistance = Infinity;
+      let closestIndex = 0;
 
       cardRefs.current.forEach((ref, index) => {
         if (!ref) return;
         const rect = ref.getBoundingClientRect();
 
-        // 1. Check if the trigger line is inside the card
-        if (rect.top <= triggerY + 2 && rect.bottom > triggerY + 2) {
+        // 1. Check if the trigger line is inside the card (with a small buffer)
+        if (rect.top <= triggerY + 20 && rect.bottom > triggerY + 20) {
           bestIndex = index;
         }
 
-        // 2. Fallback to the closest card if we are in a gap
+        // 2. Fallback to the closest card
         const dist = Math.abs(rect.top - triggerY);
         if (dist < minDistance) {
           minDistance = dist;
-          if (bestIndex === -1) {
-            bestIndex = index; // temporary fallback
-          }
+          closestIndex = index;
         }
       });
 
-      if (bestIndex !== -1) {
-        // If the triggerY is exactly on a card, or the closest card
-        // We only switch if it's actually changing to prevent unnecessary state updates
+      // At the bottom of the page, force the last card to be active
+      const finalIndex = isAtBottom ? activeLocations.length - 1 : (bestIndex !== -1 ? bestIndex : closestIndex);
+
+      if (finalIndex !== -1) {
         setSelectedLocation((prev) => {
-          if (prev.id !== activeLocations[bestIndex].id) {
-            return activeLocations[bestIndex];
+          if (prev.id !== activeLocations[finalIndex].id) {
+            return activeLocations[finalIndex];
           }
           return prev;
         });
@@ -315,8 +318,8 @@ const LocationsSection = ({
         </div>
 
         {/* Right Side: Desktop Scrollable Cards */}
-        <div className="w-full flex flex-col items-end py-0">
-          <div className={`block w-full max-w-[900px] ${hideMap ? "" : "pb-[438px]"}`}>
+        <div className="w-full flex flex-col items-start py-0">
+          <div className={`block w-full max-w-[900px] ${hideMap ? "" : "lg:pb-[81vh] pb-[var(--space-xl)]"}`}>
             {/* Spacer — mirrors the left-column heading height so the first card aligns with the map / leftHeader */}
             <div className="invisible" aria-hidden="true" id="desktop-spacer">
               {leftHeader ? (
