@@ -10,6 +10,8 @@ type HeroProps = {
   ctaHref?: string;
   align?: "left" | "center";
   fullHeight?: boolean;
+  bgImageDesk?: string;
+  bgImageMob?: string;
 };
 
 const Hero = ({
@@ -24,6 +26,8 @@ const Hero = ({
   ctaHref = ORDER_URL,
   align = "left",
   fullHeight = true,
+  bgImageDesk = "/homepage/hero/hero-bg-desk.png",
+  bgImageMob = "/homepage/hero/hero-bg-mob.png",
 }: HeroProps) => {
   const alignmentClass =
     align === "center"
@@ -39,12 +43,12 @@ const Hero = ({
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/homepage/hero/hero-bg-desk.png"
+          src={bgImageDesk}
           alt="Flame Japanese Hibachi Hero"
           className="hidden md:block w-full h-full object-cover"
         />
         <img
-          src="/homepage/hero/hero-bg-mob.png"
+          src={bgImageMob}
           alt="Flame Japanese Hibachi Hero Mobile"
           className="block md:hidden w-full h-full object-cover"
         />
