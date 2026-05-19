@@ -101,6 +101,42 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                   </span>
                 </p>
               )}
+
+              {category.id === "boba" && (
+                <p
+                  style={{
+                    color: "#FFF",
+                    fontFamily: '"Work Sans", sans-serif',
+                    fontSize: "24px",
+                    fontStyle: "normal",
+                    lineHeight: "45px",
+                    textTransform: "uppercase",
+                    marginTop: "8px",
+                    maxWidth: "878px",
+                    width: "100%",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontWeight: 900,
+                      lineHeight: "31px",
+                      letterSpacing: "7px",
+                      display: "inline-block",
+                      marginRight: "8px",
+                    }}
+                  >
+                    Toppings:
+                  </span>
+                  <span
+                    style={{
+                      fontWeight: 500,
+                      letterSpacing: "4px",
+                    }}
+                  >
+                    Strawberry Jelly, Tapioca Boba, Strawberry Popping, Crystal Boba, Lychee Coconut Jelly, Aloe Vera Jelly, Mango Popping, Rainbow Jelly, Mango Jelly, Coffee Jelly.
+                  </span>
+                </p>
+              )}
             </div>
 
             {/* Grid of Food Cards with optimized gaps and tight responsive sizing */}
@@ -233,7 +269,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 justify-items-center sm:justify-items-start">
                 {items.map((item) => {
                   const isCardActive = activeCardId === item.id;
-                  const isLinkCard = category.id === "favorites" || category.id === "hibachi" || category.id === "combo" || category.id === "bento" || category.id === "sushi" || category.id === "fries";
+                  const isLinkCard = category.id === "favorites" || category.id === "hibachi" || category.id === "combo" || category.id === "bento" || category.id === "sushi" || category.id === "fries" || category.id === "boba";
 
                   const CardContent = (
                     <>
