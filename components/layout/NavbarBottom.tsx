@@ -21,7 +21,7 @@ const NavbarBottom = () => {
   ];
 
   return (
-    <section className="w-full bg-[#242323] py-0 flex items-center h-[50px] overflow-hidden">
+    <section className="w-full bg-[#242323] py-0 flex items-center h-[50px] overflow-hidden relative z-[1000]">
       <div className="w-full px-[var(--space-lg)] flex items-center h-full relative">
         {/* Social Icons - Left Aligned */}
         <div className="flex-none flex items-center gap-1.5 sm:gap-3 text-white z-20">

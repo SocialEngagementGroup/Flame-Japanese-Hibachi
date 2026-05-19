@@ -1,4 +1,5 @@
 import Hero from "@/components/blocks/hero/Hero";
+import InteractiveMenu from "@/components/blocks/menu/menupage/InteractiveMenu";
 
 export const metadata = {
   title: "Menu | Flame Japanese Hibachi",
@@ -24,7 +25,8 @@ export default function MenuPage() {
         bgImageMob="/menupage/hero/flame-japanese-hibachi-menu-hero-spread-desk.png"
       />
 
-      {/* Menu content sections will be added here */}
+      <InteractiveMenu />
     </div>
   );
 }
+

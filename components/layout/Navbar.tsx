@@ -58,7 +58,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`transition-all duration-300 font-serif bg-black py-5 md:py-0 border-b border-white/5 relative z-50`}
+      className={`transition-all duration-300 font-serif bg-black py-5 md:py-0 border-b border-white/5 relative ${isMobileMenuOpen ? "z-[10001]" : "z-50"}`}
     >
       <div className="w-full px-[var(--space-lg)] flex items-center justify-between relative">
         {/* Left: Mobile Sign In / Desktop Logo */}

@@ -1,0 +1,127 @@
+"use client";
+
+import React, { useState } from "react";
+
+interface Category {
+  id: string;
+  name: string;
+}
+
+interface MenuItem {
+  id: string;
+  name: string;
+  price: string;
+  tag: string;
+  image: string;
+}
+
+interface MenuMainContentProps {
+  categories: Category[];
+  menuData: Record<string, MenuItem[]>;
+}
+
+const MenuMainContent: React.FC<MenuMainContentProps> = ({
+  categories,
+  menuData,
+}) => {
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
+
+  // Toggle active card
+  const handleCardClick = (id: string) => {
+    setActiveCardId((prev) => (prev === id ? null : id));
+  };
+
+  return (
+    <div className="flex-1 space-y-16">
+      {categories.map((category) => {
+        const items = menuData[category.id] || [];
+        if (items.length === 0) return null;
+
+        return (
+          <div
+            key={category.id}
+            id={`section-${category.id}`}
+            className="scroll-mt-[175px] md:scroll-mt-[123px]"
+          >
+            {/* Category Title: Sticky with Solid Opaque Background and z-index 40 to overlap cards perfectly */}
+            <h2 className="sticky top-[175px] md:top-[123px] z-40 bg-background p-2 md:p-0 md:py-4 mb-6 font-['Raleway'] md:font-[family-name:var(--font-serif-next)] font-black text-[32px] md:text-[38px] text-[#FF7808] uppercase tracking-wide leading-[59px] md:leading-tight border-b border-[#FF7808]/10 transition-all duration-300">
+              {category.name}
+            </h2>
+
+            {/* Grid of Food Cards with optimized gaps and tight responsive sizing */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 justify-items-center sm:justify-items-start">
+              {items.map((item) => {
+                const isCardActive = activeCardId === item.id;
+
+                return (
+                  <div
+                    key={item.id}
+                    onClick={() => handleCardClick(item.id)}
+                    className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.35)] border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer"
+                  >
+                    {/* Full Box Picture Background */}
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src =
+                          "/homepage/menu/HIBACHI.png";
+                      }}
+                    />
+
+                    {/* Default Linear Gradient Shadow Overlay (Height 145px) */}
+                    <div
+                      className="absolute bottom-0 left-0 w-full h-[145px] transition-opacity duration-500 z-10 opacity-100 group-hover:opacity-0"
+                      style={{
+                        background:
+                          "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 6.92%, #000 100%)",
+                      }}
+                    />
+
+                    {/* Active / Hover Block Color Overlay (Height 145px) */}
+                    <div
+                      className={`absolute bottom-0 left-0 w-full h-[145px] bg-[#FF7808] transition-opacity duration-500 z-20 ${
+                        isCardActive
+                          ? "opacity-100"
+                          : "opacity-0 group-hover:opacity-100"
+                      }`}
+                    />
+
+                    {/* Card Text & Price Details Overlay Container */}
+                    <div className="absolute bottom-0 left-0 w-full h-[145px] p-4 flex flex-col justify-end z-30 pointer-events-none">
+                      <div className="mb-2">
+                        {/* Tag (BEST SELLER) */}
+                        <span
+                          className={`text-[10px] font-[family-name:var(--font-serif-next)] font-black tracking-[2px] uppercase transition-colors duration-300 block mb-1 leading-none ${
+                            isCardActive
+                              ? "text-white"
+                              : "text-[#FF7808] group-hover:text-white"
+                          }`}
+                        >
+                          {item.tag}
+                        </span>
+
+                        {/* Title */}
+                        <h3 className="text-base font-[family-name:var(--font-serif-next)] font-black uppercase text-white tracking-wide truncate leading-tight">
+                          {item.name}
+                        </h3>
+                      </div>
+
+                      {/* Price Text (Work Sans) */}
+                      <span className="text-[36px] font-bold text-white font-sans leading-none">
+                        ${item.price}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default MenuMainContent;
