@@ -269,7 +269,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 justify-items-center sm:justify-items-start">
                 {items.map((item) => {
                   const isCardActive = activeCardId === item.id;
-                  const isLinkCard = category.id === "favorites" || category.id === "hibachi" || category.id === "combo" || category.id === "bento" || category.id === "sushi" || category.id === "fries" || category.id === "boba";
+                  const isLinkCard = category.id === "favorites" || category.id === "hibachi" || category.id === "combo" || category.id === "bento" || category.id === "sushi" || category.id === "fries" || category.id === "boba" || category.id === "drinks" || category.id === "addons";
 
                   const CardContent = (
                     <>
