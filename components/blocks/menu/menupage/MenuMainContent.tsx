@@ -13,6 +13,7 @@ interface MenuItem {
   price: string;
   tag: string;
   image: string;
+  subCategory?: string;
 }
 
 interface MenuMainContentProps {
@@ -96,103 +97,230 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                       letterSpacing: "4px",
                     }}
                   >
-                    Rim Fire, Mango Habanero, Hot, Mild, Thai Chilli, Lemon, Pepper, Garlic Parmesan, Buffalo Gold, Teriyaki, Sweet & Tangy, Honey Garlic, Honey BBQ, Chipotle BBQ, Old Bay.
+                    Rim Fire, Mango Habanero, Hot, Mild, Thai Chilli, Lemon Pepper, Garlic Parmesan, Buffalo Gold, Teriyaki, Sweet & Tangy, Honey Garlic, Honey BBQ, Chipotle BBQ, Old Bay.
                   </span>
                 </p>
               )}
             </div>
 
             {/* Grid of Food Cards with optimized gaps and tight responsive sizing */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 justify-items-center sm:justify-items-start">
-              {items.map((item) => {
-                const isCardActive = activeCardId === item.id;
-                const isLinkCard = category.id === "favorites" || category.id === "hibachi" || category.id === "combo" || category.id === "bento" || category.id === "sushi";
-
-                const CardContent = (
-                  <>
-                    {/* Full Box Picture Background */}
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src =
-                          "/homepage/menu/HIBACHI.png";
-                      }}
-                    />
-
-                    {/* Default Linear Gradient Shadow Overlay (Height 145px) */}
-                    <div
-                      className="absolute bottom-0 left-0 w-full h-[145px] transition-opacity duration-500 z-10 opacity-100 group-hover:opacity-0"
+            {category.id === "wings" ? (
+              <div className="space-y-12 mt-6">
+                {Object.entries(
+                  items.reduce((acc, item) => {
+                    const sub = item.subCategory || "OTHER";
+                    if (!acc[sub]) acc[sub] = [];
+                    acc[sub].push(item);
+                    return acc;
+                  }, {} as Record<string, typeof items>)
+                ).map(([subTitle, subItems]) => (
+                  <div key={subTitle}>
+                    <h3
+                      className="mb-4"
                       style={{
-                        background:
-                          "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 6.92%, #000 100%)",
+                        color: "#FFF",
+                        fontFamily: "var(--font-serif-next), sans-serif",
+                        fontSize: "24px",
+                        fontStyle: "normal",
+                        fontWeight: 900,
+                        lineHeight: "normal",
+                        textTransform: "uppercase",
                       }}
-                    />
+                    >
+                      {subTitle}
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 justify-items-center sm:justify-items-start">
+                      {subItems.map((item) => {
+                        const isCardActive = activeCardId === item.id;
+                        return (
+                          <a
+                            key={item.id}
+                            href="https://order.online/business/~13770567"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.35)] border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
+                          >
+                            {/* Full Box Picture Background */}
+                            <img
+                              src={item.image}
+                              alt={item.name}
+                              className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src =
+                                  "/homepage/menu/HIBACHI.png";
+                              }}
+                            />
 
-                    {/* Active / Hover Block Color Overlay (Height 145px) */}
-                    <div
-                      className={`absolute bottom-0 left-0 w-full h-[145px] bg-[#FF7808] transition-opacity duration-500 z-20 ${isCardActive
-                        ? "opacity-100"
-                        : "opacity-0 group-hover:opacity-100"
-                        }`}
-                    />
+                            {/* Default Linear Gradient Shadow Overlay */}
+                            <div
+                              className="absolute bottom-0 left-0 w-full h-[165px] transition-opacity duration-500 z-10 opacity-100 group-hover:opacity-0"
+                              style={{
+                                background:
+                                  "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 6.92%, #000 100%)",
+                              }}
+                            />
 
-                    {/* Orange Bottom Border on Hover */}
-                    <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#FF7808] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-50" />
+                            {/* Active / Hover Block Color Overlay */}
+                            <div
+                              className={`absolute bottom-0 left-0 w-full h-[165px] bg-[#FF7808] transition-opacity duration-500 z-20 ${isCardActive
+                                ? "opacity-100"
+                                : "opacity-0 group-hover:opacity-100"
+                                }`}
+                            />
 
-                    {/* Card Text & Price Details Overlay Container */}
-                    <div className="absolute bottom-0 left-0 w-full h-[145px] p-4 flex flex-col justify-end z-30 pointer-events-none">
-                      <div className="mb-2">
-                        {/* Tag (BEST SELLER) */}
-                        <span
-                          className={`text-[10px] font-[family-name:var(--font-serif-next)] font-black tracking-[2px] uppercase transition-colors duration-300 block mb-1 leading-none ${isCardActive
-                            ? "text-white"
-                            : "text-[#FF7808] group-hover:text-white"
-                            }`}
-                        >
-                          {item.tag}
-                        </span>
+                            {/* Orange Bottom Border on Hover */}
+                            <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#FF7808] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-50" />
 
-                        {/* Title */}
-                        <h3 className="text-base font-[family-name:var(--font-serif-next)] font-black uppercase text-white tracking-wide truncate leading-tight">
-                          {item.name}
-                        </h3>
-                      </div>
+                            {/* Card Text & Price Details Overlay Container */}
+                            <div className="absolute bottom-0 left-0 w-full p-4 flex flex-col justify-end z-30 pointer-events-none h-[165px]">
+                              {/* Tag */}
+                              <span
+                                style={{
+                                  fontFamily: "Raleway",
+                                  fontSize: "10px",
+                                  fontStyle: "normal",
+                                  fontWeight: 900,
+                                  lineHeight: "40px",
+                                  letterSpacing: "2px",
+                                  textTransform: "uppercase",
+                                }}
+                                className={`transition-colors duration-300 block truncate mb-1 ${isCardActive ? "text-white" : "text-[#FF7808] group-hover:text-white"}`}
+                              >
+                                {item.tag}
+                              </span>
 
-                      {/* Price Text (Work Sans) */}
-                      <span className="text-[36px] font-bold text-white font-sans leading-none mt-5">
-                        ${item.price}
-                      </span>
+                              {/* Title (e.g. 5 PIECES) */}
+                              <h3
+                                style={{
+                                  color: "#FFF",
+                                  fontFamily: '"Work Sans", sans-serif',
+                                  fontSize: "36px",
+                                  fontStyle: "normal",
+                                  fontWeight: 900,
+                                  lineHeight: "20px",
+                                  textTransform: "uppercase",
+                                }}
+                                className="mb-1"
+                              >
+                                {item.name}
+                              </h3>
+
+                              {/* Price Container */}
+                              <div className="flex items-center mt-1 pointer-events-auto h-[59px]">
+                                <span
+                                  style={{
+                                    color: "#FFF",
+                                    fontFamily: '"Work Sans", sans-serif',
+                                    fontSize: "24px",
+                                    fontStyle: "normal",
+                                    fontWeight: 700,
+                                    lineHeight: "59px",
+                                    textTransform: "uppercase",
+                                  }}
+                                >
+                                  ${item.price}
+                                </span>
+                              </div>
+                            </div>
+                          </a>
+                        );
+                      })}
                     </div>
-                  </>
-                );
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 justify-items-center sm:justify-items-start">
+                {items.map((item) => {
+                  const isCardActive = activeCardId === item.id;
+                  const isLinkCard = category.id === "favorites" || category.id === "hibachi" || category.id === "combo" || category.id === "bento" || category.id === "sushi";
 
-                if (isLinkCard) {
+                  const CardContent = (
+                    <>
+                      {/* Full Box Picture Background */}
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src =
+                            "/homepage/menu/HIBACHI.png";
+                        }}
+                      />
+
+                      {/* Default Linear Gradient Shadow Overlay (Height 145px) */}
+                      <div
+                        className="absolute bottom-0 left-0 w-full h-[145px] transition-opacity duration-500 z-10 opacity-100 group-hover:opacity-0"
+                        style={{
+                          background:
+                            "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 6.92%, #000 100%)",
+                        }}
+                      />
+
+                      {/* Active / Hover Block Color Overlay (Height 145px) */}
+                      <div
+                        className={`absolute bottom-0 left-0 w-full h-[145px] bg-[#FF7808] transition-opacity duration-500 z-20 ${isCardActive
+                          ? "opacity-100"
+                          : "opacity-0 group-hover:opacity-100"
+                          }`}
+                      />
+
+                      {/* Orange Bottom Border on Hover */}
+                      <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#FF7808] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-50" />
+
+                      {/* Card Text & Price Details Overlay Container */}
+                      <div className="absolute bottom-0 left-0 w-full h-[145px] p-4 flex flex-col justify-end z-30 pointer-events-none">
+                        <div className="mb-2">
+                          {/* Tag (BEST SELLER) */}
+                          <span
+                            className={`text-[10px] font-[family-name:var(--font-serif-next)] font-black tracking-[2px] uppercase transition-colors duration-300 block mb-1 leading-none ${isCardActive
+                              ? "text-white"
+                              : "text-[#FF7808] group-hover:text-white"
+                              }`}
+                          >
+                            {item.tag}
+                          </span>
+
+                          {/* Title */}
+                          <h3 className="text-base font-[family-name:var(--font-serif-next)] font-black uppercase text-white tracking-wide truncate leading-tight">
+                            {item.name}
+                          </h3>
+                        </div>
+
+                        {/* Price Text (Work Sans) */}
+                        <span className="text-[36px] font-bold text-white font-sans leading-none mt-5">
+                          ${item.price}
+                        </span>
+                      </div>
+                    </>
+                  );
+
+                  if (isLinkCard) {
+                    return (
+                      <a
+                        key={item.id}
+                        href="https://order.online/business/~13770567"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.35)] border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
+                      >
+                        {CardContent}
+                      </a>
+                    );
+                  }
+
                   return (
-                    <a
+                    <div
                       key={item.id}
-                      href="https://order.online/business/~13770567"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.35)] border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
+                      onClick={() => handleCardClick(item.id)}
+                      className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.35)] border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer"
                     >
                       {CardContent}
-                    </a>
+                    </div>
                   );
-                }
-
-                return (
-                  <div
-                    key={item.id}
-                    onClick={() => handleCardClick(item.id)}
-                    className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.35)] border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer"
-                  >
-                    {CardContent}
-                  </div>
-                );
-              })}
-            </div>
+                })}
+              </div>
+            )}
           </div>
         );
       })}

@@ -28,6 +28,7 @@ const menuData: Record<
     price: string;
     tag: string;
     image: string;
+    subCategory?: string;
   }>
 > = {
   favorites: [
@@ -324,26 +325,117 @@ const menuData: Record<
   ],
   wings: [
     {
-      id: "wing-1",
-      name: "6PC HONEY WINGS",
-      price: "8.85",
-      tag: "WINGS",
-      image: "/homepage/menu/WINGS  TENDERS.png",
+      id: "wing-bb-5",
+      name: "5 PIECES",
+      price: "7.99",
+      tag: "Rim Fire",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "BUFFALO/BONELESS WINGS"
     },
     {
-      id: "wing-2",
-      name: "10PC CRISPY WINGS",
-      price: "12.85",
-      tag: "WINGS",
-      image: "/homepage/menu/WINGS  TENDERS.png",
+      id: "wing-bb-10",
+      name: "10 PIECES",
+      price: "14.99",
+      tag: "Mango Habanero",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "BUFFALO/BONELESS WINGS"
     },
     {
-      id: "wing-3",
-      name: "SPICY TENDERS",
-      price: "9.85",
-      tag: "TENDERS",
-      image: "/homepage/menu/WINGS  TENDERS.png",
+      id: "wing-bb-20",
+      name: "20 PIECES",
+      price: "27.99",
+      tag: "Hot",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "BUFFALO/BONELESS WINGS"
     },
+    {
+      id: "wing-bb-30",
+      name: "30 PIECES",
+      price: "39.99",
+      tag: "Mild",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "BUFFALO/BONELESS WINGS"
+    },
+    {
+      id: "wing-bb-50",
+      name: "50 PIECES",
+      price: "66.99",
+      tag: "Thai Chilli",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "BUFFALO/BONELESS WINGS"
+    },
+    {
+      id: "wing-bb-100",
+      name: "100 PIECES",
+      price: "129.99",
+      tag: "Lemon Pepper",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "BUFFALO/BONELESS WINGS"
+    },
+    {
+      id: "wing-combo-5",
+      name: "5 PIECES",
+      price: "10.99",
+      tag: "Garlic Parmesan",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "WINGS combo with fries & drink"
+    },
+    {
+      id: "wing-combo-10",
+      name: "10 PIECES",
+      price: "16.99",
+      tag: "Buffalo Gold",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "WINGS combo with fries & drink"
+    },
+    {
+      id: "tender-3",
+      name: "3 PIECES",
+      price: "7.99",
+      tag: "Teriyaki",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "CHICKEN TENDERS"
+    },
+    {
+      id: "tender-4",
+      name: "4 PIECES",
+      price: "9.99",
+      tag: "Sweet & Tangy",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "CHICKEN TENDERS"
+    },
+    {
+      id: "tender-5",
+      name: "5 PIECES",
+      price: "11.99",
+      tag: "Honey Garlic",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "CHICKEN TENDERS"
+    },
+    {
+      id: "tender-combo-3",
+      name: "3 PIECES",
+      price: "10.99",
+      tag: "Honey BBQ",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "CHICKEN TENDERS COMBO WITH FRIES & DRINK"
+    },
+    {
+      id: "tender-combo-4",
+      name: "4 PIECES",
+      price: "12.99",
+      tag: "Chipotle BBQ",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "CHICKEN TENDERS COMBO WITH FRIES & DRINK"
+    },
+    {
+      id: "tender-combo-5",
+      name: "5 PIECES",
+      price: "14.99",
+      tag: "Old Bay",
+      image: "/homepage/menu/wings-bg.png",
+      subCategory: "CHICKEN TENDERS COMBO WITH FRIES & DRINK"
+    }
   ],
   fries: [
     {
