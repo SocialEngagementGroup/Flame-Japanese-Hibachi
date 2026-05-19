@@ -33,7 +33,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
   };
 
   return (
-    <div className="flex-1 space-y-16">
+    <div className="flex-1 space-y-16 isolate">
       {categories.map((category) => {
         const items = menuData[category.id] || [];
         if (items.length === 0) return null;
@@ -45,15 +45,15 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
             className="scroll-mt-[175px] md:scroll-mt-[123px]"
           >
             {/* Category Title Container: Sticky with Solid Opaque Background and z-index 40 to overlap cards perfectly */}
-            <div className="sticky top-[175px] md:top-[123px] z-40 bg-background p-2 md:p-0 md:py-4 mb-6 border-b border-[#FF7808]/10 transition-all duration-300">
+            <div className="sticky top-[175px] md:top-[123px] z-40 bg-background p-2 md:p-0 md:py-4 mb-6 transition-all duration-300 isolate">
               <h2 className="font-['Raleway'] md:font-[family-name:var(--font-serif-next)] font-black text-[32px] md:text-[38px] text-[#FF7808] uppercase tracking-wide leading-none md:leading-tight">
                 {category.name}
               </h2>
 
               {category.id === "hibachi" && (
                 <p
+                  className="text-[#71717b] dark:text-[#FFF]"
                   style={{
-                    color: "#FFF",
                     fontFamily: "Raleway, sans-serif",
                     fontSize: "16px",
                     fontStyle: "normal",
@@ -68,8 +68,8 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
 
               {category.id === "wings" && (
                 <p
+                  className="text-[#71717b] dark:text-[#FFF]"
                   style={{
-                    color: "#FFF",
                     fontFamily: '"Work Sans", sans-serif',
                     fontSize: "24px",
                     fontStyle: "normal",
@@ -102,41 +102,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                 </p>
               )}
 
-              {category.id === "boba" && (
-                <p
-                  style={{
-                    color: "#FFF",
-                    fontFamily: '"Work Sans", sans-serif',
-                    fontSize: "24px",
-                    fontStyle: "normal",
-                    lineHeight: "45px",
-                    textTransform: "uppercase",
-                    marginTop: "8px",
-                    maxWidth: "878px",
-                    width: "100%",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontWeight: 900,
-                      lineHeight: "31px",
-                      letterSpacing: "7px",
-                      display: "inline-block",
-                      marginRight: "8px",
-                    }}
-                  >
-                    Toppings:
-                  </span>
-                  <span
-                    style={{
-                      fontWeight: 500,
-                      letterSpacing: "4px",
-                    }}
-                  >
-                    Strawberry Jelly, Tapioca Boba, Strawberry Popping, Crystal Boba, Lychee Coconut Jelly, Aloe Vera Jelly, Mango Popping, Rainbow Jelly, Mango Jelly, Coffee Jelly.
-                  </span>
-                </p>
-              )}
+
             </div>
 
             {/* Grid of Food Cards with optimized gaps and tight responsive sizing */}
@@ -165,7 +131,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                     >
                       {subTitle}
                     </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 justify-items-center sm:justify-items-start">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 justify-items-center sm:justify-items-start p-4 -m-4 overflow-hidden isolate">
                       {subItems.map((item) => {
                         const isCardActive = activeCardId === item.id;
                         return (
@@ -174,7 +140,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                             href="https://order.online/business/~13770567"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.35)] border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
+                            className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
                           >
                             {/* Full Box Picture Background */}
                             <img
@@ -266,7 +232,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 justify-items-center sm:justify-items-start">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 justify-items-center sm:justify-items-start p-4 -m-4 overflow-hidden isolate">
                 {items.map((item) => {
                   const isCardActive = activeCardId === item.id;
                   const isLinkCard = category.id === "favorites" || category.id === "hibachi" || category.id === "combo" || category.id === "bento" || category.id === "sushi" || category.id === "fries" || category.id === "boba" || category.id === "drinks" || category.id === "addons";
@@ -338,7 +304,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                         href="https://order.online/business/~13770567"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.35)] border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
+                        className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
                       >
                         {CardContent}
                       </a>
@@ -349,7 +315,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                     <div
                       key={item.id}
                       onClick={() => handleCardClick(item.id)}
-                      className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.35)] border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer"
+                      className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer"
                     >
                       {CardContent}
                     </div>

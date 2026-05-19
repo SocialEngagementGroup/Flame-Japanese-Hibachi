@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import MenuSidebar from "./MenuSidebar";
 import MenuMainContent from "./MenuMainContent";
 import MenuCTA from "./MenuCTA";
+import CateringCTA from "./CateringCTA";
 
 // Menu categories definition
 const categories = [
@@ -719,7 +720,7 @@ const InteractiveMenu = () => {
   };
 
   return (
-    <section className="w-full bg-background text-foreground pt-0 pb-12 md:py-20 transition-colors duration-300">
+    <section className="w-full bg-background text-foreground pt-0 md:pt-20 pb-0 transition-colors duration-300">
       <div className="w-full md:px-8 xl:px-12">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 relative">
           <MenuSidebar
@@ -734,6 +735,7 @@ const InteractiveMenu = () => {
         </div>
       </div>
       <MenuCTA />
+      <CateringCTA />
     </section>
   );
 };
