@@ -440,14 +440,7 @@ const menuData: Record<
   fries: [
     {
       id: "fry-1",
-      name: "FLAME LOADED FRIES",
-      price: "7.85",
-      tag: "FRIES",
-      image: "/homepage/menu/FLAME LOADED FRIES.png",
-    },
-    {
-      id: "fry-2",
-      name: "DOUBLE CHEESE FRIES",
+      name: "LOADED TERIYAKI FRIES",
       price: "9.85",
       tag: "FRIES",
       image: "/homepage/menu/FLAME LOADED FRIES.png",
