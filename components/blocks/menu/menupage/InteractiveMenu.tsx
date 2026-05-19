@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import MenuSidebar from "./MenuSidebar";
 import MenuMainContent from "./MenuMainContent";
+import MenuCTA from "./MenuCTA";
 
 // Menu categories definition
 const categories = [
@@ -732,6 +733,7 @@ const InteractiveMenu = () => {
           />
         </div>
       </div>
+      <MenuCTA />
     </section>
   );
 };
