@@ -106,13 +106,10 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 justify-items-center sm:justify-items-start">
               {items.map((item) => {
                 const isCardActive = activeCardId === item.id;
+                const isFavorite = category.id === "favorites";
 
-                return (
-                  <div
-                    key={item.id}
-                    onClick={() => handleCardClick(item.id)}
-                    className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.35)] border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer"
-                  >
+                const CardContent = (
+                  <>
                     {/* Full Box Picture Background */}
                     <img
                       src={item.image}
@@ -141,6 +138,9 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                         }`}
                     />
 
+                    {/* Orange Bottom Border on Hover */}
+                    <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#FF7808] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-50" />
+
                     {/* Card Text & Price Details Overlay Container */}
                     <div className="absolute bottom-0 left-0 w-full h-[145px] p-4 flex flex-col justify-end z-30 pointer-events-none">
                       <div className="mb-2">
@@ -165,6 +165,30 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                         ${item.price}
                       </span>
                     </div>
+                  </>
+                );
+
+                if (isFavorite) {
+                  return (
+                    <a
+                      key={item.id}
+                      href="https://order.online/business/~13770567"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.35)] border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
+                    >
+                      {CardContent}
+                    </a>
+                  );
+                }
+
+                return (
+                  <div
+                    key={item.id}
+                    onClick={() => handleCardClick(item.id)}
+                    className="w-[272px] h-[355px] flex flex-col bg-zinc-950 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.35)] border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer"
+                  >
+                    {CardContent}
                   </div>
                 );
               })}
