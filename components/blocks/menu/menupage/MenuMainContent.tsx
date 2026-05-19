@@ -106,7 +106,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 justify-items-center sm:justify-items-start">
               {items.map((item) => {
                 const isCardActive = activeCardId === item.id;
-                const isFavorite = category.id === "favorites";
+                const isLinkCard = category.id === "favorites" || category.id === "hibachi";
 
                 const CardContent = (
                   <>
@@ -168,7 +168,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                   </>
                 );
 
-                if (isFavorite) {
+                if (isLinkCard) {
                   return (
                     <a
                       key={item.id}
