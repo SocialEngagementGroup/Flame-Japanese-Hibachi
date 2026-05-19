@@ -52,6 +52,13 @@ const menuData: Record<
       tag: "BENTO",
       image: "/homepage/menu/BENTO.png",
     },
+    {
+      id: "fav-4",
+      name: "STEAK HIBACHI",
+      price: "12.85",
+      tag: "HIBACHI",
+      image: "/homepage/menu/HIBACHI.png",
+    },
   ],
   promotions: [
     {

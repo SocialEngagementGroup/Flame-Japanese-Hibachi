@@ -43,10 +43,64 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
             id={`section-${category.id}`}
             className="scroll-mt-[175px] md:scroll-mt-[123px]"
           >
-            {/* Category Title: Sticky with Solid Opaque Background and z-index 40 to overlap cards perfectly */}
-            <h2 className="sticky top-[175px] md:top-[123px] z-40 bg-background p-2 md:p-0 md:py-4 mb-6 font-['Raleway'] md:font-[family-name:var(--font-serif-next)] font-black text-[32px] md:text-[38px] text-[#FF7808] uppercase tracking-wide leading-[59px] md:leading-tight border-b border-[#FF7808]/10 transition-all duration-300">
-              {category.name}
-            </h2>
+            {/* Category Title Container: Sticky with Solid Opaque Background and z-index 40 to overlap cards perfectly */}
+            <div className="sticky top-[175px] md:top-[123px] z-40 bg-background p-2 md:p-0 md:py-4 mb-6 border-b border-[#FF7808]/10 transition-all duration-300">
+              <h2 className="font-['Raleway'] md:font-[family-name:var(--font-serif-next)] font-black text-[32px] md:text-[38px] text-[#FF7808] uppercase tracking-wide leading-none md:leading-tight">
+                {category.name}
+              </h2>
+
+              {category.id === "hibachi" && (
+                <p
+                  style={{
+                    color: "#FFF",
+                    fontFamily: "Raleway, sans-serif",
+                    fontSize: "16px",
+                    fontStyle: "normal",
+                    fontWeight: 300,
+                    lineHeight: "59px",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Comes with your choice of any two sides
+                </p>
+              )}
+
+              {category.id === "wings" && (
+                <p
+                  style={{
+                    color: "#FFF",
+                    fontFamily: '"Work Sans", sans-serif',
+                    fontSize: "24px",
+                    fontStyle: "normal",
+                    lineHeight: "45px",
+                    textTransform: "uppercase",
+                    marginTop: "8px",
+                    maxWidth: "878px",
+                    width: "100%",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontWeight: 900,
+                      lineHeight: "31px",
+                      letterSpacing: "7px",
+                      display: "inline-block",
+                      marginRight: "8px",
+                    }}
+                  >
+                    Flavors:
+                  </span>
+                  <span
+                    style={{
+                      fontWeight: 500,
+                      letterSpacing: "4px",
+                    }}
+                  >
+                    Rim Fire, Mango Habanero, Hot, Mild, Thai Chilli, Lemon, Pepper, Garlic Parmesan, Buffalo Gold, Teriyaki, Sweet & Tangy, Honey Garlic, Honey BBQ, Chipotle BBQ, Old Bay.
+                  </span>
+                </p>
+              )}
+            </div>
 
             {/* Grid of Food Cards with optimized gaps and tight responsive sizing */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 justify-items-center sm:justify-items-start">
@@ -81,11 +135,10 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
 
                     {/* Active / Hover Block Color Overlay (Height 145px) */}
                     <div
-                      className={`absolute bottom-0 left-0 w-full h-[145px] bg-[#FF7808] transition-opacity duration-500 z-20 ${
-                        isCardActive
-                          ? "opacity-100"
-                          : "opacity-0 group-hover:opacity-100"
-                      }`}
+                      className={`absolute bottom-0 left-0 w-full h-[145px] bg-[#FF7808] transition-opacity duration-500 z-20 ${isCardActive
+                        ? "opacity-100"
+                        : "opacity-0 group-hover:opacity-100"
+                        }`}
                     />
 
                     {/* Card Text & Price Details Overlay Container */}
@@ -93,11 +146,10 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                       <div className="mb-2">
                         {/* Tag (BEST SELLER) */}
                         <span
-                          className={`text-[10px] font-[family-name:var(--font-serif-next)] font-black tracking-[2px] uppercase transition-colors duration-300 block mb-1 leading-none ${
-                            isCardActive
-                              ? "text-white"
-                              : "text-[#FF7808] group-hover:text-white"
-                          }`}
+                          className={`text-[10px] font-[family-name:var(--font-serif-next)] font-black tracking-[2px] uppercase transition-colors duration-300 block mb-1 leading-none ${isCardActive
+                            ? "text-white"
+                            : "text-[#FF7808] group-hover:text-white"
+                            }`}
                         >
                           {item.tag}
                         </span>
@@ -109,7 +161,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                       </div>
 
                       {/* Price Text (Work Sans) */}
-                      <span className="text-[36px] font-bold text-white font-sans leading-none">
+                      <span className="text-[36px] font-bold text-white font-sans leading-none mt-5">
                         ${item.price}
                       </span>
                     </div>
