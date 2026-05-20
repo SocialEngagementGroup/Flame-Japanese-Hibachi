@@ -265,6 +265,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                         fontWeight: 900,
                         lineHeight: "normal",
                         textTransform: "uppercase",
+                        paddingBottom: "15px",
                       }}
                     >
                       {subTitle}
