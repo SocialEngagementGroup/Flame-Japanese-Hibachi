@@ -64,7 +64,7 @@ const MenuSidebar: React.FC<MenuSidebarProps> = ({
       </div>
 
       {/* MOBILE/TABLET STICKY HEADER: Horizontal Scroll Categories */}
-      <div className="lg:hidden w-full sticky top-[120px] md:top-[114px] z-40 bg-background border-b border-[#FF7808]/20 overflow-hidden">
+      <div className="lg:hidden w-full sticky top-[120px] max-[499px]:top-[117px] md:top-[114px] z-40 bg-background border-b border-[#FF7808]/20 overflow-hidden">
         <div
           ref={mobileNavRef}
           className="flex gap-6 overflow-x-auto scrollbar-hide whitespace-nowrap px-6"

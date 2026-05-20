@@ -235,19 +235,19 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
             className="scroll-mt-[175px] md:scroll-mt-[123px]"
           >
             {/* Category Title Container: Sticky with Solid Opaque Background and z-index 40 to overlap cards perfectly */}
-            <div className="sticky top-[175px] md:top-[123px] z-40 bg-background p-2 md:p-0 md:py-4 mb-6 transition-all duration-300 isolate ml-[13px] md:ml-0">
-              <h2 className="font-['Raleway'] md:font-[family-name:var(--font-serif-next)] font-black text-[32px] md:text-[38px] text-[#FF7808] uppercase tracking-wide leading-none md:leading-tight">
+            <div className="sticky top-[175px] md:top-[123px] z-40 bg-background p-2 md:p-0 md:py-4 mb-6 transition-all duration-300 isolate">
+              <h2 className="ml-[13px] md:ml-0 font-['Raleway'] md:font-[family-name:var(--font-serif-next)] font-black text-[32px] md:text-[38px] text-[#FF7808] uppercase tracking-wide leading-none md:leading-tight">
                 {category.name}
               </h2>
 
               {category.id === "hibachi" && (
-                <p className="font-sans text-[14px] md:font-serif md:text-[16px] text-black dark:text-white md:text-[#71717b] md:dark:text-white font-normal md:font-light not-italic leading-[23px] md:leading-[59px] uppercase">
+                <p className="ml-[13px] md:ml-0 font-sans text-[14px] md:font-serif md:text-[16px] text-black dark:text-white md:text-[#71717b] md:dark:text-white font-normal md:font-light not-italic leading-[23px] md:leading-[59px] uppercase">
                   Comes with your choice of any two sides
                 </p>
               )}
 
               {category.id === "wings" && (
-                <p className="font-sans text-[14px] md:text-[24px] text-black dark:text-white md:text-[#71717b] md:dark:text-white font-normal not-italic leading-[23px] md:leading-[45px] uppercase mt-2 max-w-[878px] w-full">
+                <p className="ml-[13px] md:ml-0 font-sans text-[14px] md:text-[24px] text-black dark:text-white md:text-[#71717b] md:dark:text-white font-normal not-italic leading-[23px] md:leading-[45px] uppercase mt-2 max-w-[878px] w-full">
                   <span className="font-normal md:font-black tracking-[1px] md:tracking-[7px] inline-block mr-2 md:leading-[31px]">
                     Flavors:
                   </span>{" "}
@@ -271,7 +271,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                 ).map(([subTitle, subItems]) => (
                   <div key={subTitle}>
                     <h3
-                      className="mb-4"
+                      className="mb-4 ml-[20px] md:ml-0"
                       style={{
                         color: "#FFF",
                         fontFamily: "var(--font-serif-next), sans-serif",
@@ -292,7 +292,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                           return renderWingCard(item, isCardActive);
                         })}
                       </div>
-                      
+
                       {/* MOBILE/TABLET SWIPER */}
                       <div className="xl:hidden w-full -ml-4 pl-4 py-4">
                         <Swiper
@@ -323,7 +323,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                     return renderRegularCard(item, category, isCardActive);
                   })}
                 </div>
-                
+
                 {/* MOBILE/TABLET SWIPER */}
                 <div className="xl:hidden w-full -ml-4 pl-4 py-4">
                   <Swiper
