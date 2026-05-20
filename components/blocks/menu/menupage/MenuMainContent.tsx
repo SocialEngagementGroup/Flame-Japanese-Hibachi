@@ -48,7 +48,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
       href="https://order.online/business/~13770567"
       target="_blank"
       rel="noopener noreferrer"
-      className="w-full max-w-[420px] h-[300px] md:h-[355px] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
+      className="w-full min-h-[300px] md:min-h-[355px] aspect-[1] sm:aspect-[6/5] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
     >
       {/* Full Box Picture Background */}
       <img
@@ -202,7 +202,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
         href="https://order.online/business/~13770567"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full max-w-[420px] h-[300px] md:h-[355px] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
+        className="w-full min-h-[300px] md:min-h-[355px] aspect-[1] sm:aspect-[6/5] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
       >
         {CardContent}
       </a>
@@ -233,12 +233,22 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                 </p>
               )}
               {category.id === "wings" && (
-                <p className="ml-[13px] md:ml-0 font-sans text-[14px] md:text-[24px] text-black dark:text-white md:text-[#71717b] md:dark:text-white font-normal not-italic leading-[23px] md:leading-[45px] uppercase mt-2 max-w-[878px] w-full">
+                <p className="ml-[13px] md:ml-0 font-sans text-[14px] md:text-[24px] text-black dark:text-white md:text-[#71717b] md:dark:text-white font-normal not-italic leading-[23px] md:leading-[45px] uppercase mt-2 w-full">
                   <span className="font-normal md:font-black tracking-[1px] md:tracking-[7px] inline-block mr-2 md:leading-[31px]">
                     Flavors:
                   </span>{" "}
                   <span className="font-normal md:font-medium tracking-[0.5px] md:tracking-[4px]">
                     Rim Fire, Mango Habanero, Hot, Mild, Thai Chilli, Lemon Pepper, Garlic Parmesan, Buffalo Gold, Teriyaki, Sweet & Tangy, Honey Garlic, Honey BBQ, Chipotle BBQ, Old Bay.
+                  </span>
+                </p>
+              )}
+              {category.id === "boba" && (
+                <p className="ml-[13px] md:ml-0 font-sans text-[14px] md:text-[24px] text-black dark:text-white md:text-[#71717b] md:dark:text-white font-normal not-italic leading-[23px] md:leading-[45px] uppercase mt-2 w-full">
+                  <span className="font-normal md:font-black tracking-[1px] md:tracking-[7px] inline-block mr-2 md:leading-[31px]">
+                    Toppings:
+                  </span>{" "}
+                  <span className="font-normal md:font-medium tracking-[0.5px] md:tracking-[4px]">
+                    Strawberry Jelly, Tapioca Boba, Strawberry Popping, Crystal Boba, Lychee Coconut Jelly, Aloe Vera Jelly, Mango Popping, Rainbow Jelly, Mango Jelly, Coffee Jelly.
                   </span>
                 </p>
               )}
