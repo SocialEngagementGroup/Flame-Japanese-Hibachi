@@ -136,8 +136,6 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
   );
 
   const renderRegularCard = (item: MenuItem, category: Category, isCardActive: boolean) => {
-    const isLinkCard = category.id === "favorites" || category.id === "hibachi" || category.id === "combo" || category.id === "bento" || category.id === "sushi" || category.id === "fries" || category.id === "boba" || category.id === "drinks" || category.id === "addons";
-
     const CardContent = (
       <>
         {/* Full Box Picture Background */}
@@ -198,28 +196,16 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
       </>
     );
 
-    if (isLinkCard) {
-      return (
-        <a
-          key={item.id}
-          href="https://order.online/business/~13770567"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full max-w-[420px] h-[300px] md:h-[355px] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
-        >
-          {CardContent}
-        </a>
-      );
-    }
-
     return (
-      <div
+      <a
         key={item.id}
-        onClick={() => handleCardClick(item.id)}
-        className="w-full max-w-[420px] h-[300px] md:h-[355px] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer"
+        href="https://order.online/business/~13770567"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full max-w-[420px] h-[300px] md:h-[355px] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
       >
         {CardContent}
-      </div>
+      </a>
     );
   };
 
@@ -271,9 +257,8 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                 ).map(([subTitle, subItems]) => (
                   <div key={subTitle}>
                     <h3
-                      className="mb-4 ml-[20px] md:ml-0"
+                      className="ml-[20px] md:ml-0 text-black dark:text-white"
                       style={{
-                        color: "#FFF",
                         fontFamily: "var(--font-serif-next), sans-serif",
                         fontSize: "24px",
                         fontStyle: "normal",
