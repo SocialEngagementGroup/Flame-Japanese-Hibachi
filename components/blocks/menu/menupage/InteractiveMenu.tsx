@@ -661,22 +661,33 @@ const InteractiveMenu = () => {
     const handleScroll = () => {
       if (isScrollingRef.current) return;
 
-      // Highly precise scroll spy offsets mapped to exact sticky top positions
-      let offset = 133; // Desktop sticky header offset (123px + 10px buffer)
+      let offset = 125; // Default/Desktop sticky header offset (123px + 2px buffer)
       if (window.innerWidth < 768) {
-        offset = 185; // Mobile sticky header offset (175px + 10px buffer)
+        offset = 177; // Mobile sticky header offset (175px + 2px buffer)
       } else if (window.innerWidth < 1024) {
-        offset = 133; // Tablet sticky header offset (123px + 10px buffer)
+        offset = 166; // Tablet sticky header offset (164px + 2px buffer)
+      } else if (window.innerWidth < 1280) {
+        offset = 170; // lg breakpoint sticky header offset (168px + 2px buffer)
       }
-
       const scrollPosition = window.scrollY + offset;
+
+      // Check if we've reached the bottom of the page
+      const isAtBottom =
+        Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
+
+      if (isAtBottom) {
+        setActiveCategory(categories[categories.length - 1].id);
+        return;
+      }
 
       for (const category of categories) {
         const el = document.getElementById(`section-${category.id}`);
         if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
+          const rect = el.getBoundingClientRect();
+          // rect.top is the distance from the top of the viewport.
+          // When rect.top <= offset, the element has reached or passed the sticky position.
+          // We check if it's within the viewport bounds taking height into account.
+          if (rect.top <= offset && rect.bottom > offset) {
             setActiveCategory(category.id);
             break;
           }
@@ -695,13 +706,14 @@ const InteractiveMenu = () => {
 
     const element = document.getElementById(`section-${id}`);
     if (element) {
-      let offset = 123; // Desktop sticky title top offset
+      let offset = 123; // Default/Desktop sticky title top offset
       if (window.innerWidth < 768) {
         offset = 175; // Mobile sticky title top offset
       } else if (window.innerWidth < 1024) {
-        offset = 123; // Tablet sticky title top offset
+        offset = 164; // Tablet sticky title top offset
+      } else if (window.innerWidth < 1280) {
+        offset = 168; // lg breakpoint sticky title top offset
       }
-
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;

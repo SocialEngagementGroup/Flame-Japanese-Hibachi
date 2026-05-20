@@ -36,8 +36,9 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
 
   const swiperBreakpoints = {
     320: { slidesPerView: 1.15, spaceBetween: 16 },
-    500: { slidesPerView: 1.5, spaceBetween: 16 },
-    768: { slidesPerView: 2.3, spaceBetween: 20 },
+    500: { slidesPerView: 1.8, spaceBetween: 16 },
+    640: { slidesPerView: 2.4, spaceBetween: 16 },
+    767: { slidesPerView: 3.1, spaceBetween: 16 },
     1024: { slidesPerView: 3.2, spaceBetween: 20 },
   };
 
@@ -47,7 +48,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
       href="https://order.online/business/~13770567"
       target="_blank"
       rel="noopener noreferrer"
-      className="w-full max-w-[420px] h-[355px] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
+      className="w-full max-w-[420px] h-[300px] md:h-[355px] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
     >
       {/* Full Box Picture Background */}
       <img
@@ -204,7 +205,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
           href="https://order.online/business/~13770567"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full max-w-[420px] h-[355px] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
+          className="w-full max-w-[420px] h-[300px] md:h-[355px] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
         >
           {CardContent}
         </a>
@@ -215,7 +216,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
       <div
         key={item.id}
         onClick={() => handleCardClick(item.id)}
-        className="w-full max-w-[420px] h-[355px] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer"
+        className="w-full max-w-[420px] h-[300px] md:h-[355px] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer"
       >
         {CardContent}
       </div>
@@ -232,20 +233,19 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
           <div
             key={category.id}
             id={`section-${category.id}`}
-            className="scroll-mt-[175px] md:scroll-mt-[123px]"
+            className="scroll-mt-[175px] md:scroll-mt-[164px] lg:scroll-mt-[168px] xl:scroll-mt-[123px]"
           >
             {/* Category Title Container: Sticky with Solid Opaque Background and z-index 40 to overlap cards perfectly */}
-            <div className="sticky top-[175px] md:top-[123px] z-40 bg-background p-2 md:p-0 md:py-4 mb-6 transition-all duration-300 isolate">
+            <div className="sticky top-[175px] md:top-[164px] lg:top-[168px] xl:top-[123px] z-40 bg-background p-2 md:p-0 md:py-4 transition-all duration-300 isolate">
               <h2 className="ml-[13px] md:ml-0 font-['Raleway'] md:font-[family-name:var(--font-serif-next)] font-black text-[32px] md:text-[38px] text-[#FF7808] uppercase tracking-wide leading-none md:leading-tight">
                 {category.name}
               </h2>
 
               {category.id === "hibachi" && (
-                <p className="ml-[13px] md:ml-0 font-sans text-[14px] md:font-serif md:text-[16px] text-black dark:text-white md:text-[#71717b] md:dark:text-white font-normal md:font-light not-italic leading-[23px] md:leading-[59px] uppercase">
+                <p className="ml-[13px] md:ml-0 font-sans text-[14px] md:font-serif md:text-[16px] text-black dark:text-white md:text-[#71717b] md:dark:text-white font-normal md:font-light not-italic uppercase">
                   Comes with your choice of any two sides
                 </p>
               )}
-
               {category.id === "wings" && (
                 <p className="ml-[13px] md:ml-0 font-sans text-[14px] md:text-[24px] text-black dark:text-white md:text-[#71717b] md:dark:text-white font-normal not-italic leading-[23px] md:leading-[45px] uppercase mt-2 max-w-[878px] w-full">
                   <span className="font-normal md:font-black tracking-[1px] md:tracking-[7px] inline-block mr-2 md:leading-[31px]">
@@ -286,7 +286,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                     </h3>
                     <div className="w-full overflow-hidden px-5 md:px-0">
                       {/* DESKTOP GRID */}
-                      <div className="hidden xl:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-5 justify-items-center sm:justify-items-start p-4 -m-4 overflow-hidden isolate">
+                      <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 justify-items-center sm:justify-items-start p-4 -m-4 overflow-hidden isolate">
                         {subItems.map((item) => {
                           const isCardActive = activeCardId === item.id;
                           return renderWingCard(item, isCardActive);
@@ -294,7 +294,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                       </div>
 
                       {/* MOBILE/TABLET SWIPER */}
-                      <div className="xl:hidden w-full -ml-4 pl-4 py-4">
+                      <div className="lg:hidden w-full -ml-4 pl-4 py-4">
                         <Swiper
                           grabCursor={true}
                           breakpoints={swiperBreakpoints}
@@ -317,7 +317,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
             ) : (
               <div className="w-full overflow-hidden px-5 md:px-0">
                 {/* DESKTOP GRID */}
-                <div className="hidden xl:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-5 justify-items-center sm:justify-items-start p-4 -m-4 overflow-hidden isolate">
+                <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 justify-items-center sm:justify-items-start p-4 -m-4 overflow-hidden isolate">
                   {items.map((item) => {
                     const isCardActive = activeCardId === item.id;
                     return renderRegularCard(item, category, isCardActive);
@@ -325,7 +325,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                 </div>
 
                 {/* MOBILE/TABLET SWIPER */}
-                <div className="xl:hidden w-full -ml-4 pl-4 py-4">
+                <div className="lg:hidden w-full -ml-4 pl-4 py-4">
                   <Swiper
                     grabCursor={true}
                     breakpoints={swiperBreakpoints}
