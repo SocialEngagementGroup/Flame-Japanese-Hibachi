@@ -184,7 +184,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`min-[1100px]:hidden fixed inset-0 bg-black transition-all duration-300 z-[9999] h-screen w-screen ${isMobileMenuOpen ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible"
+        className={`min-[1100px]:hidden fixed inset-0 bg-black transition-all duration-300 z-[9999] w-full h-full ${isMobileMenuOpen ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible"
           }`}
         onClick={() => setIsMobileMenuOpen(false)}
       >
