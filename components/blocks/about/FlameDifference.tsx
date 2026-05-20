@@ -51,10 +51,10 @@ const FlameDifference = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex flex-col items-center justify-start md:justify-center text-center px-3 py-6 md:p-[var(--space-lg)] border w-full h-full md:aspect-[3/4.2] min-[1100px]:aspect-[281/375] bg-[#EBEBEB] dark:bg-[#131313] border-transparent dark:border-white/5"
+              className="flex flex-col items-center justify-center text-center px-4 py-8 md:p-[var(--space-lg)] border w-full min-h-[380px] md:min-h-[480px] min-[1100px]:min-h-[520px] bg-[#EBEBEB] dark:bg-[#131313] border-transparent dark:border-white/5"
             >
               {/* Icon — fixed frame so the headline below sits at the same line on every card */}
-              <div className="w-[clamp(96px,28vw,140px)] h-[clamp(96px,28vw,140px)] md:w-[clamp(200px,22vw,320px)] md:h-[clamp(200px,22vw,320px)] flex items-center justify-center mb-3 md:mb-[var(--space-md)]">
+              <div className="w-[clamp(80px,24vw,120px)] h-[clamp(80px,24vw,120px)] md:w-[clamp(160px,20vw,260px)] md:h-[clamp(160px,20vw,260px)] flex items-center justify-center mb-3 md:mb-[var(--space-md)]">
                 <video
                   src={feature.icon}
                   autoPlay

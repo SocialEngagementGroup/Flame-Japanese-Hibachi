@@ -31,10 +31,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${workSans.variable} ${raleway.variable} h-full antialiased`}
+      className={`${workSans.variable} ${raleway.variable} h-full overflow-x-hidden antialiased`}
       suppressHydrationWarning
     >
-      <body suppressHydrationWarning className="h-full bg-background text-foreground flex flex-col font-sans selection:bg-primary selection:text-primary-foreground">
+      <body suppressHydrationWarning className="h-full bg-background text-foreground flex flex-col font-sans selection:bg-primary selection:text-primary-foreground overflow-x-hidden">
         {/* Use next/script with beforeInteractive to inject the theme IIFE before hydration without causing HMR loops */}
         <Script src="/theme-init.js" strategy="beforeInteractive" />
         <ThemeProvider>

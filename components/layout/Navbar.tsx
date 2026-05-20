@@ -48,7 +48,7 @@ const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { name: "MENU", href: ORDER_URL, external: true },
+    { name: "MENU", href: "/menu", external: false },
     { name: "CATERING", href: "/catering", external: false },
     { name: "LOCATIONS", href: "/locations", external: false },
     { name: "PROMOTIONS", href: ORDER_URL, external: true },
@@ -58,7 +58,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`transition-all duration-300 font-serif bg-black py-5 md:py-0 border-b border-white/5 relative z-50`}
+      className={`transition-all duration-300 font-serif bg-black py-5 md:py-0 border-b border-white/5 relative ${isMobileMenuOpen ? "z-[10001]" : "z-50"}`}
     >
       <div className="w-full px-[var(--space-lg)] flex items-center justify-between relative">
         {/* Left: Mobile Sign In / Desktop Logo */}
@@ -184,7 +184,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`min-[1100px]:hidden fixed inset-0 bg-black transition-all duration-300 z-[9999] h-screen w-screen ${isMobileMenuOpen ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible"
+        className={`min-[1100px]:hidden fixed inset-0 bg-black transition-all duration-300 z-[9999] w-full h-full ${isMobileMenuOpen ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible"
           }`}
         onClick={() => setIsMobileMenuOpen(false)}
       >
@@ -196,11 +196,11 @@ const Navbar = () => {
           <X className="w-8 h-8 max-[500px]:w-[27px] max-[500px]:h-[27px]" strokeWidth={2.5} />
         </button>
 
-        <div 
+        <div
           className="flex flex-col items-center justify-start h-full gap-8 max-[500px]:gap-[27px] px-6 pt-24 max-[500px]:pt-[70px] overflow-y-auto bg-black"
         >
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className={`transition-all duration-700 delay-100 ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
