@@ -463,12 +463,21 @@ const menuData: Record<
       tag: "FRUIT TEA",
       image: "/menupage/Boba Drinks/Peach-Lychee-Fruit-Tea.jpg",
     },
+    /* HIDDEN - Peach Mango Fruit Tea (not available)
     {
       id: "boba-3",
       name: "Peach Mango Fruit Tea",
       price: "6.25",
       tag: "FRUIT TEA",
       image: "/homepage/menu/BOBA TEA  SMOOTHIES  Drinks.png",
+    },
+    */
+    {
+      id: "boba-new-1",
+      name: "Oreo Smoothie",
+      price: "6.40",
+      tag: "SMOOTHIE",
+      image: "/menupage/Boba Drinks/Oreo-Smoothie.jpg",
     },
     {
       id: "boba-4",
@@ -484,12 +493,21 @@ const menuData: Record<
       tag: "BEVERAGE",
       image: "/menupage/Boba Drinks/Yuzu-Sparkling-Ade.jpg",
     },
+    /* HIDDEN - Peach Lychee Slush (not available)
     {
       id: "boba-6",
       name: "Peach Lychee Slush",
       price: "6.49",
       tag: "SLUSH",
       image: "/homepage/menu/BOBA TEA  SMOOTHIES  Drinks.png",
+    },
+    */
+    {
+      id: "boba-new-2",
+      name: "Hot Milk Tea",
+      price: "6.45",
+      tag: "MILK TEA",
+      image: "/menupage/Boba Drinks/Hot-Milk-Tea.jpg",
     },
     {
       id: "boba-7",
