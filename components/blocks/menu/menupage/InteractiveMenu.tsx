@@ -12,7 +12,7 @@ const categories = [
   { id: "promotions", name: "PROMOTIONS" },
   { id: "hibachi", name: "HIBACHI" },
   { id: "combo", name: "FLAME COMBO" },
-  { id: "bento", name: "Bentos" },
+  { id: "bento", name: "BENTO" },
   { id: "sushi", name: "SUSHI" },
   { id: "wings", name: "WINGS/TENDERS" },
   { id: "fries", name: "FLAME LOADED FRIES" },
@@ -39,51 +39,51 @@ const menuData: Record<
       name: "SALMON HIBACHI",
       price: "11.85",
       tag: "BEST SELLER",
-      image: "/homepage/menu/HIBACHI.png",
+      image: "/menupage/Hibachi/salmon-hibachi-plate.jpg",
     },
     {
       id: "fav-2",
       name: "CALIFORNIA ROLL",
       price: "7.85",
       tag: "SUSHI",
-      image: "/homepage/menu/SUSHI.png",
+      image: "/menupage/Sushi/california-roll.jpg",
     },
     {
       id: "fav-3",
       name: "CHICKEN & BEEF BENTO",
       price: "13.85",
       tag: "BENTO",
-      image: "/homepage/menu/BENTO.png",
+      image: "/menupage/Bento/Chicken-&-Beef-Bento.jpg",
     },
     {
       id: "fav-4",
       name: "STEAK HIBACHI",
       price: "12.85",
       tag: "HIBACHI",
-      image: "/homepage/menu/HIBACHI.png",
+      image: "/menupage/Hibachi/beef-hibachi-plate.jpg",
     },
   ],
   promotions: [
     {
       id: "prom-1",
-      name: "SALMON HIBACHI",
-      price: "11.85",
-      tag: "BEST SELLER",
-      image: "/homepage/menu/HIBACHI.png",
+      name: "CHICKEN HIBACHI",
+      price: "9.85",
+      tag: "HIBACHI",
+      image: "/menupage/Hibachi/chicken-hibachi-plate.jpg",
     },
     {
       id: "prom-2",
-      name: "SALMON HIBACHI",
-      price: "11.85",
-      tag: "HEAT SELLER",
-      image: "/homepage/menu/HIBACHI.png",
+      name: "GREEN DRAGON ROLL",
+      price: "9.85",
+      tag: "SUSHI",
+      image: "/menupage/Sushi/green-dragon.jpg",
     },
     {
       id: "prom-3",
-      name: "SALMON HIBACHI",
+      name: "CHICKEN & BEEF COMBO",
       price: "11.85",
-      tag: "BEST SELLER",
-      image: "/homepage/menu/HIBACHI.png",
+      tag: "FLAME COMBO",
+      image: "/menupage/Flame Combo/Chicken-&-Beef.jpg",
     },
   ],
   hibachi: [
@@ -329,59 +329,107 @@ const menuData: Record<
   ],
   wings: [
     {
-      id: "wing-bb-5",
+      id: "wing-buf-5",
       name: "5 PIECES",
       price: "7.99",
-      tag: "Rim Fire",
-      image: "/homepage/menu/wings-bg.png",
-      subCategory: "BUFFALO/BONELESS WINGS"
+      tag: "BUFFALO",
+      image: "/menupage/Wings/10 Pieces.png",
+      subCategory: "BUFFALO"
     },
     {
-      id: "wing-bb-10",
+      id: "wing-buf-10",
       name: "10 PIECES",
       price: "14.99",
-      tag: "Mango Habanero",
-      image: "/homepage/menu/wings-bg.png",
-      subCategory: "BUFFALO/BONELESS WINGS"
+      tag: "BUFFALO",
+      image: "/menupage/Wings/10 Pieces.png",
+      subCategory: "BUFFALO"
     },
     {
-      id: "wing-bb-20",
+      id: "wing-buf-20",
       name: "20 PIECES",
       price: "27.99",
-      tag: "Hot",
-      image: "/homepage/menu/wings-bg.png",
-      subCategory: "BUFFALO/BONELESS WINGS"
+      tag: "BUFFALO",
+      image: "/menupage/Wings/20 Pieces.png",
+      subCategory: "BUFFALO"
     },
     {
-      id: "wing-bb-30",
+      id: "wing-buf-30",
       name: "30 PIECES",
       price: "39.99",
-      tag: "Mild",
-      image: "/homepage/menu/wings-bg.png",
-      subCategory: "BUFFALO/BONELESS WINGS"
+      tag: "BUFFALO",
+      image: "/menupage/Wings/30 Pieces.png",
+      subCategory: "BUFFALO"
     },
     {
-      id: "wing-bb-50",
+      id: "wing-buf-50",
       name: "50 PIECES",
       price: "66.99",
-      tag: "Thai Chilli",
-      image: "/homepage/menu/wings-bg.png",
-      subCategory: "BUFFALO/BONELESS WINGS"
+      tag: "BUFFALO",
+      image: "/menupage/Wings/50 Pieces.png",
+      subCategory: "BUFFALO"
     },
     {
-      id: "wing-bb-100",
+      id: "wing-buf-100",
       name: "100 PIECES",
       price: "129.99",
-      tag: "Lemon Pepper",
-      image: "/homepage/menu/wings-bg.png",
-      subCategory: "BUFFALO/BONELESS WINGS"
+      tag: "BUFFALO",
+      image: "/menupage/Wings/100 Pieces.png",
+      subCategory: "BUFFALO"
+    },
+    {
+      id: "wing-bon-5",
+      name: "5 PIECES",
+      price: "7.99",
+      tag: "BONELESS WINGS",
+      image: "/menupage/Wings/10 Pieces.png",
+      subCategory: "BONELESS WINGS"
+    },
+    {
+      id: "wing-bon-10",
+      name: "10 PIECES",
+      price: "14.99",
+      tag: "BONELESS WINGS",
+      image: "/menupage/Wings/10 Pieces.png",
+      subCategory: "BONELESS WINGS"
+    },
+    {
+      id: "wing-bon-20",
+      name: "20 PIECES",
+      price: "27.99",
+      tag: "BONELESS WINGS",
+      image: "/menupage/Wings/20 Pieces.png",
+      subCategory: "BONELESS WINGS"
+    },
+    {
+      id: "wing-bon-30",
+      name: "30 PIECES",
+      price: "39.99",
+      tag: "BONELESS WINGS",
+      image: "/menupage/Wings/30 Pieces.png",
+      subCategory: "BONELESS WINGS"
+    },
+    {
+      id: "wing-bon-50",
+      name: "50 PIECES",
+      price: "66.99",
+      tag: "BONELESS WINGS",
+      image: "/menupage/Wings/50 Pieces.png",
+      subCategory: "BONELESS WINGS"
+    },
+    {
+      id: "wing-bon-100",
+      name: "100 PIECES",
+      price: "129.99",
+      tag: "BONELESS WINGS",
+      image: "/menupage/Wings/100 Pieces.png",
+      subCategory: "BONELESS WINGS"
     },
     {
       id: "wing-combo-5",
       name: "5 PIECES",
       price: "10.99",
       tag: "Garlic Parmesan",
-      image: "/homepage/menu/wings-bg.png",
+      image: "/menupage/Wings/Combo-5-Pieces.png",
       subCategory: "WINGS combo with fries & drink"
     },
     {
@@ -389,55 +437,55 @@ const menuData: Record<
       name: "10 PIECES",
       price: "16.99",
       tag: "Buffalo Gold",
-      image: "/homepage/menu/wings-bg.png",
+      image: "/menupage/Wings/Combo-10-Pieces.png",
       subCategory: "WINGS combo with fries & drink"
     },
     {
       id: "tender-3",
       name: "3 PIECES",
       price: "7.99",
-      tag: "Teriyaki",
-      image: "/homepage/menu/wings-bg.png",
+      tag: "CHICKEN TENDERS",
+      image: "/menupage/Wings/Tenders.png",
       subCategory: "CHICKEN TENDERS"
     },
     {
       id: "tender-4",
       name: "4 PIECES",
       price: "9.99",
-      tag: "Sweet & Tangy",
-      image: "/homepage/menu/wings-bg.png",
+      tag: "CHICKEN TENDERS",
+      image: "/menupage/Wings/Tenders.png",
       subCategory: "CHICKEN TENDERS"
     },
     {
       id: "tender-5",
       name: "5 PIECES",
       price: "11.99",
-      tag: "Honey Garlic",
-      image: "/homepage/menu/wings-bg.png",
+      tag: "CHICKEN TENDERS",
+      image: "/menupage/Wings/Tenders.png",
       subCategory: "CHICKEN TENDERS"
     },
     {
       id: "tender-combo-3",
       name: "3 PIECES",
       price: "10.99",
-      tag: "Honey BBQ",
-      image: "/homepage/menu/wings-bg.png",
+      tag: "CHICKEN TENDERS COMBO",
+      image: "/menupage/Wings/Tender-Combo-3-Pieces.png",
       subCategory: "CHICKEN TENDERS COMBO WITH FRIES & DRINK"
     },
     {
       id: "tender-combo-4",
       name: "4 PIECES",
       price: "12.99",
-      tag: "Chipotle BBQ",
-      image: "/homepage/menu/wings-bg.png",
+      tag: "CHICKEN TENDERS COMBO",
+      image: "/menupage/Wings/Tender-Combo-4-Pieces.png",
       subCategory: "CHICKEN TENDERS COMBO WITH FRIES & DRINK"
     },
     {
       id: "tender-combo-5",
       name: "5 PIECES",
       price: "14.99",
-      tag: "Old Bay",
-      image: "/homepage/menu/wings-bg.png",
+      tag: "CHICKEN TENDERS COMBO",
+      image: "/menupage/Wings/Tender-Combo-5-Pieces.png",
       subCategory: "CHICKEN TENDERS COMBO WITH FRIES & DRINK"
     }
   ],
@@ -451,20 +499,6 @@ const menuData: Record<
     },
   ],
   boba: [
-    {
-      id: "boba-1",
-      name: "Da Bang Coffee",
-      price: "5.99",
-      tag: "BEVERAGE",
-      image: "/menupage/Boba Drinks/Da-Bang-Coffee.jpg",
-    },
-    {
-      id: "boba-2",
-      name: "Peach Lychee Fruit Tea",
-      price: "6.25",
-      tag: "FRUIT TEA",
-      image: "/menupage/Boba Drinks/Peach-Lychee-Fruit-Tea.jpg",
-    },
     /* HIDDEN - Peach Mango Fruit Tea (not available)
     {
       id: "boba-3",
@@ -505,13 +539,6 @@ const menuData: Record<
     },
     */
     {
-      id: "boba-new-2",
-      name: "Hot Milk Tea",
-      price: "6.45",
-      tag: "MILK TEA",
-      image: "/menupage/Boba Drinks/Hot-Milk-Tea.jpg",
-    },
-    {
       id: "boba-7",
       name: "Brown Sugar Milk Tea",
       price: "6.49",
@@ -524,13 +551,6 @@ const menuData: Record<
       price: "6.49",
       tag: "MILK TEA",
       image: "/menupage/Boba Drinks/Creme-Thai-Milk-Tea.jpg",
-    },
-    {
-      id: "boba-9",
-      name: "Lavender Lover Milk Tea",
-      price: "6.49",
-      tag: "MILK TEA",
-      image: "/menupage/Boba Drinks/Lavender-Lover-Milk-Tea.jpg",
     },
     {
       id: "boba-10",
@@ -574,6 +594,34 @@ const menuData: Record<
       tag: "MILK TEA",
       image: "/menupage/Boba Drinks/Salted-Cream-Match-Milk-Tea.jpg",
     },
+    {
+      id: "boba-1",
+      name: "Da Bang Coffee",
+      price: "5.99",
+      tag: "BEVERAGE",
+      image: "/menupage/Boba Drinks/Da-Bang-Coffee.jpg",
+    },
+    {
+      id: "boba-2",
+      name: "Peach Lychee Fruit Tea",
+      price: "6.25",
+      tag: "FRUIT TEA",
+      image: "/menupage/Boba Drinks/Peach-Lychee-Fruit-Tea.jpg",
+    },
+    {
+      id: "boba-new-2",
+      name: "Hot Milk Tea",
+      price: "6.45",
+      tag: "MILK TEA",
+      image: "/menupage/Boba Drinks/Hot-Milk-Tea.jpg",
+    },
+    {
+      id: "boba-9",
+      name: "Lavender Lover Milk Tea",
+      price: "6.49",
+      tag: "MILK TEA",
+      image: "/menupage/Boba Drinks/Lavender-Lover-Milk-Tea.jpg",
+    },
   ],
   drinks: [
     {
@@ -581,21 +629,21 @@ const menuData: Record<
       name: "Fountain Drink",
       price: "2.95",
       tag: "DRINK",
-      image: "/homepage/menu/BOBA TEA  SMOOTHIES  Drinks.png",
+      image: "/menupage/Drinks/Fountain-Drink.png",
     },
     {
       id: "drink-2",
       name: "Bottled Drink",
       price: "3.25",
       tag: "DRINK",
-      image: "/homepage/menu/BOBA TEA  SMOOTHIES  Drinks.png",
+      image: "/menupage/Drinks/Bottled-Drink.png",
     },
     {
       id: "drink-3",
       name: "Bottled Water",
       price: "2.50",
       tag: "DRINK",
-      image: "/homepage/menu/BOBA TEA  SMOOTHIES  Drinks.png",
+      image: "/menupage/Drinks/Bottled-Water.png",
     },
   ],
   addons: [
@@ -604,35 +652,35 @@ const menuData: Record<
       name: "Extra Chicken",
       price: "2.95",
       tag: "ADD ON",
-      image: "/homepage/menu/ADD ONS.png",
+      image: "/menupage/Add Ons/Extra-Chicken.png",
     },
     {
       id: "add-2",
       name: "Extra Salmon / Beef / Shrimp",
       price: "3.95",
       tag: "ADD ON",
-      image: "/homepage/menu/ADD ONS.png",
+      image: "/menupage/Add Ons/Extra-Salmon-Beef-Shrimp.png",
     },
     {
       id: "add-3",
       name: "4 pcs Spring Roll",
       price: "3.95",
       tag: "APPETIZER",
-      image: "/homepage/menu/ADD ONS.png",
+      image: "/menupage/Add Ons/4-pcs-Spring-Roll.png",
     },
     {
       id: "add-4",
       name: "5 pcs Dumplings",
       price: "3.95",
       tag: "APPETIZER",
-      image: "/homepage/menu/ADD ONS.png",
+      image: "/menupage/Add Ons/5-pcs-Dumplings.png",
     },
     {
       id: "add-5",
       name: "3 pcs Shrimp Tempura",
       price: "4.95",
       tag: "APPETIZER",
-      image: "/homepage/menu/ADD ONS.png",
+      image: "/menupage/Add Ons/3-pcs-Shrimp-Tempura.png",
     },
     {
       id: "add-6",
@@ -646,28 +694,28 @@ const menuData: Record<
       name: "Fried Rice",
       price: "4.95",
       tag: "SIDE",
-      image: "/homepage/menu/ADD ONS.png",
+      image: "/menupage/Add Ons/Fried-Rice.png",
     },
     {
       id: "add-8",
       name: "White Rice",
       price: "2.95",
       tag: "SIDE",
-      image: "/homepage/menu/ADD ONS.png",
+      image: "/menupage/Add Ons/White-Rice.png",
     },
     {
       id: "add-9",
       name: "Vegetables",
       price: "4.95",
       tag: "SIDE",
-      image: "/homepage/menu/ADD ONS.png",
+      image: "/menupage/Add Ons/Vegetables.png",
     },
     {
       id: "add-10",
       name: "Lo Mein Noodles",
       price: "4.95",
       tag: "SIDE",
-      image: "/homepage/menu/ADD ONS.png",
+      image: "/menupage/Add Ons/Lo-Mein-Noodles.png",
     },
   ],
 };

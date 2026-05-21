@@ -232,16 +232,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                   Comes with your choice of any two sides
                 </p>
               )}
-              {category.id === "wings" && (
-                <p className="ml-[13px] md:ml-0 font-sans text-[14px] md:text-[24px] text-black dark:text-white md:text-[#71717b] md:dark:text-white font-normal not-italic leading-[23px] md:leading-[45px] uppercase mt-2 w-full">
-                  <span className="font-normal md:font-black tracking-[1px] md:tracking-[7px] inline-block mr-2 md:leading-[31px]">
-                    Flavors:
-                  </span>{" "}
-                  <span className="font-normal md:font-medium tracking-[0.5px] md:tracking-[4px]">
-                    Rim Fire, Mango Habanero, Hot, Mild, Thai Chilli, Lemon Pepper, Garlic Parmesan, Buffalo Gold, Teriyaki, Sweet & Tangy, Honey Garlic, Honey BBQ, Chipotle BBQ, Old Bay.
-                  </span>
-                </p>
-              )}
+
               {category.id === "boba" && (
                 <p className="ml-[13px] md:ml-0 font-sans text-[14px] md:text-[24px] text-black dark:text-white md:text-[#71717b] md:dark:text-white font-normal not-italic leading-[23px] md:leading-[45px] uppercase mt-2 w-full max-[400px]:w-[95%]">
                   <span className="font-normal md:font-black tracking-[1px] md:tracking-[7px] inline-block mr-2 md:leading-[31px]">
