@@ -145,6 +145,7 @@ const menuData: Record<
       tag: "FLAME COMBO",
       image: "/menupage/Flame Combo/Beef-&-Shrimp.jpg",
     },
+    /* HIDDEN - Chicken & Salmon Combo (not available)
     {
       id: "comb-4",
       name: "CHICKEN & SALMON COMBO",
@@ -152,6 +153,7 @@ const menuData: Record<
       tag: "FLAME COMBO",
       image: "/menupage/Flame Combo/Chicken-&-Salmon.jpg",
     },
+    */
     {
       id: "comb-5",
       name: "SALMON & SHRIMP COMBO",
