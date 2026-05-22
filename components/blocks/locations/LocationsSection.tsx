@@ -33,6 +33,7 @@ const LocationsSection = ({
   const mobileSwiperRef = useRef<SwiperType | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reset map spinner when the selected location changes
     setMapLoading(true);
   }, [selectedLocation.id]);
 
@@ -128,7 +129,7 @@ const LocationsSection = ({
               <span className="text-primary">FLAME</span>
             </h3>
             <p className="text-gray-700 dark:text-gray-300 text-small leading-relaxed font-medium mb-[var(--space-lg)] transition-colors duration-300">
-              Experience the heat near you. Browse our active restaurants or see where we're striking next.
+              Experience the heat near you. Browse our active restaurants or see where we&apos;re striking next.
             </p>
           </>
         )}
@@ -274,7 +275,7 @@ const LocationsSection = ({
                     <span className="text-primary">FLAME</span>
                   </h3>
                   <p className="text-gray-700 dark:text-gray-300 text-base mb-10 max-w-sm leading-relaxed font-medium transition-colors duration-300">
-                    Experience the heat near you. Browse our active restaurants or see where we're striking next.
+                    Experience the heat near you. Browse our active restaurants or see where we&apos;re striking next.
                   </p>
                 </>
               )}
@@ -341,7 +342,7 @@ const LocationsSection = ({
                     <span className="text-primary">FLAME</span>
                   </h3>
                   <p className="text-gray-700 dark:text-gray-300 text-base mb-10 max-w-sm leading-relaxed font-medium transition-colors duration-300">
-                    Experience the heat near you. Browse our active restaurants or see where we're striking next.
+                    Experience the heat near you. Browse our active restaurants or see where we&apos;re striking next.
                   </p>
                 </>
               )}

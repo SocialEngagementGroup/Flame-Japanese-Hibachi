@@ -19,6 +19,7 @@ const Navbar = () => {
   const mobileVideoRef = React.useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- client-mount flag needed for hydration-safe theme rendering
     setMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -48,6 +49,7 @@ const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
+    { name: "HOME", href: "/", external: false },
     { name: "MENU", href: "/menu", external: false },
     // { name: "CATERING", href: "/catering", external: false },
     { name: "LOCATIONS", href: "/locations", external: false },
