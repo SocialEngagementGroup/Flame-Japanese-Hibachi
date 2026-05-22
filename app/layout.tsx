@@ -21,6 +21,11 @@ export const metadata = {
   title: "Flame Japanese Hibachi | Coming Soon",
   description:
     "Experience the ultimate taste of Japanese hibachi right where you are.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
