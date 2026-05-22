@@ -329,7 +329,7 @@ const LocationsSection = ({
 
         {/* Right Side: Desktop Scrollable Cards */}
         <div className="w-full flex flex-col items-start py-0">
-          <div className={`block w-full max-w-[900px] ${hideMap ? "" : "lg:pb-[54vh] pb-[var(--space-xl)]"}`}>
+          <div className={`block w-full max-w-[900px] ${hideMap ? "" : "lg:pb-[52.7vh] pb-[var(--space-xl)]"}`}>
             {/* Spacer — mirrors the left-column heading height so the first card aligns with the map / leftHeader */}
             <div className="invisible" aria-hidden="true" id="desktop-spacer">
               {leftHeader ? (

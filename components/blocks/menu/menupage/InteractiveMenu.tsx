@@ -332,49 +332,49 @@ const menuData: Record<
       id: "wing-buf-5",
       name: "5 PIECES",
       price: "7.99",
-      tag: "BUFFALO",
+      tag: "BUFFALO WINGS",
       image: "/menupage/Wings/10 Pieces.png",
-      subCategory: "BUFFALO"
+      subCategory: "BUFFALO WINGS"
     },
     {
       id: "wing-buf-10",
       name: "10 PIECES",
       price: "14.99",
-      tag: "BUFFALO",
+      tag: "BUFFALO WINGS",
       image: "/menupage/Wings/10 Pieces.png",
-      subCategory: "BUFFALO"
+      subCategory: "BUFFALO WINGS"
     },
     {
       id: "wing-buf-20",
       name: "20 PIECES",
       price: "27.99",
-      tag: "BUFFALO",
+      tag: "BUFFALO WINGS",
       image: "/menupage/Wings/20 Pieces.png",
-      subCategory: "BUFFALO"
+      subCategory: "BUFFALO WINGS"
     },
     {
       id: "wing-buf-30",
       name: "30 PIECES",
       price: "39.99",
-      tag: "BUFFALO",
+      tag: "BUFFALO WINGS",
       image: "/menupage/Wings/30 Pieces.png",
-      subCategory: "BUFFALO"
+      subCategory: "BUFFALO WINGS"
     },
     {
       id: "wing-buf-50",
       name: "50 PIECES",
       price: "66.99",
-      tag: "BUFFALO",
+      tag: "BUFFALO WINGS",
       image: "/menupage/Wings/50 Pieces.png",
-      subCategory: "BUFFALO"
+      subCategory: "BUFFALO WINGS"
     },
     {
       id: "wing-buf-100",
       name: "100 PIECES",
       price: "129.99",
-      tag: "BUFFALO",
+      tag: "BUFFALO WINGS",
       image: "/menupage/Wings/100 Pieces.png",
-      subCategory: "BUFFALO"
+      subCategory: "BUFFALO WINGS"
     },
     {
       id: "wing-bon-5",

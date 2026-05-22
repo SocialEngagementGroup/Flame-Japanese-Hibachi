@@ -87,7 +87,7 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-[10000] flex items-center justify-center p-4 sm:p-6"
+      className="fixed inset-0 z-[999] flex items-center justify-center p-4 sm:p-6"
       role="dialog"
       aria-modal="true"
       aria-label="Find a Flame"
@@ -183,17 +183,15 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
                       }}
                       data-location-id={loc.id}
                       onClick={() => setSelectedId(loc.id)}
-                      className={`w-full text-left p-[var(--space-md)] border transition-all relative overflow-hidden ${
-                        isSelected
+                      className={`w-full text-left p-[var(--space-md)] border transition-all relative overflow-hidden ${isSelected
                           ? "bg-zinc-900 border-primary"
                           : "bg-[#1C1B1B] border-white/5 hover:border-primary/50"
-                      }`}
+                        }`}
                     >
                       <div className="flex justify-between items-start gap-3">
                         <h4
-                          className={`heading-h4 leading-tight uppercase ${
-                            isSelected ? "text-primary" : "text-white"
-                          }`}
+                          className={`heading-h4 leading-tight uppercase ${isSelected ? "text-primary" : "text-white"
+                            }`}
                         >
                           {loc.name}
                           <span className="block text-small font-normal text-gray-400 mt-1 normal-case">
