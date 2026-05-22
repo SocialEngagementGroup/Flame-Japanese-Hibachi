@@ -1,5 +1,6 @@
 import Hero from "@/components/blocks/hero/Hero";
 import InteractiveMenu from "@/components/blocks/menu/menupage/InteractiveMenu";
+import ContactSection from "@/components/blocks/contact/ContactSection";
 
 export const metadata = {
   title: "Menu | Flame Japanese Hibachi",
@@ -26,6 +27,7 @@ export default function MenuPage() {
       />
 
       <InteractiveMenu />
+      <ContactSection />
     </div>
   );
 }
