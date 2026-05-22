@@ -32,7 +32,7 @@ const Hero = ({
   const alignmentClass =
     align === "center"
       ? "items-center mx-auto text-center max-w-none"
-      : "items-center lg:items-start mx-auto lg:mx-0 max-w-[65ch]";
+      : "items-center min-[1100px]:items-start mx-auto min-[1100px]:mx-0 max-w-[65ch]";
 
   const sizingClass = fullHeight
     ? "flex-1 min-h-[320px]"
