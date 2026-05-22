@@ -39,12 +39,21 @@ const Footer = () => {
           <div className="flex flex-row justify-center gap-[var(--gap-lg)] w-full lg:w-auto lg:contents">
             {/* Company Links (Box 2) */}
             <div className="flex flex-col items-center lg:items-start lg:mt-[88px]">
-              <h4 className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">COMPANY</h4>
+              <h4 className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">
+                COMPANY
+              </h4>
+
               <ul className="space-y-6">
-                {["VALUES", "CAREERS", "INVESTORS"].map((link) => (
-                  <li key={link}>
-                    <Link href="#" className="font-serif font-normal text-[14px] leading-[22px] tracking-[1.2px] uppercase text-gray-400 hover:text-white transition-colors">
-                      {link}
+                {[
+                  { label: "HOME", href: "/" },
+                  { label: "MENU", href: "/menu" },
+                ].map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="font-serif font-normal text-[14px] leading-[22px] tracking-[1.2px] uppercase text-gray-400 hover:text-white transition-colors"
+                    >
+                      {link.label}
                     </Link>
                   </li>
                 ))}
@@ -53,12 +62,21 @@ const Footer = () => {
 
             {/* Service Links (Box 3) */}
             <div className="flex flex-col items-center lg:items-start lg:mt-[88px]">
-              <h4 className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">SERVICE</h4>
+              <h4 className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">
+                SERVICE
+              </h4>
+
               <ul className="space-y-6">
-                {["CATERING", "GIFT CARDS", "SUPPORT"].map((link) => (
-                  <li key={link}>
-                    <Link href="#" className="font-serif font-normal text-[14px] leading-[22px] tracking-[1.2px] uppercase text-gray-400 hover:text-white transition-colors">
-                      {link}
+                {[
+                  { label: "LOCATION", href: "/locations" },
+                  { label: "CONTACT", href: "/contact" },
+                ].map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="font-serif font-normal text-[14px] leading-[22px] tracking-[1.2px] uppercase text-gray-400 hover:text-white transition-colors"
+                    >
+                      {link.label}
                     </Link>
                   </li>
                 ))}

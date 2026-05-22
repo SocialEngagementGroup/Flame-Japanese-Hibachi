@@ -49,10 +49,10 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "MENU", href: "/menu", external: false },
-    { name: "CATERING", href: "/catering", external: false },
+    // { name: "CATERING", href: "/catering", external: false },
     { name: "LOCATIONS", href: "/locations", external: false },
-    { name: "PROMOTIONS", href: ORDER_URL, external: true },
-    { name: "JOIN FLAME", href: ORDER_URL, external: true },
+    // { name: "PROMOTIONS", href: ORDER_URL, external: true },
+    // { name: "JOIN FLAME", href: ORDER_URL, external: true },
     { name: "CONTACT", href: "/contact", external: false },
   ];
 
