@@ -9,7 +9,7 @@ const MenuCTA = () => {
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-25"
-        style={{ backgroundImage: "url('/menupage/CTA/BG.png')" }}
+        style={{ backgroundImage: "url('/menupage/cta/bg.png')" }}
       />
 
       {/* Banner Layout: col on mobile → row on desktop */}
@@ -19,15 +19,15 @@ const MenuCTA = () => {
         <div className="flex flex-row items-center gap-3 w-full md:w-[62%]">
           <div
             className="flex-1 h-[300px] md:h-[490px] bg-cover bg-center"
-            style={{ backgroundImage: 'url("/menupage/CTA/Rectangle%20298.png")', boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
+            style={{ backgroundImage: 'url("/menupage/cta/rectangle-298.png")', boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
           />
           <div
             className="flex-1 h-[300px] md:h-[490px] bg-cover bg-center"
-            style={{ backgroundImage: 'url("/menupage/CTA/Rectangle%20299.png")', boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
+            style={{ backgroundImage: 'url("/menupage/cta/rectangle-299.png")', boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
           />
           <div
             className="flex-1 h-[300px] md:h-[490px] bg-cover bg-center"
-            style={{ backgroundImage: 'url("/menupage/CTA/Rectangle%20300.png")', boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
+            style={{ backgroundImage: 'url("/menupage/cta/rectangle-300.png")', boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
           />
         </div>
 

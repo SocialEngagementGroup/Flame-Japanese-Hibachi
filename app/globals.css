@@ -75,7 +75,7 @@
   --breakpoint-lg: 1100px;
 
   /* Typography Scale — registered as Tailwind utilities (text-h1, text-body, etc.) */
-  --text-h1: clamp(40px, 5.5vw, 96px);
+  --text-h1: clamp(34px, 5.5vw, 96px);
   --text-h2: clamp(18px, 2vw, 26px);
   --text-h3: clamp(28px, 3.5vw, 52px);
   --text-h4: clamp(20px, 2vw, 28px);

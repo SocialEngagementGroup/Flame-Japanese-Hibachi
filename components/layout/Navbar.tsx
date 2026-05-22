@@ -19,6 +19,7 @@ const Navbar = () => {
   const mobileVideoRef = React.useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- client-mount flag needed for hydration-safe theme rendering
     setMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
