@@ -493,7 +493,14 @@ const menuData: Record<
     {
       id: "fry-1",
       name: "LOADED TERIYAKI FRIES",
-      price: "9.85",
+      price: "10.85",
+      tag: "FRIES",
+      image: "/homepage/menu/FLAME LOADED FRIES.png",
+    },
+    {
+      id: "fry-2",
+      name: "LOADED STEAK FRIES",
+      price: "11.85",
       tag: "FRIES",
       image: "/homepage/menu/FLAME LOADED FRIES.png",
     },

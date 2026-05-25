@@ -12,43 +12,38 @@ import "swiper/css";
 const items = [
   {
     name: "CHICKEN BEEF SHRIMP FLAME COMBO",
-    price: "$24.99",
+    price: "$14.85",
     image: "/homepage/menu/FLAME COMBO.png",
   },
   {
     name: "SALMON AND SHRIMP FLAME COMBO",
-    price: "$26.99",
-    image: "/homepage/menu/HIBACHI.png",
+    price: "$12.85",
+    image: "/menupage/flame-combo/salmon-and-shrimp.jpg",
   },
   {
     name: "CHICKEN HIBACHI",
-    price: "$18.99",
-    image: "/homepage/menu/BUILD YOUR OWN PLATTER.png",
+    price: "$9.85",
+    image: "/menupage/hibachi/chicken-hibachi-plate.jpg",
   },
   {
-    name: "SIGNATURE BENTO BOX",
-    price: "$15.99",
+    name: "CHICKEN & BEEF BENTO",
+    price: "$13.85",
     image: "/homepage/menu/BENTO.png",
   },
   {
-    name: "SPICY DRAGON SUSHI ROLL",
-    price: "$13.99",
+    name: "CALIFORNIA ROLL",
+    price: "$7.85",
     image: "/homepage/menu/SUSHI.png",
   },
   {
-    name: "CRISPY WINGS & TENDERS",
+    name: "CHICKEN TENDERS (5 PC)",
     price: "$11.99",
     image: "/homepage/menu/WINGS  TENDERS.png",
   },
   {
     name: "FLAME LOADED FRIES",
-    price: "$9.99",
+    price: "$9.85",
     image: "/homepage/menu/FLAME LOADED FRIES.png",
-  },
-  {
-    name: "BUILD YOUR OWN PLATTER",
-    price: "$16.99",
-    image: "/homepage/menu/BUILD YOUR OWN PLATTER.png",
   },
 ];
 
