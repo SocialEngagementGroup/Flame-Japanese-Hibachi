@@ -18,7 +18,7 @@ const raleway = Raleway({
 });
 
 export const metadata = {
-  title: "Flame Japanese Hibachi | Coming Soon",
+  title: "Flame Japanese Hibachi",
   description:
     "Experience the ultimate taste of Japanese hibachi right where you are.",
   icons: {
