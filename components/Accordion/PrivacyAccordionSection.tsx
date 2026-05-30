@@ -37,10 +37,9 @@ export default function PrivacyAccordionSection({
             </button>
 
             <div
-                className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[5000px] border-t border-primary" : "max-h-0"
-                    }`}
+                className={`grid overflow-hidden transition-all duration-300 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
             >
-                <div className="p-4 md:p-8">
+                <div className="min-h-0 border-t border-primary p-4 md:p-8">
                     {items.map((item, index) => (
                         <div key={item.id} className="flex flex-col gap-3 md:gap-5 mb-8 last:mb-0">
                             {/* If there's a question (like 2.1 Information You Provide Directly), render it as a subtitle */}

@@ -42,10 +42,9 @@ export default function AccordionItem({
             </button>
 
             <div
-                className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[5000px] pt-3 md:pt-5" : "max-h-0"
-                    }`}
+                className={`grid overflow-hidden transition-all duration-300 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
             >
-                <div className="flex flex-col gap-3 md:gap-5">
+                <div className="min-h-0 flex flex-col gap-3 md:gap-5 pt-3 md:pt-5">
                     {answer.map((block, index) => {
                         switch (block.type) {
                             case "paragraph":

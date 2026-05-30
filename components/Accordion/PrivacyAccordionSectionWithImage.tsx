@@ -40,10 +40,9 @@ export default function PrivacyAccordionSectionWithImage({
             </button>
 
             <div
-                className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[5000px] border-t border-primary" : "max-h-0"
-                    }`}
+                className={`grid overflow-hidden transition-all duration-300 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
             >
-                <div className="grid gap-4 p-4 md:items-start md:gap-8 md:p-8 lg:grid-cols-[320px_1fr]">
+                <div className="min-h-0 grid gap-4 border-t border-primary p-4 md:items-start md:gap-8 md:p-8 lg:grid-cols-[320px_1fr]">
                     <div className="relative h-[220px] overflow-hidden md:h-[382px]">
                         <Image
                             src={imageSrc}
