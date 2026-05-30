@@ -9,8 +9,10 @@ import React from "react";
 
 // Detect-only patterns (no global flag) — combined into one global regex below.
 const EMAIL = /[a-zA-Z0-9][\w+.-]*@[\w.-]+\.[a-z]{2,}/;
-const HTTP_URL = /https?:\/\/[^\s<>"']+?(?=[.,;:!?)\s]|$)/;
-const WWW_URL = /www\.[\w.-]+\.[a-z]{2,}(?:\/[^\s<>"']*?(?=[.,;:!?)\s]|$))?/;
+// URLs match greedily up to whitespace/quote; trailing sentence punctuation
+// is stripped after the match so periods etc. don't break the link.
+const HTTP_URL = /https?:\/\/[^\s<>"']+/;
+const WWW_URL = /www\.[\w.-]+\.[a-z]{2,}(?:\/[^\s<>"']*)?/i;
 const US_PHONE = /\+1[\s-]\d{3}[\s-]\d{3}[\s-]\d{4}/;
 
 const COMBINED = new RegExp(
@@ -18,6 +20,7 @@ const COMBINED = new RegExp(
   "gi",
 );
 
+const TRAILING_PUNCT = /[.,;:!?)\]}>'"]+$/;
 const LINK_CLASS = "text-primary underline-offset-4 hover:underline break-words";
 
 export function linkify(text: string): React.ReactNode {
@@ -30,9 +33,21 @@ export function linkify(text: string): React.ReactNode {
   let key = 0;
 
   while ((match = regex.exec(text)) !== null) {
-    const str = match[0];
+    let str = match[0];
     const idx = match.index;
     if (idx > lastIndex) parts.push(text.slice(lastIndex, idx));
+
+    // For URLs, strip trailing sentence punctuation so the link doesn't
+    // swallow a period at the end of a sentence.
+    let trailing = "";
+    const isUrl = str.startsWith("http") || str.startsWith("www.");
+    if (isUrl) {
+      const m = str.match(TRAILING_PUNCT);
+      if (m) {
+        trailing = m[0];
+        str = str.slice(0, str.length - trailing.length);
+      }
+    }
 
     let href: string;
     let external = false;
@@ -61,7 +76,9 @@ export function linkify(text: string): React.ReactNode {
       </a>,
     );
 
-    lastIndex = idx + str.length;
+    if (trailing) parts.push(trailing);
+
+    lastIndex = idx + str.length + trailing.length;
   }
 
   if (lastIndex < text.length) parts.push(text.slice(lastIndex));
