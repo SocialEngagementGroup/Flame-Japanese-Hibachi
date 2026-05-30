@@ -13,7 +13,18 @@ export default function AccordionSectionWithImage({
     imageAlt,
     items,
 }: AccordionSectionWithImageProps) {
-    const [activeIndex, setActiveIndex] = useState<number | null>(0);
+    // All items open by default; toggle on click adds/removes that index.
+    const [openIndices, setOpenIndices] = useState<Set<number>>(
+        () => new Set(items.map((_, i) => i))
+    );
+
+    const toggle = (i: number) =>
+        setOpenIndices((prev) => {
+            const next = new Set(prev);
+            if (next.has(i)) next.delete(i);
+            else next.add(i);
+            return next;
+        });
 
     const topItems = items.slice(0, 2);
     const bottomItems = items.slice(2);
@@ -44,10 +55,8 @@ export default function AccordionSectionWithImage({
                             question={item.question}
                             answer={item.answer}
                             isLast={bottomItems.length === 0 && index === topItems.length - 1}
-                            isOpen={activeIndex === index}
-                            onClick={() =>
-                                setActiveIndex(activeIndex === index ? null : index)
-                            }
+                            isOpen={openIndices.has(index)}
+                            onClick={() => toggle(index)}
                         />
                     ))}
                 </div>
@@ -63,12 +72,8 @@ export default function AccordionSectionWithImage({
                             question={item.question}
                             answer={item.answer}
                             isLast={index === bottomItems.length - 1}
-                            isOpen={activeIndex === actualIndex}
-                            onClick={() =>
-                                setActiveIndex(
-                                    activeIndex === actualIndex ? null : actualIndex
-                                )
-                            }
+                            isOpen={openIndices.has(actualIndex)}
+                            onClick={() => toggle(actualIndex)}
                         />
                     );
                 })}

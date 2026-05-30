@@ -6,7 +6,17 @@ import PrivacyAccordionRenderer from "@/components/Accordion/PrivacyAccordionRen
 import { termsConditionsSections } from "@/lib/data/terms-conditions-data";
 
 const TermsConditionsPage = () => {
-    const [openIndex, setOpenIndex] = useState<number | null>(0);
+    // All sections open by default; toggling collapses/reopens an individual section.
+    const [openIndices, setOpenIndices] = useState<Set<number>>(
+        () => new Set(termsConditionsSections.map((_, i) => i))
+    );
+    const toggle = (i: number) =>
+        setOpenIndices((prev) => {
+            const next = new Set(prev);
+            if (next.has(i)) next.delete(i);
+            else next.add(i);
+            return next;
+        });
 
     return (
         <main>
@@ -31,8 +41,8 @@ const TermsConditionsPage = () => {
                     <PrivacyAccordionRenderer
                         key={index}
                         section={section}
-                        isOpen={openIndex === index}
-                        onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+                        isOpen={openIndices.has(index)}
+                        onToggle={() => toggle(index)}
                     />
                 ))}
             </div>

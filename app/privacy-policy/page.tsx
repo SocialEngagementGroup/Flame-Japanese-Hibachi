@@ -8,7 +8,17 @@ import { privacyPolicySections } from "@/lib/data/privacy-policy-data";
 
 const PrivacyPolicyPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
-    const [openIndex, setOpenIndex] = useState<number | null>(0);
+    // All sections open by default; toggling collapses/reopens an individual section.
+    const [openIndices, setOpenIndices] = useState<Set<number>>(
+        () => new Set(privacyPolicySections.map((_, i) => i))
+    );
+    const toggle = (i: number) =>
+        setOpenIndices((prev) => {
+            const next = new Set(prev);
+            if (next.has(i)) next.delete(i);
+            else next.add(i);
+            return next;
+        });
 
     return (
         <main>
@@ -37,8 +47,8 @@ const PrivacyPolicyPage = () => {
                     <PrivacyAccordionRenderer
                         key={index}
                         section={section}
-                        isOpen={openIndex === index}
-                        onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+                        isOpen={openIndices.has(index)}
+                        onToggle={() => toggle(index)}
                     />
                 ))}
             </div>
