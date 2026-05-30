@@ -47,6 +47,7 @@ const Footer = () => {
                 {[
                   { label: "HOME", href: "/" },
                   { label: "MENU", href: "/menu" },
+                  { label: "CATERING", href: "/catering" },
                 ].map((link) => (
                   <li key={link.label}>
                     <Link
@@ -70,6 +71,7 @@ const Footer = () => {
                 {[
                   { label: "LOCATION", href: "/locations" },
                   { label: "CONTACT", href: "/contact" },
+                  { label: "FAQ", href: "/faq" },
                 ].map((link) => (
                   <li key={link.label}>
                     <Link
@@ -109,8 +111,8 @@ const Footer = () => {
           {/* Desktop Left: Policies */}
           <div className="hidden md:flex justify-between items-center gap-6">
             <div className="flex gap-8">
-              <Link href="#" className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-600 hover:text-white transition-colors">PRIVACY POLICY</Link>
-              <Link href="#" className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-600 hover:text-white transition-colors">TERMS OF SERVICE</Link>
+              <Link href="/privacy-policy" className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-600 hover:text-white transition-colors">PRIVACY POLICY</Link>
+              <Link href="/terms-conditions" className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-600 hover:text-white transition-colors">TERMS OF SERVICE</Link>
             </div>
             <p className="font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-600 text-right">
               © {new Date().getFullYear()} FLAME JAPANESE HIBACHI. ALL RIGHTS RESERVED.
@@ -119,8 +121,8 @@ const Footer = () => {
 
           {/* Mobile Layout: stacked centered */}
           <div className="flex md:hidden flex-col items-center text-center gap-2 font-sans font-semibold text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-600 w-full">
-            <Link href="#" className="hover:text-white transition-colors">PRIVACY POLICY</Link>
-            <Link href="#" className="hover:text-white transition-colors">TERMS OF SERVICE</Link>
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">PRIVACY POLICY</Link>
+            <Link href="/terms-conditions" className="hover:text-white transition-colors">TERMS OF SERVICE</Link>
             <p>© {new Date().getFullYear()} FLAME JAPANESE HIBACHI. ALL RIGHTS RESERVED.</p>
           </div>
         </div>
