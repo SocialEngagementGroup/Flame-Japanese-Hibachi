@@ -6,6 +6,7 @@ import { ORDER_URL } from "@/lib/constants";
 type HeroProps = {
   tagline?: React.ReactNode;
   title?: React.ReactNode;
+  description?: React.ReactNode;
   ctaLabel?: string | null;
   ctaHref?: string;
   align?: "left" | "center";
@@ -22,6 +23,7 @@ const Hero = ({
       <span className="text-white">SENSES.</span>
     </>
   ),
+  description,
   ctaLabel = "ORDER NOW",
   ctaHref = ORDER_URL,
   align = "left",
@@ -68,12 +70,18 @@ const Hero = ({
           </p>
 
           <h1
-            className={`heading-h1 mb-[var(--space-xl)] ${
-              align === "center" ? "!text-center" : ""
-            }`}
+            className={`heading-h1 ${
+              description ? "mb-[var(--space-md)]" : "mb-[var(--space-xl)]"
+            } ${align === "center" ? "!text-center" : ""}`}
           >
             {title}
           </h1>
+
+          {description && (
+            <p className="w-full max-w-[779px] min-h-[192px] flex flex-col justify-center text-white text-center font-raleway text-[16px] font-semibold leading-[25px] tracking-[3px] uppercase mb-[var(--space-xl)]">
+              {description}
+            </p>
+          )}
 
           {ctaLabel && (
             <a

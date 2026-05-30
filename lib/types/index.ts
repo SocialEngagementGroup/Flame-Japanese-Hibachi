@@ -14,3 +14,5 @@ export type ComingSoonLocation = {
   openUntil: string;
   distance: string;
 };
+
+export * from "./catering";
