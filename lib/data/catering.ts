@@ -258,7 +258,7 @@ export const cateringMenuSections: CateringMenuBlock[] = [
         category: "BUFFALO WINGS/ BONELESS WINGS",
         people: "50 PCS",
         price: "$65",
-        image: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
+        image: "/menupage/wings/50-pieces.png",
         details: [
           "50 PCS BUFFALO WINGS/ BONELESS WINGS",
           "ADD-ONS: FRIES HALF TRAY $40",
@@ -270,7 +270,7 @@ export const cateringMenuSections: CateringMenuBlock[] = [
         category: "BUFFALO WINGS/ BONELESS WINGS",
         people: "100 PCS",
         price: "$130",
-        image: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
+        image: "/menupage/wings/100-pieces.png",
         details: [
           "100 PCS BUFFALO WINGS/ BONELESS WINGS",
           "ADD-ONS: FRIES HALF TRAY $40",
@@ -282,7 +282,7 @@ export const cateringMenuSections: CateringMenuBlock[] = [
         category: "BUFFALO WINGS/ BONELESS WINGS",
         people: "150 PCS",
         price: "$195",
-        image: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
+        image: "/menupage/wings/100-pieces.png",
         details: [
           "150 PCS BUFFALO WINGS/ BONELESS WINGS",
           "ADD-ONS: FRIES HALF TRAY $40",
@@ -294,7 +294,7 @@ export const cateringMenuSections: CateringMenuBlock[] = [
         category: "BUFFALO WINGS/ BONELESS WINGS",
         people: "200 PCS",
         price: "$230",
-        image: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
+        image: "/menupage/wings/100-pieces.png",
         details: [
           "200 PCS BUFFALO WINGS/ BONELESS WINGS",
           "ADD-ONS: FRIES HALF TRAY $40",

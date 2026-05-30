@@ -27,7 +27,7 @@ export default function PrivacyAccordionSectionWithImage({
             <button
                 type="button"
                 onClick={onToggle}
-                className="flex w-full items-center justify-between bg-primary px-4 py-3 hover:translate-y-0 active:scale-100 md:px-8 md:py-3"
+                className="flex w-full items-center justify-between bg-primary px-4 py-3 cursor-pointer hover:translate-y-0 active:scale-100 md:px-8 md:py-3"
             >
                 <h2 className="text-left font-serif text-[16px] font-extrabold uppercase leading-[24px] text-white md:text-[22px] md:leading-[32px] md:tracking-[4.8px]">
                     {title}

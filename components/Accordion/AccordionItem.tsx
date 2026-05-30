@@ -25,7 +25,7 @@ export default function AccordionItem({
             <button
                 type="button"
                 onClick={onClick}
-                className="flex w-full items-start justify-between gap-4 text-left md:gap-5"
+                className="flex w-full items-start justify-between gap-4 text-left cursor-pointer md:gap-5"
             >
                 <span
                     className={`font-serif text-[20px] font-semibold leading-[30px] md:text-[24px] md:leading-[28px] ${isOpen ? "text-primary" : "text-foreground"
