@@ -4,6 +4,7 @@
 
 import { IoChevronDown } from "react-icons/io5";
 import { AccordionContentBlock } from "./accordion.types";
+import { linkify } from "@/lib/linkify";
 
 type Props = {
     question: string;
@@ -53,7 +54,7 @@ export default function AccordionItem({
                                         key={index}
                                         className="font-serif text-[18px] font-normal leading-[38px] text-foreground md:text-[20px] md:leading-[36px]"
                                     >
-                                        {block.content}
+                                        {linkify(block.content)}
                                     </p>
                                 );
 
@@ -63,7 +64,7 @@ export default function AccordionItem({
                                         key={index}
                                         className="font-serif text-[12px] font-normal leading-[18px] text-muted-foreground md:text-[20px] md:leading-[32px]"
                                     >
-                                        {block.content}
+                                        {linkify(block.content)}
                                     </p>
                                 );
 
@@ -73,7 +74,7 @@ export default function AccordionItem({
                                         key={index}
                                         className="font-serif text-[12px] font-semibold leading-[18px] text-foreground md:text-[24px] md:leading-[32px]"
                                     >
-                                        {block.content}
+                                        {linkify(block.content)}
                                     </h4>
                                 );
 
@@ -84,7 +85,7 @@ export default function AccordionItem({
                                         className="ml-4 list-disc space-y-1 pl-5 font-serif text-[18px] leading-[30px] text-foreground md:space-y-2 md:text-[20px] md:leading-[36px]"
                                     >
                                         {block.items.map((item, itemIndex) => (
-                                            <li key={itemIndex}>{item}</li>
+                                            <li key={itemIndex}>{linkify(item)}</li>
                                         ))}
                                     </ul>
                                 );

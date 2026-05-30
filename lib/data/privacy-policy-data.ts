@@ -17,7 +17,7 @@ export const privacyPolicySections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `This Policy applies to our website at www.flamejapanesehibachi.com and any related digital services we operate. It does not apply to third-party platforms—such as DoorDash—which operate under their own privacy policies.`
+                        content: `This Policy applies to our website at www.flamehibachi.com and any related digital services we operate. It does not apply to third-party platforms—such as DoorDash—which operate under their own privacy policies.`
                     },
                     {
                         type: "paragraph",

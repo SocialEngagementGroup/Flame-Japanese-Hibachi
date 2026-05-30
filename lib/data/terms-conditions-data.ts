@@ -327,7 +327,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `Your use of the Site is also governed by our Privacy Policy, which describes how we collect, use, and protect your information and is incorporated into these Terms by reference. You can review it at www.flamejapanesehibachi.com/privacy-policy.`
+                        content: `Your use of the Site is also governed by our Privacy Policy, which describes how we collect, use, and protect your information and is incorporated into these Terms by reference. You can review it at www.flamehibachi.com/privacy-policy.`
                     },
                     {
                         type: "paragraph",
@@ -524,7 +524,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                         items: [
                             "Email: ask@flamejapanesehibachi.com",
                             "Phone: +1 888-786-5411",
-                            "Website: www.flamejapanesehibachi.com/contact-us",
+                            "Website: www.flamehibachi.com/contact",
                             "Mail: Flame Japanese Hibachi, 5411c Backlick Rd, Springfield, VA 22151, USA"
                         ]
                     },

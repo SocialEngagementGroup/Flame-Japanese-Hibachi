@@ -54,7 +54,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `Visit the Location page on our website at www.flamejapanesehibachi.com/location. We currently have locations in Maryland, Virginia, Pennsylvania, and Florida, with new locations opening soon.`,
+                        content: `Visit the Location page on our website at www.flamehibachi.com/locations. We currently have locations in Maryland, Virginia, Pennsylvania, and Florida, with new locations opening soon.`,
                     },
                 ],
             },
@@ -357,7 +357,7 @@ export const faqSections: AccordionRendererSection[] = [
                         items: [
                             "Email: ask@flamejapanesehibachi.com",
                             "Phone: +1 888-786-5411 (Office) | +1 786-200-3917 (Cell)",
-                            "Website: www.flamejapanesehibachi.com/contact-us",
+                            "Website: www.flamehibachi.com/contact",
                             "Mail: 5411c Backlick Rd, Springfield, VA 22151, USA",
                         ],
                     },

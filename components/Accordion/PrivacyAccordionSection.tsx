@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
 import { AccordionItemType } from "./accordion.types";
+import { linkify } from "@/lib/linkify";
 
 export type PrivacyAccordionSectionProps = {
     title: string;
@@ -58,7 +59,7 @@ export default function PrivacyAccordionSection({
                                                     key={blockIndex}
                                                     className="font-serif text-[16px] font-normal leading-[30px] text-foreground md:text-[18px] md:leading-[32px]"
                                                 >
-                                                    {block.content}
+                                                    {linkify(block.content)}
                                                 </p>
                                             );
                                         case "muted":
@@ -67,7 +68,7 @@ export default function PrivacyAccordionSection({
                                                     key={blockIndex}
                                                     className="font-serif text-[14px] font-normal leading-[24px] text-muted-foreground md:text-[16px] md:leading-[28px]"
                                                 >
-                                                    {block.content}
+                                                    {linkify(block.content)}
                                                 </p>
                                             );
                                         case "subheading":
@@ -76,7 +77,7 @@ export default function PrivacyAccordionSection({
                                                     key={blockIndex}
                                                     className="font-serif text-[16px] font-bold leading-[24px] text-foreground md:text-[20px] md:leading-[32px] mt-4"
                                                 >
-                                                    {block.content}
+                                                    {linkify(block.content)}
                                                 </h4>
                                             );
                                         case "list":
@@ -86,7 +87,7 @@ export default function PrivacyAccordionSection({
                                                     className="ml-4 list-disc space-y-1 pl-5 font-serif text-[16px] leading-[30px] text-foreground md:space-y-2 md:text-[18px] md:leading-[32px]"
                                                 >
                                                     {block.items.map((listItem, itemIndex) => (
-                                                        <li key={itemIndex}>{listItem}</li>
+                                                        <li key={itemIndex}>{linkify(listItem)}</li>
                                                     ))}
                                                 </ul>
                                             );
@@ -108,7 +109,7 @@ export default function PrivacyAccordionSection({
                                                                 <tr key={rIndex} className="even:bg-primary/5">
                                                                     {row.map((cell, cIndex) => (
                                                                         <td key={cIndex} className="border border-primary/30 px-4 py-3 text-foreground">
-                                                                            {cell}
+                                                                            {linkify(cell)}
                                                                         </td>
                                                                     ))}
                                                                 </tr>
