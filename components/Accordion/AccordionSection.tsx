@@ -24,7 +24,7 @@ export default function AccordionSection({
         });
 
     return (
-        <section className="accordion-section mx-auto w-[80%] overflow-hidden border border-primary bg-background">
+        <section className="accordion-section mx-auto w-full md:w-[80%] overflow-hidden border border-primary bg-background">
             <div className="bg-primary px-4 py-3 md:px-8 md:py-5">
                 <h2 className="text-center font-serif text-[16px] font-extrabold uppercase leading-[24px] text-white md:text-left md:text-[24px] md:leading-[24px] md:tracking-[4.8px]">
                     {title}

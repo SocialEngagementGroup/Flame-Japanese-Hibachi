@@ -24,7 +24,7 @@ export default function PrivacyAccordionSectionWithImage({
     onToggle,
 }: PrivacyAccordionSectionWithImageProps) {
     return (
-        <div className="accordion-section mx-auto w-[80%] overflow-hidden border border-primary bg-background">
+        <div className="accordion-section mx-auto w-full md:w-[80%] overflow-hidden border border-primary bg-background">
             <button
                 type="button"
                 onClick={onToggle}
