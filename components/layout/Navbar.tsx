@@ -51,7 +51,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "HOME", href: "/", external: false },
     { name: "MENU", href: "/menu", external: false },
-    // { name: "CATERING", href: "/catering", external: false },
+    { name: "CATERING", href: "/catering", external: false },
     { name: "LOCATIONS", href: "/locations", external: false },
     // { name: "PROMOTIONS", href: ORDER_URL, external: true },
     // { name: "JOIN FLAME", href: ORDER_URL, external: true },
