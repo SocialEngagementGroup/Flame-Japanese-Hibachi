@@ -1,61 +1,66 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { ORDER_URL } from "@/lib/constants";
 
 const categories = [
   {
     name: "BUILD YOUR OWN PLATTER",
-    href: "/menu/platter",
+    href: ORDER_URL,
+    external: true,
     image: "/homepage/menu/BUILD YOUR OWN PLATTER.png",
     mobileImage: "/homepage/menu/build-your-own-platter-mobile.png",
   },
   {
     name: "HIBACHI",
-    href: "/menu/hibachi",
+    href: "/menu#section-hibachi",
     image: "/homepage/menu/HIBACHI.png",
     mobileImage: "/homepage/menu/hibachi-mobile.png",
   },
   {
     name: "FLAME COMBO",
-    href: "/menu/combo",
+    href: "/menu#section-combo",
     image: "/homepage/menu/FLAME COMBO.png",
     mobileImage: "/homepage/menu/flame-combo-mobile.png",
   },
   {
     name: "BENTO",
-    href: "/menu/bento",
+    href: "/menu#section-bento",
     image: "/homepage/menu/BENTO.png",
     mobileImage: "/homepage/menu/bento-mobile.png",
   },
   {
     name: "SUSHI",
-    href: "/menu/sushi",
+    href: "/menu#section-sushi",
     image: "/homepage/menu/SUSHI.png",
     mobileImage: "/homepage/menu/sushi-mobile.png",
   },
   {
     name: "WINGS / TENDERS",
-    href: "/menu/wings",
+    href: "/menu#section-wings",
     image: "/homepage/menu/WINGS  TENDERS.png",
     mobileImage: "/homepage/menu/wings-tenders-mobile.png",
   },
   {
     name: "FLAME LOADED FRIES",
-    href: "/menu/fries",
+    href: "/menu#section-fries",
     image: "/homepage/menu/FLAME LOADED FRIES.png",
   },
   {
     name: "BOBA TEA / SMOOTHIES / DRINKS",
-    href: "/menu/drinks",
+    href: "/menu#section-boba",
     image: "/homepage/menu/BOBA TEA  SMOOTHIES  Drinks.png",
   },
   {
     name: "ADD ONS",
-    href: "/menu/addons",
+    href: "/menu#section-addons",
     image: "/homepage/menu/ADD ONS.png",
   },
 ];
+
+const cardClassName =
+  "group relative aspect-[275.67/280] md:aspect-[378.67/278] overflow-hidden bg-card";
 
 const MenuGrid = () => {
   return (
@@ -81,34 +86,46 @@ const MenuGrid = () => {
 
         {/* Grid - Fixed 3 columns with standardized gap */}
         <div className="grid grid-cols-3 gap-[var(--gap-sm)]">
-          {categories.map((cat, index) => (
-            <a
-              key={index}
-              href={ORDER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative aspect-[275.67/280] md:aspect-[378.67/278] overflow-hidden bg-card"
-            >
-              {/* Responsive image: mobile-specific crop on small screens */}
-              <picture className="absolute inset-0 w-full h-full">
-                {cat.mobileImage && (
-                  <source media="(max-width: 768px)" srcSet={cat.mobileImage} />
-                )}
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="w-full h-full object-cover"
-                />
-              </picture>
+          {categories.map((cat, index) => {
+            const inner = (
+              <>
+                {/* Responsive image: mobile-specific crop on small screens */}
+                <picture className="absolute inset-0 w-full h-full">
+                  {cat.mobileImage && (
+                    <source media="(max-width: 768px)" srcSet={cat.mobileImage} />
+                  )}
+                  <img
+                    src={cat.image}
+                    alt={cat.name}
+                    className="w-full h-full object-cover"
+                  />
+                </picture>
 
-              {/* Text — Bottom Centered on mobile, bottom-left on desktop */}
-              <div className="absolute inset-0 flex items-end justify-center md:justify-start pb-6 md:pb-[var(--space-lg)] px-2 md:px-[var(--space-lg)] bg-black/20 md:bg-transparent">
-                <h4 className="heading-h4 text-white text-center md:text-left scale-[0.8] md:scale-100">
-                  {cat.name}
-                </h4>
-              </div>
-            </a>
-          ))}
+                {/* Text — Bottom Centered on mobile, bottom-left on desktop */}
+                <div className="absolute inset-0 flex items-end justify-center md:justify-start pb-6 md:pb-[var(--space-lg)] px-2 md:px-[var(--space-lg)] bg-black/20 md:bg-transparent">
+                  <h4 className="heading-h4 text-white text-center md:text-left scale-[0.8] md:scale-100">
+                    {cat.name}
+                  </h4>
+                </div>
+              </>
+            );
+
+            return cat.external ? (
+              <a
+                key={index}
+                href={cat.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cardClassName}
+              >
+                {inner}
+              </a>
+            ) : (
+              <Link key={index} href={cat.href} className={cardClassName}>
+                {inner}
+              </Link>
+            );
+          })}
         </div>
 
       </div>
