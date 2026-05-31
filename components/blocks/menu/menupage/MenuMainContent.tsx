@@ -250,7 +250,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                     Flavors:
                   </span>{" "}
                   <span className="font-normal md:font-medium tracking-[0.5px] md:tracking-[4px]">
-                    Rim Fire, Mango Habanero, Hot, Mild, Thai Chilli, Lemon, Pepper, Garlic Parmesan, Buffalo Gold, Teriyaki, Sweet & Tangy, Honey Garlic, Honey BBQ, Chipotle BBQ, Old Bay.
+                    Rim Fire, Mango Habanero, Hot, Mild, Thai Chilli, Lemon Pepper, Garlic Parmesan, Buffalo Gold, Teriyaki, Sweet & Tangy, Honey Garlic, Honey BBQ, Chipotle BBQ, Old Bay.
                   </span>
                 </p>
               )}

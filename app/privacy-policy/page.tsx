@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import Hero from "@/components/blocks/hero/Hero";
-import AccordionSearchBox from "@/components/Accordion/AccordionSearchBox";
+import AccordionEffectiveDate from "@/components/Accordion/AccordionEffectiveDate";
 import PrivacyAccordionRenderer from "@/components/Accordion/PrivacyAccordionRenderer";
 import { privacyPolicySections } from "@/lib/data/privacy-policy-data";
 
 const PrivacyPolicyPage = () => {
-    const [searchQuery, setSearchQuery] = useState("");
     // All sections open by default; toggling collapses/reopens an individual section.
     const [openIndices, setOpenIndices] = useState<Set<number>>(
         () => new Set(privacyPolicySections.map((_, i) => i))
@@ -37,10 +36,7 @@ const PrivacyPolicyPage = () => {
                 bgImageMob="/faq/hero/faq-hero-mob.png"
             />
 
-            <AccordionSearchBox
-                value={searchQuery}
-                onChange={setSearchQuery}
-            />
+            <AccordionEffectiveDate />
 
             <div className="flex flex-col gap-5 md:gap-10 px-4 pb-20 2xl:px-0">
                 {privacyPolicySections.map((section, index) => (

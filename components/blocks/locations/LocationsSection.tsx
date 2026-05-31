@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { Phone, Clock, MapPin } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -255,9 +256,9 @@ const LocationsSection = ({
           </div>
         </div>
 
-        <button className="w-full max-w-[378.66px] sm:w-[378.66px] h-[52px] py-[16px] mx-auto border-2 border-primary/50 hover:border-primary text-primary hover:bg-primary/5 font-serif font-bold text-[12px] leading-[16px] tracking-[1.2px] text-center uppercase flex items-center justify-center transition-all">
+        <Link href="/locations" className="w-full max-w-[378.66px] sm:w-[378.66px] h-[52px] py-[16px] mx-auto border-2 border-primary/50 hover:border-primary text-primary hover:bg-primary/5 font-serif font-bold text-[12px] leading-[16px] tracking-[1.2px] text-center uppercase flex items-center justify-center transition-all">
           VIEW ALL LOCATIONS
-        </button>
+        </Link>
       </div>
 
       {/* DESKTOP LAYOUT */}
@@ -321,9 +322,9 @@ const LocationsSection = ({
                 </div>
               </div>
 
-              <button className="mt-8 w-[378.66px] max-w-full h-[52px] py-[16px] border-2 border-primary/50 hover:border-primary text-primary hover:bg-primary/5 font-serif font-bold text-[12px] leading-[16px] tracking-[1.2px] text-center uppercase flex items-center justify-center transition-all">
+              <Link href="/locations" className="mt-8 w-[378.66px] max-w-full h-[52px] py-[16px] border-2 border-primary/50 hover:border-primary text-primary hover:bg-primary/5 font-serif font-bold text-[12px] leading-[16px] tracking-[1.2px] text-center uppercase flex items-center justify-center transition-all">
                 VIEW ALL LOCATIONS
-              </button>
+              </Link>
             </div>
           </div>
         </div>

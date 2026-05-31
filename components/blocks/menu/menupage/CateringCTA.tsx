@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 const CateringCTA = () => {
   return (
@@ -30,14 +31,12 @@ const CateringCTA = () => {
         </p>
         
         {/* Button */}
-        <a
-          href="https://order.online/business/~13770567"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href="/catering"
           className="mt-6 md:mt-8 w-[176px] md:w-[220px] h-[44px] md:h-[54px] flex items-center justify-center font-['Raleway'] not-italic uppercase text-[10px] md:text-sm font-semibold md:font-black leading-[20px] md:leading-normal tracking-[1.4px] md:tracking-[3px] text-[#1C1B1B] md:text-black border-2 border-white bg-white transition-all duration-300 hover:bg-[#FF7808] hover:border-[#FF7808] hover:text-white shadow-lg"
         >
           CATERING MENU
-        </a>
+        </Link>
       </div>
     </section>
   );
