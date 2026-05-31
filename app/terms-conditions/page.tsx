@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Hero from "@/components/blocks/hero/Hero";
+import AccordionEffectiveDate from "@/components/Accordion/AccordionEffectiveDate";
 import PrivacyAccordionRenderer from "@/components/Accordion/PrivacyAccordionRenderer";
 import { termsConditionsSections } from "@/lib/data/terms-conditions-data";
 
@@ -36,7 +37,9 @@ const TermsConditionsPage = () => {
                 bgImageMob="/faq/hero/faq-hero-mob.png"
             />
 
-            <div className="flex flex-col gap-5 md:gap-10 px-4 pb-20 pt-10 2xl:px-0">
+            <AccordionEffectiveDate />
+
+            <div className="flex flex-col gap-5 md:gap-10 px-4 pb-20 2xl:px-0">
                 {termsConditionsSections.map((section, index) => (
                     <PrivacyAccordionRenderer
                         key={index}

@@ -1,18 +1,12 @@
-"use client";
-
-import { useState } from "react";
-
 import Hero from "@/components/blocks/hero/Hero";
 
-import AccordionSearchBox from "@/components/Accordion/AccordionSearchBox";
+import AccordionEffectiveDate from "@/components/Accordion/AccordionEffectiveDate";
 
 import AccordionRenderer from "@/components/Accordion/AccordionRenderer";
 
 import { faqSections } from "@/lib/data/faq-data";
 
 const FAQPage = () => {
-    const [searchQuery, setSearchQuery] = useState("");
-
     return (
         <main>
             <Hero
@@ -31,10 +25,7 @@ const FAQPage = () => {
                 bgImageMob="/faq/hero/faq-hero-mob.png"
             />
 
-            <AccordionSearchBox
-                value={searchQuery}
-                onChange={setSearchQuery}
-            />
+            <AccordionEffectiveDate />
 
             <div className="flex flex-col gap-5 md:gap-10 px-4 pb-20 2xl:px-0">
                 {faqSections.map((section, index) => (
