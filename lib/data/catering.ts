@@ -180,12 +180,12 @@ export const cateringMenuSections: CateringMenuBlock[] = [
   },
   {
     id: "menu-4-cbs",
-    title: "Menu 4: CBS",
+    title: "Menu 4: Chicken Beef Shrimp",
     subtitle: "$15 PER PERSON",
     items: [
       {
         id: "cbs-50",
-        category: "CBS",
+        category: "Chicken Beef Shrimp",
         people: "50 PEOPLE",
         price: "$750",
         image: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
@@ -201,7 +201,7 @@ export const cateringMenuSections: CateringMenuBlock[] = [
       },
       {
         id: "cbs-100",
-        category: "CBS",
+        category: "Chicken Beef Shrimp",
         people: "100 PEOPLE",
         price: "$1500",
         image: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
@@ -217,7 +217,7 @@ export const cateringMenuSections: CateringMenuBlock[] = [
       },
       {
         id: "cbs-150",
-        category: "CBS",
+        category: "Chicken Beef Shrimp",
         people: "150 PEOPLE",
         price: "$2250",
         image: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
@@ -233,7 +233,7 @@ export const cateringMenuSections: CateringMenuBlock[] = [
       },
       {
         id: "cbs-200",
-        category: "CBS",
+        category: "Chicken Beef Shrimp",
         people: "200 PEOPLE",
         price: "$3000",
         image: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
