@@ -2,10 +2,15 @@ import Hero from "@/components/blocks/hero/Hero";
 import LocationsSection from "@/components/blocks/locations/LocationsSection";
 import ContactSection from "@/components/blocks/contact/ContactSection";
 
+import { getCanonicalUrl } from "@/lib/seo/seo";
+
 export const metadata = {
   title: "Locations | Flame Japanese Hibachi",
   description:
     "Find your nearest Flame Japanese Hibachi. Browse active restaurants and see where we're striking next.",
+  alternates: {
+    canonical: getCanonicalUrl("/locations"),
+  },
 };
 
 export default function LocationsPage() {

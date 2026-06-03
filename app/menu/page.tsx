@@ -1,12 +1,17 @@
 import Hero from "@/components/blocks/hero/Hero";
 import InteractiveMenu from "@/components/blocks/menu/menupage/InteractiveMenu";
 import ContactSection from "@/components/blocks/contact/ContactSection";
+import { getCanonicalUrl } from "@/lib/seo/seo";
 
 export const metadata = {
-  title: "Menu | Flame Japanese Hibachi",
+  title: "Menu — Halal Hibachi, Sushi, Bento & Boba",
   description:
-    "Explore our menu. Sizzling perfection, every time. Savor the flavors.",
+    "Browse the full Flame Japanese Hibachi menu: hibachi platters, sushi rolls, bento boxes, loaded fries, wings, smoothies and boba. 100% Halal, freshly prepared.",
+  alternates: {
+    canonical: getCanonicalUrl("/menu"),
+  },
 };
+
 
 export default function MenuPage() {
   return (
