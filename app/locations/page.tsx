@@ -5,7 +5,7 @@ import ContactSection from "@/components/blocks/contact/ContactSection";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 
 export const metadata = {
-  title: "Locations | Flame Japanese Hibachi",
+  title: "All Flame Japanese Hibachi Locations (MD, VA, FL, PA)",
   description:
     "Find your nearest Flame Japanese Hibachi. Browse active restaurants and see where we're striking next.",
   alternates: {
