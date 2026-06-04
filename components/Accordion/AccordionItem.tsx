@@ -28,12 +28,12 @@ export default function AccordionItem({
                 onClick={onClick}
                 className="flex w-full items-start justify-between gap-4 text-left cursor-pointer md:gap-5"
             >
-                <span
+                <h3
                     className={`font-serif text-[20px] font-semibold leading-[30px] md:text-[24px] md:leading-[28px] ${isOpen ? "text-primary" : "text-foreground"
                         }`}
                 >
                     {question}
-                </span>
+                </h3>
 
                 <IoChevronDown
                     className={`mt-1 shrink-0 text-primary transition-transform duration-300 md:mt-2 ${isOpen ? "rotate-180" : ""

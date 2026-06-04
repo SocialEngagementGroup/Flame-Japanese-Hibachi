@@ -62,9 +62,9 @@ const ContactSection = ({
   return (
     <section className="w-full bg-[#F0EDED] dark:bg-black py-[var(--space-2xl)] px-[var(--space-lg)] transition-colors duration-300">
       <div className="max-w-[1100px] mx-auto">
-        <h3 className="heading-h3 text-center text-[#1C1B1B] dark:text-white mb-[var(--space-md)] transition-colors duration-300">
+        <h2 className="heading-h3 text-center text-[#1C1B1B] dark:text-white mb-[var(--space-md)] transition-colors duration-300">
           {heading}
-        </h3>
+        </h2>
         <p className="text-center text-gray-700 dark:text-gray-400 text-small font-bold uppercase tracking-[2px] mb-[var(--space-xl)] transition-colors duration-300">
           {subheading}
         </p>

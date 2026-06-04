@@ -39,9 +39,9 @@ const Footer = () => {
           <div className="flex flex-row justify-center gap-[var(--gap-lg)] w-full lg:w-auto lg:contents">
             {/* Company Links (Box 2) */}
             <div className="flex flex-col items-center lg:items-start lg:mt-[88px]">
-              <h4 className="font-sans font-normal text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">
+              <p className="font-sans font-normal text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">
                 COMPANY
-              </h4>
+              </p>
 
               <ul className="space-y-6">
                 {[
@@ -63,9 +63,9 @@ const Footer = () => {
 
             {/* Service Links (Box 3) */}
             <div className="flex flex-col items-center lg:items-start lg:mt-[88px]">
-              <h4 className="font-sans font-normal text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">
+              <p className="font-sans font-normal text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">
                 SERVICE
-              </h4>
+              </p>
 
               <ul className="space-y-6">
                 {[
@@ -88,7 +88,7 @@ const Footer = () => {
 
           {/* App Download (Box 4) */}
           <div className="flex flex-col items-center lg:items-end w-full lg:w-auto lg:mt-[88px]">
-            <h4 className="font-sans font-normal text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">DOWNLOAD OUR APP</h4>
+            <p className="font-sans font-normal text-[15px] leading-[20px] tracking-[1px] uppercase text-gray-500 mb-6">DOWNLOAD OUR APP</p>
             <div className="flex flex-col gap-4 w-full sm:w-auto items-center lg:items-end">
               <Link href="https://apps.apple.com/us/app/flame-japanese-hibachi/id6756082762" target="_blank">
                 <img src="/footer-apps/app-store.svg" alt="Download on the App Store" className="h-[48px] object-contain cursor-pointer hover:opacity-80 transition-opacity" />

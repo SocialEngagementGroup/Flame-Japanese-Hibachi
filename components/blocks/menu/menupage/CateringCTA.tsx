@@ -14,16 +14,16 @@ const CateringCTA = () => {
       <div className="relative z-10 flex flex-col items-center md:items-start justify-center w-full h-full max-w-[1765px] mx-auto">
         
         {/* Title */}
-        <h2 className="font-['Raleway'] font-black not-italic uppercase text-center md:text-left text-[24px] md:text-[72px] leading-[27px] md:leading-[72px] tracking-[-1px] md:tracking-normal drop-shadow-lg">
-          <span className="block">
-            <span className="text-[#FF7808]">CATER</span>
-            <span className="text-white"> WITH US</span>
-          </span>
-          <span className="block mt-1 md:mt-0">
-            <span className="text-white">FOR </span>
-            <span className="text-[#FF7808]">NEXT EVENT</span>
-          </span>
-        </h2>
+     <div className="font-['Raleway'] font-black not-italic uppercase text-center md:text-left text-[24px] md:text-[72px] leading-[27px] md:leading-[72px] tracking-[-1px] md:tracking-normal drop-shadow-lg">
+  <span className="block">
+    <span className="text-[#FF7808]">CATER</span>
+    <span className="text-white"> WITH US</span>
+  </span>
+  <span className="block mt-1 md:mt-0">
+    <span className="text-white">FOR </span>
+    <span className="text-[#FF7808]">NEXT EVENT</span>
+  </span> 
+</div>
         
         {/* Subtext */}
         <p className="mt-3 md:mt-4 text-[#FFF] md:text-[rgba(255,255,255,0.80)] font-['Raleway'] font-normal md:font-medium text-center md:text-left text-[10px] md:text-[18px] leading-[17px] md:leading-[28px] max-w-[90%] md:max-w-2xl drop-shadow-md">

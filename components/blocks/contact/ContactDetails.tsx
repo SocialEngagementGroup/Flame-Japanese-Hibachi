@@ -56,10 +56,10 @@ const ContactDetails = () => {
   return (
     <section className="w-full bg-[#F0EDED] dark:bg-black px-[var(--space-lg)] py-[var(--space-2xl)] transition-colors duration-300">
       <div className="max-w-[820px] mx-auto flex flex-col items-center text-center">
-        <h3 className="heading-h3 mb-[var(--space-md)] !text-center">
+        <h2 className="heading-h3 mb-[var(--space-md)] !text-center">
           <span className="text-primary">CONTACT </span>
           <span className="text-black dark:text-white transition-colors duration-300">US</span>
-        </h3>
+        </h2>
         <p className="text-primary text-small font-black tracking-[2px] uppercase font-sans mb-2">
           OFFICIAL PURPOSE ONLY
         </p>

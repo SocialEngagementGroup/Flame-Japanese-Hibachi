@@ -69,10 +69,10 @@ const MenuGrid = () => {
 
         {/* Header */}
         <div className="flex justify-center md:justify-between items-center mb-[var(--space-xl)] gap-4">
-          <h3 className="heading-h3 text-center md:text-left w-full md:w-auto">
+          <div className="heading-h3 text-center md:text-left w-full md:w-auto">
             <span className="text-foreground transition-colors duration-300">FLAME JAPANESE </span>
             <span className="text-primary transition-colors duration-300">MENU</span>
-          </h3>
+          </div>
 
           <a
             href={ORDER_URL}
@@ -103,9 +103,9 @@ const MenuGrid = () => {
 
                 {/* Text — Bottom Centered on mobile, bottom-left on desktop */}
                 <div className="absolute inset-0 flex items-end justify-center md:justify-start pb-6 md:pb-[var(--space-lg)] px-2 md:px-[var(--space-lg)] bg-black/20 md:bg-transparent">
-                  <h4 className="heading-h4 text-white text-center md:text-left scale-[0.8] md:scale-100">
+                  <div className="heading-h4 text-white text-center md:text-left scale-[0.8] md:scale-100">
                     {cat.name}
-                  </h4>
+                  </div>
                 </div>
               </>
             );
