@@ -6,8 +6,7 @@ import { getCanonicalUrl } from "@/lib/seo/seo";
 
 export const metadata = {
   title: "All Flame Japanese Hibachi Locations (MD, VA, FL, PA)",
-  description:
-    "Find your nearest Flame Japanese Hibachi. Browse active restaurants and see where we're striking next.",
+   description: "Find a Flame Japanese Hibachi location near you. Twelve-plus open restaurants across Maryland, Virginia, Florida and Pennsylvania, with more coming soon.",
   alternates: {
     canonical: getCanonicalUrl("/locations"),
   },

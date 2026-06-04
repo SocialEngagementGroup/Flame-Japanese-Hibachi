@@ -23,8 +23,7 @@ export const metadata = {
     template: "%s | Flame Japanese Hibachi",
     default: "Flame Japanese Hibachi | Halal Hibachi, Sushi & Bento",
   },
-  description:
-    "Experience the ultimate taste of Japanese hibachi right where you are.",
+  description: "100% Halal Japanese hibachi cooked fresh in front of you, plus sushi, bento, loaded fries and boba. Find a Flame Japanese Hibachi location or order online today.",
   icons: {
     icon: "/icon.png",
     shortcut: "/icon.png",

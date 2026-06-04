@@ -10,12 +10,15 @@ import LocationsSection from "@/components/blocks/locations/LocationsSection";
 import ContactSection from "@/components/blocks/contact/ContactSection";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 
+
 export const metadata = {
   title: "Flame Japanese Hibachi | Halal Hibachi, Sushi & Bento",
+  description: "100% Halal Japanese hibachi cooked fresh in front of you, plus sushi, bento, loaded fries and boba. Find a Flame Japanese Hibachi location or order online today.",
   alternates: {
     canonical: getCanonicalUrl("/"),
   },
 };
+
 export default function Home() {
   return (
     <div className="flex flex-col w-full">
