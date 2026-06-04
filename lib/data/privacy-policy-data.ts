@@ -211,54 +211,54 @@ export const privacyPolicySections: AccordionRendererSection[] = [
             }
         ]
     },
-    {
-        type: "default",
-        title: "SHARING YOUR INFORMATION",
-        items: [
-            {
-                id: "sharing-your-information",
-                question: "",
-                answer: [
-                    {
-                        type: "paragraph",
-                        content: `We do not sell, rent, or trade your personal information. We may share your information in the following limited circumstances:`
-                    },
-                    {
-                        type: "subheading",
-                        content: "Service Providers"
-                    },
-                    {
-                        type: "paragraph",
-                        content: `We share data with trusted vendors who assist in operating our website and digital services, including Google (analytics and tag management), Meta (advertising), and our web hosting provider. These vendors are contractually required to use your data only as directed by us.`
-                    },
-                    {
-                        type: "subheading",
-                        content: "DoorDash"
-                    },
-                    {
-                        type: "paragraph",
-                        content: `As described in Section 5, clicking through to DoorDash transfers you to their platform and their data practices apply.`
-                    },
-                    {
-                        type: "subheading",
-                        content: "Legal Requirements"
-                    },
-                    {
-                        type: "paragraph",
-                        content: `We may disclose your information if required to do so by law, court order, or governmental authority, or if we reasonably believe disclosure is necessary to protect our rights, prevent fraud, or protect the safety of users or the public.`
-                    },
-                    {
-                        type: "subheading",
-                        content: "Business Transfers"
-                    },
-                    {
-                        type: "paragraph",
-                        content: `If Flame Japanese Hibachi is acquired, merges with another entity, or undergoes a restructuring, your information may be transferred as part of that transaction. We will notify you of any such change via a notice on our website.`
-                    }
-                ]
-            }
-        ]
-    },
+   {
+    type: "default",
+    title: "SHARING YOUR INFORMATION",
+    items: [
+        {
+            id: "sharing-your-information",
+            question: "",
+            answer: [
+                {
+                    type: "paragraph",
+                    content: `We do not sell, rent, or trade your personal information. We may share your information in the following limited circumstances:`
+                },
+                {
+                    type: "subheading",
+                    content: "Service Providers"
+                },
+                {
+                    type: "paragraph",
+                    content: `We share data with trusted vendors who assist in operating our website and digital services, including Google (analytics and tag management), Meta (advertising), Supabase (backend database hosting), and our web hosting provider. These vendors are contractually required to use your data only as directed by us.`
+                },
+                {
+                    type: "subheading",
+                    content: "DoorDash"
+                },
+                {
+                    type: "paragraph",
+                    content: `As described in Section 5, clicking through to DoorDash transfers you to their platform and their data practices apply.`
+                },
+                {
+                    type: "subheading",
+                    content: "Legal Requirements"
+                },
+                {
+                    type: "paragraph",
+                    content: `We may disclose your information if required to do so by law, court order, or governmental authority, or if we reasonably believe disclosure is necessary to protect our rights, prevent fraud, or protect the safety of users or the public.`
+                },
+                {
+                    type: "subheading",
+                    content: "Business Transfers"
+                },
+                {
+                    type: "paragraph",
+                    content: `If Flame Japanese Hibachi is acquired, merges with another entity, or undergoes a restructuring, your information may be transferred as part of that transaction. We will notify you of any such change via a notice on our website.`
+                }
+            ]
+        }
+    ]
+},
     {
         type: "default",
         title: "DATA RETENTION",

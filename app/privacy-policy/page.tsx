@@ -4,7 +4,7 @@ import Hero from "@/components/blocks/hero/Hero";
 import AccordionEffectiveDate from "@/components/Accordion/AccordionEffectiveDate";
 
 export const metadata = {
-
+  title: "Privacy Policy",
   description:
     "Read how Flame Japanese Hibachi collects, uses and protects your personal information when you visit the site, place an order or contact our team.",
   alternates: {
