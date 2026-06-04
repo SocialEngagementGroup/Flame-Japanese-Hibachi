@@ -56,9 +56,9 @@ const SignatureItems = () => {
       <div className="w-full flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
         <h2 className="heading-h3 text-left">
           <span className="text-[#1C1B1B] dark:text-white transition-colors duration-300">
-            Our{" "}
+            MOST LOVED FLAME{" "}
           </span>
-          <span className="text-primary">Signatures</span>
+          <span className="text-primary"> SIGNATURE ITEMS</span>
         </h2>
 
         <div className="hidden md:flex gap-2 shrink-0">
