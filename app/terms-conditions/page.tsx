@@ -1,56 +1,37 @@
-"use client";
-
-import { useState } from "react";
+import { getCanonicalUrl } from "@/lib/seo/seo";
+import TermsConditionsContent from "@/components/blocks/terms/TermsConditionsContent";
 import Hero from "@/components/blocks/hero/Hero";
 import AccordionEffectiveDate from "@/components/Accordion/AccordionEffectiveDate";
-import PrivacyAccordionRenderer from "@/components/Accordion/PrivacyAccordionRenderer";
-import { termsConditionsSections } from "@/lib/data/terms-conditions-data";
 
-const TermsConditionsPage = () => {
-    // All sections open by default; toggling collapses/reopens an individual section.
-    const [openIndices, setOpenIndices] = useState<Set<number>>(
-        () => new Set(termsConditionsSections.map((_, i) => i))
-    );
-    const toggle = (i: number) =>
-        setOpenIndices((prev) => {
-            const next = new Set(prev);
-            if (next.has(i)) next.delete(i);
-            else next.add(i);
-            return next;
-        });
-
-    return (
-        <main>
-            <Hero
-                tagline="FLAME JAPANESE HIBACHI"
-                title={
-                    <>
-                        TERMS &<br />
-                        <span className="text-primary">CONDITIONS</span>
-                    </>
-                }
-                description="Please read these terms and conditions carefully before using our website or placing an order."
-                ctaLabel={null}
-                align="center"
-                fullHeight={false}
-                bgImageDesk="/faq/hero/faq-hero-desk.png"
-                bgImageMob="/faq/hero/faq-hero-mob.png"
-            />
-
-            <AccordionEffectiveDate />
-
-            <div className="flex flex-col gap-5 md:gap-10 px-4 pb-20 2xl:px-0">
-                {termsConditionsSections.map((section, index) => (
-                    <PrivacyAccordionRenderer
-                        key={index}
-                        section={section}
-                        isOpen={openIndices.has(index)}
-                        onToggle={() => toggle(index)}
-                    />
-                ))}
-            </div>
-        </main>
-    );
+export const metadata = {
+  title: "Terms and Conditions",
+  description:
+    "The terms and conditions that govern your use of the Flame Japanese Hibachi website, online ordering experience and catering inquiry services.",
+  alternates: {
+    canonical: getCanonicalUrl("/terms-conditions"),
+  },
 };
 
-export default TermsConditionsPage;
+export default function TermsConditionsPage() {
+  return (
+    <main>
+      <Hero
+        tagline="FLAME JAPANESE HIBACHI"
+        title={
+          <>
+            TERMS &<br />
+            <span className="text-primary">CONDITIONS</span>
+          </>
+        }
+        description="Please read these terms and conditions carefully before using our website or placing an order."
+        ctaLabel={null}
+        align="center"
+        fullHeight={false}
+        bgImageDesk="/faq/hero/faq-hero-desk.png"
+        bgImageMob="/faq/hero/faq-hero-mob.png"
+      />
+      <AccordionEffectiveDate />
+      <TermsConditionsContent />
+    </main>
+  );
+}

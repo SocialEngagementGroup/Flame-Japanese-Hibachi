@@ -125,10 +125,10 @@ const LocationsSection = ({
 
         {!hideFindYourFlame && (
           <>
-            <h3 className="heading-h3 mb-[var(--space-md)]">
+            <h2 className="heading-h3 mb-[var(--space-md)]">
               <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
               <span className="text-primary">FLAME</span>
-            </h3>
+            </h2>
             <p className="text-gray-700 dark:text-gray-300 text-small leading-relaxed font-medium mb-[var(--space-lg)] transition-colors duration-300">
               Experience the heat near you. Browse our active restaurants or see where we&apos;re striking next.
             </p>
@@ -184,14 +184,14 @@ const LocationsSection = ({
                   <span className={`text-small font-black tracking-[3px] uppercase font-sans mb-3 ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>
                     OPEN NOW
                   </span>
-                  <h4
+                  <h3
                     className={`heading-h4 mb-3 leading-tight uppercase text-white`}
                   >
                     {loc.name}
                     <span className={`block text-small font-normal mt-1 normal-case ${selectedLocation.id === loc.id ? "text-white" : "text-gray-400"}`}>
                       {loc.address}
                     </span>
-                  </h4>
+                  </h3>
                   <div className="space-y-2">
                     <div className={`flex items-center gap-2 text-small font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>
                       <Phone size={14} />
@@ -237,9 +237,9 @@ const LocationsSection = ({
                 key={loc.id}
                 className="border-b border-black/10 dark:border-white/10 pb-4 transition-colors duration-300"
               >
-                <h4 className="heading-h4 text-black dark:text-white mb-1 transition-colors duration-300 uppercase">
+                <h3 className="heading-h4 text-black dark:text-white mb-1 transition-colors duration-300 uppercase">
                   {loc.name}
-                </h4>
+                </h3>
                 <p className="text-gray-600 dark:text-gray-500 text-small font-medium transition-colors duration-300 mb-2">
                   {loc.address}
                 </p>
@@ -271,10 +271,10 @@ const LocationsSection = ({
 
               {!hideFindYourFlame && (
                 <>
-                  <h3 className="heading-h3 mb-[var(--space-xl)] whitespace-nowrap text-left">
+                  <h2 className="heading-h3 mb-[var(--space-xl)] whitespace-nowrap text-left">
                     <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
                     <span className="text-primary">FLAME</span>
-                  </h3>
+                  </h2>
                   <p className="text-gray-700 dark:text-gray-300 text-base mb-10 max-w-sm leading-relaxed font-medium transition-colors duration-300">
                     Experience the heat near you. Browse our active restaurants or see where we&apos;re striking next.
                   </p>
@@ -311,7 +311,7 @@ const LocationsSection = ({
                 <div className="space-y-6 max-h-[300px] overflow-y-auto pr-4 scrollbar-hide">
                   {comingSoonLocations.map((loc) => (
                     <div key={loc.id} className="border-b border-black/10 dark:border-white/10 pb-4 transition-colors duration-300">
-                      <h4 className="heading-h4 text-black dark:text-white mb-1 transition-colors duration-300 uppercase">{loc.name}</h4>
+                      <h3 className="heading-h4 text-black dark:text-white mb-1 transition-colors duration-300 uppercase">{loc.name}</h3>
                       <p className="text-gray-600 dark:text-gray-500 text-small font-medium transition-colors duration-300 mb-2">{loc.address}</p>
                       <div className="flex items-center gap-4">
                         <span className="text-primary text-small font-bold uppercase tracking-widest font-sans">OPEN UNTIL {loc.openUntil}</span>
@@ -338,10 +338,10 @@ const LocationsSection = ({
                 <div className="mb-[var(--space-xl)]">{leftHeader}</div>
               ) : (
                 <>
-                  <h3 className="heading-h3 mb-[var(--space-xl)] whitespace-nowrap text-left">
+                  <h2 className="heading-h3 mb-[var(--space-xl)] whitespace-nowrap text-left">
                     <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
                     <span className="text-primary">FLAME</span>
-                  </h3>
+                  </h2>
                   <p className="text-gray-700 dark:text-gray-300 text-base mb-10 max-w-sm leading-relaxed font-medium transition-colors duration-300">
                     Experience the heat near you. Browse our active restaurants or see where we&apos;re striking next.
                   </p>
@@ -369,11 +369,11 @@ const LocationsSection = ({
                     <span className={`text-small font-black tracking-[3px] uppercase font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>OPEN NOW</span>
                   </div>
 
-                  <h4 className={`heading-h4 transition-colors leading-tight max-w-[90%] mb-6 uppercase ${selectedLocation.id === loc.id ? "text-white" : "text-white group-hover:text-primary"
+                  <h3 className={`heading-h4 transition-colors leading-tight max-w-[90%] mb-6 uppercase ${selectedLocation.id === loc.id ? "text-white" : "text-white group-hover:text-primary"
                     }`}>
                     {loc.name}
                     <span className={`block text-small font-normal mt-1 normal-case ${selectedLocation.id === loc.id ? "text-white" : "text-gray-400"}`}>{loc.address}</span>
-                  </h4>
+                  </h3>
 
                   <div className="flex flex-wrap gap-8 items-center">
                     <div className={`flex items-center gap-3 text-small font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>

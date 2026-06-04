@@ -33,10 +33,10 @@ const MenuCTA = () => {
 
         {/* Text + Button */}
         <div className="flex flex-col items-center md:items-end justify-center w-full md:w-[38%] py-8 md:py-0 md:px-10">
-          <h2 className="text-white font-['Raleway'] font-black not-italic uppercase text-center md:text-right text-[24px] md:text-[72px] leading-[23px] md:leading-[74px] drop-shadow-lg">
+          <div className="text-white font-['Raleway'] font-black not-italic uppercase text-center md:text-right text-[24px] md:text-[72px] leading-[23px] md:leading-[74px] drop-shadow-lg">
             <span className="block">BUILD YOUR</span>
             <span className="block text-[#FF7808]">OWN PLATTER</span>
-          </h2>
+          </div>
 
           <a
             href="https://order.online/business/~13770567"

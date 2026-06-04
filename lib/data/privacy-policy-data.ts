@@ -4,12 +4,12 @@ export const privacyPolicySections: AccordionRendererSection[] = [
     {
         type: "with-image",
         title: "PRIVACY POLICY",
-        imageSrc: "/faq/faq-section-img.png", // reuse FAQ image for now, can be updated later
+        imageSrc: "/faq/faq-section-img.png",
         imageAlt: "Flame Japanese Hibachi Privacy Policy",
         items: [
             {
                 id: "who-we-are",
-                question: "", // No question text needed based on screenshot
+                question: "",
                 answer: [
                     {
                         type: "paragraph",
@@ -116,6 +116,7 @@ export const privacyPolicySections: AccordionRendererSection[] = [
                         items: [
                             "Google Tag Manager & Google Analytics: Used to understand how visitors interact with our website, including page views, session duration, and conversion events.",
                             "Meta Pixel (Facebook Pixel): Used to measure the effectiveness of our advertising campaigns on Facebook and Instagram, and to serve you relevant ads on those platforms.",
+                            "Google Maps: Embedded maps on our locations page may collect your IP address and location data according to Google's Privacy Policy.",
                             "Social Media Platforms: If you click through to our Facebook, Instagram, or YouTube pages, those platforms collect data according to their own privacy policies."
                         ]
                     },
@@ -229,7 +230,7 @@ export const privacyPolicySections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `We share data with trusted vendors who assist in operating our website and digital services, including Google (analytics and tag management), Meta (advertising), and our web hosting provider. These vendors are contractually required to use your data only as directed by us.`
+                        content: `We share data with trusted vendors who assist in operating our website and digital services, including Google (analytics and tag management), Meta (advertising), Supabase (backend database hosting), and our web hosting provider. These vendors are contractually required to use your data only as directed by us.`
                     },
                     {
                         type: "subheading",

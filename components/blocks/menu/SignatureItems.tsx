@@ -54,12 +54,12 @@ const SignatureItems = () => {
     <section className="w-full bg-[#FFFFFF] dark:bg-black py-[var(--space-2xl)] overflow-hidden transition-colors duration-300">
       {/* Header — constrained to content width */}
       <div className="w-full flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
-        <h3 className="heading-h3 text-left">
+        <h2 className="heading-h3 text-left">
           <span className="text-[#1C1B1B] dark:text-white transition-colors duration-300">
             MOST LOVED FLAME{" "}
           </span>
-          <span className="text-primary">SIGNATURE ITEMS</span>
-        </h3>
+          <span className="text-primary"> SIGNATURE ITEMS</span>
+        </h2>
 
         <div className="hidden md:flex gap-2 shrink-0">
           <button
@@ -118,9 +118,9 @@ const SignatureItems = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
-                <h4 className="heading-h4 text-[#1C1B1B] dark:text-white mb-2 transition-colors duration-300 line-clamp-2 md:min-h-[2.4em] leading-[1.2]">
+                <h3 className="heading-h4 text-[#1C1B1B] dark:text-white mb-2 transition-colors duration-300 line-clamp-2 md:min-h-[2.4em] leading-[1.2]">
                   {item.name}
-                </h4>
+                </h3>
                 <p className="item-price">{item.price}</p>
               </a>
             </SwiperSlide>

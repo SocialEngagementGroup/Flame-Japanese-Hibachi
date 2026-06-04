@@ -149,9 +149,9 @@ const CateringSection = () => {
                   <p className="item-label mb-2">
                     {slide.label}
                   </p>
-                  <h5 className="heading-h5 mb-1">
+                  <h4 className="heading-h5 mb-1">
                     {slide.title}
-                  </h5>
+                  </h4>
                   {/* @ts-ignore */}
                   {slide.description && (
                     <p className="text-primary font-black text-small md:text-lg mb-4">

@@ -3,10 +3,15 @@ import ContactDetails from "@/components/blocks/contact/ContactDetails";
 import LocationsSection from "@/components/blocks/locations/LocationsSection";
 import ContactSection from "@/components/blocks/contact/ContactSection";
 
+import { getCanonicalUrl } from "@/lib/seo/seo";
+
 export const metadata = {
-  title: "Contact Us | Flame Japanese Hibachi",
+  title: "Contact Us & Catering Inquiries",
   description:
-    "Get in touch with Flame Japanese Hibachi for general inquiries, partnerships, and feedback.",
+    "Get in touch with Flame Japanese Hibachi. Send catering inquiries, partnership questions or general feedback — our team responds within one business day.",
+  alternates: {
+    canonical: getCanonicalUrl("/contact"),
+  },
 };
 
 export default function ContactPage() {

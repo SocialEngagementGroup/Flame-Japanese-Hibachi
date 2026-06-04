@@ -7,10 +7,15 @@ import { ORDER_URL } from "@/lib/constants";
 import MenuCTA from "@/components/blocks/menu/menupage/MenuCTA";
 import ContactSection from "@/components/blocks/contact/ContactSection";
 
+import { getCanonicalUrl } from "@/lib/seo/seo";
+
 export const metadata = {
-  title: "Catering | Flame Japanese Hibachi",
+  title: "Hibachi Catering for Events & Parties",
   description:
-    "Make your next event unforgettable with Flame Japanese Hibachi catering. Fresh hibachi trays, party packages, and bold flavors made for every celebration.",
+    "Hibachi catering for weddings, corporate events and parties. Custom packages, 100% Halal, fresh prep. Request a quote from Flame Japanese Hibachi today.",
+  alternates: {
+    canonical: getCanonicalUrl("/catering"),
+  },
 };
 
 export default function CateringPage() {
@@ -40,13 +45,13 @@ export default function CateringPage() {
             orderUrl={ORDER_URL}
             items={section.items}
           />
-          
+
           {section.id === "menu-4-cbs" && (
-            <CateringAddOns 
+            <CateringAddOns
               addons={[
                 { name: "Fries HALF TRAY", price: "$40" },
                 { name: "Fries FULL TRAY", price: "$75" }
-              ]} 
+              ]}
               orderUrl={ORDER_URL}
             />
           )}

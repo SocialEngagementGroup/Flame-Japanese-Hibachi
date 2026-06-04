@@ -37,7 +37,7 @@ const FlameDifference = () => {
   return (
     <section className="w-full bg-[#FFFFFF] dark:bg-black py-[var(--space-2xl)] px-[var(--space-lg)] transition-colors duration-300">
       <div className="max-w-[1806px] mx-auto">
-        <h3 className="heading-h3 text-center mb-[var(--space-xl)]">
+        <h2 className="heading-h3 text-center mb-[var(--space-xl)]">
           <span className="text-black dark:text-white transition-colors duration-300">
             THE{" "}
           </span>
@@ -45,7 +45,7 @@ const FlameDifference = () => {
           <span className="text-black dark:text-white transition-colors duration-300">
             DIFFERENCE
           </span>
-        </h3>
+        </h2>
 
         <div className="grid grid-cols-2 min-[1100px]:grid-cols-4 gap-[var(--gap-sm)] w-full">
           {features.map((feature, index) => (
@@ -65,9 +65,9 @@ const FlameDifference = () => {
                 />
               </div>
 
-              <h4 className="heading-h4 mb-2 md:mb-4 min-h-[2.4em] flex items-center justify-center leading-[1.2] text-[#1C1B1B] dark:text-white px-1">
+              <h3 className="heading-h4 mb-2 md:mb-4 min-h-[2.4em] flex items-center justify-center leading-[1.2] text-[#1C1B1B] dark:text-white px-1">
                 {feature.title}
-              </h4>
+              </h3>
 
               <p className="box-description max-w-[240px] text-[#717171] dark:text-gray-400">
                 {feature.description}

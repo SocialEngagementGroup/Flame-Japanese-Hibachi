@@ -1,10 +1,18 @@
 import Hero from "@/components/blocks/hero/Hero";
-
 import AccordionEffectiveDate from "@/components/Accordion/AccordionEffectiveDate";
-
 import AccordionRenderer from "@/components/Accordion/AccordionRenderer";
-
 import { faqSections } from "@/lib/data/faq-data";
+
+import { getCanonicalUrl } from "@/lib/seo/seo";
+
+export const metadata = {
+  title: "Frequently Asked Questions",
+  description:
+    "Answers to common questions about Flame Japanese Hibachi — Halal certification, ordering, catering, locations, hours, allergens and franchise opportunities.",
+  alternates: {
+    canonical: getCanonicalUrl("/faq"),
+  },
+};
 
 const FAQPage = () => {
     return (

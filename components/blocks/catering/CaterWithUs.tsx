@@ -23,8 +23,7 @@ const CaterWithUs = () => {
       {/* Content */}
       <div className="relative z-20 h-full w-full max-w-[1440px] mx-auto px-[var(--space-lg)] flex flex-col justify-center items-center text-center">
         <h2 className="text-2xl md:text-7xl font-black text-white mb-4 md:mb-6 uppercase leading-tight md:leading-[1.1]">
-          CATER WITH US<br />
-          FOR NEXT EVENT
+          CATER WITH US <br /> FOR NEXT EVENT
         </h2>
 
         <p className="text-white text-base md:text-xl font-medium max-w-[650px] mb-8 md:mb-10 leading-relaxed">
