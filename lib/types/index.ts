@@ -10,8 +10,9 @@ export type Location = {
   postalCode: string;
   phone: string;
   hours: string;
-  // lat?: number;
-  // lng?: number;
+  lat: number;
+  lng: number;
+  image?: string;
 };
 
 export type ComingSoonLocation = {
