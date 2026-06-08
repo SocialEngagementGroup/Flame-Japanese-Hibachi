@@ -38,7 +38,7 @@ function buildOpeningHours() {
 }
 
 function buildRestaurantSchema(loc: (typeof activeLocations)[0]) {
-  const schema: Record<string, unknown> = {
+  const schema = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "@id": `https://www.flamehibachi.com/locations#${loc.slug}`,
@@ -58,14 +58,13 @@ function buildRestaurantSchema(loc: (typeof activeLocations)[0]) {
       addressCountry: "US",
     },
     openingHoursSpecification: buildOpeningHours(),
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: loc.lat,
+      longitude: loc.lng,
+    },
+    ...(loc.image ? { image: loc.image } : {}),
   };
-
-  // TODO: Add geo block when lat/lng coordinates are available
-  // schema.geo = {
-  //   "@type": "GeoCoordinates",
-  //   latitude: loc.lat,
-  //   longitude: loc.lng,
-  // };
 
   return schema;
 }

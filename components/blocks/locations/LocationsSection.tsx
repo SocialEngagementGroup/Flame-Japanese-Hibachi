@@ -175,6 +175,7 @@ const LocationsSection = ({
             {activeLocations.map((loc) => (
               <SwiperSlide key={loc.id}>
                 <div
+                  id={loc.slug}
                   onClick={() => handleCardClick(loc)}
                   className={`w-full h-[260px] p-5 border flex flex-col justify-center relative overflow-hidden cursor-pointer transition-all duration-300 ${selectedLocation.id === loc.id
                     ? "bg-primary border-primary shadow-2xl shadow-primary/40"
@@ -352,6 +353,7 @@ const LocationsSection = ({
               {activeLocations.map((loc, index) => (
                 <div
                   key={loc.id}
+                  id={loc.slug}
                   ref={(el) => {
                     cardRefs.current[index] = el;
                   }}
