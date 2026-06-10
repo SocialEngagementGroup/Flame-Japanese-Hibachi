@@ -12,12 +12,12 @@ import "swiper/css";
 const items = [
   {
     name: "CHICKEN BEEF SHRIMP FLAME COMBO",
-    price: "$15.35",
+    price: "$14.85",
     image: "/homepage/menu/FLAME COMBO.png",
   },
   {
     name: "SALMON AND SHRIMP FLAME COMBO",
-    price: "$13.35",
+    price: "$12.85",
     image: "/menupage/flame-combo/salmon-and-shrimp.jpg",
   },
   {
@@ -27,22 +27,22 @@ const items = [
   },
   {
     name: "CHICKEN & BEEF BENTO",
-    price: "$14.35",
+    price: "$13.85",
     image: "/homepage/menu/BENTO.png",
   },
   {
     name: "CALIFORNIA ROLL",
-    price: "$8.35",
+    price: "$7.85",
     image: "/homepage/menu/SUSHI.png",
   },
   {
     name: "CHICKEN TENDERS (5 PC)",
-    price: "$12.49",
+    price: "$11.99",
     image: "/homepage/menu/WINGS  TENDERS.png",
   },
   {
     name: "FLAME LOADED FRIES",
-    price: "$10.85",
+    price: "$9.85",
     image: "/homepage/menu/FLAME LOADED FRIES.png",
   },
 ];
