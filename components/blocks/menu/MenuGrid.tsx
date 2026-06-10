@@ -37,7 +37,7 @@ const categories = [
     mobileImage: "/homepage/menu/sushi-mobile.png",
   },
   {
-    name: "WINGS / TENDERS",
+    name: "WINGS/TENDERS",
     href: "/menu#section-wings",
     image: "/homepage/menu/WINGS  TENDERS.png",
     mobileImage: "/homepage/menu/wings-tenders-mobile.png",
@@ -48,12 +48,12 @@ const categories = [
     image: "/homepage/menu/FLAME LOADED FRIES.png",
   },
   {
-    name: "BOBA TEA / SMOOTHIES / DRINKS",
+    name: "BOBA TEA/SMOOTHIES",
     href: "/menu#section-boba",
     image: "/homepage/menu/BOBA TEA  SMOOTHIES  Drinks.png",
   },
   {
-    name: "ADD ONS",
+    name: "ADD ONS/APPETIZER",
     href: "/menu#section-addons",
     image: "/homepage/menu/ADD ONS.png",
   },
@@ -89,21 +89,33 @@ const MenuGrid = () => {
           {categories.map((cat, index) => {
             const inner = (
               <>
-                {/* Responsive image: mobile-specific crop on small screens */}
-                <picture className="absolute inset-0 w-full h-full">
+                {/* Responsive image: mobile-specific crop on small screens. Zooms on hover. */}
+                <picture className="absolute inset-0 w-full h-full z-0">
                   {cat.mobileImage && (
                     <source media="(max-width: 768px)" srcSet={cat.mobileImage} />
                   )}
                   <img
                     src={cat.image}
                     alt={cat.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-110"
                   />
                 </picture>
 
-                {/* Text — Bottom Centered on mobile, bottom-left on desktop */}
-                <div className="absolute inset-0 flex items-end justify-center md:justify-start pb-6 md:pb-[var(--space-lg)] px-2 md:px-[var(--space-lg)] bg-black/20 md:bg-transparent">
-                  <div className="heading-h4 text-white text-center md:text-left scale-[0.8] md:scale-100">
+                {/* Default gradient overlay for resting readability — fades out on hover */}
+                <div
+                  className="absolute bottom-0 left-0 w-full h-1/2 transition-opacity duration-500 z-10 opacity-100 group-hover:opacity-0"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.45) 45%, #000 100%)",
+                  }}
+                />
+
+                {/* Orange bottom border on hover */}
+                <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#FF7808] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-50" />
+
+                {/* Label band — hugs the text with equal top/bottom padding; turns orange on hover */}
+                <div className="absolute bottom-0 left-0 w-full flex items-center justify-center md:justify-start px-2 md:px-[var(--space-lg)] py-5 md:py-6 z-30 transition-colors duration-500 group-hover:bg-[#FF7808]">
+                  <div className="heading-h4 text-white text-center md:text-left scale-[0.8] md:scale-100 [text-shadow:0_1px_3px_rgba(0,0,0,0.9),0_2px_6px_rgba(0,0,0,0.6)] group-hover:[text-shadow:none]">
                     {cat.name}
                   </div>
                 </div>
