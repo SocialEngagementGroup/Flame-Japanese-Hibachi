@@ -490,7 +490,7 @@ const menuData: Record<
   fries: [
     {
       id: "fry-1",
-      name: "LOADED TERIYAKI FRIES",
+      name: "LOADED CHICKEN TERIYAKI FRIES",
       price: "10.85",
       tag: "FRIES",
       image: "/homepage/menu/FLAME LOADED FRIES.png",
@@ -498,11 +498,26 @@ const menuData: Record<
     {
       id: "fry-2",
       name: "LOADED STEAK FRIES",
-      price: "11.85",
+      price: "12.85",
+      tag: "FRIES",
+      image: "/homepage/menu/FLAME LOADED FRIES.png",
+    },
+    {
+      id: "fry-3",
+      name: "BLUE DRAGON LOADED FRIES",
+      price: "16.99",
+      tag: "FRIES",
+      image: "/homepage/menu/FLAME LOADED FRIES.png",
+    },
+    {
+      id: "fry-4",
+      name: "LOADED HONEY GARLIC CHILLI FRIES",
+      price: "7.99",
       tag: "FRIES",
       image: "/homepage/menu/FLAME LOADED FRIES.png",
     },
   ],
+
   boba: [
     {
       id: "boba-3",
