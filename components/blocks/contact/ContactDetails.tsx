@@ -11,11 +11,11 @@ type Row = {
 const ContactDetails = () => {
   const rows: Row[] = [
     {
-      icon: <MapPin size={18} />,
+      icon: <MapPin size={22} />,
       text: "547C Blacksill Rd., Springfield, VA 22151, USA",
     },
     {
-      icon: <Phone size={18} />,
+      icon: <Phone size={22} />,
       text: (
         <>
           Phone:{" "}
@@ -26,7 +26,7 @@ const ContactDetails = () => {
       ),
     },
     {
-      icon: <Phone size={18} />,
+      icon: <Phone size={22} />,
       text: (
         <>
           Cell:{" "}
@@ -37,7 +37,7 @@ const ContactDetails = () => {
       ),
     },
     {
-      icon: <Mail size={18} />,
+      icon: <Mail size={22} />,
       text: (
         <a
           href="mailto:ask@flamejapanesehibachi.com"
@@ -48,7 +48,7 @@ const ContactDetails = () => {
       ),
     },
     {
-      icon: <Clock size={18} />,
+      icon: <Clock size={22} />,
       text: "Mon–Fri 09:00AM – 05:00PM",
     },
   ];
@@ -63,17 +63,17 @@ const ContactDetails = () => {
         <p className="text-primary text-small font-black tracking-[2px] uppercase font-sans mb-2">
           OFFICIAL PURPOSE ONLY
         </p>
-        <p className="text-gray-700 dark:text-gray-400 text-small mb-[var(--space-lg)] transition-colors duration-300">
+        <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg font-medium mb-[var(--space-lg)] transition-colors duration-300">
           (Please contact the individual stores for food orders)
         </p>
 
-        <ul className="space-y-[var(--space-sm)] inline-block text-left">
+        <ul className="space-y-[var(--space-md)] inline-block text-left">
           {rows.map((row, i) => (
             <li
               key={i}
-              className="flex items-start gap-3 text-black dark:text-gray-200 text-base font-medium transition-colors duration-300"
+              className="flex items-start gap-3 text-black dark:text-gray-200 text-lg md:text-xl font-medium transition-colors duration-300"
             >
-              <span className="text-primary shrink-0 mt-[2px]">{row.icon}</span>
+              <span className="text-primary shrink-0 mt-[3px]">{row.icon}</span>
               <span className="leading-relaxed">{row.text}</span>
             </li>
           ))}
