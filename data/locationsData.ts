@@ -191,6 +191,22 @@ export const activeLocations = [
     lng: -76.187,
     image: "https://tile.openstreetmap.org/16/18898/24922.png",
   },
+  {
+    id: 13,
+    slug: "mechanicsville-va",
+    name: "Mechanicsville, VA",
+    schemaName: "Flame Japanese Hibachi — Mechanicsville",
+    address: "7354 Bell Creek Rd, Mechanicsville, VA 23111",
+    streetAddress: "7354 Bell Creek Rd",
+    city: "Mechanicsville",
+    state: "VA",
+    postalCode: "23111",
+    phone: "+1 804-789-8540",
+    hours: "Mon–Sat 11AM–10PM / Sun 11AM–9PM",
+    lat: 37.604318,
+    lng: -77.354355,
+    image: "https://tile.openstreetmap.org/16/18687/25371.png",
+  },
 ];
 
 export const comingSoonLocations = [
@@ -217,14 +233,6 @@ export const comingSoonLocations = [
     status: "Coming Soon",
     openUntil: "11 PM",
     distance: "5.2 MILES AWAY",
-  },
-  {
-    id: 4,
-    name: "Mechanicsville, VA",
-    address: "7354 Bell Creek Rd, Mechanicsville, VA 23111",
-    status: "Coming Soon",
-    openUntil: "10 PM",
-    distance: "1.5 MILES AWAY",
   },
   {
     id: 5,
