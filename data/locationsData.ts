@@ -207,6 +207,22 @@ export const activeLocations = [
     lng: -77.354355,
     image: "https://tile.openstreetmap.org/16/18687/25371.png",
   },
+  {
+    id: 14,
+    slug: "bristow-va",
+    name: "Bristow, VA",
+    schemaName: "Flame Japanese Hibachi — Bristow",
+    address: "10286 Bristow Center Dr, Bristow, VA 20136",
+    streetAddress: "10286 Bristow Center Dr",
+    city: "Bristow",
+    state: "VA",
+    postalCode: "20136",
+    phone: "+1 703-420-2339",
+    hours: "Mon–Sat 11AM–10PM / Sun 11AM–9PM",
+    lat: 38.734009,
+    lng: -77.550733,
+    image: "https://tile.openstreetmap.org/16/18651/25109.png",
+  },
 ];
 
 export const comingSoonLocations = [
@@ -233,14 +249,6 @@ export const comingSoonLocations = [
     status: "Coming Soon",
     openUntil: "11 PM",
     distance: "5.2 MILES AWAY",
-  },
-  {
-    id: 5,
-    name: "Bristow, VA",
-    address: "10286 Bristow Center Dr, Bristow, VA 20136",
-    status: "Coming Soon",
-    openUntil: "11 PM",
-    distance: "3.7 MILES AWAY",
   },
   {
     id: 6,
