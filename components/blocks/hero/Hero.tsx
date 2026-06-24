@@ -13,6 +13,8 @@ type HeroProps = {
   fullHeight?: boolean;
   bgImageDesk?: string;
   bgImageMob?: string;
+  bgVideo?: string;
+  heightClass?: string;
 };
 
 const Hero = ({
@@ -30,30 +32,49 @@ const Hero = ({
   fullHeight = true,
   bgImageDesk = "/homepage/hero/hero-bg-desk.png",
   bgImageMob = "/homepage/hero/hero-bg-mob.png",
+  bgVideo = "/homepage/hero/flame-japanese-hibachi-hero.mp4",
+  heightClass,
 }: HeroProps) => {
   const alignmentClass =
     align === "center"
       ? "items-center mx-auto text-center max-w-none"
       : "items-center min-[1100px]:items-start mx-auto min-[1100px]:mx-0 max-w-[65ch]";
 
-  const sizingClass = fullHeight
-    ? "flex-1 min-h-[320px]"
-    : "min-h-[380px] md:min-h-[460px] py-[var(--space-2xl)]";
+  const sizingClass =
+    heightClass ??
+    (fullHeight
+      ? "flex-1 min-h-[320px]"
+      : "min-h-[380px] md:min-h-[460px] py-[var(--space-2xl)]");
 
   return (
     <section className={`relative ${sizingClass} w-full overflow-hidden flex items-center`}>
-      {/* Background Image with Overlay */}
+      {/* Background Video with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={bgImageDesk}
-          alt="Flame Japanese Hibachi Hero"
-          className="hidden md:block w-full h-full object-cover"
-        />
-        <img
-          src={bgImageMob}
-          alt="Flame Japanese Hibachi Hero Mobile"
-          className="block md:hidden w-full h-full object-cover"
-        />
+        {bgVideo ? (
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster={bgImageDesk}
+          >
+            <source src={bgVideo} type="video/mp4" />
+          </video>
+        ) : (
+          <>
+            <img
+              src={bgImageDesk}
+              alt="Flame Japanese Hibachi Hero"
+              className="hidden md:block w-full h-full object-cover"
+            />
+            <img
+              src={bgImageMob}
+              alt="Flame Japanese Hibachi Hero Mobile"
+              className="block md:hidden w-full h-full object-cover"
+            />
+          </>
+        )}
         {/* Dark overlay to ensure text readability */}
         <div className="absolute inset-0 bg-black/40 z-10" />
       </div>
