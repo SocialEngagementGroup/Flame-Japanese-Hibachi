@@ -33,8 +33,10 @@ export default function CateringPage() {
         ctaLabel={null}
         align="center"
         fullHeight={false}
+        heightClass="min-h-[480px] md:min-h-[600px] py-[var(--space-2xl)]"
         bgImageDesk="/catering/hero/flame-japanese-hibachi-catering-hero-desk.jpg"
         bgImageMob="/catering/hero/flame-japanese-hibachi-catering-hero-mob.jpg"
+        bgVideo="/catering/hero/flame-japanese-hibachi-catering-hero.mp4"
       />
 
       {cateringMenuSections.map((section) => (
