@@ -46,13 +46,24 @@ export default function CateringPage() {
             subtitle={section.subtitle}
             orderUrl={ORDER_URL}
             items={section.items}
+            cardVariant={section.id === "menu-5-wings" ? "shop" : "catering"}
           />
 
           {section.id === "menu-4-cbs" && (
             <CateringAddOns
               addons={[
-                { name: "Fries HALF TRAY", price: "$40" },
-                { name: "Fries FULL TRAY", price: "$75" }
+                { name: "SPRING ROLLS", price: "$0.50/PER PERSON" },
+                { name: "DUMPLINGS", price: "$0.75/PER PERSON" },
+              ]}
+              orderUrl={ORDER_URL}
+            />
+          )}
+
+          {section.id === "menu-5-wings" && (
+            <CateringAddOns
+              addons={[
+                { name: "FRIES HALF TRAY", price: "$40" },
+                { name: "FRIES FULL TRAY", price: "$75" },
               ]}
               orderUrl={ORDER_URL}
             />

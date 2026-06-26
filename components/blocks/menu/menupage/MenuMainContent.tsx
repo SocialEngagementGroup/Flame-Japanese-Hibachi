@@ -296,7 +296,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
   };
 
   return (
-    <div className="flex-1 space-y-16 isolate">
+    <div className="flex-1 space-y-6 isolate">
       {categories.map((category) => {
         const items = menuData[category.id] || [];
         if (items.length === 0) return null;

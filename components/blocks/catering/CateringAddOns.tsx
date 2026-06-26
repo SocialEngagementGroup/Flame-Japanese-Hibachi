@@ -17,7 +17,7 @@ const CateringAddOns: React.FC<CateringAddOnsProps> = ({ addons, orderUrl }) => 
   if (!addons || addons.length === 0) return null;
 
   return (
-    <div className="w-full flex flex-col items-center justify-center py-6 bg-white dark:bg-[#101010]">
+    <div className="w-full flex flex-col items-center justify-center pt-0 pb-6 bg-white dark:bg-[#101010]">
       <h3 className="font-['Work_Sans'] text-center text-[28px] md:text-[32px] font-black uppercase text-[#1C1B1B] dark:text-white leading-[59px] mb-4">
         ADD ONS
       </h3>
