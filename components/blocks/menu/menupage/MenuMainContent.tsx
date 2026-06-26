@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 
 interface Category {
   id: string;
@@ -34,18 +32,96 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
     setActiveCardId((prev) => (prev === id ? null : id));
   };
 
-  const swiperBreakpoints = {
-    320: { slidesPerView: 1.15, spaceBetween: 16 },
-    500: { slidesPerView: 1.8, spaceBetween: 16 },
-    640: { slidesPerView: 2.4, spaceBetween: 16 },
-    767: { slidesPerView: 3.1, spaceBetween: 16 },
-    1024: { slidesPerView: 3.2, spaceBetween: 20 },
-  };
-
   // Resting-state readability shadow; removed on hover where the orange overlay
   // already provides contrast. Omitted entirely when the card is active.
   const RESTING_SHADOW =
     "[text-shadow:0_1px_3px_rgba(0,0,0,0.9),0_2px_6px_rgba(0,0,0,0.6)] group-hover:[text-shadow:none]";
+
+  const renderListCard = (item: MenuItem) => (
+    <a
+      key={item.id}
+      href="https://order.online/business/~13770567"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex items-center w-full bg-zinc-950 hover:bg-[#FF7808] border border-zinc-800 hover:border-[#FF7808] rounded-sm py-[10px] pl-3 pr-3 gap-3 mb-2 transition-colors duration-300"
+    >
+      {/* Left: tag + name */}
+      <div className="flex-1 min-w-0">
+        <span className="block text-[#FF7808] group-hover:text-white text-[12px] font-black uppercase tracking-[2px] leading-none mb-[6px] transition-colors duration-300">
+          {item.tag}
+        </span>
+        <h3
+          className="text-white group-hover:text-white uppercase leading-snug transition-colors duration-300"
+          style={{
+            fontFamily: "var(--font-serif-next), sans-serif",
+            fontSize: "16px",
+            fontWeight: 900,
+          }}
+        >
+          {item.name}
+        </h3>
+      </div>
+
+      {/* Middle: 2-col grid — icons left-aligned, price/-1+ right-aligned */}
+      <div
+        className="flex-shrink-0"
+        style={{ display: "grid", gridTemplateColumns: "22px auto", rowGap: "8px", columnGap: "10px", alignItems: "center" }}
+      >
+        {/* Row 1 col 1: heart icon */}
+        <button
+          onClick={(e) => e.preventDefault()}
+          className="text-zinc-400 group-hover:text-white transition-colors duration-300 flex items-center justify-center"
+          aria-label="Save"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+        </button>
+        {/* Row 1 col 2: price */}
+        <span className="text-white group-hover:text-white font-bold text-[20px] leading-none transition-colors duration-300">${item.price}</span>
+
+        {/* Row 2 col 1: cart icon */}
+        <button
+          onClick={(e) => e.preventDefault()}
+          className="text-white group-hover:text-white transition-colors duration-300 flex items-center justify-center"
+          aria-label="Order"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+          </svg>
+        </button>
+        {/* Row 2 col 2: quantity control */}
+        <div className="flex items-center border border-zinc-600 group-hover:border-white rounded overflow-hidden transition-colors duration-300">
+          <button
+            onClick={(e) => e.preventDefault()}
+            className="text-white group-hover:text-white text-[18px] font-bold px-[7px] py-[3px] leading-none transition-colors duration-300"
+          >
+            −
+          </button>
+          <span className="text-white group-hover:text-white text-[18px] font-bold px-[6px] leading-none border-x border-zinc-600 group-hover:border-white transition-colors duration-300">1</span>
+          <button
+            onClick={(e) => e.preventDefault()}
+            className="text-white group-hover:text-white text-[18px] font-bold px-[7px] py-[3px] leading-none transition-colors duration-300"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      {/* Thumbnail */}
+      <div className="w-[82px] h-[66px] flex-shrink-0 overflow-hidden rounded-sm">
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = "/homepage/menu/HIBACHI.png";
+          }}
+        />
+      </div>
+    </a>
+  );
 
   const renderWingCard = (item: MenuItem, isCardActive: boolean) => (
     <a
@@ -293,30 +369,17 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                       {subTitle}
                     </h3>
                     <div className="w-full overflow-hidden px-5 md:px-0">
-                      {/* DESKTOP GRID */}
-                      <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 justify-items-center sm:justify-items-start p-4 -m-4 overflow-hidden isolate">
+                      {/* DESKTOP GRID (xl+) */}
+                      <div className="hidden xl:grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 justify-items-start p-4 -m-4 overflow-hidden isolate">
                         {subItems.map((item) => {
                           const isCardActive = activeCardId === item.id;
                           return renderWingCard(item, isCardActive);
                         })}
                       </div>
 
-                      {/* MOBILE/TABLET SWIPER */}
-                      <div className="lg:hidden w-full -ml-4 pl-4 py-4">
-                        <Swiper
-                          grabCursor={true}
-                          breakpoints={swiperBreakpoints}
-                          className="!overflow-visible"
-                        >
-                          {subItems.map((item) => {
-                            const isCardActive = activeCardId === item.id;
-                            return (
-                              <SwiperSlide key={item.id}>
-                                {renderWingCard(item, isCardActive)}
-                              </SwiperSlide>
-                            );
-                          })}
-                        </Swiper>
+                      {/* MOBILE/TABLET LIST (<xl) */}
+                      <div className="xl:hidden w-[calc(100%+40px)] -ml-5 md:w-full md:ml-0" style={{ padding: "10px 20px" }}>
+                        {subItems.map((item) => renderListCard(item))}
                       </div>
                     </div>
                   </div>
@@ -324,30 +387,17 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
               </div>
             ) : (
               <div className="w-full overflow-hidden px-5 md:px-0">
-                {/* DESKTOP GRID */}
-                <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 justify-items-center sm:justify-items-start p-4 -m-4 overflow-hidden isolate">
+                {/* DESKTOP GRID (xl+) */}
+                <div className="hidden xl:grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 justify-items-start p-4 -m-4 overflow-hidden isolate">
                   {items.map((item) => {
                     const isCardActive = activeCardId === item.id;
                     return renderRegularCard(item, category, isCardActive);
                   })}
                 </div>
 
-                {/* MOBILE/TABLET SWIPER */}
-                <div className="lg:hidden w-full -ml-4 pl-4 py-4">
-                  <Swiper
-                    grabCursor={true}
-                    breakpoints={swiperBreakpoints}
-                    className="!overflow-visible"
-                  >
-                    {items.map((item) => {
-                      const isCardActive = activeCardId === item.id;
-                      return (
-                        <SwiperSlide key={item.id}>
-                          {renderRegularCard(item, category, isCardActive)}
-                        </SwiperSlide>
-                      );
-                    })}
-                  </Swiper>
+                {/* MOBILE/TABLET LIST (<xl) */}
+                <div className="xl:hidden w-[calc(100%+40px)] -ml-5 md:w-full md:ml-0" style={{ padding: "10px 20px" }}>
+                  {items.map((item) => renderListCard(item))}
                 </div>
               </div>
             )}
