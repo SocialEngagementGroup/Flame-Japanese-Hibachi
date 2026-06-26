@@ -132,12 +132,12 @@ const CateringCard: React.FC<CateringCardProps> = ({
         >
           {/* Top section */}
           <div
-            className="flex items-stretch"
-            style={{ backgroundColor: "#1c1b1b" }}
+            className="flex items-stretch transition-colors duration-300"
+            style={{ backgroundColor: isActive ? "#ff7808" : "#1c1b1b" }}
           >
             {/* Left: tag + title + price */}
             <div className="flex-1 min-w-0 flex flex-col justify-center gap-[6px] pl-4 py-4 pr-2">
-              <span className={`text-[11px] font-black uppercase tracking-[2px] leading-none transition-colors duration-300 ${isActive ? "text-[#FF7808]" : "text-zinc-400"}`}>
+              <span className={`text-[11px] font-black uppercase tracking-[2px] leading-none transition-colors duration-300 ${isActive ? "text-white" : "text-zinc-400"}`}>
                 {item.label || item.category}
               </span>
               <h3
@@ -149,11 +149,20 @@ const CateringCard: React.FC<CateringCardProps> = ({
               <span className="text-white font-bold text-[20px] leading-none">{item.price}</span>
             </div>
 
-            {/* Middle: heart icon only */}
-            <div className="flex flex-col items-end justify-center px-3 py-3">
+            {/* Middle: heart + cart + ADD TO CART */}
+            <div className="flex flex-col items-end justify-center gap-3 px-3 py-3">
               <button onClick={(e) => e.preventDefault()} className="text-zinc-400" aria-label="Save">
                 <HeartIcon />
               </button>
+              <button onClick={(e) => e.preventDefault()} className="text-white" aria-label="Order">
+                <CartIcon />
+              </button>
+              <span
+                className="text-[9px] font-bold uppercase tracking-[1px] text-white px-[6px] py-[4px] leading-none whitespace-nowrap transition-colors duration-300"
+                style={{ backgroundColor: isActive ? "#f88f38" : "#424141" }}
+              >
+                ADD TO CART
+              </span>
             </div>
 
             {/* Right: image */}
