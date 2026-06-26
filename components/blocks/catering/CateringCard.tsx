@@ -158,7 +158,7 @@ const CateringCard: React.FC<CateringCardProps> = ({
                 <CartIcon />
               </button>
               <span
-                className="text-[9px] font-bold uppercase tracking-[1px] text-white px-[6px] py-[4px] leading-none whitespace-nowrap transition-colors duration-300"
+                className="text-[9px] font-bold uppercase tracking-[1px] text-white px-[10px] py-[10px] leading-none whitespace-nowrap transition-colors duration-300"
                 style={{ backgroundColor: isActive ? "#f88f38" : "#424141" }}
               >
                 ADD TO CART

@@ -43,7 +43,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
       href="https://order.online/business/~13770567"
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-center w-full bg-zinc-950 hover:bg-[#FF7808] border border-zinc-800 hover:border-[#FF7808] rounded-sm py-[10px] pl-3 pr-3 gap-3 mb-2 transition-colors duration-300"
+      className="group flex items-center w-full bg-zinc-950 hover:bg-[#FF7808] border border-zinc-800 hover:border-[#FF7808] rounded-sm py-[10px] pl-2 pr-2 gap-3 mb-2 transition-colors duration-300"
     >
       {/* Left: tag + name */}
       <div className="flex-1 min-w-0">
@@ -92,17 +92,17 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
           </svg>
         </button>
         {/* Row 2 col 2: quantity control */}
-        <div className="flex items-center border border-zinc-600 group-hover:border-white rounded overflow-hidden transition-colors duration-300">
+        <div className="flex items-center border border-zinc-600 group-hover:border-white overflow-hidden transition-colors duration-300">
           <button
             onClick={(e) => e.preventDefault()}
-            className="text-white group-hover:text-white text-[18px] font-bold px-[7px] py-[3px] leading-none transition-colors duration-300"
+            className="text-white group-hover:text-white text-[16px] font-bold px-[5px] py-[2px] leading-none transition-colors duration-300"
           >
             −
           </button>
-          <span className="text-white group-hover:text-white text-[18px] font-bold px-[6px] leading-none border-x border-zinc-600 group-hover:border-white transition-colors duration-300">1</span>
+          <span className="text-white group-hover:text-white text-[16px] font-bold px-[4px] leading-none border-x border-zinc-600 group-hover:border-white transition-colors duration-300">1</span>
           <button
             onClick={(e) => e.preventDefault()}
-            className="text-white group-hover:text-white text-[18px] font-bold px-[7px] py-[3px] leading-none transition-colors duration-300"
+            className="text-white group-hover:text-white text-[16px] font-bold px-[5px] py-[2px] leading-none transition-colors duration-300"
           >
             +
           </button>
@@ -309,7 +309,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
           >
             {/* Category Title Container: Sticky with Solid Opaque Background and z-index 40 to overlap cards perfectly */}
             <div className="sticky top-[175px] md:top-[164px] lg:top-[168px] xl:top-[123px] z-40 bg-background p-2 md:p-0 md:py-4 transition-all duration-300 isolate">
-              <h2 className="ml-[13px] md:ml-0 font-['Raleway'] md:font-[family-name:var(--font-serif-next)] font-black text-[32px] md:text-[38px] text-[#FF7808] uppercase tracking-wide leading-none md:leading-tight">
+              <h2 className="ml-[13px] md:ml-0 font-['Raleway'] md:font-[family-name:var(--font-serif-next)] font-black text-[34px] md:text-[40px] text-[#FF7808] uppercase tracking-wide leading-none md:leading-tight">
                 {category.name}
               </h2>
 
