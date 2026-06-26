@@ -149,14 +149,8 @@ const CateringCard: React.FC<CateringCardProps> = ({
               <span className="text-white font-bold text-[20px] leading-none">{item.price}</span>
             </div>
 
-            {/* Middle: heart + cart + ADD TO CART */}
-            <div className="flex flex-col items-end justify-center gap-3 px-3 py-3">
-              <button onClick={(e) => e.preventDefault()} className="text-zinc-400" aria-label="Save">
-                <HeartIcon />
-              </button>
-              <button onClick={(e) => e.preventDefault()} className="text-white" aria-label="Order">
-                <CartIcon />
-              </button>
+            {/* Middle: ADD TO CART only */}
+            <div className="flex flex-col items-end justify-center px-3 py-3">
               <span
                 className="text-[9px] font-bold uppercase tracking-[1px] text-white px-[10px] py-[10px] leading-none whitespace-nowrap transition-colors duration-300"
                 style={{ backgroundColor: isActive ? "#f88f38" : "#424141" }}

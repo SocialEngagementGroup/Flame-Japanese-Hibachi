@@ -62,51 +62,9 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
         </h3>
       </div>
 
-      {/* Middle: 2-col grid — icons left-aligned, price/-1+ right-aligned */}
-      <div
-        className="flex-shrink-0"
-        style={{ display: "grid", gridTemplateColumns: "22px auto", rowGap: "8px", columnGap: "10px", alignItems: "center" }}
-      >
-        {/* Row 1 col 1: heart icon */}
-        <button
-          onClick={(e) => e.preventDefault()}
-          className="text-zinc-400 group-hover:text-white transition-colors duration-300 flex items-center justify-center"
-          aria-label="Save"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-          </svg>
-        </button>
-        {/* Row 1 col 2: price */}
+      {/* Middle: price only */}
+      <div className="flex-shrink-0 flex items-center">
         <span className="text-white group-hover:text-white font-bold text-[20px] leading-none transition-colors duration-300">${item.price}</span>
-
-        {/* Row 2 col 1: cart icon */}
-        <button
-          onClick={(e) => e.preventDefault()}
-          className="text-white group-hover:text-white transition-colors duration-300 flex items-center justify-center"
-          aria-label="Order"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-          </svg>
-        </button>
-        {/* Row 2 col 2: quantity control */}
-        <div className="flex items-center border border-zinc-600 group-hover:border-white overflow-hidden transition-colors duration-300">
-          <button
-            onClick={(e) => e.preventDefault()}
-            className="text-white group-hover:text-white text-[16px] font-bold px-[5px] py-[2px] leading-none transition-colors duration-300"
-          >
-            −
-          </button>
-          <span className="text-white group-hover:text-white text-[16px] font-bold px-[4px] leading-none border-x border-zinc-600 group-hover:border-white transition-colors duration-300">1</span>
-          <button
-            onClick={(e) => e.preventDefault()}
-            className="text-white group-hover:text-white text-[16px] font-bold px-[5px] py-[2px] leading-none transition-colors duration-300"
-          >
-            +
-          </button>
-        </div>
       </div>
 
       {/* Thumbnail */}
