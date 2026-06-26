@@ -127,7 +127,7 @@ const CateringCard: React.FC<CateringCardProps> = ({
           className={`block w-full border transition-all duration-300 overflow-hidden ${
             isActive
               ? "border-[#FF7808] shadow-[0_0_18px_rgba(255,120,8,0.35)]"
-              : "border-white"
+              : "border-zinc-700 dark:border-white"
           }`}
         >
           {/* Top section */}
@@ -157,7 +157,7 @@ const CateringCard: React.FC<CateringCardProps> = ({
               <button onClick={(e) => e.preventDefault()} className="text-white" aria-label="Order">
                 <CartIcon />
               </button>
-              <span className="text-[10px] font-bold uppercase tracking-[1px] border border-zinc-500 text-white px-3 py-[6px] leading-none whitespace-nowrap">
+              <span className="text-[10px] font-bold uppercase tracking-[1px] border border-zinc-400 dark:border-zinc-500 text-white px-3 py-[6px] leading-none whitespace-nowrap">
                 ADD TO CART
               </span>
             </div>
@@ -174,8 +174,8 @@ const CateringCard: React.FC<CateringCardProps> = ({
           </div>
 
           {/* Details */}
-          <div className="border-t border-white px-4 py-3" style={{ backgroundColor: "transparent" }}>
-            <p className="text-white text-[11px] font-bold uppercase leading-[26px] tracking-wide">
+          <div className="border-t border-zinc-700 dark:border-white px-4 py-3" style={{ backgroundColor: "transparent" }}>
+            <p className="text-zinc-800 dark:text-white text-[12px] font-bold uppercase leading-[20px] tracking-wide">
               {item.details.join(" · ")}
             </p>
           </div>
