@@ -149,17 +149,11 @@ const CateringCard: React.FC<CateringCardProps> = ({
               <span className="text-white font-bold text-[20px] leading-none">{item.price}</span>
             </div>
 
-            {/* Middle: icons + button, all right-aligned */}
-            <div className="flex flex-col items-end justify-center gap-3 px-3 py-3">
+            {/* Middle: heart icon only */}
+            <div className="flex flex-col items-end justify-center px-3 py-3">
               <button onClick={(e) => e.preventDefault()} className="text-zinc-400" aria-label="Save">
                 <HeartIcon />
               </button>
-              <button onClick={(e) => e.preventDefault()} className="text-white" aria-label="Order">
-                <CartIcon />
-              </button>
-              <span className="text-[10px] font-bold uppercase tracking-[1px] border border-zinc-400 dark:border-zinc-500 text-white px-3 py-[6px] leading-none whitespace-nowrap">
-                ADD TO CART
-              </span>
             </div>
 
             {/* Right: image */}
@@ -191,8 +185,7 @@ const CateringCard: React.FC<CateringCardProps> = ({
             rel="noopener noreferrer"
             className="flex h-[50px] items-center justify-center gap-3 bg-[#FF7808]"
           >
-            <span className="font-['Work_Sans'] text-[13px] font-bold uppercase tracking-[6px] text-white">Add to Cart</span>
-            <span className="text-white"><CartIcon /></span>
+            <span className="font-['Work_Sans'] text-[13px] font-bold uppercase tracking-[6px] text-white">Call Now</span>
           </a>
         </div>
       </div>
@@ -262,8 +255,7 @@ const CateringCard: React.FC<CateringCardProps> = ({
 
         {/* Add to Cart — slides from behind */}
         <div className={`absolute left-0 top-[99.5%] z-0 h-[59px] w-full border-x border-[#FF7808] bg-[#FF7808] transition-all duration-500 ease-out flex items-center justify-center gap-3 ${isActive ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}>
-          <span className="font-['Work_Sans'] text-[14px] font-bold uppercase tracking-[9px] text-white">Add to Cart</span>
-          <span className="text-white"><CartIcon /></span>
+          <span className="font-['Work_Sans'] text-[14px] font-bold uppercase tracking-[9px] text-white">Call Now</span>
         </div>
       </a>
     </div>
