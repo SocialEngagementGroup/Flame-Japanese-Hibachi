@@ -42,6 +42,11 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
     1024: { slidesPerView: 3.2, spaceBetween: 20 },
   };
 
+  // Resting-state readability shadow; removed on hover where the orange overlay
+  // already provides contrast. Omitted entirely when the card is active.
+  const RESTING_SHADOW =
+    "[text-shadow:0_1px_3px_rgba(0,0,0,0.9),0_2px_6px_rgba(0,0,0,0.6)] group-hover:[text-shadow:none]";
+
   const renderWingCard = (item: MenuItem, isCardActive: boolean) => (
     <a
       key={item.id}
@@ -66,7 +71,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
         className="absolute bottom-0 left-0 w-full h-[165px] transition-opacity duration-500 z-10 opacity-100 group-hover:opacity-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 6.92%, #000 100%)",
+            "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.45) 45%, #000 100%)",
         }}
       />
 
@@ -94,7 +99,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
             letterSpacing: "2px",
             textTransform: "uppercase",
           }}
-          className={`transition-colors duration-300 block truncate mb-1 ${isCardActive ? "text-white" : "text-[#FF7808] group-hover:text-white"}`}
+          className={`transition-colors duration-300 block truncate mb-1 ${isCardActive ? "text-white" : `text-[#FF7808] group-hover:text-white ${RESTING_SHADOW}`}`}
         >
           {item.tag}
         </span>
@@ -110,7 +115,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
             lineHeight: "20px",
             textTransform: "uppercase",
           }}
-          className="mb-1"
+          className={`mb-1 ${isCardActive ? "" : RESTING_SHADOW}`}
         >
           {item.name}
         </h3>
@@ -127,6 +132,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
               lineHeight: "59px",
               textTransform: "uppercase",
             }}
+            className={isCardActive ? "" : RESTING_SHADOW}
           >
             ${item.price}
           </span>
@@ -154,7 +160,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
           className="absolute bottom-0 left-0 w-full h-[145px] transition-opacity duration-500 z-10 opacity-100 group-hover:opacity-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 6.92%, #000 100%)",
+              "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.45) 45%, #000 100%)",
           }}
         />
 
@@ -176,20 +182,24 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
             <span
               className={`text-[10px] font-[family-name:var(--font-serif-next)] font-black tracking-[2px] uppercase transition-colors duration-300 block mb-1 leading-none ${isCardActive
                 ? "text-white"
-                : "text-[#FF7808] group-hover:text-white"
+                : `text-[#FF7808] group-hover:text-white ${RESTING_SHADOW}`
                 }`}
             >
               {item.tag}
             </span>
 
             {/* Title */}
-            <h3 className="text-base font-[family-name:var(--font-serif-next)] font-black uppercase text-white tracking-wide truncate leading-tight">
+            <h3
+              className={`text-base font-[family-name:var(--font-serif-next)] font-black uppercase text-white tracking-wide truncate leading-tight ${isCardActive ? "" : RESTING_SHADOW}`}
+            >
               {item.name}
             </h3>
           </div>
 
           {/* Price Text (Work Sans) */}
-          <span className="text-[36px] font-bold text-white font-sans leading-none mt-5">
+          <span
+            className={`text-[36px] font-bold text-white font-sans leading-none mt-5 ${isCardActive ? "" : RESTING_SHADOW}`}
+          >
             ${item.price}
           </span>
         </div>

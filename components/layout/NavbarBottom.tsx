@@ -3,22 +3,10 @@
 import React from "react";
 import Link from "next/link";
 import { ORDER_URL } from "@/lib/constants";
+import { getActiveLocations } from "@/lib/api/locations";
 
 const NavbarBottom = () => {
-  const locations = [
-    "BALTIMORE, MD",
-    "MANASSAS, VA",
-    "LAUREL, MD",
-    "PASADENA, MD",
-    "ALEXANDRIA, VA",
-    "FORESTHILL, VA",
-    "TAMARAC, FL",
-    "SEVEN CORNERS, VA",
-    "NORTHERN PKWY, MD",
-    "PHILADELPHIA, PA",
-    "ROYAL PALM BEACH, FL",
-    "ABERDEEN, MD",
-  ];
+  const locations = getActiveLocations().map((loc) => loc.name.toUpperCase());
 
   return (
     <section className="w-full bg-[#242323] py-0 flex items-center h-[50px] overflow-hidden relative z-[11]">
@@ -59,7 +47,14 @@ const NavbarBottom = () => {
                   aria-hidden={i === 1}
                   className="flex items-center gap-2 text-white/90 hover:text-primary transition-colors font-serif font-medium text-[14px] leading-[16px] tracking-[1.2px] uppercase"
                 >
-                  <img src="/locainicon/pin1.png" alt="Location" className="w-3 h-3 sm:w-4 sm:h-4 object-contain brightness-100" />
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    className="w-3 h-3 sm:w-4 sm:h-4 shrink-0 text-primary"
+                  >
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+                  </svg>
                   <span>{loc}</span>
                 </a>
               ))
