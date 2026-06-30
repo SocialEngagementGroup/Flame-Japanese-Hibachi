@@ -36,15 +36,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock scroll when mobile menu is open
+  // Lock scroll when mobile menu is open. Restore with "" (not "unset") so the
+  // CSS `overflow-x: clip` stays in effect — "unset" resets both axes to visible
+  // and reintroduces horizontal panning that drifts the fixed navbar.
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     };
   }, [isMobileMenuOpen]);
 
@@ -65,9 +67,18 @@ const Navbar = () => {
       <div className="w-full px-[var(--space-lg)] flex items-center justify-between relative">
         {/* Left: Mobile Sign In / Desktop Logo */}
         <div className="flex-none flex justify-start items-center z-10">
+          {/* Sign In hidden for now — re-enable when accounts go live.
+              Spacer keeps the original mobile navbar height (the logo is absolutely
+              positioned, so the button was what set the row height). */}
+          <div
+            aria-hidden
+            className="max-[1100px]:block hidden w-[100px] max-[500px]:w-[85px] h-[30px] max-[500px]:h-[26px]"
+          />
+          {/*
           <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="max-[1100px]:flex hidden border-2 border-white text-white w-[100px] max-[500px]:w-[85px] h-[30px] max-[500px]:h-[26px] items-center justify-center hover:bg-white hover:text-black hover:-translate-y-0.5 active:scale-[0.97] transition-all text-small font-black tracking-[1px] uppercase">
             SIGN IN
           </a>
+          */}
           <div className="hidden min-[1100px]:block">
             <Link href="/" className="flex items-center group">
               <video
@@ -89,8 +100,8 @@ const Navbar = () => {
 
         {/* Center: Mobile Logo / Desktop Links */}
         <div className="flex-none flex items-center justify-center">
-          {/* Mobile Logo - Absolute Centered */}
-          <div className="mobile-logo-wrapper min-[1100px]:hidden absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          {/* Mobile Logo - Left aligned (kept absolute so it doesn't drive the navbar height) */}
+          <div className="min-[1100px]:hidden absolute left-[var(--space-lg)] top-1/2 -translate-y-1/2">
             <Link href="/" className="flex items-center">
               <video
                 ref={mobileVideoRef}
@@ -98,12 +109,12 @@ const Navbar = () => {
                 loop
                 muted
                 playsInline
-                poster="/site-logo/FJH-logo-white.png"
+                poster="/site-logo/logo-v2-poster.png"
                 className="object-contain"
-                style={{ width: '190px', height: '72px' }}
+                style={{ width: '190px', height: '52px' }}
               >
                 <source src="/site-logo/logo-v2.webm" type="video/webm" />
-                <img src="/site-logo/FJH-logo-white.png" alt="Flame Japanese Hibachi" className="w-[190px] h-[72px] object-contain" />
+                <img src="/site-logo/FJH-logo-white.png" alt="Flame Japanese Hibachi" className="w-[190px] h-[52px] object-contain" />
               </video>
             </Link>
           </div>
@@ -155,18 +166,15 @@ const Navbar = () => {
             )}
           </button>
 
-          {/* Sign In - Desktop Only */}
+          {/* Sign In - Desktop Only — hidden for now, re-enable when accounts go live
           <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="hidden min-[1100px]:flex border-2 border-white text-white w-[147.31px] h-[36px] max-[1300px]:w-[125px] max-[1300px]:h-[32px] items-center justify-center hover:bg-white hover:text-black hover:-translate-y-0.5 active:scale-[0.97] transition-all text-base max-[1300px]:text-small font-medium tracking-[1.2px] uppercase">
             SIGN IN
           </a>
+          */}
 
           {/* Cart - Desktop Only */}
           <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="hidden min-[1100px]:block relative text-white hover:text-primary transition-colors">
-            <img
-              src="/site-logo/shop-card-icon.png"
-              alt="Cart"
-              className="w-6 h-6 object-contain brightness-100"
-            />
+            <ShoppingCart className="w-6 h-6" strokeWidth={2.5} />
             <span className="absolute -top-1.5 -right-2 bg-primary text-white text-small font-black w-5 h-5 flex items-center justify-center rounded-full shadow-lg">
               0
             </span>
@@ -186,7 +194,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`min-[1100px]:hidden fixed inset-0 bg-black transition-all duration-300 z-[9999] w-full h-full ${isMobileMenuOpen ? "translate-x-0 opacity-100 visible" : "translate-x-full opacity-0 invisible"
+        className={`min-[1100px]:hidden fixed inset-0 bg-black transition-opacity duration-300 z-[9999] h-full ${isMobileMenuOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"
           }`}
         onClick={() => setIsMobileMenuOpen(false)}
       >
