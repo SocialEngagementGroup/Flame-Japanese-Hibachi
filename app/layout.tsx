@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import NavbarBottom from "@/components/layout/NavbarBottom";
 import Footer from "@/components/layout/Footer";
+import TopLoader from "@/components/layout/TopLoader";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 import type { Metadata } from "next";
@@ -73,15 +74,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${workSans.variable} ${raleway.variable} h-full overflow-x-hidden antialiased`}
+      className={`${workSans.variable} ${raleway.variable} h-full overflow-x-clip antialiased`}
       suppressHydrationWarning
     >
       <body
         suppressHydrationWarning
-        className="h-full bg-background text-foreground flex flex-col font-sans selection:bg-primary selection:text-primary-foreground overflow-x-hidden"
+        className="h-full bg-background text-foreground flex flex-col font-sans selection:bg-primary selection:text-primary-foreground overflow-x-clip"
       >
         <Script src="/theme-init.js" strategy="beforeInteractive" />
         <ThemeProvider>
+          <TopLoader />
           <header className="fixed top-0 left-0 w-full z-50">
             <Navbar />
             <NavbarBottom />

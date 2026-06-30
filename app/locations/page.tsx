@@ -95,7 +95,7 @@ export default function LocationsPage() {
         align="center"
         fullHeight={false}
       />
-      <LocationsSection />
+      <LocationsSection hideViewAll />
       <ContactSection
         heading={
           <>

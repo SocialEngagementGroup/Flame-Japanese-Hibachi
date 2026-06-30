@@ -1,5 +1,5 @@
 import Hero from "@/components/blocks/hero/Hero";
-import HeroCTA from "@/components/blocks/hero/HeroCTA";
+// import HeroCTA from "@/components/blocks/hero/HeroCTA"; // hidden until login system is live
 import MenuGrid from "@/components/blocks/menu/MenuGrid";
 import FlameDifference from "@/components/blocks/about/FlameDifference";
 import SignatureItems from "@/components/blocks/menu/SignatureItems";
@@ -57,7 +57,7 @@ export default function Home() {
 
       <div className="flex flex-col min-h-[calc(100dvh-100px)] md:min-h-[calc(100dvh-115px)]">
         <Hero />
-        <HeroCTA />
+        {/* <HeroCTA /> hidden until login system is live */}
       </div>
       <MenuGrid />
       <FlameDifference />
