@@ -257,11 +257,11 @@ export const cateringMenuSections: CateringMenuBlock[] = [
       {
         id: "wings-50",
         category: "BUFFALO WINGS/ BONELESS WINGS",
-        people: "50 PCS",
+        people: "50 PIECES",
         price: "$65",
         image: "/menupage/wings/50-pieces.png",
         details: [
-          "50 PCS BUFFALO WINGS/ BONELESS WINGS",
+          "50 PIECES BUFFALO WINGS/ BONELESS WINGS",
           "ADD-ONS: FRIES HALF TRAY $40",
           "FRIES FULL TRAY $75",
         ],
@@ -269,11 +269,11 @@ export const cateringMenuSections: CateringMenuBlock[] = [
       {
         id: "wings-100",
         category: "BUFFALO WINGS/ BONELESS WINGS",
-        people: "100 PCS",
+        people: "100 PIECES",
         price: "$130",
         image: "/menupage/wings/100-pieces.png",
         details: [
-          "100 PCS BUFFALO WINGS/ BONELESS WINGS",
+          "100 PIECES BUFFALO WINGS/ BONELESS WINGS",
           "ADD-ONS: FRIES HALF TRAY $40",
           "FRIES FULL TRAY $75",
         ],
@@ -281,11 +281,11 @@ export const cateringMenuSections: CateringMenuBlock[] = [
       {
         id: "wings-150",
         category: "BUFFALO WINGS/ BONELESS WINGS",
-        people: "150 PCS",
+        people: "150 PIECES",
         price: "$195",
         image: "/menupage/wings/100-pieces.png",
         details: [
-          "150 PCS BUFFALO WINGS/ BONELESS WINGS",
+          "150 PIECES BUFFALO WINGS/ BONELESS WINGS",
           "ADD-ONS: FRIES HALF TRAY $40",
           "FRIES FULL TRAY $75",
         ],
@@ -293,11 +293,11 @@ export const cateringMenuSections: CateringMenuBlock[] = [
       {
         id: "wings-200",
         category: "BUFFALO WINGS/ BONELESS WINGS",
-        people: "200 PCS",
+        people: "200 PIECES",
         price: "$230",
         image: "/menupage/wings/100-pieces.png",
         details: [
-          "200 PCS BUFFALO WINGS/ BONELESS WINGS",
+          "200 PIECES BUFFALO WINGS/ BONELESS WINGS",
           "ADD-ONS: FRIES HALF TRAY $40",
           "FRIES FULL TRAY $75",
         ],

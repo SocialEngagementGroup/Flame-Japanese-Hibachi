@@ -6,6 +6,8 @@ import NavbarBottom from "@/components/layout/NavbarBottom";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { getCanonicalUrl } from "@/lib/seo/seo";
+import type { Metadata } from "next";
+
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -18,12 +20,19 @@ const raleway = Raleway({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-export const metadata = {
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.flamehibachi.com";
+const defaultTitle = "Flame Japanese Hibachi | Halal Hibachi, Sushi & Bento";
+const defaultDescription =
+  "100% Halal Japanese hibachi cooked fresh in front of you, plus sushi, bento, loaded fries and boba. Find a Flame Japanese Hibachi location or order online today.";
+const ogImage = "/homepage/hero/hero-bg-desk.png";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     template: "%s | Flame Japanese Hibachi",
-    default: "Flame Japanese Hibachi | Halal Hibachi, Sushi & Bento",
+    default: defaultTitle,
   },
-  description: "100% Halal Japanese hibachi cooked fresh in front of you, plus sushi, bento, loaded fries and boba. Find a Flame Japanese Hibachi location or order online today.",
+  description: defaultDescription,
   icons: {
     icon: "/icon.png",
     shortcut: "/icon.png",
@@ -31,6 +40,28 @@ export const metadata = {
   },
   alternates: {
     canonical: getCanonicalUrl("/"),
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Flame Japanese Hibachi",
+    url: getCanonicalUrl("/"),
+    title: defaultTitle,
+    description: defaultDescription,
+    images: [
+      {
+        url: ogImage,
+        width: 1280,
+        height: 575,
+        alt: "Flame Japanese Hibachi food and brand image",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: defaultDescription,
+    images: [ogImage],
   },
 };
 
