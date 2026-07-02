@@ -101,7 +101,7 @@ const CateringSection = () => {
           }}
           spaceBetween={16}
           slidesPerView={1}
-          loop={true}
+          loop={slides.length >= 10}
           loopAdditionalSlides={slides.length}
           grabCursor={true}
           breakpoints={{

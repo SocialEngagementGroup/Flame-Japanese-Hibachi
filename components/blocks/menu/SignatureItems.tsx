@@ -89,7 +89,7 @@ const SignatureItems = () => {
           }}
           spaceBetween={16}
           slidesPerView={1}
-          loop={items.length > 3}
+          loop={items.length >= 10}
           grabCursor={true}
           autoplay={{
             delay: 3500,
