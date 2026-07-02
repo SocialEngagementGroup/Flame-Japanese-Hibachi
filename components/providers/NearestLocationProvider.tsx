@@ -6,6 +6,7 @@ import { findNearest } from "@/lib/geo/distance";
 import type { Location } from "@/lib/types";
 
 const STORAGE_KEY = "fjh-nearest-location-v1";
+const SELECTED_LOCATION_KEY = "fjh-selected-location-v1";
 const PROMPT_DISMISSED_KEY = "fjh-location-prompt-dismissed-v1";
 const MAX_CACHE_AGE_MS = 1000 * 60 * 60 * 24 * 14;
 const PROMPT_SNOOZE_MS = 1000 * 60 * 60 * 24 * 7;
@@ -21,28 +22,38 @@ type CachedResult = {
   timestamp: number;
 };
 
+type SelectedLocation = {
+  storeId: number;
+  timestamp: number;
+};
+
 type NearestLocationState = {
   status: "idle" | "resolved" | "unavailable";
   nearest: (Location & { distanceMiles: number }) | null;
   promptVisible: boolean;
+  outsideServiceAreaVisible: boolean;
 };
 
 type NearestLocationContextValue = NearestLocationState & {
   requestLocation: () => void;
   dismissPrompt: () => void;
+  dismissOutsideServiceArea: () => void;
+  selectLocation: (storeId: number) => void;
 };
 
 const defaultContextValue: NearestLocationContextValue = {
   status: "idle",
   nearest: null,
   promptVisible: false,
+  outsideServiceAreaVisible: false,
   requestLocation: () => {},
   dismissPrompt: () => {},
+  dismissOutsideServiceArea: () => {},
+  selectLocation: () => {},
 };
 
-const NearestLocationContext = React.createContext<NearestLocationContextValue>(
-  defaultContextValue
-);
+const NearestLocationContext =
+  React.createContext<NearestLocationContextValue>(defaultContextValue);
 
 function readCache(): CachedResult | null {
   try {
@@ -69,6 +80,38 @@ function writeCache(result: CachedResult) {
   } catch {}
 }
 
+function readSelectedLocation(): SelectedLocation | null {
+  try {
+    const raw = localStorage.getItem(SELECTED_LOCATION_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as SelectedLocation;
+    if (
+      typeof parsed.storeId !== "number" ||
+      typeof parsed.timestamp !== "number"
+    ) {
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function writeSelectedLocation(storeId: number) {
+  try {
+    localStorage.setItem(
+      SELECTED_LOCATION_KEY,
+      JSON.stringify({ storeId, timestamp: Date.now() })
+    );
+  } catch {}
+}
+
+function clearSelectedLocation() {
+  try {
+    localStorage.removeItem(SELECTED_LOCATION_KEY);
+  } catch {}
+}
+
 function isPromptRecentlyDismissed(): boolean {
   try {
     const raw = localStorage.getItem(PROMPT_DISMISSED_KEY);
@@ -87,6 +130,32 @@ function writePromptDismissed() {
   } catch {}
 }
 
+const unavailableState: NearestLocationState = {
+  status: "unavailable",
+  nearest: null,
+  promptVisible: false,
+  outsideServiceAreaVisible: false,
+};
+
+function isWithinUsServiceArea(lat: number, lng: number): boolean {
+  const contiguousUs =
+    lat >= 24.396308 && lat <= 49.384358 && lng >= -125 && lng <= -66.93457;
+  const alaska = lat >= 51.2 && lat <= 71.6 && lng >= -179.2 && lng <= -129.9;
+  const hawaii = lat >= 18.5 && lat <= 22.5 && lng >= -160.5 && lng <= -154.5;
+  return contiguousUs || alaska || hawaii;
+}
+
+function keepResolvedOrUnavailable(prev: NearestLocationState) {
+  return prev.status === "resolved" ? prev : unavailableState;
+}
+
+function toResolvedLocation(
+  location: Location,
+  distanceMiles: number = 0
+): Location & { distanceMiles: number } {
+  return { ...location, distanceMiles };
+}
+
 export function NearestLocationProvider({
   children,
 }: {
@@ -96,6 +165,7 @@ export function NearestLocationProvider({
     status: "idle",
     nearest: null,
     promptVisible: false,
+    outsideServiceAreaVisible: false,
   });
 
   const resolveFromPosition = React.useCallback(
@@ -105,9 +175,19 @@ export function NearestLocationProvider({
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       };
+      if (!isWithinUsServiceArea(origin.lat, origin.lng)) {
+        setState({
+          status: "unavailable",
+          nearest: null,
+          promptVisible: false,
+          outsideServiceAreaVisible: true,
+        });
+        return;
+      }
+
       const result = findNearest(origin, activeLocations);
       if (!result) {
-        setState((prev) => prev.status === "resolved" ? prev : { status: "unavailable", nearest: null, promptVisible: false });
+        setState(keepResolvedOrUnavailable);
         return;
       }
       writeCache({
@@ -115,36 +195,69 @@ export function NearestLocationProvider({
         distanceMiles: result.distanceMiles,
         timestamp: Date.now(),
       });
+      if (readSelectedLocation()) return;
       setState({
         status: "resolved",
-        nearest: { ...result.item, distanceMiles: result.distanceMiles },
+        nearest: toResolvedLocation(result.item, result.distanceMiles),
         promptVisible: false,
+        outsideServiceAreaVisible: false,
       });
     },
     []
   );
 
   const requestLocation = React.useCallback(() => {
-    setState((prev) => ({ ...prev, promptVisible: false }));
+    clearSelectedLocation();
+    setState((prev) => ({
+      ...prev,
+      promptVisible: false,
+      outsideServiceAreaVisible: false,
+    }));
     if (typeof window === "undefined" || !("geolocation" in navigator)) {
-      setState((prev) => prev.status === "resolved" ? prev : { status: "unavailable", nearest: null, promptVisible: false });
+      setState(keepResolvedOrUnavailable);
       return;
     }
     navigator.geolocation.getCurrentPosition(
       resolveFromPosition,
-      () => setState((prev) => prev.status === "resolved" ? prev : { status: "unavailable", nearest: null, promptVisible: false }),
+      () => {
+        writePromptDismissed();
+        setState(keepResolvedOrUnavailable);
+      },
       GEO_OPTIONS
     );
   }, [resolveFromPosition]);
 
   const dismissPrompt = React.useCallback(() => {
     writePromptDismissed();
-    setState((prev) => ({ ...prev, promptVisible: false, status: prev.status === "resolved" ? "resolved" : "unavailable" }));
+    setState((prev) => ({
+      ...prev,
+      promptVisible: false,
+      status: prev.status === "resolved" ? "resolved" : "unavailable",
+    }));
+  }, []);
+
+  const dismissOutsideServiceArea = React.useCallback(() => {
+    setState((prev) => ({ ...prev, outsideServiceAreaVisible: false }));
+  }, []);
+
+  const selectLocation = React.useCallback((storeId: number) => {
+    const store = getActiveLocations().find(
+      (location) => location.id === storeId
+    );
+    if (!store) return;
+    writeSelectedLocation(store.id);
+    setState({
+      status: "resolved",
+      nearest: toResolvedLocation(store),
+      promptVisible: false,
+      outsideServiceAreaVisible: false,
+    });
   }, []);
 
   React.useEffect(() => {
     let cancelled = false;
     const activeLocations = getActiveLocations();
+    const selectedLocation = readSelectedLocation();
     const cached = readCache();
 
     const applyStoreId = (storeId: number, distanceMiles: number) => {
@@ -154,10 +267,22 @@ export function NearestLocationProvider({
         setState((prev) => ({
           ...prev,
           status: "resolved",
-          nearest: { ...store, distanceMiles },
+          nearest: toResolvedLocation(store, distanceMiles),
+          outsideServiceAreaVisible: false,
         }));
       }
     };
+
+    if (selectedLocation) {
+      const selectedStore = activeLocations.find(
+        (location) => location.id === selectedLocation.storeId
+      );
+      if (selectedStore) {
+        applyStoreId(selectedStore.id, 0);
+        return;
+      }
+      clearSelectedLocation();
+    }
 
     // 1. Immediately apply cache if available (fallback)
     if (cached) {
@@ -166,7 +291,7 @@ export function NearestLocationProvider({
 
     if (typeof window === "undefined" || !("geolocation" in navigator)) {
       if (!cached && !cancelled) {
-        setState({ status: "unavailable", nearest: null, promptVisible: false });
+        setState(unavailableState);
       }
       return;
     }
@@ -179,7 +304,7 @@ export function NearestLocationProvider({
             if (!cancelled) {
               // Remember that user blocked/dismissed — don't ask again for 7 days
               writePromptDismissed();
-              setState((prev) => prev.status === "resolved" ? prev : { status: "unavailable", nearest: null, promptVisible: false });
+              setState(keepResolvedOrUnavailable);
             }
           },
           GEO_OPTIONS
@@ -190,7 +315,7 @@ export function NearestLocationProvider({
     const showSoftAsk = () => {
       if (!cancelled) {
         if (isPromptRecentlyDismissed()) {
-          setState((prev) => prev.status === "resolved" ? prev : { status: "unavailable", nearest: null, promptVisible: false });
+          setState(keepResolvedOrUnavailable);
         } else {
           setState((prev) => ({ ...prev, promptVisible: true }));
         }
@@ -208,7 +333,7 @@ export function NearestLocationProvider({
             askForLocation();
           } else if (result.state === "denied") {
             if (!cached) {
-              setState({ status: "unavailable", nearest: null, promptVisible: false });
+              showSoftAsk();
             }
           } else {
             // state === "prompt" — only trigger browser popup if no cache AND not recently dismissed
@@ -228,8 +353,20 @@ export function NearestLocationProvider({
   }, [resolveFromPosition]);
 
   const value = React.useMemo(
-    () => ({ ...state, requestLocation, dismissPrompt }),
-    [state, requestLocation, dismissPrompt]
+    () => ({
+      ...state,
+      requestLocation,
+      dismissPrompt,
+      dismissOutsideServiceArea,
+      selectLocation,
+    }),
+    [
+      state,
+      requestLocation,
+      dismissPrompt,
+      dismissOutsideServiceArea,
+      selectLocation,
+    ]
   );
 
   return (

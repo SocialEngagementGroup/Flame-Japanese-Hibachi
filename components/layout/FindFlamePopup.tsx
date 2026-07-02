@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { X, Search, Phone, Clock, MapPin } from "lucide-react";
 import { getActiveLocations } from "@/lib/api/locations";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
@@ -18,13 +18,10 @@ const googleMapsUrl = (address: string) =>
   )}`;
 
 const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
-  const { nearest } = useNearestLocation();
+  const { nearest, selectLocation } = useNearestLocation();
   const findYourFlameText = nearest ? nearest.name : "FLAME";
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<number>(activeLocations[0].id);
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-  const cardRefs = useRef<Record<number, HTMLButtonElement | null>>({});
-  const nearestAppliedRef = useRef(false);
 
   // Nearest store moves to the top of the list once geolocation resolves.
   const sortedActiveLocations = useMemo(() => {
@@ -37,14 +34,18 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
     return copy;
   }, [nearest]);
 
-  // Seed the selected/highlighted card to the nearest store the first time it resolves.
   useEffect(() => {
-    if (nearest && !nearestAppliedRef.current) {
-      nearestAppliedRef.current = true;
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time seed once geolocation resolves, guarded by nearestAppliedRef
+    if (open && nearest) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- sync highlighted card when the active location changes
       setSelectedId(nearest.id);
     }
-  }, [nearest]);
+  }, [open, nearest]);
+
+  const handleLocationSelect = (storeId: number) => {
+    setSelectedId(storeId);
+    selectLocation(storeId);
+    onClose();
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -65,45 +66,9 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
     if (!q) return sortedActiveLocations;
     return sortedActiveLocations.filter(
       (l) =>
-        l.name.toLowerCase().includes(q) ||
-        l.address.toLowerCase().includes(q)
+        l.name.toLowerCase().includes(q) || l.address.toLowerCase().includes(q)
     );
   }, [query, sortedActiveLocations]);
-
-  // Scroll-sync: update selected location based on which card is most visible in the scroll area
-  useEffect(() => {
-    if (!open) return;
-    const root = scrollRef.current;
-    if (!root) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Pick the most-visible card among intersecting entries
-        let best: IntersectionObserverEntry | null = null;
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          if (!best || entry.intersectionRatio > best.intersectionRatio) {
-            best = entry;
-          }
-        }
-        if (best) {
-          const id = Number((best.target as HTMLElement).dataset.locationId);
-          if (!Number.isNaN(id)) setSelectedId(id);
-        }
-      },
-      {
-        root,
-        rootMargin: "-30% 0px -50% 0px",
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-      }
-    );
-
-    Object.values(cardRefs.current).forEach((el) => {
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [open, filteredActive]);
 
   const selected =
     activeLocations.find((l) => l.id === selectedId) ?? activeLocations[0];
@@ -158,10 +123,7 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
           </div>
         </div>
 
-        <div
-          ref={scrollRef}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--gap-lg)] px-[var(--space-lg)] py-[var(--space-md)] overflow-y-auto flex-1"
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--gap-lg)] px-[var(--space-lg)] py-[var(--space-md)] overflow-y-auto flex-1">
           <div className="order-1 lg:order-2 lg:sticky lg:top-0 self-start">
             <div className="w-full h-[260px] lg:h-[460px] bg-zinc-200 dark:bg-zinc-900 border border-black/5 dark:border-white/10 overflow-hidden shadow-2xl">
               <iframe
@@ -203,20 +165,18 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
                   return (
                     <button
                       key={loc.id}
-                      ref={(el) => {
-                        cardRefs.current[loc.id] = el;
-                      }}
-                      data-location-id={loc.id}
-                      onClick={() => setSelectedId(loc.id)}
-                      className={`w-full text-left p-[var(--space-md)] border transition-all relative overflow-hidden ${isSelected
+                      onClick={() => handleLocationSelect(loc.id)}
+                      className={`w-full text-left p-[var(--space-md)] border transition-all relative overflow-hidden ${
+                        isSelected
                           ? "bg-zinc-900 border-primary"
                           : "bg-[#1C1B1B] border-white/5 hover:border-primary/50"
-                        }`}
+                      }`}
                     >
                       <div className="flex justify-between items-start gap-3">
                         <h4
-                          className={`heading-h4 leading-tight uppercase ${isSelected ? "text-primary" : "text-white"
-                            }`}
+                          className={`heading-h4 leading-tight uppercase ${
+                            isSelected ? "text-primary" : "text-white"
+                          }`}
                         >
                           {loc.name}
                           <span className="block text-small font-normal text-gray-400 mt-1 normal-case">
