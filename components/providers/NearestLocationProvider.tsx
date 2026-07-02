@@ -24,19 +24,10 @@ type NearestLocationState = {
   nearest: (Location & { distanceMiles: number }) | null;
 };
 
-type NearestLocationContextValue = NearestLocationState & {
-  requestLocation: () => void;
-};
-
-const defaultContextValue: NearestLocationContextValue = {
+const NearestLocationContext = React.createContext<NearestLocationState>({
   status: "idle",
   nearest: null,
-  requestLocation: () => {},
-};
-
-const NearestLocationContext = React.createContext<NearestLocationContextValue>(
-  defaultContextValue
-);
+});
 
 function readCache(): CachedResult | null {
   try {
@@ -73,53 +64,13 @@ export function NearestLocationProvider({
     nearest: null,
   });
 
-  const resolveFromPosition = React.useCallback(
-    (position: GeolocationPosition) => {
-      const activeLocations = getActiveLocations();
-      const origin = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
-      const result = findNearest(origin, activeLocations);
-      if (!result) {
-        setState({ status: "unavailable", nearest: null });
-        return;
-      }
-      writeCache({
-        storeId: result.item.id,
-        distanceMiles: result.distanceMiles,
-        timestamp: Date.now(),
-      });
-      setState({
-        status: "resolved",
-        nearest: { ...result.item, distanceMiles: result.distanceMiles },
-      });
-    },
-    []
-  );
-
-  const requestLocation = React.useCallback(() => {
-    if (typeof window === "undefined" || !("geolocation" in navigator)) {
-      setState({ status: "unavailable", nearest: null });
-      return;
-    }
-    navigator.geolocation.getCurrentPosition(
-      resolveFromPosition,
-      () => setState({ status: "unavailable", nearest: null }),
-      GEO_OPTIONS
-    );
-  }, [resolveFromPosition]);
-
   React.useEffect(() => {
     const activeLocations = getActiveLocations();
 
     const applyStoreId = (storeId: number, distanceMiles: number) => {
       const store = activeLocations.find((l) => l.id === storeId);
       if (!store) return;
-      setState({
-        status: "resolved",
-        nearest: { ...store, distanceMiles },
-      });
+      setState({ status: "resolved", nearest: { ...store, distanceMiles } });
     };
 
     const cached = readCache();
@@ -135,44 +86,38 @@ export function NearestLocationProvider({
 
     let cancelled = false;
 
-    const askForLocation = () => {
-      if (!cancelled) {
-        navigator.geolocation.getCurrentPosition(resolveFromPosition, () => {
-          if (!cancelled) setState({ status: "unavailable", nearest: null });
-        }, GEO_OPTIONS);
-      }
-    };
-
-    if (navigator.permissions?.query) {
-      navigator.permissions
-        .query({ name: "geolocation" })
-        .then((result) => {
-          if (cancelled) return;
-          if (result.state === "granted") {
-            askForLocation();
-          } else if (result.state === "denied") {
-            setState({ status: "unavailable", nearest: null });
-          } else {
-            askForLocation();
-          }
-        })
-        .catch(askForLocation);
-    } else {
-      askForLocation();
-    }
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        if (cancelled) return;
+        const origin = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        const result = findNearest(origin, activeLocations);
+        if (!result) {
+          setState({ status: "unavailable", nearest: null });
+          return;
+        }
+        writeCache({
+          storeId: result.item.id,
+          distanceMiles: result.distanceMiles,
+          timestamp: Date.now(),
+        });
+        applyStoreId(result.item.id, result.distanceMiles);
+      },
+      () => {
+        if (!cancelled) setState({ status: "unavailable", nearest: null });
+      },
+      GEO_OPTIONS
+    );
 
     return () => {
       cancelled = true;
     };
-  }, [resolveFromPosition]);
-
-  const value = React.useMemo(
-    () => ({ ...state, requestLocation }),
-    [state, requestLocation]
-  );
+  }, []);
 
   return (
-    <NearestLocationContext.Provider value={value}>
+    <NearestLocationContext.Provider value={state}>
       {children}
     </NearestLocationContext.Provider>
   );
