@@ -14,7 +14,7 @@ export const activeLocations = [
     lat: 39.3179,
     lng: -76.5542,
     image: "https://tile.openstreetmap.org/16/18831/24971.png",
-    orderUrl: "", // TODO(order-url): paste baltimore-md order.online URL here
+    orderUrl: "https://order.online/store/flame-japanese-hibachi-5230-moravia-rd-ste-b-41690741",
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ export const activeLocations = [
     lat: 38.7527,
     lng: -77.4491,
     image: "https://tile.openstreetmap.org/16/18668/25104.png",
-    orderUrl: "", // TODO(order-url): paste manassas-va order.online URL here
+    orderUrl: "https://order.online/store/flame-japanese-hibachi-9522-liberia-ave-40449851",
   },
   {
     id: 3,
@@ -48,7 +48,7 @@ export const activeLocations = [
     lat: 39.0794,
     lng: -76.866,
     image: "https://tile.openstreetmap.org/16/18774/25027.png",
-    orderUrl: "", // TODO(order-url): paste laurel-md order.online URL here
+    orderUrl: "https://order.online/store/flame-japanese-hibachi-laurel-40839509",
   },
   {
     id: 4,
@@ -65,7 +65,7 @@ export const activeLocations = [
     lat: 39.1286,
     lng: -76.5865,
     image: "https://tile.openstreetmap.org/16/18825/25016.png",
-    orderUrl: "", // TODO(order-url): paste pasadena-md order.online URL here
+    orderUrl: "https://order.online/store/flame-japanese-hibachi-pasadena-40976275",
   },
   {
     id: 5,
@@ -82,7 +82,7 @@ export const activeLocations = [
     lat: 38.7473813,
     lng: -77.0846393,
     image: "https://tile.openstreetmap.org/16/18735/25105.png",
-    orderUrl: "", // TODO(order-url): paste alexandria-va order.online URL here
+    orderUrl: "https://order.online/store/flame-japanese-hibachi-richmond-hwy-40976321",
   },
   {
     id: 6,
@@ -99,7 +99,7 @@ export const activeLocations = [
     lat: 37.5383,
     lng: -77.5265,
     image: "https://tile.openstreetmap.org/16/18654/25385.png",
-    orderUrl: "", // TODO(order-url): paste richmond-va order.online URL here
+    orderUrl: "https://order.online/store/flame-japanese-hibachi-forest-hill-richmond-41163161",
   },
   {
     id: 7,
@@ -116,7 +116,7 @@ export const activeLocations = [
     lat: 26.1979,
     lng: -80.2527,
     image: "https://tile.openstreetmap.org/16/18158/27823.png",
-    orderUrl: "", // TODO(order-url): paste tamarac-fl order.online URL here
+    orderUrl: "https://order.online/store/flame-hibachi-more-5707-n-university-dr-36348541",
   },
   {
     id: 8,
@@ -133,7 +133,7 @@ export const activeLocations = [
     lat: 38.872,
     lng: -77.1554,
     image: "https://tile.openstreetmap.org/16/18722/25076.png",
-    orderUrl: "", // TODO(order-url): paste falls-church-va order.online URL here
+    orderUrl: "https://order.online/store/flame-japanese-hibachi-6379-seven-corners-ctr-34585947",
   },
   {
     id: 9,
@@ -150,7 +150,7 @@ export const activeLocations = [
     lat: 39.3469,
     lng: -76.6882,
     image: "https://tile.openstreetmap.org/16/18807/24965.png",
-    orderUrl: "", // TODO(order-url): paste baltimore-northern-md order.online URL here
+    orderUrl: "https://order.online/store/flame-japanese-hibachi-4460-w-northern-parkway-32746289",
   },
   {
     id: 10,
@@ -167,7 +167,7 @@ export const activeLocations = [
     lat: 40.0351153,
     lng: -75.1200327,
     image: "https://tile.openstreetmap.org/16/19092/24802.png",
-    orderUrl: "", // TODO(order-url): paste philadelphia-pa order.online URL here
+    orderUrl: "https://order.online/store/flame-hibachi-more-shop-320-101-e-olney-ave-32236185",
   },
   {
     id: 11,
@@ -184,7 +184,7 @@ export const activeLocations = [
     lat: 26.69,
     lng: -80.2036,
     image: "https://tile.openstreetmap.org/16/18167/27723.png",
-    orderUrl: "", // TODO(order-url): paste royal-palm-beach-fl order.online URL here
+    orderUrl: "https://order.online/store/flame-japanese-hibachi-9940-belvedere-rd-ste-f-32295195",
   },
   {
     id: 12,
@@ -201,7 +201,7 @@ export const activeLocations = [
     lat: 39.5263,
     lng: -76.187,
     image: "https://tile.openstreetmap.org/16/18898/24922.png",
-    orderUrl: "", // TODO(order-url): paste aberdeen-md order.online URL here
+    orderUrl: "https://order.online/store/flame-japanese-hibachi-939-beards-hill-rd-35850649",
   },
   {
     id: 13,
@@ -218,7 +218,7 @@ export const activeLocations = [
     lat: 37.604318,
     lng: -77.354355,
     image: "https://tile.openstreetmap.org/16/18687/25371.png",
-    orderUrl: "", // TODO(order-url): paste mechanicsville-va order.online URL here
+    orderUrl: "https://order.online/store/flame-hibachi-mechanicsville-46004389",
   },
   {
     id: 14,

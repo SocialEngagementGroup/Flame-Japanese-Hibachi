@@ -35,11 +35,38 @@ const LocationsSection = ({
   const findYourFlameText = nearest ? nearest.name : "FLAME";
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const mobileSwiperRef = useRef<SwiperType | null>(null);
+  const nearestAppliedRef = useRef(false);
+
+  // Nearest store moves to the top of the list once geolocation resolves.
+  // Falls back to the default (unsorted) order when no nearest store is known yet.
+  const sortedActiveLocations = React.useMemo(() => {
+    if (!nearest) return activeLocations;
+    const idx = activeLocations.findIndex((l) => l.id === nearest.id);
+    if (idx <= 0) return activeLocations;
+    const copy = [...activeLocations];
+    const [match] = copy.splice(idx, 1);
+    copy.unshift(match);
+    return copy;
+  }, [nearest]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- reset map spinner when the selected location changes
     setMapLoading(true);
   }, [selectedLocation.id]);
+
+  // Seed the highlighted card to the nearest store the first time it resolves,
+  // so the top card's highlight/map matches the newly-reordered list.
+  useEffect(() => {
+    if (nearest && !nearestAppliedRef.current) {
+      nearestAppliedRef.current = true;
+      const match = activeLocations.find((l) => l.id === nearest.id);
+      if (match) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time seed once geolocation resolves, guarded by nearestAppliedRef
+        setSelectedLocation(match);
+        mobileSwiperRef.current?.slideTo(0, 0);
+      }
+    }
+  }, [nearest]);
 
   const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
     `Flame Japanese Hibachi ${selectedLocation.address}`
@@ -81,23 +108,23 @@ const LocationsSection = ({
         }
       });
 
-      let finalIndex = isAtBottom ? activeLocations.length - 1 : (bestIndex !== -1 ? bestIndex : closestIndex);
+      let finalIndex = isAtBottom ? sortedActiveLocations.length - 1 : (bestIndex !== -1 ? bestIndex : closestIndex);
 
       // Force last card if we've scrolled 10px past the second-to-last card's activation point
-      if (finalIndex === activeLocations.length - 2 && activeLocations.length >= 2) {
-        const secondLastCard = cardRefs.current[activeLocations.length - 2];
+      if (finalIndex === sortedActiveLocations.length - 2 && sortedActiveLocations.length >= 2) {
+        const secondLastCard = cardRefs.current[sortedActiveLocations.length - 2];
         if (secondLastCard) {
           const rect = secondLastCard.getBoundingClientRect();
           if (triggerY - rect.top > 12) {
-            finalIndex = activeLocations.length - 1;
+            finalIndex = sortedActiveLocations.length - 1;
           }
         }
       }
 
       if (finalIndex !== -1) {
         setSelectedLocation((prev) => {
-          if (prev.id !== activeLocations[finalIndex].id) {
-            return activeLocations[finalIndex];
+          if (prev.id !== sortedActiveLocations[finalIndex].id) {
+            return sortedActiveLocations[finalIndex];
           }
           return prev;
         });
@@ -114,7 +141,7 @@ const LocationsSection = ({
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, []);
+  }, [sortedActiveLocations]);
 
   const handleCardClick = (loc: typeof activeLocations[0]) => {
     window.open(googleMapsUrl(loc.address), "_blank");
@@ -171,11 +198,11 @@ const LocationsSection = ({
             }}
             onSlideChange={(swiper) => {
               const index = swiper.realIndex;
-              setSelectedLocation(activeLocations[index]);
+              setSelectedLocation(sortedActiveLocations[index]);
             }}
             className="w-full h-auto"
           >
-            {activeLocations.map((loc) => (
+            {sortedActiveLocations.map((loc) => (
               <SwiperSlide key={loc.id}>
                 <div
                   id={loc.slug}
@@ -353,7 +380,7 @@ const LocationsSection = ({
               )}
             </div>
             <div className="space-y-6">
-              {activeLocations.map((loc, index) => (
+              {sortedActiveLocations.map((loc, index) => (
                 <div
                   key={loc.id}
                   id={loc.slug}

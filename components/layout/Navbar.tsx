@@ -6,12 +6,15 @@ import { ShoppingCart, Menu, X, MapPin, Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { usePathname } from "next/navigation";
 import { useOrderUrl } from "@/lib/geo/useOrderUrl";
+import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 import FindFlamePopup from "@/components/layout/FindFlamePopup";
 
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const orderUrl = useOrderUrl();
+  const { nearest } = useNearestLocation();
+  const findFlameText = nearest ? nearest.name.toUpperCase() : "FIND A FLAME";
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -140,7 +143,7 @@ const Navbar = () => {
             className="hidden min-[1100px]:flex items-center gap-[var(--gap-xs)] text-white hover:text-primary transition-colors"
           >
             <MapPin size={17} className="w-[18px] h-[18px] max-[1300px]:w-[14px] max-[1300px]:h-[14px]" strokeWidth={2.5} />
-            <span className="text-small font-black tracking-[1.2px] uppercase">FIND A FLAME</span>
+            <span className="text-small font-black tracking-[1.2px] uppercase">{findFlameText}</span>
           </button>
 
           {/* Theme Toggle - Desktop Only */}
@@ -291,7 +294,7 @@ const Navbar = () => {
               }}
             >
               <MapPin className="w-[22px] h-[22px] max-[500px]:w-[18px] max-[500px]:h-[18px]" />
-              <span>FIND A FLAME</span>
+              <span>{findFlameText}</span>
             </button>
 
             <a

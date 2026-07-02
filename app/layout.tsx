@@ -6,6 +6,7 @@ import NavbarBottom from "@/components/layout/NavbarBottom";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { NearestLocationProvider } from "@/components/providers/NearestLocationProvider";
+import LocationPermissionPrompt from "@/components/layout/LocationPermissionPrompt";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 import type { Metadata } from "next";
 
@@ -90,6 +91,7 @@ export default function RootLayout({
             </header>
             <main className="flex-1 pt-[100px] md:pt-[115px]">{children}</main>
             <Footer />
+            <LocationPermissionPrompt />
           </NearestLocationProvider>
         </ThemeProvider>
       </body>

@@ -24,6 +24,27 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
   const [selectedId, setSelectedId] = useState<number>(activeLocations[0].id);
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<Record<number, HTMLButtonElement | null>>({});
+  const nearestAppliedRef = useRef(false);
+
+  // Nearest store moves to the top of the list once geolocation resolves.
+  const sortedActiveLocations = useMemo(() => {
+    if (!nearest) return activeLocations;
+    const idx = activeLocations.findIndex((l) => l.id === nearest.id);
+    if (idx <= 0) return activeLocations;
+    const copy = [...activeLocations];
+    const [match] = copy.splice(idx, 1);
+    copy.unshift(match);
+    return copy;
+  }, [nearest]);
+
+  // Seed the selected/highlighted card to the nearest store the first time it resolves.
+  useEffect(() => {
+    if (nearest && !nearestAppliedRef.current) {
+      nearestAppliedRef.current = true;
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time seed once geolocation resolves, guarded by nearestAppliedRef
+      setSelectedId(nearest.id);
+    }
+  }, [nearest]);
 
   useEffect(() => {
     if (!open) return;
@@ -40,13 +61,13 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
 
   const filteredActive = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return activeLocations;
-    return activeLocations.filter(
+    if (!q) return sortedActiveLocations;
+    return sortedActiveLocations.filter(
       (l) =>
         l.name.toLowerCase().includes(q) ||
         l.address.toLowerCase().includes(q)
     );
-  }, [query]);
+  }, [query, sortedActiveLocations]);
 
   // Scroll-sync: update selected location based on which card is most visible in the scroll area
   useEffect(() => {
