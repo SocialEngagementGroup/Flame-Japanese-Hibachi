@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 
 import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 import type { CateringPackage } from "@/lib/types";
@@ -15,14 +13,6 @@ interface CateringMenuSectionProps {
     items: CateringPackage[];
     cardVariant?: "catering" | "shop";
 }
-
-const swiperBreakpoints = {
-    320: { slidesPerView: 1.05, spaceBetween: 16 },
-    390: { slidesPerView: 1.12, spaceBetween: 16 },
-    500: { slidesPerView: 1.45, spaceBetween: 16 },
-    640: { slidesPerView: 2.05, spaceBetween: 16 },
-    768: { slidesPerView: 2.35, spaceBetween: 18 },
-};
 
 const CateringMenuSection: React.FC<CateringMenuSectionProps> = ({
     title,
@@ -85,48 +75,23 @@ const CateringMenuSection: React.FC<CateringMenuSectionProps> = ({
                     </div>
                 </div>
 
-                {/* Mobile / tablet — catering: vertical list, shop: Swiper */}
+                {/* Mobile / tablet — every section uses the same compact vertical list
+                    (the shop variant is desktop-only) so all sections look consistent. */}
                 <div className="xl:hidden w-full">
-                    {cardVariant === "shop" ? (
-                        <div className="overflow-hidden">
-                            <div className="-ml-4 py-4 pl-4">
-                                <Swiper
-                                    grabCursor={true}
-                                    breakpoints={swiperBreakpoints}
-                                    className="!overflow-visible"
-                                >
-                                    {items.map((item) => (
-                                        <SwiperSlide key={item.id}>
-                                            <CateringCard
-                                                item={item}
-                                                isActive={activeCardId === item.id}
-                                                orderUrl={orderUrl}
-                                                detailsMinHeight={detailsMinHeight}
-                                                onActivate={activateCard}
-                                                onReset={resetToDefaultCard}
-                                                cardVariant="shop"
-                                            />
-                                        </SwiperSlide>
-                                    ))}
-                                </Swiper>
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="space-y-3">
-                            {items.map((item) => (
-                                <CateringCard
-                                    key={item.id}
-                                    item={item}
-                                    isActive={activeCardId === item.id}
-                                    orderUrl={orderUrl}
-                                    detailsMinHeight={detailsMinHeight}
-                                    onActivate={activateCard}
-                                    onReset={resetToDefaultCard}
-                                    cardVariant="catering"
-                                />
-                            ))}
-                        </div>
-                    )}
+                    <div className="space-y-3">
+                        {items.map((item) => (
+                            <CateringCard
+                                key={item.id}
+                                item={item}
+                                isActive={activeCardId === item.id}
+                                orderUrl={orderUrl}
+                                detailsMinHeight={detailsMinHeight}
+                                onActivate={activateCard}
+                                onReset={resetToDefaultCard}
+                                cardVariant="catering"
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

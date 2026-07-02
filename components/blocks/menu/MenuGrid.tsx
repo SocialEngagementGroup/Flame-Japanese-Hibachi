@@ -128,8 +128,9 @@ const MenuGrid = () => {
 
                 {/* Label band — hugs the text with equal top/bottom padding; turns orange on hover */}
                 <div className="absolute bottom-0 left-0 w-full flex items-center justify-center md:justify-start px-2 md:px-[var(--space-lg)] py-5 md:py-6 z-30 transition-colors duration-500 group-hover:bg-[#FF7808]">
-                  <div className="heading-h4 text-white text-center md:text-left scale-[0.8] md:scale-100 [text-shadow:0_1px_3px_rgba(0,0,0,0.9),0_2px_6px_rgba(0,0,0,0.6)] group-hover:[text-shadow:none]">
-                    {cat.name}
+                  <div className="heading-h4 text-white text-center md:text-left scale-[0.8] md:scale-100 break-words [overflow-wrap:anywhere] [text-shadow:0_1px_3px_rgba(0,0,0,0.9),0_2px_6px_rgba(0,0,0,0.6)] group-hover:[text-shadow:none]">
+                    {/* Allow long slash-joined names (e.g. BOBA TEA/SMOOTHIES) to wrap at the slash on narrow mobile cards */}
+                    {cat.name.replace(/\//g, "/​")}
                   </div>
                 </div>
               </>

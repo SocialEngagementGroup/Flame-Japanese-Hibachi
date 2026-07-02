@@ -22,12 +22,14 @@ type LocationsSectionProps = {
   leftHeader?: React.ReactNode;
   hideMap?: boolean;
   hideFindYourFlame?: boolean;
+  hideViewAll?: boolean;
 };
 
 const LocationsSection = ({
   leftHeader,
   hideMap = false,
   hideFindYourFlame = false,
+  hideViewAll = false,
 }: LocationsSectionProps = {}) => {
   const [selectedLocation, setSelectedLocation] = useState(activeLocations[0]);
   const [mapLoading, setMapLoading] = useState(false);
@@ -81,8 +83,17 @@ const LocationsSection = ({
       const mapBox = document.getElementById("desktop-map-container");
       if (!mapBox) return;
 
-      // The trigger line is exactly the top of the map box
-      const triggerY = mapBox.getBoundingClientRect().top;
+      // The trigger line is the top of the map box. Once the sticky left column
+      // releases (it's taller on pages that show the VIEW ALL button), the map
+      // scrolls away and activation would freeze a couple cards early. Pin the
+      // trigger to the map's "stuck" position (sticky top-24 = 96px + the map's
+      // fixed offset inside the column) so the last cards still cross it.
+      const mapRect = mapBox.getBoundingClientRect();
+      const stickyEl = document.getElementById("desktop-sticky-container");
+      const stuckTriggerY = stickyEl
+        ? 96 + (mapRect.top - stickyEl.getBoundingClientRect().top)
+        : mapRect.top;
+      const triggerY = Math.max(mapRect.top, stuckTriggerY);
 
       // Check if we are at the bottom of the page
       const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
@@ -287,9 +298,11 @@ const LocationsSection = ({
           </div>
         </div>
 
-        <Link href="/locations" className="w-full max-w-[378.66px] sm:w-[378.66px] h-[52px] py-[16px] mx-auto border-2 border-primary/50 hover:border-primary text-primary hover:bg-primary/5 font-serif font-bold text-[12px] leading-[16px] tracking-[1.2px] text-center uppercase flex items-center justify-center transition-all">
-          VIEW ALL LOCATIONS
-        </Link>
+        {!hideViewAll && (
+          <Link href="/locations" className="w-full max-w-[378.66px] sm:w-[378.66px] h-[52px] py-[16px] mx-auto border-2 border-primary/50 hover:border-primary text-primary hover:bg-primary/5 font-serif font-bold text-[12px] leading-[16px] tracking-[1.2px] text-center uppercase flex items-center justify-center transition-all">
+            VIEW ALL LOCATIONS
+          </Link>
+        )}
       </div>
 
       {/* DESKTOP LAYOUT */}
@@ -353,16 +366,18 @@ const LocationsSection = ({
                 </div>
               </div>
 
-              <Link href="/locations" className="mt-8 w-[378.66px] max-w-full h-[52px] py-[16px] border-2 border-primary/50 hover:border-primary text-primary hover:bg-primary/5 font-serif font-bold text-[12px] leading-[16px] tracking-[1.2px] text-center uppercase flex items-center justify-center transition-all">
-                VIEW ALL LOCATIONS
-              </Link>
+              {!hideViewAll && (
+                <Link href="/locations" className="mt-8 w-[378.66px] max-w-full h-[52px] py-[16px] border-2 border-primary/50 hover:border-primary text-primary hover:bg-primary/5 font-serif font-bold text-[12px] leading-[16px] tracking-[1.2px] text-center uppercase flex items-center justify-center transition-all">
+                  VIEW ALL LOCATIONS
+                </Link>
+              )}
             </div>
           </div>
         </div>
 
         {/* Right Side: Desktop Scrollable Cards */}
         <div className="w-full flex flex-col items-start py-0">
-          <div className={`block w-full max-w-[900px] ${hideMap ? "" : "lg:pb-[52.7vh] pb-[var(--space-xl)]"}`}>
+          <div className={`block w-full max-w-[900px] ${hideMap ? "" : `${hideViewAll ? "lg:pb-[52.7vh]" : "lg:pb-[calc(52.7vh+84px)]"} pb-[var(--space-xl)]`}`}>
             {/* Spacer — mirrors the left-column heading height so the first card aligns with the map / leftHeader */}
             <div className="invisible" aria-hidden="true" id="desktop-spacer">
               {leftHeader ? (

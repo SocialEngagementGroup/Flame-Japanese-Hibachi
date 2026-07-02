@@ -4,11 +4,11 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import NavbarBottom from "@/components/layout/NavbarBottom";
 import Footer from "@/components/layout/Footer";
+import TopLoader from "@/components/layout/TopLoader";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { NearestLocationProvider } from "@/components/providers/NearestLocationProvider";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 import type { Metadata } from "next";
-
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -21,7 +21,8 @@ const raleway = Raleway({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.flamehibachi.com";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.flamehibachi.com";
 const defaultTitle = "Flame Japanese Hibachi | Halal Hibachi, Sushi & Bento";
 const defaultDescription =
   "100% Halal Japanese hibachi cooked fresh in front of you, plus sushi, bento, loaded fries and boba. Find a Flame Japanese Hibachi location or order online today.";
@@ -74,16 +75,38 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${workSans.variable} ${raleway.variable} h-full overflow-x-hidden antialiased`}
+      className={`${workSans.variable} ${raleway.variable} h-full overflow-x-clip antialiased`}
       suppressHydrationWarning
     >
       <body
         suppressHydrationWarning
-        className="h-full bg-background text-foreground flex flex-col font-sans selection:bg-primary selection:text-primary-foreground overflow-x-hidden"
+        className="h-full bg-background text-foreground flex flex-col font-sans selection:bg-primary selection:text-primary-foreground overflow-x-clip"
       >
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-W85NMRDW"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-W85NMRDW');`,
+          }}
+        />
         <Script src="/theme-init.js" strategy="beforeInteractive" />
         <ThemeProvider>
           <NearestLocationProvider>
+            <TopLoader />
             <header className="fixed top-0 left-0 w-full z-50">
               <Navbar />
               <NavbarBottom />

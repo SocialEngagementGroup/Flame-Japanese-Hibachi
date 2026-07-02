@@ -2,6 +2,8 @@
 
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
+import type { IconType } from "react-icons";
+import { TbMail, TbBrandFacebook, TbBrandInstagram, TbBrandTiktok, TbBrandYoutube } from "react-icons/tb";
 
 const Footer = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -132,15 +134,14 @@ const Footer = () => {
 };
 
 const SocialIcons = () => {
-  const iconClass = "hover:opacity-80 transition-opacity flex items-center justify-center w-[36px] h-[36px] shrink-0";
-  const imgClass = "w-[22px] h-[22px] object-contain brightness-0 invert";
+  const iconClass = "hover:opacity-80 transition-opacity flex items-center justify-center w-[36px] h-[36px] shrink-0 text-white";
 
-  const links: { href: string; alt: string; src: string; external?: boolean; nudge?: string }[] = [
-    { href: "mailto:ask@flamejapanesehibachi.com", alt: "Email", src: "/socialicon-navbr/envelope.svg" },
-    { href: "https://www.facebook.com/flamejapanesehibachi", alt: "Facebook", src: "/socialicon-navbr/facebook.svg", external: true },
-    { href: "https://www.instagram.com/flamejapanesehibachi?igsh=MTNmNHMycXo0ZHl2bA%3D%3D&utm_source=qr", alt: "Instagram", src: "/socialicon-navbr/instagram.svg", external: true },
-    { href: "https://www.tiktok.com/@flame.japanese.hi?_r=1&_t=ZT-95mfJglR2ez", alt: "TikTok", src: "/socialicon-navbr/tiktok.svg", external: true },
-    { href: "https://www.youtube.com/@flamejapanesehibachi", alt: "YouTube", src: "/socialicon-navbr/youtube.svg", external: true, nudge: "translate-y-[2px]" },
+  const links: { href: string; alt: string; Icon: IconType; external?: boolean }[] = [
+    { href: "mailto:ask@flamejapanesehibachi.com", alt: "Email", Icon: TbMail },
+    { href: "https://www.facebook.com/flamejapanesehibachi", alt: "Facebook", Icon: TbBrandFacebook, external: true },
+    { href: "https://www.instagram.com/flamejapanesehibachi?igsh=MTNmNHMycXo0ZHl2bA%3D%3D&utm_source=qr", alt: "Instagram", Icon: TbBrandInstagram, external: true },
+    { href: "https://www.tiktok.com/@flame.japanese.hi?_r=1&_t=ZT-95mfJglR2ez", alt: "TikTok", Icon: TbBrandTiktok, external: true },
+    { href: "https://www.youtube.com/@flamejapanesehibachi", alt: "YouTube", Icon: TbBrandYoutube, external: true },
   ];
 
   return (
@@ -150,9 +151,10 @@ const SocialIcons = () => {
           key={l.alt}
           href={l.href}
           target={l.external ? "_blank" : undefined}
+          aria-label={l.alt}
           className={iconClass}
         >
-          <img src={l.src} alt={l.alt} className={`${imgClass} ${l.nudge ?? ""}`} />
+          <l.Icon className="w-[24px] h-[24px]" />
         </Link>
       ))}
     </>

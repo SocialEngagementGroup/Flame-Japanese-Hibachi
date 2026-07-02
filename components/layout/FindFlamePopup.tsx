@@ -55,7 +55,8 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "unset";
+      // "" (not "unset") preserves the CSS overflow-x: clip that keeps the navbar fixed
+      document.body.style.overflow = "";
     };
   }, [open, onClose]);
 

@@ -123,11 +123,25 @@
   --font-serif: 'Work Sans', var(--font-serif-next), ui-serif, Georgia, serif;
 }
 
+/* Robustly clip any horizontal overflow so the fixed navbar can never be panned
+   or drift on mobile. Unlayered so it beats Tailwind's overflow utilities, and
+   `clip` (unlike `hidden`) creates no scroll container — nothing to pan. */
+html,
+body {
+  overflow-x: clip;
+}
+
 @layer base {
+  html {
+    /* Reserve the scrollbar gutter so the viewport width never changes when the
+       scrollbar appears/disappears — keeps the fixed navbar from squeezing on scroll. */
+    scrollbar-gutter: stable;
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
-    @apply m-0 p-0 overflow-x-hidden;
+    @apply m-0 p-0 overflow-x-clip;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
@@ -340,11 +354,5 @@
 @media only screen and (max-width: 1099px) {
   nav {
     padding-block: 20px !important;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .mobile-logo-wrapper {
-    margin-left: 25px !important;
   }
 }

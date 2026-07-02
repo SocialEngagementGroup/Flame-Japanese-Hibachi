@@ -2,6 +2,13 @@
 
 import React from "react";
 import Link from "next/link";
+import type { IconType } from "react-icons";
+import {
+  TbBrandFacebook,
+  TbBrandInstagram,
+  TbBrandTiktok,
+  TbBrandYoutube,
+} from "react-icons/tb";
 import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 import { getActiveLocations } from "@/lib/api/locations";
 
@@ -14,23 +21,38 @@ const NavbarBottom = () => {
       <div className="w-full px-[var(--space-lg)] flex items-center h-full relative">
         {/* Social Icons - Left Aligned */}
         <div className="flex-none flex items-center gap-1.5 sm:gap-3 text-white z-20">
-          {[
-            { href: "https://www.facebook.com/flamejapanesehibachi", alt: "Facebook", src: "/socialicon-navbr/facebook.svg", nudge: "" },
-            { href: "https://www.instagram.com/flamejapanesehibachi?igsh=MTNmNHMycXo0ZHl2bA%3D%3D&utm_source=qr", alt: "Instagram", src: "/socialicon-navbr/instagram.svg", nudge: "" },
-            { href: "https://www.tiktok.com/@flame.japanese.hi?_r=1&_t=ZT-95mfJglR2ez", alt: "TikTok", src: "/socialicon-navbr/tiktok.svg", nudge: "" },
-            { href: "https://www.youtube.com/@flamejapanesehibachi", alt: "YouTube", src: "/socialicon-navbr/youtube.svg", nudge: "translate-y-[2px]" },
-          ].map((l) => (
+          {(
+            [
+              {
+                href: "https://www.facebook.com/flamejapanesehibachi",
+                alt: "Facebook",
+                Icon: TbBrandFacebook,
+              },
+              {
+                href: "https://www.instagram.com/flamejapanesehibachi?igsh=MTNmNHMycXo0ZHl2bA%3D%3D&utm_source=qr",
+                alt: "Instagram",
+                Icon: TbBrandInstagram,
+              },
+              {
+                href: "https://www.tiktok.com/@flame.japanese.hi?_r=1&_t=ZT-95mfJglR2ez",
+                alt: "TikTok",
+                Icon: TbBrandTiktok,
+              },
+              {
+                href: "https://www.youtube.com/@flamejapanesehibachi",
+                alt: "YouTube",
+                Icon: TbBrandYoutube,
+              },
+            ] as { href: string; alt: string; Icon: IconType }[]
+          ).map((l) => (
             <Link
               key={l.alt}
               href={l.href}
               target="_blank"
-              className="hover:opacity-80 transition-all flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 shrink-0"
+              aria-label={l.alt}
+              className="hover:opacity-80 transition-all flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8 shrink-0 text-white"
             >
-              <img
-                src={l.src}
-                alt={l.alt}
-                className={`w-[18px] h-[18px] sm:w-6 sm:h-6 object-contain brightness-0 invert ${l.nudge}`}
-              />
+              <l.Icon className="w-[20px] h-[20px] sm:w-6 sm:h-6" />
             </Link>
           ))}
         </div>
