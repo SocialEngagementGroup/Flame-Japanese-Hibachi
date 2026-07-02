@@ -2,16 +2,17 @@
 
 import React from "react";
 import Link from "next/link";
-import { ORDER_URL } from "@/lib/constants";
+import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 
-const categories = [
-  {
-    name: "BUILD YOUR OWN PLATTER",
-    href: ORDER_URL,
-    external: true,
-    image: "/homepage/menu/BUILD YOUR OWN PLATTER.png",
-    mobileImage: "/homepage/menu/build-your-own-platter-mobile.png",
-  },
+type MenuCategory = {
+  name: string;
+  href: string;
+  image: string;
+  mobileImage?: string;
+  external?: boolean;
+};
+
+const staticCategories: MenuCategory[] = [
   {
     name: "HIBACHI",
     href: "/menu#section-hibachi",
@@ -63,6 +64,18 @@ const cardClassName =
   "group relative aspect-[275.67/280] md:aspect-[378.67/278] overflow-hidden bg-card";
 
 const MenuGrid = () => {
+  const orderUrl = useOrderUrl();
+  const categories = [
+    {
+      name: "BUILD YOUR OWN PLATTER",
+      href: orderUrl,
+      external: true,
+      image: "/homepage/menu/BUILD YOUR OWN PLATTER.png",
+      mobileImage: "/homepage/menu/build-your-own-platter-mobile.png",
+    },
+    ...staticCategories,
+  ];
+
   return (
     <section className="w-full bg-background py-[var(--space-lg)] px-[var(--space-lg)] transition-colors duration-300">
       <div className="max-w-[1800px] mx-auto">
@@ -75,7 +88,7 @@ const MenuGrid = () => {
           </div>
 
           <a
-            href={ORDER_URL}
+            href={orderUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:block text-foreground text-small font-bold uppercase tracking-[2px] border-b border-foreground pb-1 hover:text-primary hover:border-primary transition-all whitespace-nowrap"

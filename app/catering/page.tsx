@@ -3,7 +3,6 @@ import Hero from "@/components/blocks/hero/Hero";
 import CateringMenuSection from "@/components/blocks/catering/CateringMenuSection";
 import CateringAddOns from "@/components/blocks/catering/CateringAddOns";
 import { cateringMenuSections } from "@/lib/data/catering";
-import { ORDER_URL } from "@/lib/constants";
 import MenuCTA from "@/components/blocks/menu/menupage/MenuCTA";
 import ContactSection from "@/components/blocks/contact/ContactSection";
 
@@ -44,7 +43,6 @@ export default function CateringPage() {
           <CateringMenuSection
             title={section.title}
             subtitle={section.subtitle}
-            orderUrl={ORDER_URL}
             items={section.items}
             cardVariant={section.id === "menu-5-wings" ? "shop" : "catering"}
           />
@@ -55,7 +53,6 @@ export default function CateringPage() {
                 { name: "SPRING ROLLS", price: "$0.50/PER PERSON" },
                 { name: "DUMPLINGS", price: "$0.75/PER PERSON" },
               ]}
-              orderUrl={ORDER_URL}
             />
           )}
 
@@ -65,7 +62,6 @@ export default function CateringPage() {
                 { name: "FRIES HALF TRAY", price: "$40" },
                 { name: "FRIES FULL TRAY", price: "$75" },
               ]}
-              orderUrl={ORDER_URL}
             />
           )}
         </React.Fragment>

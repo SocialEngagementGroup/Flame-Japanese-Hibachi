@@ -2,11 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
-import { ORDER_URL } from "@/lib/constants";
+import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 import { getActiveLocations } from "@/lib/api/locations";
 
 const NavbarBottom = () => {
   const locations = getActiveLocations().map((loc) => loc.name.toUpperCase());
+  const orderUrl = useOrderUrl();
 
   return (
     <section className="w-full bg-[#242323] py-0 flex items-center h-[50px] overflow-hidden relative z-[11]">
@@ -67,7 +68,7 @@ const NavbarBottom = () => {
 
         <div className="hidden min-[1100px]:flex flex-none items-center h-full z-20">
           <a
-            href={ORDER_URL}
+            href={orderUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-primary hover:bg-secondary text-white w-[147.31px] h-[36px] max-[1300px]:w-[125px] max-[1300px]:h-[32px] flex items-center justify-center font-medium text-base max-[1300px]:text-small tracking-[1.2px] transition-all uppercase"

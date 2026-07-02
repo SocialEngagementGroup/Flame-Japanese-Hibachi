@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import type { Swiper as SwiperType } from "swiper";
-import { ORDER_URL } from "@/lib/constants";
+import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 
 import "swiper/css";
 
@@ -49,6 +49,7 @@ const items = [
 
 const SignatureItems = () => {
   const swiperRef = useRef<SwiperType | null>(null);
+  const orderUrl = useOrderUrl();
 
   return (
     <section className="w-full bg-[#FFFFFF] dark:bg-black py-[var(--space-2xl)] overflow-hidden transition-colors duration-300">
@@ -106,7 +107,7 @@ const SignatureItems = () => {
           {items.map((item, i) => (
             <SwiperSlide key={i}>
               <a
-                href={ORDER_URL}
+                href={orderUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group cursor-pointer flex flex-col"

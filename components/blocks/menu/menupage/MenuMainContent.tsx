@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 
 interface Category {
   id: string;
@@ -26,6 +27,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
   menuData,
 }) => {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
+  const orderUrl = useOrderUrl();
 
   // Toggle active card
   const handleCardClick = (id: string) => {
@@ -40,7 +42,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
   const renderListCard = (item: MenuItem) => (
     <a
       key={item.id}
-      href="https://order.online/business/~13770567"
+      href={orderUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="group flex items-center w-full bg-zinc-950 hover:bg-[#FF7808] border border-zinc-800 hover:border-[#FF7808] rounded-sm py-[10px] pl-2 pr-2 gap-3 mb-2 transition-colors duration-300"
@@ -84,7 +86,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
   const renderWingCard = (item: MenuItem, isCardActive: boolean) => (
     <a
       key={item.id}
-      href="https://order.online/business/~13770567"
+      href={orderUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="w-full min-h-[300px] md:min-h-[355px] aspect-[1] sm:aspect-[6/5] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
@@ -243,7 +245,7 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
     return (
       <a
         key={item.id}
-        href="https://order.online/business/~13770567"
+        href={orderUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="w-full min-h-[300px] md:min-h-[355px] aspect-[1] sm:aspect-[6/5] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"

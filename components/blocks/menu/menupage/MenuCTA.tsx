@@ -1,8 +1,10 @@
 "use client";
 
 import React from "react";
+import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 
 const MenuCTA = () => {
+  const orderUrl = useOrderUrl();
   return (
     <section className="relative w-full h-auto md:h-[610px] mt-16 overflow-hidden bg-[#0d0d0d] px-5 py-5 md:py-0">
 
@@ -39,7 +41,7 @@ const MenuCTA = () => {
           </div>
 
           <a
-            href="https://order.online/business/~13770567"
+            href={orderUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 w-[176px] md:w-[220px] h-[44px] md:h-[54px] flex items-center justify-center font-['Raleway'] not-italic uppercase text-[10px] md:text-sm font-semibold md:font-black leading-[20px] md:leading-normal tracking-[1.4px] md:tracking-[3px] text-[#1C1B1B] md:text-black border-2 border-white bg-white transition-all duration-300 hover:bg-[#FF7808] hover:border-[#FF7808] hover:text-white shadow-lg"

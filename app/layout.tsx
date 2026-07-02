@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import NavbarBottom from "@/components/layout/NavbarBottom";
 import Footer from "@/components/layout/Footer";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { NearestLocationProvider } from "@/components/providers/NearestLocationProvider";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 import type { Metadata } from "next";
 
@@ -82,12 +83,14 @@ export default function RootLayout({
       >
         <Script src="/theme-init.js" strategy="beforeInteractive" />
         <ThemeProvider>
-          <header className="fixed top-0 left-0 w-full z-50">
-            <Navbar />
-            <NavbarBottom />
-          </header>
-          <main className="flex-1 pt-[100px] md:pt-[115px]">{children}</main>
-          <Footer />
+          <NearestLocationProvider>
+            <header className="fixed top-0 left-0 w-full z-50">
+              <Navbar />
+              <NavbarBottom />
+            </header>
+            <main className="flex-1 pt-[100px] md:pt-[115px]">{children}</main>
+            <Footer />
+          </NearestLocationProvider>
         </ThemeProvider>
       </body>
     </html>

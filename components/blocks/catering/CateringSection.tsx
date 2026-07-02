@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import type { Swiper as SwiperType } from "swiper";
-import { ORDER_URL } from "@/lib/constants";
+import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 
 import "swiper/css";
 
@@ -62,6 +62,7 @@ const slides = [
 
 const CateringSection = () => {
   const swiperRef = useRef<SwiperType | null>(null);
+  const orderUrl = useOrderUrl();
 
   return (
     <section className="w-full py-[var(--space-2xl)] overflow-hidden bg-[#FFFFFF] dark:bg-black transition-colors duration-300">
@@ -129,7 +130,7 @@ const CateringSection = () => {
           {slides.map((slide, i) => (
             <SwiperSlide key={i}>
               <a
-                href={ORDER_URL}
+                href={orderUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative block w-full h-[clamp(340px,50vh,500px)] overflow-hidden group"

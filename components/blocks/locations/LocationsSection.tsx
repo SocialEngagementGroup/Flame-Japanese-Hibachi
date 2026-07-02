@@ -11,6 +11,7 @@ import {
   getActiveLocations,
   getComingSoonLocations,
 } from "@/lib/api/locations";
+import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -30,6 +31,8 @@ const LocationsSection = ({
 }: LocationsSectionProps = {}) => {
   const [selectedLocation, setSelectedLocation] = useState(activeLocations[0]);
   const [mapLoading, setMapLoading] = useState(false);
+  const { nearest } = useNearestLocation();
+  const findYourFlameText = nearest ? nearest.name : "FLAME";
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const mobileSwiperRef = useRef<SwiperType | null>(null);
 
@@ -127,7 +130,7 @@ const LocationsSection = ({
           <>
             <h2 className="heading-h3 mb-[var(--space-md)]">
               <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
-              <span className="text-primary">FLAME</span>
+              <span className="text-primary">{findYourFlameText}</span>
             </h2>
             <p className="text-gray-700 dark:text-gray-300 text-small leading-relaxed font-medium mb-[var(--space-lg)] transition-colors duration-300">
               Experience the heat near you. Browse our active restaurants or see where we&apos;re striking next.
@@ -274,7 +277,7 @@ const LocationsSection = ({
                 <>
                   <h2 className="heading-h3 mb-[var(--space-xl)] whitespace-nowrap text-left">
                     <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
-                    <span className="text-primary">FLAME</span>
+                    <span className="text-primary">{findYourFlameText}</span>
                   </h2>
                   <p className="text-gray-700 dark:text-gray-300 text-base mb-10 max-w-sm leading-relaxed font-medium transition-colors duration-300">
                     Experience the heat near you. Browse our active restaurants or see where we&apos;re striking next.
@@ -341,7 +344,7 @@ const LocationsSection = ({
                 <>
                   <h2 className="heading-h3 mb-[var(--space-xl)] whitespace-nowrap text-left">
                     <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
-                    <span className="text-primary">FLAME</span>
+                    <span className="text-primary">{findYourFlameText}</span>
                   </h2>
                   <p className="text-gray-700 dark:text-gray-300 text-base mb-10 max-w-sm leading-relaxed font-medium transition-colors duration-300">
                     Experience the heat near you. Browse our active restaurants or see where we&apos;re striking next.

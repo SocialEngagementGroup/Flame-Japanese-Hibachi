@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { X, Search, Phone, Clock, MapPin } from "lucide-react";
 import { getActiveLocations } from "@/lib/api/locations";
+import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 
 type Props = {
   open: boolean;
@@ -17,6 +18,8 @@ const googleMapsUrl = (address: string) =>
   )}`;
 
 const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
+  const { nearest } = useNearestLocation();
+  const findYourFlameText = nearest ? nearest.name : "FLAME";
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<number>(activeLocations[0].id);
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -102,7 +105,7 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
           <div>
             <h3 className="heading-h3">
               <span className="text-black dark:text-white">FIND YOUR </span>
-              <span className="text-primary">FLAME</span>
+              <span className="text-primary">{findYourFlameText}</span>
             </h3>
             <p className="text-gray-700 dark:text-gray-300 text-small leading-relaxed font-medium mt-2 max-w-md">
               Pick a location to view it on the map or get directions.

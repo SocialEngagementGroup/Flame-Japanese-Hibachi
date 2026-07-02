@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 
 interface AddOn {
   name: string;
@@ -12,7 +13,9 @@ interface CateringAddOnsProps {
   orderUrl?: string;
 }
 
-const CateringAddOns: React.FC<CateringAddOnsProps> = ({ addons, orderUrl }) => {
+const CateringAddOns: React.FC<CateringAddOnsProps> = ({ addons, orderUrl: orderUrlProp }) => {
+  const autoOrderUrl = useOrderUrl();
+  const orderUrl = orderUrlProp?.trim() ? orderUrlProp : autoOrderUrl;
 
   if (!addons || addons.length === 0) return null;
 
@@ -35,7 +38,7 @@ const CateringAddOns: React.FC<CateringAddOnsProps> = ({ addons, orderUrl }) => 
                   {addon.price}
                 </span>
                 <a
-                  href={orderUrl || "#"}
+                  href={orderUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between bg-[#D9D9D9] dark:bg-[#373737] px-2 h-[26px] min-w-[70px] shrink-0 hover:opacity-80 transition-opacity"
@@ -52,7 +55,7 @@ const CateringAddOns: React.FC<CateringAddOnsProps> = ({ addons, orderUrl }) => 
               {addon.name} — {addon.price}
             </span>
             <a
-              href={orderUrl || "#"}
+              href={orderUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:flex items-center justify-between bg-[#D9D9D9] dark:bg-[#373737] px-2 h-[32px] min-w-[90px] shrink-0 hover:opacity-80 transition-opacity"

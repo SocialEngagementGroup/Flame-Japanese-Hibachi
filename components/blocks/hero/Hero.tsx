@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ORDER_URL } from "@/lib/constants";
+import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 
 type HeroProps = {
   tagline?: React.ReactNode;
@@ -27,7 +27,7 @@ const Hero = ({
   ),
   description,
   ctaLabel = "ORDER NOW",
-  ctaHref = ORDER_URL,
+  ctaHref,
   align = "left",
   fullHeight = true,
   bgImageDesk = "/homepage/hero/hero-bg-desk.png",
@@ -35,6 +35,9 @@ const Hero = ({
   bgVideo = "/homepage/hero/flame-japanese-hibachi-hero.mp4",
   heightClass,
 }: HeroProps) => {
+  const orderUrl = useOrderUrl();
+  const resolvedCtaHref = ctaHref ?? orderUrl;
+
   const alignmentClass =
     align === "center"
       ? "items-center mx-auto text-center max-w-none"
@@ -106,7 +109,7 @@ const Hero = ({
 
           {ctaLabel && (
             <a
-              href={ctaHref}
+              href={resolvedCtaHref}
               target="_blank"
               rel="noopener noreferrer"
               className="hero-button"
