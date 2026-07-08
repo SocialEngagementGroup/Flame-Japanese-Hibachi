@@ -39,6 +39,8 @@ type NearestLocationContextValue = NearestLocationState & {
   dismissPrompt: () => void;
   dismissOutsideServiceArea: () => void;
   selectLocation: (storeId: number) => void;
+  /** Resolves the nearest store from a plain lat/lng (e.g. a ZIP code lookup) instead of a GeolocationPosition. Returns true if a store was resolved. */
+  resolveFromCoordinates: (origin: { lat: number; lng: number }) => boolean;
 };
 
 const defaultContextValue: NearestLocationContextValue = {
@@ -50,6 +52,7 @@ const defaultContextValue: NearestLocationContextValue = {
   dismissPrompt: () => {},
   dismissOutsideServiceArea: () => {},
   selectLocation: () => {},
+  resolveFromCoordinates: () => false,
 };
 
 const NearestLocationContext =
@@ -130,10 +133,13 @@ function writePromptDismissed() {
   } catch {}
 }
 
+// promptVisible stays true here so the ZIP-entry fallback in the soft-ask
+// card still has a chance once GPS is denied/unsupported, instead of the
+// visitor being left with no way to resolve a store at all.
 const unavailableState: NearestLocationState = {
   status: "unavailable",
   nearest: null,
-  promptVisible: false,
+  promptVisible: true,
   outsideServiceAreaVisible: false,
 };
 
@@ -168,13 +174,9 @@ export function NearestLocationProvider({
     outsideServiceAreaVisible: false,
   });
 
-  const resolveFromPosition = React.useCallback(
-    (position: GeolocationPosition) => {
+  const resolveFromCoordinates = React.useCallback(
+    (origin: { lat: number; lng: number }): boolean => {
       const activeLocations = getActiveLocations();
-      const origin = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
       if (!isWithinUsServiceArea(origin.lat, origin.lng)) {
         setState({
           status: "unavailable",
@@ -182,28 +184,39 @@ export function NearestLocationProvider({
           promptVisible: false,
           outsideServiceAreaVisible: true,
         });
-        return;
+        return false;
       }
 
       const result = findNearest(origin, activeLocations);
       if (!result) {
         setState(keepResolvedOrUnavailable);
-        return;
+        return false;
       }
       writeCache({
         storeId: result.item.id,
         distanceMiles: result.distanceMiles,
         timestamp: Date.now(),
       });
-      if (readSelectedLocation()) return;
+      if (readSelectedLocation()) return true;
       setState({
         status: "resolved",
         nearest: toResolvedLocation(result.item, result.distanceMiles),
         promptVisible: false,
         outsideServiceAreaVisible: false,
       });
+      return true;
     },
     []
+  );
+
+  const resolveFromPosition = React.useCallback(
+    (position: GeolocationPosition) => {
+      resolveFromCoordinates({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    },
+    [resolveFromCoordinates]
   );
 
   const requestLocation = React.useCallback(() => {
@@ -289,6 +302,20 @@ export function NearestLocationProvider({
       applyStoreId(cached.storeId, cached.distanceMiles);
     }
 
+    // 1.5. No cache or manual pick yet — try silent IP geolocation (Vercel
+    // edge headers) as an immediate provisional default. No permission
+    // prompt, and it's a no-op in local dev where those headers aren't set.
+    // A later GPS fix (if granted) still overwrites this with something
+    // more precise.
+    if (!cached) {
+      fetch("/api/geo/ip")
+        .then((res) => (res.ok ? res.json() : null))
+        .then((coords: { lat: number; lng: number } | null) => {
+          if (!cancelled && coords) resolveFromCoordinates(coords);
+        })
+        .catch(() => {});
+    }
+
     if (typeof window === "undefined" || !("geolocation" in navigator)) {
       if (!cached && !cancelled) {
         setState(unavailableState);
@@ -350,7 +377,7 @@ export function NearestLocationProvider({
     return () => {
       cancelled = true;
     };
-  }, [resolveFromPosition]);
+  }, [resolveFromPosition, resolveFromCoordinates]);
 
   const value = React.useMemo(
     () => ({
@@ -359,6 +386,7 @@ export function NearestLocationProvider({
       dismissPrompt,
       dismissOutsideServiceArea,
       selectLocation,
+      resolveFromCoordinates,
     }),
     [
       state,
@@ -366,6 +394,7 @@ export function NearestLocationProvider({
       dismissPrompt,
       dismissOutsideServiceArea,
       selectLocation,
+      resolveFromCoordinates,
     ]
   );
 

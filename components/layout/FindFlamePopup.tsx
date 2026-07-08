@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { X, Search, Phone, Clock, MapPin } from "lucide-react";
 import { getActiveLocations } from "@/lib/api/locations";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
@@ -17,8 +18,12 @@ const googleMapsUrl = (address: string) =>
     `Flame Japanese Hibachi ${address}`
   )}`;
 
+const LOCATION_PAGE_PATTERN = /^\/(menu|catering)\/[^/]+$/;
+
 const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
   const { nearest, selectLocation } = useNearestLocation();
+  const router = useRouter();
+  const pathname = usePathname();
   const findYourFlameText = nearest ? nearest.name : "FLAME";
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<number>(activeLocations[0].id);
@@ -45,6 +50,17 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
     setSelectedId(storeId);
     selectLocation(storeId);
     onClose();
+
+    // If already viewing a location-specific menu/catering page, switching stores
+    // here should carry the visitor to that same page for the newly picked store —
+    // otherwise the page keeps showing the old store's menu/order links until reload.
+    const locationPageMatch = pathname.match(LOCATION_PAGE_PATTERN);
+    if (locationPageMatch) {
+      const store = activeLocations.find((l) => l.id === storeId);
+      if (store) {
+        router.push(`/${locationPageMatch[1]}/${store.slug}`);
+      }
+    }
   };
 
   useEffect(() => {
@@ -201,6 +217,14 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
                             {loc.hours}
                           </span>
                         </div>
+                        {nearest?.id === loc.id && (
+                          <div className="flex items-center gap-2 text-primary text-small">
+                            <MapPin size={14} />
+                            <span className="font-bold uppercase">
+                              {nearest.distanceMiles.toFixed(1)} mi away
+                            </span>
+                          </div>
+                        )}
                       </div>
                     </button>
                   );

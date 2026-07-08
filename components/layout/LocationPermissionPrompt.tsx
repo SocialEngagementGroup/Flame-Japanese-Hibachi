@@ -1,6 +1,7 @@
 "use client";
 
-import { MapPin, X } from "lucide-react";
+import { useState, type FormEvent } from "react";
+import { Loader2, MapPin, X } from "lucide-react";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 
 export default function LocationPermissionPrompt() {
@@ -10,9 +11,37 @@ export default function LocationPermissionPrompt() {
     requestLocation,
     dismissPrompt,
     dismissOutsideServiceArea,
+    resolveFromCoordinates,
   } = useNearestLocation();
+  const [zip, setZip] = useState("");
+  const [zipError, setZipError] = useState<string | null>(null);
+  const [zipSubmitting, setZipSubmitting] = useState(false);
 
   if (!promptVisible && !outsideServiceAreaVisible) return null;
+
+  const handleZipSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!/^\d{5}$/.test(zip)) {
+      setZipError("Enter a 5-digit ZIP code.");
+      return;
+    }
+
+    setZipSubmitting(true);
+    setZipError(null);
+    try {
+      const res = await fetch(`/api/geo/zip/${zip}`);
+      if (!res.ok) {
+        setZipError("We couldn't find that ZIP code.");
+        return;
+      }
+      const coordinates = (await res.json()) as { lat: number; lng: number };
+      resolveFromCoordinates(coordinates);
+    } catch {
+      setZipError("Something went wrong. Please try again.");
+    } finally {
+      setZipSubmitting(false);
+    }
+  };
 
   if (outsideServiceAreaVisible) {
     return (
@@ -94,6 +123,61 @@ export default function LocationPermissionPrompt() {
                 Not now
               </button>
             </div>
+
+            <form
+              onSubmit={handleZipSubmit}
+              className="mt-4 flex gap-2 border-t border-white/10 pt-4"
+            >
+              <input
+                type="text"
+                inputMode="numeric"
+                maxLength={5}
+                placeholder="Or enter your ZIP code"
+                value={zip}
+                disabled={zipSubmitting}
+                onChange={(e) => {
+                  setZip(e.target.value.replace(/\D/g, ""));
+                  setZipError(null);
+                }}
+                className="min-w-0 flex-1 bg-white/10 px-3 py-2 text-small text-white placeholder-white/50 focus:outline-none focus:ring-1 focus:ring-primary disabled:opacity-50"
+              />
+              <button
+                type="submit"
+                disabled={zipSubmitting}
+                className="flex w-[64px] items-center justify-center bg-primary px-4 py-2 text-small font-black uppercase tracking-[1.5px] text-white transition-colors hover:bg-secondary disabled:opacity-50"
+              >
+                {zipSubmitting ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  "Go"
+                )}
+              </button>
+            </form>
+            {zipError && (
+              <div className="mt-3 flex items-start justify-between gap-3 border border-red-500/30 bg-red-500/10 px-3 py-2">
+                <p className="text-small text-red-400">{zipError}</p>
+                <div className="flex shrink-0 items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setZipError(null);
+                      setZip("");
+                    }}
+                    className="text-small font-black uppercase tracking-[1px] text-white/80 transition-colors hover:text-white"
+                  >
+                    Try Again
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setZipError(null)}
+                    aria-label="Dismiss ZIP error"
+                    className="text-white/60 transition-colors hover:text-white"
+                  >
+                    <X className="h-4 w-4" strokeWidth={2.5} />
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

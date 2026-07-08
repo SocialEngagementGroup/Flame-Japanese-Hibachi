@@ -20,14 +20,17 @@ interface MenuItem {
 interface MenuMainContentProps {
   categories: Category[];
   menuData: Record<string, MenuItem[]>;
+  orderUrl?: string;
 }
 
 const MenuMainContent: React.FC<MenuMainContentProps> = ({
   categories,
   menuData,
+  orderUrl: orderUrlProp,
 }) => {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
-  const orderUrl = useOrderUrl();
+  const autoOrderUrl = useOrderUrl();
+  const orderUrl = orderUrlProp?.trim() ? orderUrlProp : autoOrderUrl;
 
   // Toggle active card
   const handleCardClick = (id: string) => {

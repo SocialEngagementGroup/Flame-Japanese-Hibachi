@@ -1,8 +1,24 @@
 import { MetadataRoute } from "next";
+import { getActiveLocations } from "@/lib/api/locations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.flamehibachi.com";
   const lastModified = new Date();
+
+  const locationMenuAndCateringUrls = getActiveLocations().flatMap((location) => [
+    {
+      url: `${baseUrl}/menu/${location.slug}`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/catering/${location.slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    },
+  ]);
 
   return [
     {
@@ -29,6 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.9,
     },
+    ...locationMenuAndCateringUrls,
     {
       url: `${baseUrl}/contact`,
       lastModified,

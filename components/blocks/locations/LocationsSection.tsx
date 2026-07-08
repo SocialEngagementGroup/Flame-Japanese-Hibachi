@@ -223,9 +223,16 @@ const LocationsSection = ({
                     : "bg-[#1C1B1B] border-white/5"
                     }`}
                 >
-                  <span className={`text-small font-black tracking-[3px] uppercase font-sans mb-3 ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>
-                    OPEN NOW
-                  </span>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className={`text-small font-black tracking-[3px] uppercase font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>
+                      OPEN NOW
+                    </span>
+                    {nearest?.id === loc.id && (
+                      <span className={`text-small font-black uppercase font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>
+                        {nearest.distanceMiles.toFixed(1)} MI AWAY
+                      </span>
+                    )}
+                  </div>
                   <h3
                     className={`heading-h4 mb-3 leading-tight uppercase text-white`}
                   >
@@ -244,6 +251,13 @@ const LocationsSection = ({
                       <span className="font-bold uppercase">{loc.hours}</span>
                     </div>
                   </div>
+                  <Link
+                    href={`/menu/${loc.slug}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className={`mt-3 inline-block w-fit text-small font-black uppercase tracking-[1.5px] underline underline-offset-2 ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}
+                  >
+                    View Menu
+                  </Link>
                 </div>
               </SwiperSlide>
             ))}
@@ -414,6 +428,11 @@ const LocationsSection = ({
 
                   <div className="flex justify-between items-start mb-4">
                     <span className={`text-small font-black tracking-[3px] uppercase font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>OPEN NOW</span>
+                    {nearest?.id === loc.id && (
+                      <span className={`text-small font-black uppercase font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>
+                        {nearest.distanceMiles.toFixed(1)} MI AWAY
+                      </span>
+                    )}
                   </div>
 
                   <h3 className={`heading-h4 transition-colors leading-tight max-w-[90%] mb-6 uppercase ${selectedLocation.id === loc.id ? "text-white" : "text-white group-hover:text-primary"
@@ -432,6 +451,14 @@ const LocationsSection = ({
                       <span className="font-bold uppercase">{loc.hours}</span>
                     </div>
                   </div>
+
+                  <Link
+                    href={`/menu/${loc.slug}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className={`relative z-10 mt-4 inline-block w-fit text-small font-black uppercase tracking-[1.5px] underline underline-offset-2 ${selectedLocation.id === loc.id ? "text-white" : "text-primary group-hover:text-white"}`}
+                  >
+                    View Menu
+                  </Link>
 
                   {/* Map Indicator */}
                   {selectedLocation.id === loc.id && (

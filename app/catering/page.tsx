@@ -5,6 +5,7 @@ import CateringAddOns from "@/components/blocks/catering/CateringAddOns";
 import { cateringMenuSections } from "@/lib/data/catering";
 import MenuCTA from "@/components/blocks/menu/menupage/MenuCTA";
 import ContactSection from "@/components/blocks/contact/ContactSection";
+import LocationAutoRedirect from "@/components/blocks/location/LocationAutoRedirect";
 
 import { getCanonicalUrl } from "@/lib/seo/seo";
 
@@ -20,6 +21,7 @@ export const metadata = {
 export default function CateringPage() {
   return (
     <div className="flex w-full flex-col">
+      <LocationAutoRedirect basePath="/catering" />
       <Hero
         tagline="SIZZLING PERFECTION, EVERY TIME."
         title={

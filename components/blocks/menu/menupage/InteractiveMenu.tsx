@@ -727,7 +727,11 @@ const menuData: Record<
   ],
 };
 
-const InteractiveMenu = () => {
+interface InteractiveMenuProps {
+  orderUrl?: string;
+}
+
+const InteractiveMenu = ({ orderUrl }: InteractiveMenuProps) => {
   const [activeCategory, setActiveCategory] = useState("favorites");
   const isScrollingRef = useRef(false);
 
@@ -818,10 +822,11 @@ const InteractiveMenu = () => {
           <MenuMainContent
             categories={categories}
             menuData={menuData}
+            orderUrl={orderUrl}
           />
         </div>
       </div>
-      <MenuCTA />
+      <MenuCTA orderUrl={orderUrl} />
       <CateringCTA />
     </section>
   );

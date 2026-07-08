@@ -3,8 +3,13 @@
 import React from "react";
 import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 
-const MenuCTA = () => {
-  const orderUrl = useOrderUrl();
+interface MenuCTAProps {
+  orderUrl?: string;
+}
+
+const MenuCTA: React.FC<MenuCTAProps> = ({ orderUrl: orderUrlProp }) => {
+  const autoOrderUrl = useOrderUrl();
+  const orderUrl = orderUrlProp?.trim() ? orderUrlProp : autoOrderUrl;
   return (
     <section className="relative w-full h-auto md:h-[610px] mt-16 overflow-hidden bg-[#0d0d0d] px-5 py-5 md:py-0">
 
