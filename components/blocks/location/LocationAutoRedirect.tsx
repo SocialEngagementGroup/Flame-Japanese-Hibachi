@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
+import { getActiveLocations } from "@/lib/api/locations";
 
 interface LocationAutoRedirectProps {
   /** Base path to redirect under, e.g. "/menu" or "/catering". */
@@ -23,6 +24,16 @@ export default function LocationAutoRedirect({
 }: LocationAutoRedirectProps) {
   const router = useRouter();
   const { status, nearest } = useNearestLocation();
+
+  // Prefetch every location page up front so whichever store resolves as
+  // "nearest" already has its RSC payload cached — otherwise the redirect
+  // below has to wait on a full server round-trip before the URL updates,
+  // well after the header text (a plain client re-render) has already changed.
+  useEffect(() => {
+    getActiveLocations().forEach((location) => {
+      router.prefetch(`${basePath}/${location.slug}`);
+    });
+  }, [basePath, router]);
 
   useEffect(() => {
     if (status === "resolved" && nearest) {
