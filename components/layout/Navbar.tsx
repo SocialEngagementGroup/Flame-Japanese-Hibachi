@@ -7,15 +7,29 @@ import { useTheme } from "@/components/providers/ThemeProvider";
 import { usePathname } from "next/navigation";
 import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
+import { getLocationBySlug } from "@/lib/api/locations";
 import FindFlamePopup from "@/components/layout/FindFlamePopup";
+
+const LOCATION_PAGE_PATTERN = /^\/(?:menu|catering)\/([^/]+)$/;
 
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const orderUrl = useOrderUrl();
   const { nearest } = useNearestLocation();
-  const findFlameText = nearest ? nearest.name.toUpperCase() : "FIND A FLAME";
   const pathname = usePathname();
+  // On a location-specific page, show that page's own location immediately —
+  // don't wait for the global context to sync via an effect, which lags a
+  // render behind the page (that's already visibly correct) by definition.
+  const urlLocationMatch = pathname.match(LOCATION_PAGE_PATTERN);
+  const urlLocation = urlLocationMatch
+    ? getLocationBySlug(urlLocationMatch[1])
+    : null;
+  const findFlameText = urlLocation
+    ? urlLocation.name.toUpperCase()
+    : nearest
+      ? nearest.name.toUpperCase()
+      : "FIND A FLAME";
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isFindFlameOpen, setIsFindFlameOpen] = useState(false);

@@ -174,6 +174,11 @@ export function NearestLocationProvider({
     outsideServiceAreaVisible: false,
   });
 
+  // Tracks an explicit "Got it" dismissal for this session so a slower,
+  // independently-running check (e.g. GPS resolving after the faster IP
+  // check already showed and was dismissed) can't reopen the notice.
+  const outsideAreaDismissedRef = React.useRef(false);
+
   const resolveFromCoordinates = React.useCallback(
     (origin: { lat: number; lng: number }): boolean => {
       const activeLocations = getActiveLocations();
@@ -182,7 +187,7 @@ export function NearestLocationProvider({
           status: "unavailable",
           nearest: null,
           promptVisible: false,
-          outsideServiceAreaVisible: true,
+          outsideServiceAreaVisible: !outsideAreaDismissedRef.current,
         });
         return false;
       }
@@ -250,6 +255,7 @@ export function NearestLocationProvider({
   }, []);
 
   const dismissOutsideServiceArea = React.useCallback(() => {
+    outsideAreaDismissedRef.current = true;
     setState((prev) => ({ ...prev, outsideServiceAreaVisible: false }));
   }, []);
 

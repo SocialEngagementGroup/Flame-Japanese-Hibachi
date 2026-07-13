@@ -16,8 +16,29 @@ export default function LocationPermissionPrompt() {
   const [zip, setZip] = useState("");
   const [zipError, setZipError] = useState<string | null>(null);
   const [zipSubmitting, setZipSubmitting] = useState(false);
+  const [locationBlocked, setLocationBlocked] = useState(false);
 
   if (!promptVisible && !outsideServiceAreaVisible) return null;
+
+  // Once a visitor blocks the browser's location permission, it won't
+  // prompt again — a plain retry silently fails with no feedback at all.
+  // Check the permission state first so we can explain what happened
+  // instead of just re-showing the same card with no explanation.
+  const handleUseLocation = async () => {
+    if (navigator.permissions?.query) {
+      try {
+        const result = await navigator.permissions.query({
+          name: "geolocation",
+        });
+        if (result.state === "denied") {
+          setLocationBlocked(true);
+          return;
+        }
+      } catch {}
+    }
+    setLocationBlocked(false);
+    requestLocation();
+  };
 
   const handleZipSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -110,7 +131,7 @@ export default function LocationPermissionPrompt() {
             <div className="mt-4 flex gap-3">
               <button
                 type="button"
-                onClick={requestLocation}
+                onClick={handleUseLocation}
                 className="bg-primary px-4 py-3 text-small font-black uppercase tracking-[1.5px] text-white transition-colors hover:bg-secondary"
               >
                 Use location
@@ -123,6 +144,23 @@ export default function LocationPermissionPrompt() {
                 Not now
               </button>
             </div>
+            {locationBlocked && (
+              <div className="mt-3 flex items-start justify-between gap-3 border border-red-500/30 bg-red-500/10 px-3 py-2">
+                <p className="text-small text-red-400">
+                  Location is blocked in your browser for this site. Enable
+                  it in your browser&apos;s site settings, or use the ZIP box
+                  below.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setLocationBlocked(false)}
+                  aria-label="Dismiss location-blocked message"
+                  className="text-white/60 transition-colors hover:text-white"
+                >
+                  <X className="h-4 w-4" strokeWidth={2.5} />
+                </button>
+              </div>
+            )}
 
             <form
               onSubmit={handleZipSubmit}
