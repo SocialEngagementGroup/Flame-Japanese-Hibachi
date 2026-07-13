@@ -150,6 +150,7 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
                 scrolling="no"
                 marginHeight={0}
                 marginWidth={0}
+                loading="lazy"
                 src={`https://maps.google.com/maps?q=${encodeURIComponent(
                   `Flame Japanese Hibachi ${selected.address}`
                 )}&t=k&z=17&ie=UTF8&iwloc=&output=embed`}

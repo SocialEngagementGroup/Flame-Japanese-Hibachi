@@ -187,6 +187,7 @@ const LocationsSection = ({
               scrolling="no"
               marginHeight={0}
               marginWidth={0}
+              loading="lazy"
               src={mapSrc}
               onLoad={() => setMapLoading(false)}
               className={`transition-opacity duration-500 ease-in-out ${mapLoading ? 'opacity-0' : 'opacity-100'}`}
@@ -350,6 +351,7 @@ const LocationsSection = ({
                     scrolling="no"
                     marginHeight={0}
                     marginWidth={0}
+                    loading="lazy"
                     src={mapSrc}
                     onLoad={() => setMapLoading(false)}
                     className={`transition-opacity duration-500 ease-in-out ${mapLoading ? 'opacity-0' : 'opacity-100'}`}
