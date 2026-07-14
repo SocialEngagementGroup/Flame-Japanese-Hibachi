@@ -102,16 +102,17 @@ function readSelectedLocation(): SelectedLocation | null {
 
 function writeSelectedLocation(storeId: number) {
   try {
-    localStorage.setItem(
-      SELECTED_LOCATION_KEY,
-      JSON.stringify({ storeId, timestamp: Date.now() })
-    );
+    const value = JSON.stringify({ storeId, timestamp: Date.now() });
+    localStorage.setItem(SELECTED_LOCATION_KEY, value);
+    // Also save as a cookie for the Edge Middleware to read instantly
+    document.cookie = `${SELECTED_LOCATION_KEY}=${storeId}; path=/; max-age=31536000; SameSite=Lax`;
   } catch {}
 }
 
 function clearSelectedLocation() {
   try {
     localStorage.removeItem(SELECTED_LOCATION_KEY);
+    document.cookie = `${SELECTED_LOCATION_KEY}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax`;
   } catch {}
 }
 
