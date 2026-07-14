@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { useOrderUrl } from "@/lib/geo/useOrderUrl";
+import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 
 type MenuCategory = {
   name: string;
@@ -12,50 +13,55 @@ type MenuCategory = {
   external?: boolean;
 };
 
-const staticCategories: MenuCategory[] = [
+const staticCategorySections: {
+  name: string;
+  section: string;
+  image: string;
+  mobileImage?: string;
+}[] = [
   {
     name: "HIBACHI",
-    href: "/menu#section-hibachi",
+    section: "section-hibachi",
     image: "/homepage/menu/HIBACHI.png",
     mobileImage: "/homepage/menu/hibachi-mobile.png",
   },
   {
     name: "FLAME COMBO",
-    href: "/menu#section-combo",
+    section: "section-combo",
     image: "/homepage/menu/FLAME COMBO.png",
     mobileImage: "/homepage/menu/flame-combo-mobile.png",
   },
   {
     name: "BENTO",
-    href: "/menu#section-bento",
+    section: "section-bento",
     image: "/homepage/menu/BENTO.png",
     mobileImage: "/homepage/menu/bento-mobile.png",
   },
   {
     name: "SUSHI",
-    href: "/menu#section-sushi",
+    section: "section-sushi",
     image: "/homepage/menu/SUSHI.png",
     mobileImage: "/homepage/menu/sushi-mobile.png",
   },
   {
     name: "WINGS/TENDERS",
-    href: "/menu#section-wings",
+    section: "section-wings",
     image: "/homepage/menu/WINGS  TENDERS.png",
     mobileImage: "/homepage/menu/wings-tenders-mobile.png",
   },
   {
     name: "FLAME LOADED FRIES",
-    href: "/menu#section-fries",
+    section: "section-fries",
     image: "/homepage/menu/FLAME LOADED FRIES.png",
   },
   {
     name: "BOBA TEA/SMOOTHIES",
-    href: "/menu#section-boba",
+    section: "section-boba",
     image: "/homepage/menu/BOBA TEA  SMOOTHIES  Drinks.png",
   },
   {
     name: "ADD ONS/APPETIZER",
-    href: "/menu#section-addons",
+    section: "section-addons",
     image: "/homepage/menu/ADD ONS.png",
   },
 ];
@@ -65,7 +71,11 @@ const cardClassName =
 
 const MenuGrid = () => {
   const orderUrl = useOrderUrl();
-  const categories = [
+  const { nearest } = useNearestLocation();
+  // Route straight to the visitor's known location page when we have one, so
+  // the tap skips the edge proxy's location-detection redirect entirely.
+  const menuBase = nearest ? `/menu/${nearest.slug}` : "/menu";
+  const categories: MenuCategory[] = [
     {
       name: "BUILD YOUR OWN PLATTER",
       href: orderUrl,
@@ -73,7 +83,12 @@ const MenuGrid = () => {
       image: "/homepage/menu/BUILD YOUR OWN PLATTER.png",
       mobileImage: "/homepage/menu/build-your-own-platter-mobile.png",
     },
-    ...staticCategories,
+    ...staticCategorySections.map((cat) => ({
+      name: cat.name,
+      href: `${menuBase}#${cat.section}`,
+      image: cat.image,
+      mobileImage: cat.mobileImage,
+    })),
   ];
 
   return (

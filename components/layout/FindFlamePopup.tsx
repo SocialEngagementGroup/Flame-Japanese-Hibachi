@@ -46,6 +46,17 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
     }
   }, [open, nearest]);
 
+  // Opening the popup is a strong intent signal a store switch is coming, so
+  // warm the router cache for every visible store now — by the time the
+  // visitor taps one, its page is already fetched instead of starting then.
+  useEffect(() => {
+    if (!open) return;
+    const base = pathname.startsWith("/catering") ? "catering" : "menu";
+    for (const loc of activeLocations) {
+      router.prefetch(`/${base}/${loc.slug}`);
+    }
+  }, [open, pathname, router]);
+
   const handleLocationSelect = (storeId: number) => {
     setSelectedId(storeId);
     selectLocation(storeId);
