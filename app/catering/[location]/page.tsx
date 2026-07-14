@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import React from "react";
 import { notFound } from "next/navigation";
 import Hero from "@/components/blocks/hero/Hero";
-import CateringMenuSection from "@/components/blocks/catering/CateringMenuSection";
-import CateringAddOns from "@/components/blocks/catering/CateringAddOns";
-import { cateringMenuSections } from "@/lib/data/catering";
-import MenuCTA from "@/components/blocks/menu/menupage/MenuCTA";
-import ContactSection from "@/components/blocks/contact/ContactSection";
 import LocationBanner from "@/components/blocks/location/LocationBanner";
 import LocationContextSync from "@/components/blocks/location/LocationContextSync";
 import { getActiveLocations, getLocationBySlug } from "@/lib/api/locations";
@@ -57,7 +51,7 @@ export default async function LocationCateringPage({
   });
 
   return (
-    <div className="flex w-full flex-col">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -84,40 +78,6 @@ export default async function LocationCateringPage({
       />
 
       <LocationBanner location={location} pageLabel="catering" />
-
-      {cateringMenuSections.map((section) => (
-        <React.Fragment key={section.id}>
-          <CateringMenuSection
-            title={section.title}
-            subtitle={section.subtitle}
-            items={section.items}
-            orderUrl={orderUrl}
-            cardVariant={section.id === "menu-5-wings" ? "shop" : "catering"}
-          />
-
-          {section.id === "menu-4-cbs" && (
-            <CateringAddOns
-              orderUrl={orderUrl}
-              addons={[
-                { name: "SPRING ROLLS", price: "$0.50/PER PERSON" },
-                { name: "DUMPLINGS", price: "$0.75/PER PERSON" },
-              ]}
-            />
-          )}
-
-          {section.id === "menu-5-wings" && (
-            <CateringAddOns
-              orderUrl={orderUrl}
-              addons={[
-                { name: "FRIES HALF TRAY", price: "$40" },
-                { name: "FRIES FULL TRAY", price: "$75" },
-              ]}
-            />
-          )}
-        </React.Fragment>
-      ))}
-      <MenuCTA orderUrl={orderUrl} />
-      <ContactSection />
-    </div>
+    </>
   );
 }

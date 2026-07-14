@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Hero from "@/components/blocks/hero/Hero";
-import InteractiveMenu from "@/components/blocks/menu/menupage/InteractiveMenu";
-import ContactSection from "@/components/blocks/contact/ContactSection";
 import LocationBanner from "@/components/blocks/location/LocationBanner";
 import LocationContextSync from "@/components/blocks/location/LocationContextSync";
 import { getActiveLocations, getLocationBySlug } from "@/lib/api/locations";
@@ -53,7 +51,7 @@ export default async function LocationMenuPage({
   });
 
   return (
-    <div className="flex flex-col w-full">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -79,8 +77,6 @@ export default async function LocationMenuPage({
       />
 
       <LocationBanner location={location} pageLabel="menu" />
-      <InteractiveMenu orderUrl={orderUrl} />
-      <ContactSection />
-    </div>
+    </>
   );
 }

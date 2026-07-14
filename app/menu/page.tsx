@@ -1,6 +1,4 @@
 import Hero from "@/components/blocks/hero/Hero";
-import InteractiveMenu from "@/components/blocks/menu/menupage/InteractiveMenu";
-import ContactSection from "@/components/blocks/contact/ContactSection";
 import LocationAutoRedirect from "@/components/blocks/location/LocationAutoRedirect";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 
@@ -16,7 +14,7 @@ export const metadata = {
 
 export default function MenuPage() {
   return (
-    <div className="flex flex-col w-full">
+    <>
       <LocationAutoRedirect basePath="/menu" />
       <Hero
         tagline="SIZZLING PERFECTION, EVERY TIME."
@@ -32,10 +30,7 @@ export default function MenuPage() {
         bgImageDesk="/menupage/hero/flame-japanese-hibachi-menu-hero-spread-mob.png"
         bgImageMob="/menupage/hero/flame-japanese-hibachi-menu-hero-spread-desk.png"
       />
-
-      <InteractiveMenu />
-      <ContactSection />
-    </div>
+    </>
   );
 }
 

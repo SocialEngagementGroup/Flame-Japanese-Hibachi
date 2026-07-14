@@ -1,10 +1,4 @@
-import React from "react";
 import Hero from "@/components/blocks/hero/Hero";
-import CateringMenuSection from "@/components/blocks/catering/CateringMenuSection";
-import CateringAddOns from "@/components/blocks/catering/CateringAddOns";
-import { cateringMenuSections } from "@/lib/data/catering";
-import MenuCTA from "@/components/blocks/menu/menupage/MenuCTA";
-import ContactSection from "@/components/blocks/contact/ContactSection";
 import LocationAutoRedirect from "@/components/blocks/location/LocationAutoRedirect";
 
 import { getCanonicalUrl } from "@/lib/seo/seo";
@@ -20,7 +14,7 @@ export const metadata = {
 
 export default function CateringPage() {
   return (
-    <div className="flex w-full flex-col">
+    <>
       <LocationAutoRedirect basePath="/catering" />
       <Hero
         tagline="SIZZLING PERFECTION, EVERY TIME."
@@ -39,37 +33,6 @@ export default function CateringPage() {
         bgImageMob="/catering/hero/flame-japanese-hibachi-catering-hero-mob.jpg"
         bgVideo="/catering/hero/flame-japanese-hibachi-catering-hero.mp4"
       />
-
-      {cateringMenuSections.map((section) => (
-        <React.Fragment key={section.id}>
-          <CateringMenuSection
-            title={section.title}
-            subtitle={section.subtitle}
-            items={section.items}
-            cardVariant={section.id === "menu-5-wings" ? "shop" : "catering"}
-          />
-
-          {section.id === "menu-4-cbs" && (
-            <CateringAddOns
-              addons={[
-                { name: "SPRING ROLLS", price: "$0.50/PER PERSON" },
-                { name: "DUMPLINGS", price: "$0.75/PER PERSON" },
-              ]}
-            />
-          )}
-
-          {section.id === "menu-5-wings" && (
-            <CateringAddOns
-              addons={[
-                { name: "FRIES HALF TRAY", price: "$40" },
-                { name: "FRIES FULL TRAY", price: "$75" },
-              ]}
-            />
-          )}
-        </React.Fragment>
-      ))}
-      <MenuCTA />
-      <ContactSection />
-    </div>
+    </>
   );
 }
