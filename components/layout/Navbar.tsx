@@ -30,6 +30,8 @@ const Navbar = () => {
     : nearest
       ? nearest.name.toUpperCase()
       : "FIND A FLAME";
+  const activeLocation = urlLocation ?? nearest;
+  const locationSlug = activeLocation?.slug;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isFindFlameOpen, setIsFindFlameOpen] = useState(false);
@@ -72,10 +74,25 @@ const Navbar = () => {
     };
   }, [isMobileMenuOpen]);
 
-  const navLinks = [
+  const navLinks: Array<{
+    name: string;
+    href: string;
+    external: boolean;
+    activePath?: string;
+  }> = [
     { name: "HOME", href: "/", external: false },
-    { name: "MENU", href: "/menu", external: false },
-    { name: "CATERING", href: "/catering", external: false },
+    {
+      name: "MENU",
+      href: locationSlug ? `/menu/${locationSlug}` : "/menu",
+      activePath: "/menu",
+      external: false,
+    },
+    {
+      name: "CATERING",
+      href: locationSlug ? `/catering/${locationSlug}` : "/catering",
+      activePath: "/catering",
+      external: false,
+    },
     { name: "LOCATIONS", href: "/locations", external: false },
     // { name: "PROMOTIONS", href: ORDER_URL, external: true },
     // { name: "JOIN FLAME", href: ORDER_URL, external: true },
@@ -152,7 +169,10 @@ const Navbar = () => {
           {/* Desktop Links */}
           <div className="hidden min-[1100px]:flex items-center justify-center gap-[var(--gap-lg)] max-[1300px]:gap-[12px]">
             {navLinks.map((link) => {
-              const isActive = !link.external && pathname === link.href;
+              const isActive =
+                !link.external &&
+                (pathname === link.href ||
+                  (!!link.activePath && pathname.startsWith(link.activePath)));
               const className = `text-white hover:text-primary text-small font-black tracking-[1.2px] leading-[16px] transition-colors relative group uppercase transition-all duration-300 ${isActive ? "text-primary" : ""}`;
               const underline = (
                 <span
@@ -304,7 +324,10 @@ const Navbar = () => {
 
           <div className="flex flex-col items-center gap-7 max-[500px]:gap-[22px] w-full mt-8 max-[500px]:mt-6">
             {navLinks.map((link, index) => {
-              const isActive = !link.external && pathname === link.href;
+              const isActive =
+                !link.external &&
+                (pathname === link.href ||
+                  (!!link.activePath && pathname.startsWith(link.activePath)));
               const className = `text-white text-2xl max-[500px]:text-lg font-black tracking-[3px] max-[500px]:tracking-[2px] uppercase hover:text-primary transition-all duration-300 ${isActive ? "text-primary" : ""} ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`;
               const style = { transitionDelay: `${(index + 2) * 100}ms` };
               return link.external ? (
