@@ -93,18 +93,6 @@ const Navbar = () => {
       activePath: "/catering",
       external: false,
     },
-    {
-      name: "MENU 2",
-      href: locationSlug ? `/test-menu/${locationSlug}` : "/test-menu",
-      activePath: "/test-menu",
-      external: false,
-    },
-    {
-      name: "CATERING 2",
-      href: locationSlug ? `/test-catering/${locationSlug}` : "/test-catering",
-      activePath: "/test-catering",
-      external: false,
-    },
     { name: "LOCATIONS", href: "/locations", external: false },
     // { name: "PROMOTIONS", href: ORDER_URL, external: true },
     // { name: "JOIN FLAME", href: ORDER_URL, external: true },
