@@ -27,6 +27,7 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
   const findYourFlameText = nearest ? nearest.name : "FLAME";
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<number>(activeLocations[0].id);
+  const [mapSrc, setMapSrc] = useState("");
 
   // Nearest store moves to the top of the list once geolocation resolves.
   const sortedActiveLocations = useMemo(() => {
@@ -47,15 +48,23 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
   }, [open, nearest]);
 
   // Opening the popup is a strong intent signal a store switch is coming, so
-  // warm the router cache for every visible store now — by the time the
-  // visitor taps one, its page is already fetched instead of starting then.
+  // warm the router cache. To avoid saturating the network on Vercel preview,
+  // we only prefetch the top 3 nearest locations and stagger them.
   useEffect(() => {
     if (!open) return;
     const base = pathname.startsWith("/catering") ? "catering" : "menu";
-    for (const loc of activeLocations) {
-      router.prefetch(`/${base}/${loc.slug}`);
-    }
-  }, [open, pathname, router]);
+    const toPreload = sortedActiveLocations.slice(0, 3);
+    let i = 0;
+    const id = setInterval(() => {
+      if (i >= toPreload.length) {
+        clearInterval(id);
+        return;
+      }
+      router.prefetch(`/${base}/${toPreload[i].slug}`);
+      i++;
+    }, 150); // stagger 150ms between each
+    return () => clearInterval(id);
+  }, [open, pathname, router, sortedActiveLocations]);
 
   const handleLocationSelect = (storeId: number) => {
     setSelectedId(storeId);
@@ -99,6 +108,18 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
 
   const selected =
     activeLocations.find((l) => l.id === selectedId) ?? activeLocations[0];
+
+  // Debounce the Google Maps iframe src so rapid store clicks don't reload the map every time.
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setMapSrc(
+        `https://maps.google.com/maps?q=${encodeURIComponent(
+          `Flame Japanese Hibachi ${selected.address}`
+        )}&t=k&z=17&ie=UTF8&iwloc=&output=embed`
+      );
+    }, 300);
+    return () => clearTimeout(id);
+  }, [selected.address]);
 
   if (!open) return null;
 
@@ -162,9 +183,7 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
                 marginHeight={0}
                 marginWidth={0}
                 loading="lazy"
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                  `Flame Japanese Hibachi ${selected.address}`
-                )}&t=k&z=17&ie=UTF8&iwloc=&output=embed`}
+                src={mapSrc}
               />
             </div>
             <a

@@ -15,7 +15,7 @@ const GEO_OPTIONS: PositionOptions = {
   enableHighAccuracy: false,
   timeout: 8000,
   maximumAge: 1000 * 60 * 60,
-};
+}; 
 
 type CachedResult = {
   storeId: number;
@@ -31,6 +31,11 @@ type SelectedLocation = {
 type NearestLocationState = {
   status: "idle" | "resolved" | "unavailable";
   nearest: (Location & { distanceMiles: number }) | null;
+  /** True when the current location was set by an explicit in-app user pick
+   * (FindFlamePopup). False for auto-detection (GPS/IP/cache). Used to
+   * prevent LocationContextSync on transitioning-away pages from overwriting
+   * a deliberate store selection. */
+  isManuallySelected: boolean;
   promptVisible: boolean;
   outsideServiceAreaVisible: boolean;
 };
@@ -47,6 +52,7 @@ type NearestLocationContextValue = NearestLocationState & {
 const defaultContextValue: NearestLocationContextValue = {
   status: "idle",
   nearest: null,
+  isManuallySelected: false,
   promptVisible: false,
   outsideServiceAreaVisible: false,
   requestLocation: () => {},
@@ -141,6 +147,7 @@ function writePromptDismissed() {
 const unavailableState: NearestLocationState = {
   status: "unavailable",
   nearest: null,
+  isManuallySelected: false,
   promptVisible: true,
   outsideServiceAreaVisible: false,
 };
@@ -164,6 +171,7 @@ export function NearestLocationProvider({
   const [state, setState] = React.useState<NearestLocationState>({
     status: "idle",
     nearest: null,
+    isManuallySelected: false,
     promptVisible: false,
     outsideServiceAreaVisible: false,
   });
@@ -200,6 +208,8 @@ export function NearestLocationProvider({
       setState({
         status: "resolved",
         nearest: toResolvedLocation(result.item, result.distanceMiles),
+        // Auto-detected by GPS/IP — not a deliberate user pick.
+        isManuallySelected: false,
         promptVisible: false,
         outsideServiceAreaVisible: false,
       });
@@ -222,6 +232,9 @@ export function NearestLocationProvider({
     clearSelectedLocation();
     setState((prev) => ({
       ...prev,
+      // User explicitly asked for GPS — clear the manual override so
+      // the GPS result can take effect without being blocked.
+      isManuallySelected: false,
       promptVisible: false,
       outsideServiceAreaVisible: false,
     }));
@@ -262,6 +275,9 @@ export function NearestLocationProvider({
     setState({
       status: "resolved",
       nearest: toResolvedLocation(store),
+      // Mark as a deliberate user pick so LocationContextSync on any
+      // page that is transitioning away doesn't overwrite this choice.
+      isManuallySelected: true,
       promptVisible: false,
       outsideServiceAreaVisible: false,
     });
@@ -273,7 +289,11 @@ export function NearestLocationProvider({
     const selectedLocation = readSelectedLocation();
     const cached = readCache();
 
-    const applyStoreId = (storeId: number, distanceMiles: number) => {
+    const applyStoreId = (
+      storeId: number,
+      distanceMiles: number,
+      manually: boolean = false
+    ) => {
       const store = activeLocations.find((l) => l.id === storeId);
       if (!store) return;
       if (!cancelled) {
@@ -281,6 +301,9 @@ export function NearestLocationProvider({
           ...prev,
           status: "resolved",
           nearest: toResolvedLocation(store, distanceMiles),
+          // Only mark as manual when restoring a stored explicit pick.
+          // GPS cache restores keep the existing isManuallySelected value.
+          isManuallySelected: manually ? true : prev.isManuallySelected,
           outsideServiceAreaVisible: false,
         }));
       }
@@ -292,7 +315,9 @@ export function NearestLocationProvider({
       );
       if (selectedStore) {
         writeSelectedLocation(selectedStore.id);
-        applyStoreId(selectedStore.id, 0);
+        // Pass manually=true so the restored pick is treated as intentional,
+        // preventing LocationContextSync on other pages from overwriting it.
+        applyStoreId(selectedStore.id, 0, true);
         return;
       }
       clearSelectedLocation();
@@ -300,6 +325,7 @@ export function NearestLocationProvider({
 
     // 1. Immediately apply cache if available (fallback)
     if (cached) {
+      // GPS cache is auto-detected — not marked as a manual pick.
       applyStoreId(cached.storeId, cached.distanceMiles);
     }
 
