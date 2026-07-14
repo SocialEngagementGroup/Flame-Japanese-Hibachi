@@ -188,6 +188,7 @@ export function NearestLocationProvider({
         setState({
           status: "unavailable",
           nearest: null,
+          isManuallySelected: false,
           promptVisible: false,
           outsideServiceAreaVisible: !outsideAreaDismissedRef.current,
         });
