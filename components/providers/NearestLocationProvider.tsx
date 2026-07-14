@@ -303,6 +303,43 @@ export function NearestLocationProvider({
       applyStoreId(cached.storeId, cached.distanceMiles);
     }
 
+    // 1.5. No cache or manual pick yet � try silent IP geolocation (Vercel
+    // edge headers) as an immediate provisional default. No permission
+    // prompt, and it's a no-op in local dev where those headers aren't set.
+    // A later GPS fix (if granted) still overwrites this with something
+    // more precise.
+    if (!cached) {
+      fetch("/api/geo/ip")
+        .then((res) => (res.ok ? res.json() : null))
+        .then((coords: { lat: number; lng: number } | null) => {
+          if (!cancelled && coords) resolveFromCoordinates(coords);
+        })
+        .catch(() => {});
+    }
+
+    if (typeof window === "undefined" || !("geolocation" in navigator)) {
+      if (!cached && !cancelled) {
+        setState(unavailableState);
+      }
+      return;
+    }
+
+    const askForLocation = () => {
+      if (!cancelled) {
+        navigator.geolocation.getCurrentPosition(
+          resolveFromPosition,
+          () => {
+            if (!cancelled) {
+              // Remember that user blocked/dismissed � don't ask again for 7 days
+              writePromptDismissed();
+              setState(keepResolvedOrUnavailable);
+            }
+          },
+          GEO_OPTIONS
+        );
+      }
+    };
+
     const showSoftAsk = () => {
       if (!cancelled) {
         if (isPromptRecentlyDismissed()) {
@@ -313,9 +350,28 @@ export function NearestLocationProvider({
       }
     };
 
-    // Testing mode: no automatic IP or browser GPS lookup on page load.
-    // Visitors can still pick a store, enter ZIP, or click "Use location" manually.
-    if (!cached) {
+    // 2. Check permissions to see if we can refresh silently
+    if (navigator.permissions?.query) {
+      navigator.permissions
+        .query({ name: "geolocation" })
+        .then((result) => {
+          if (cancelled) return;
+          if (result.state === "granted") {
+            // Silently request fresh location
+            askForLocation();
+          } else if (result.state === "denied") {
+            if (!cached) {
+              showSoftAsk();
+            }
+          } else {
+            // state === "prompt" � only trigger browser popup if no cache AND not recently dismissed
+            if (!cached && !isPromptRecentlyDismissed()) {
+              askForLocation();
+            }
+          }
+        })
+        .catch(showSoftAsk);
+    } else {
       showSoftAsk();
     }
 
