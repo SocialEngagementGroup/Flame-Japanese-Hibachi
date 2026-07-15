@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 
 interface MenuCTAProps {
@@ -14,10 +15,15 @@ const MenuCTA: React.FC<MenuCTAProps> = ({ orderUrl: orderUrlProp }) => {
     <section className="relative w-full h-auto md:h-[610px] mt-16 overflow-hidden bg-[#0d0d0d] px-5 py-5 md:py-0">
 
       {/* Background Image with Overlay */}
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-25"
-        style={{ backgroundImage: "url('/menupage/cta/bg.png')" }}
-      />
+      <div className="absolute inset-0 z-0 opacity-25">
+        <Image
+          src="/menupage/cta/bg.png"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
 
       {/* Banner Layout: col on mobile → row on desktop */}
       <div className="relative z-10 flex flex-col md:flex-row w-full h-full items-center max-w-[1765px] mx-auto">
@@ -25,17 +31,41 @@ const MenuCTA: React.FC<MenuCTAProps> = ({ orderUrl: orderUrlProp }) => {
         {/* Images: 3 side by side */}
         <div className="flex flex-row items-center gap-3 w-full md:w-[62%]">
           <div
-            className="flex-1 h-[300px] md:h-[490px] bg-cover bg-center"
-            style={{ backgroundImage: 'url("/menupage/cta/rectangle-298.png")', boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
-          />
+            className="relative flex-1 h-[300px] md:h-[490px]"
+            style={{ boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
+          >
+            <Image
+              src="/menupage/cta/rectangle-298.png"
+              alt=""
+              fill
+              sizes="(min-width: 768px) 20vw, 33vw"
+              className="object-cover"
+            />
+          </div>
           <div
-            className="flex-1 h-[300px] md:h-[490px] bg-cover bg-center"
-            style={{ backgroundImage: 'url("/menupage/cta/rectangle-299.png")', boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
-          />
+            className="relative flex-1 h-[300px] md:h-[490px]"
+            style={{ boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
+          >
+            <Image
+              src="/menupage/cta/rectangle-299.png"
+              alt=""
+              fill
+              sizes="(min-width: 768px) 20vw, 33vw"
+              className="object-cover"
+            />
+          </div>
           <div
-            className="flex-1 h-[300px] md:h-[490px] bg-cover bg-center"
-            style={{ backgroundImage: 'url("/menupage/cta/rectangle-300.png")', boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
-          />
+            className="relative flex-1 h-[300px] md:h-[490px]"
+            style={{ boxShadow: '0 4px 4px 0 rgba(0,0,0,0.25)' }}
+          >
+            <Image
+              src="/menupage/cta/rectangle-300.png"
+              alt=""
+              fill
+              sizes="(min-width: 768px) 20vw, 33vw"
+              className="object-cover"
+            />
+          </div>
         </div>
 
         {/* Text + Button */}

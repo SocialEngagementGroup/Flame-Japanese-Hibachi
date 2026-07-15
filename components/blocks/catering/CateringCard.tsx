@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import Image from "next/image";
 import type { CateringPackage } from "@/lib/types";
+
+const FALLBACK_IMAGE = "/homepage/menu/HIBACHI.png";
 
 interface CateringCardProps {
   item: CateringPackage;
@@ -33,6 +36,7 @@ const CateringCard: React.FC<CateringCardProps> = ({
   onReset,
   cardVariant = "catering",
 }) => {
+  const [imgSrc, setImgSrc] = useState(item.image);
 
   // ── SHOP VARIANT (Wings section) — cloned from menu page wing card design ──
   if (cardVariant === "shop") {
@@ -48,11 +52,13 @@ const CateringCard: React.FC<CateringCardProps> = ({
         className="w-full min-h-[300px] md:min-h-[355px] aspect-square sm:aspect-[6/5] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
       >
         {/* Full image */}
-        <img
-          src={item.image}
+        <Image
+          src={imgSrc}
           alt={`${item.people} ${item.category}`}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
-          onError={(e) => { e.currentTarget.src = "/homepage/menu/HIBACHI.png"; }}
+          fill
+          sizes="(min-width: 768px) 50vw, 100vw"
+          className="object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
+          onError={() => setImgSrc(FALLBACK_IMAGE)}
         />
 
         {/* Default gradient */}
@@ -160,12 +166,14 @@ const CateringCard: React.FC<CateringCardProps> = ({
             </div>
 
             {/* Right: image */}
-            <div className="w-[100px] self-stretch overflow-hidden flex-shrink-0">
-              <img
-                src={item.image}
+            <div className="relative w-[100px] self-stretch overflow-hidden flex-shrink-0">
+              <Image
+                src={imgSrc}
                 alt={`${item.people} ${item.category}`}
-                className={`w-full h-full object-cover transition-transform duration-500 ${isActive ? "scale-110" : "scale-100"}`}
-                onError={(e) => { e.currentTarget.src = "/homepage/menu/HIBACHI.png"; }}
+                fill
+                sizes="100px"
+                className={`object-cover transition-transform duration-500 ${isActive ? "scale-110" : "scale-100"}`}
+                onError={() => setImgSrc(FALLBACK_IMAGE)}
               />
             </div>
           </div>
@@ -211,11 +219,13 @@ const CateringCard: React.FC<CateringCardProps> = ({
         }`}>
           {/* Image */}
           <div className="relative h-[355px] overflow-hidden">
-            <img
-              src={item.image}
+            <Image
+              src={imgSrc}
               alt={`${item.people} ${item.category}`}
-              className={`absolute inset-0 z-0 h-full w-full object-cover transition-transform duration-500 ${isActive ? "scale-110" : "scale-100 group-hover:scale-110"}`}
-              onError={(e) => { e.currentTarget.src = "/homepage/menu/HIBACHI.png"; }}
+              fill
+              sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 100vw"
+              className={`object-cover transition-transform duration-500 z-0 ${isActive ? "scale-110" : "scale-100 group-hover:scale-110"}`}
+              onError={() => setImgSrc(FALLBACK_IMAGE)}
             />
 
             {/* Default gradient */}

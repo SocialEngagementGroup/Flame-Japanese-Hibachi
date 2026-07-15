@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 
 type HeroProps = {
@@ -66,15 +67,21 @@ const Hero = ({
           </video>
         ) : (
           <>
-            <img
+            <Image
               src={bgImageDesk}
               alt="Flame Japanese Hibachi Hero"
-              className="hidden md:block w-full h-full object-cover"
+              fill
+              sizes="100vw"
+              priority
+              className="hidden md:block object-cover"
             />
-            <img
+            <Image
               src={bgImageMob}
               alt="Flame Japanese Hibachi Hero Mobile"
-              className="block md:hidden w-full h-full object-cover"
+              fill
+              sizes="100vw"
+              priority
+              className="block md:hidden object-cover"
             />
           </>
         )}

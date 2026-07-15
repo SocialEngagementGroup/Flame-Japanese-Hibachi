@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 
@@ -118,16 +119,32 @@ const MenuGrid = () => {
             const inner = (
               <>
                 {/* Responsive image: mobile-specific crop on small screens. Zooms on hover. */}
-                <picture className="absolute inset-0 w-full h-full z-0">
-                  {cat.mobileImage && (
-                    <source media="(max-width: 768px)" srcSet={cat.mobileImage} />
-                  )}
-                  <img
+                {cat.mobileImage ? (
+                  <>
+                    <Image
+                      src={cat.image}
+                      alt={cat.name}
+                      fill
+                      sizes="33vw"
+                      className="hidden md:block object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
+                    />
+                    <Image
+                      src={cat.mobileImage}
+                      alt={cat.name}
+                      fill
+                      sizes="33vw"
+                      className="block md:hidden object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
+                    />
+                  </>
+                ) : (
+                  <Image
                     src={cat.image}
                     alt={cat.name}
-                    className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-110"
+                    fill
+                    sizes="33vw"
+                    className="object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
                   />
-                </picture>
+                )}
 
                 {/* Default gradient overlay for resting readability — fades out on hover */}
                 <div

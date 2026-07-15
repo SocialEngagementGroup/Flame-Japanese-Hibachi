@@ -2,20 +2,29 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const CaterWithUs = () => {
   return (
     <section className="relative w-full h-[400px] md:h-[600px] lg:h-[700px] overflow-hidden">
       {/* Background Images */}
       <div className="absolute inset-0 z-0">
-        <picture>
-          <source media="(max-width: 768px)" srcSet="/homepage/catering/caterwithusmobile.png" />
-          <img
-            src="/homepage/catering/caterwithus.png"
-            alt="Cater with us for next event"
-            className="w-full h-full object-cover"
-          />
-        </picture>
+        <Image
+          src="/homepage/catering/caterwithus.png"
+          alt="Cater with us for next event"
+          fill
+          sizes="100vw"
+          priority
+          className="hidden md:block object-cover"
+        />
+        <Image
+          src="/homepage/catering/caterwithusmobile.png"
+          alt="Cater with us for next event"
+          fill
+          sizes="100vw"
+          priority
+          className="block md:hidden object-cover"
+        />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-[#1E1E1E]/80 z-10" />
       </div>

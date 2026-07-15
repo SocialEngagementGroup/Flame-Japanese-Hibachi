@@ -1,7 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { useOrderUrl } from "@/lib/geo/useOrderUrl";
+
+const FALLBACK_IMAGE = "/homepage/menu/HIBACHI.png";
 
 interface Category {
   id: string;
@@ -23,28 +26,15 @@ interface MenuMainContentProps {
   orderUrl?: string;
 }
 
-const MenuMainContent: React.FC<MenuMainContentProps> = ({
-  categories,
-  menuData,
-  orderUrl: orderUrlProp,
-}) => {
-  const [activeCardId, setActiveCardId] = useState<string | null>(null);
-  const autoOrderUrl = useOrderUrl();
-  const orderUrl = orderUrlProp?.trim() ? orderUrlProp : autoOrderUrl;
+// Resting-state readability shadow; removed on hover where the orange overlay
+// already provides contrast. Omitted entirely when the card is active.
+const RESTING_SHADOW =
+  "[text-shadow:0_1px_3px_rgba(0,0,0,0.9),0_2px_6px_rgba(0,0,0,0.6)] group-hover:[text-shadow:none]";
 
-  // Toggle active card
-  const handleCardClick = (id: string) => {
-    setActiveCardId((prev) => (prev === id ? null : id));
-  };
-
-  // Resting-state readability shadow; removed on hover where the orange overlay
-  // already provides contrast. Omitted entirely when the card is active.
-  const RESTING_SHADOW =
-    "[text-shadow:0_1px_3px_rgba(0,0,0,0.9),0_2px_6px_rgba(0,0,0,0.6)] group-hover:[text-shadow:none]";
-
-  const renderListCard = (item: MenuItem) => (
+function ListCard({ item, orderUrl }: { item: MenuItem; orderUrl: string }) {
+  const [imgSrc, setImgSrc] = useState(item.image);
+  return (
     <a
-      key={item.id}
       href={orderUrl}
       target="_blank"
       rel="noopener noreferrer"
@@ -73,36 +63,45 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
       </div>
 
       {/* Thumbnail */}
-      <div className="w-[82px] h-[66px] flex-shrink-0 overflow-hidden rounded-sm">
-        <img
-          src={item.image}
+      <div className="relative w-[82px] h-[66px] flex-shrink-0 overflow-hidden rounded-sm">
+        <Image
+          src={imgSrc}
           alt={item.name}
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = "/homepage/menu/HIBACHI.png";
-          }}
+          fill
+          sizes="82px"
+          className="object-cover"
+          onError={() => setImgSrc(FALLBACK_IMAGE)}
         />
       </div>
     </a>
   );
+}
 
-  const renderWingCard = (item: MenuItem, isCardActive: boolean) => (
+function WingCard({
+  item,
+  isCardActive,
+  orderUrl,
+}: {
+  item: MenuItem;
+  isCardActive: boolean;
+  orderUrl: string;
+}) {
+  const [imgSrc, setImgSrc] = useState(item.image);
+  return (
     <a
-      key={item.id}
       href={orderUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="w-full min-h-[300px] md:min-h-[355px] aspect-[1] sm:aspect-[6/5] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
     >
       {/* Full Box Picture Background */}
-      <img
-        src={item.image}
+      <Image
+        src={imgSrc}
         alt={item.name}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
-        onError={(e) => {
-          (e.target as HTMLImageElement).src =
-            "/homepage/menu/HIBACHI.png";
-        }}
+        fill
+        sizes="(min-width: 1536px) 25vw, (min-width: 1280px) 33vw, 50vw"
+        className="object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
+        onError={() => setImgSrc(FALLBACK_IMAGE)}
       />
 
       {/* Default Linear Gradient Shadow Overlay */}
@@ -179,84 +178,101 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
       </div>
     </a>
   );
+}
 
-  const renderRegularCard = (item: MenuItem, category: Category, isCardActive: boolean) => {
-    const CardContent = (
-      <>
-        {/* Full Box Picture Background */}
-        <img
-          src={item.image}
-          alt={item.name}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src =
-              "/homepage/menu/HIBACHI.png";
-          }}
-        />
+function RegularCard({
+  item,
+  isCardActive,
+  orderUrl,
+}: {
+  item: MenuItem;
+  isCardActive: boolean;
+  orderUrl: string;
+}) {
+  const [imgSrc, setImgSrc] = useState(item.image);
+  return (
+    <a
+      href={orderUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-full min-h-[300px] md:min-h-[355px] aspect-[1] sm:aspect-[6/5] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
+    >
+      {/* Full Box Picture Background */}
+      <Image
+        src={imgSrc}
+        alt={item.name}
+        fill
+        sizes="(min-width: 1536px) 25vw, (min-width: 1280px) 33vw, 50vw"
+        className="object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
+        onError={() => setImgSrc(FALLBACK_IMAGE)}
+      />
 
-        {/* Default Linear Gradient Shadow Overlay (Height 145px) */}
-        <div
-          className="absolute bottom-0 left-0 w-full h-[145px] transition-opacity duration-500 z-10 opacity-100 group-hover:opacity-0"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.45) 45%, #000 100%)",
-          }}
-        />
+      {/* Default Linear Gradient Shadow Overlay (Height 145px) */}
+      <div
+        className="absolute bottom-0 left-0 w-full h-[145px] transition-opacity duration-500 z-10 opacity-100 group-hover:opacity-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.45) 45%, #000 100%)",
+        }}
+      />
 
-        {/* Active / Hover Block Color Overlay (Height 145px) */}
-        <div
-          className={`absolute bottom-0 left-0 w-full h-[145px] bg-[#FF7808] transition-opacity duration-500 z-20 ${isCardActive
-            ? "opacity-100"
-            : "opacity-0 group-hover:opacity-100"
-            }`}
-        />
+      {/* Active / Hover Block Color Overlay (Height 145px) */}
+      <div
+        className={`absolute bottom-0 left-0 w-full h-[145px] bg-[#FF7808] transition-opacity duration-500 z-20 ${isCardActive
+          ? "opacity-100"
+          : "opacity-0 group-hover:opacity-100"
+          }`}
+      />
 
-        {/* Orange Bottom Border on Hover */}
-        <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#FF7808] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-50" />
+      {/* Orange Bottom Border on Hover */}
+      <div className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#FF7808] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-50" />
 
-        {/* Card Text & Price Details Overlay Container */}
-        <div className="absolute bottom-0 left-0 w-full h-[145px] p-4 flex flex-col justify-end z-30 pointer-events-none">
-          <div className="mb-2">
-            {/* Tag (BEST SELLER) */}
-            <span
-              className={`text-[10px] font-[family-name:var(--font-serif-next)] font-black tracking-[2px] uppercase transition-colors duration-300 block mb-1 leading-none ${isCardActive
-                ? "text-white"
-                : `text-[#FF7808] group-hover:text-white ${RESTING_SHADOW}`
-                }`}
-            >
-              {item.tag}
-            </span>
-
-            {/* Title */}
-            <h3
-              className={`text-base font-[family-name:var(--font-serif-next)] font-black uppercase text-white tracking-wide truncate leading-tight ${isCardActive ? "" : RESTING_SHADOW}`}
-            >
-              {item.name}
-            </h3>
-          </div>
-
-          {/* Price Text (Work Sans) */}
+      {/* Card Text & Price Details Overlay Container */}
+      <div className="absolute bottom-0 left-0 w-full h-[145px] p-4 flex flex-col justify-end z-30 pointer-events-none">
+        <div className="mb-2">
+          {/* Tag (BEST SELLER) */}
           <span
-            className={`text-[36px] font-bold text-white font-sans leading-none mt-5 ${isCardActive ? "" : RESTING_SHADOW}`}
+            className={`text-[10px] font-[family-name:var(--font-serif-next)] font-black tracking-[2px] uppercase transition-colors duration-300 block mb-1 leading-none ${isCardActive
+              ? "text-white"
+              : `text-[#FF7808] group-hover:text-white ${RESTING_SHADOW}`
+              }`}
           >
-            ${item.price}
+            {item.tag}
           </span>
-        </div>
-      </>
-    );
 
-    return (
-      <a
-        key={item.id}
-        href={orderUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-full min-h-[300px] md:min-h-[355px] aspect-[1] sm:aspect-[6/5] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
-      >
-        {CardContent}
-      </a>
-    );
+          {/* Title */}
+          <h3
+            className={`text-base font-[family-name:var(--font-serif-next)] font-black uppercase text-white tracking-wide truncate leading-tight ${isCardActive ? "" : RESTING_SHADOW}`}
+          >
+            {item.name}
+          </h3>
+        </div>
+
+        {/* Price Text (Work Sans) */}
+        <span
+          className={`text-[36px] font-bold text-white font-sans leading-none mt-5 ${isCardActive ? "" : RESTING_SHADOW}`}
+        >
+          ${item.price}
+        </span>
+      </div>
+    </a>
+  );
+}
+
+const MenuMainContent: React.FC<MenuMainContentProps> = ({
+  categories,
+  menuData,
+  orderUrl: orderUrlProp,
+}) => {
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
+  const autoOrderUrl = useOrderUrl();
+  const orderUrl = orderUrlProp?.trim() ? orderUrlProp : autoOrderUrl;
+
+  // Toggle active card
+  const handleCardClick = (id: string) => {
+    setActiveCardId((prev) => (prev === id ? null : id));
   };
+  void handleCardClick;
 
   return (
     <div className="flex-1 space-y-6 isolate">
@@ -336,13 +352,22 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                       <div className="hidden xl:grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 justify-items-start p-4 -m-4 overflow-hidden isolate">
                         {subItems.map((item) => {
                           const isCardActive = activeCardId === item.id;
-                          return renderWingCard(item, isCardActive);
+                          return (
+                            <WingCard
+                              key={item.id}
+                              item={item}
+                              isCardActive={isCardActive}
+                              orderUrl={orderUrl}
+                            />
+                          );
                         })}
                       </div>
 
                       {/* MOBILE/TABLET LIST (<xl) */}
                       <div className="xl:hidden w-[calc(100%+40px)] -ml-5 md:w-full md:ml-0" style={{ padding: "10px 20px" }}>
-                        {subItems.map((item) => renderListCard(item))}
+                        {subItems.map((item) => (
+                          <ListCard key={item.id} item={item} orderUrl={orderUrl} />
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -354,13 +379,22 @@ const MenuMainContent: React.FC<MenuMainContentProps> = ({
                 <div className="hidden xl:grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 justify-items-start p-4 -m-4 overflow-hidden isolate">
                   {items.map((item) => {
                     const isCardActive = activeCardId === item.id;
-                    return renderRegularCard(item, category, isCardActive);
+                    return (
+                      <RegularCard
+                        key={item.id}
+                        item={item}
+                        isCardActive={isCardActive}
+                        orderUrl={orderUrl}
+                      />
+                    );
                   })}
                 </div>
 
                 {/* MOBILE/TABLET LIST (<xl) */}
                 <div className="xl:hidden w-[calc(100%+40px)] -ml-5 md:w-full md:ml-0" style={{ padding: "10px 20px" }}>
-                  {items.map((item) => renderListCard(item))}
+                  {items.map((item) => (
+                    <ListCard key={item.id} item={item} orderUrl={orderUrl} />
+                  ))}
                 </div>
               </div>
             )}
