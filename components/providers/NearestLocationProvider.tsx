@@ -45,8 +45,8 @@ type NearestLocationContextValue = NearestLocationState & {
   dismissPrompt: () => void;
   dismissOutsideServiceArea: () => void;
   selectLocation: (storeId: number) => void;
-  /** Resolves the nearest store from a plain lat/lng (e.g. a ZIP code lookup) instead of a GeolocationPosition. Returns true if a store was resolved. */
-  resolveFromCoordinates: (origin: { lat: number; lng: number }) => boolean;
+  /** Resolves the nearest store from a plain lat/lng (e.g. a ZIP code lookup) instead of a GeolocationPosition. Returns the resolved store, or null if none (outside service area or no match). */
+  resolveFromCoordinates: (origin: { lat: number; lng: number }) => Location | null;
 };
 
 const defaultContextValue: NearestLocationContextValue = {
@@ -59,7 +59,7 @@ const defaultContextValue: NearestLocationContextValue = {
   dismissPrompt: () => {},
   dismissOutsideServiceArea: () => {},
   selectLocation: () => {},
-  resolveFromCoordinates: () => false,
+  resolveFromCoordinates: () => null,
 };
 
 const NearestLocationContext =
@@ -105,6 +105,26 @@ function readSelectedLocation(): SelectedLocation | null {
   } catch {
     return null;
   }
+}
+
+function readSelectedLocationCookie(): number | null {
+  if (typeof document === "undefined") return null;
+  const match = document.cookie.match(
+    new RegExp(`(?:^|; )${SELECTED_LOCATION_KEY}=([^;]*)`)
+  );
+  if (!match) return null;
+  const storeId = Number(decodeURIComponent(match[1]));
+  return Number.isNaN(storeId) ? null : storeId;
+}
+
+// The cookie is what proxy.ts (server) already used to decide this
+// visitor's redirect, so it's the source of truth. localStorage is checked
+// only as a fallback — e.g. right after that redirect, on this device,
+// localStorage hasn't been written yet even though the cookie has.
+function readSelectedStoreId(): number | null {
+  const cookieStoreId = readSelectedLocationCookie();
+  if (cookieStoreId !== null) return cookieStoreId;
+  return readSelectedLocation()?.storeId ?? null;
 }
 
 function writeSelectedLocation(storeId: number) {
@@ -182,7 +202,7 @@ export function NearestLocationProvider({
   const outsideAreaDismissedRef = React.useRef(false);
 
   const resolveFromCoordinates = React.useCallback(
-    (origin: { lat: number; lng: number }): boolean => {
+    (origin: { lat: number; lng: number }): Location | null => {
       const activeLocations = getActiveLocations();
       if (!isWithinUsServiceArea(origin.lat, origin.lng)) {
         setState({
@@ -192,20 +212,20 @@ export function NearestLocationProvider({
           promptVisible: false,
           outsideServiceAreaVisible: !outsideAreaDismissedRef.current,
         });
-        return false;
+        return null;
       }
 
       const result = findNearest(origin, activeLocations);
       if (!result) {
         setState(keepResolvedOrUnavailable);
-        return false;
+        return null;
       }
       writeCache({
         storeId: result.item.id,
         distanceMiles: result.distanceMiles,
         timestamp: Date.now(),
       });
-      if (readSelectedLocation()) return true;
+      if (readSelectedStoreId() !== null) return result.item;
       setState({
         status: "resolved",
         nearest: toResolvedLocation(result.item, result.distanceMiles),
@@ -214,7 +234,7 @@ export function NearestLocationProvider({
         promptVisible: false,
         outsideServiceAreaVisible: false,
       });
-      return true;
+      return result.item;
     },
     []
   );
@@ -287,7 +307,7 @@ export function NearestLocationProvider({
   React.useEffect(() => {
     let cancelled = false;
     const activeLocations = getActiveLocations();
-    const selectedLocation = readSelectedLocation();
+    const selectedStoreId = readSelectedStoreId();
     const cached = readCache();
 
     const applyStoreId = (
@@ -310,9 +330,9 @@ export function NearestLocationProvider({
       }
     };
 
-    if (selectedLocation) {
+    if (selectedStoreId !== null) {
       const selectedStore = activeLocations.find(
-        (location) => location.id === selectedLocation.storeId
+        (location) => location.id === selectedStoreId
       );
       if (selectedStore) {
         writeSelectedLocation(selectedStore.id);

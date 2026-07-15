@@ -1,8 +1,15 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { Loader2, MapPin, X } from "lucide-react";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
+
+// Matches FindFlamePopup's pattern: only carry the visitor to the new
+// store's page if they're already viewing a location-specific menu/catering
+// page, otherwise the generic page's own auto-redirect (or just the updated
+// navbar label) is enough.
+const LOCATION_PAGE_PATTERN = /^\/(menu|catering)\/[^/]+$/;
 
 export default function LocationPermissionPrompt() {
   const {
@@ -12,7 +19,10 @@ export default function LocationPermissionPrompt() {
     dismissPrompt,
     dismissOutsideServiceArea,
     resolveFromCoordinates,
+    selectLocation,
   } = useNearestLocation();
+  const router = useRouter();
+  const pathname = usePathname();
   const [zip, setZip] = useState("");
   const [zipError, setZipError] = useState<string | null>(null);
   const [zipSubmitting, setZipSubmitting] = useState(false);
@@ -56,7 +66,18 @@ export default function LocationPermissionPrompt() {
         return;
       }
       const coordinates = (await res.json()) as { lat: number; lng: number };
-      resolveFromCoordinates(coordinates);
+      const resolved = resolveFromCoordinates(coordinates);
+      if (resolved) {
+        // A ZIP lookup is just as deliberate a pick as a Find-a-Flame
+        // selection — persist it the same way, and if already on a
+        // location-specific page, carry the visitor to that store's page
+        // instead of leaving them on the old store's menu/order links.
+        selectLocation(resolved.id);
+        const locationPageMatch = pathname.match(LOCATION_PAGE_PATTERN);
+        if (locationPageMatch) {
+          router.push(`/${locationPageMatch[1]}/${resolved.slug}`);
+        }
+      }
     } catch {
       setZipError("Something went wrong. Please try again.");
     } finally {
