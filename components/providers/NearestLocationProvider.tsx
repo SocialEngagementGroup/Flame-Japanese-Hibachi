@@ -383,7 +383,7 @@ export function NearestLocationProvider({
 
     const applyStoreId = (
       storeId: number,
-      distanceMiles: number,
+      distanceMiles: number | null,
       manually: boolean = false
     ) => {
       const store = activeLocations.find((l) => l.id === storeId);
@@ -401,6 +401,51 @@ export function NearestLocationProvider({
       }
     };
 
+    // Learns where the visitor is WITHOUT ever prompting, purely so distances
+    // can be shown. Only touches GPS when permission is already granted; other-
+    // wise falls back to the silent IP lookup. It can't change which store is
+    // selected — resolveFromCoordinates bails out early when a selection
+    // exists, setting the origin and nothing else.
+    const resolveOriginSilently = () => {
+      if (storedOrigin) return;
+
+      const useIpFallback = () =>
+        fetch("/api/geo/ip")
+          .then((res) => (res.ok ? res.json() : null))
+          .then((coords: Coordinates | null) => {
+            if (!cancelled && coords) resolveFromCoordinates(coords);
+          })
+          .catch(() => {});
+
+      if (typeof navigator === "undefined" || !("geolocation" in navigator)) {
+        useIpFallback();
+        return;
+      }
+
+      if (!navigator.permissions?.query) {
+        useIpFallback();
+        return;
+      }
+
+      navigator.permissions
+        .query({ name: "geolocation" })
+        .then((result) => {
+          if (cancelled) return;
+          if (result.state === "granted") {
+            navigator.geolocation.getCurrentPosition(
+              (position) => {
+                if (!cancelled) resolveFromPosition(position);
+              },
+              () => useIpFallback(),
+              GEO_OPTIONS
+            );
+          } else {
+            useIpFallback();
+          }
+        })
+        .catch(useIpFallback);
+    };
+
     if (selectedStoreId !== null) {
       const selectedStore = activeLocations.find(
         (location) => location.id === selectedStoreId
@@ -409,7 +454,14 @@ export function NearestLocationProvider({
         writeSelectedLocation(selectedStore.id);
         // Pass manually=true so the restored pick is treated as intentional,
         // preventing LocationContextSync on other pages from overwriting it.
-        applyStoreId(selectedStore.id, 0, true);
+        // distanceMiles is null, not 0 — a stored pick says nothing about how
+        // far away the visitor actually is.
+        applyStoreId(selectedStore.id, null, true);
+        // Deliberately NOT returning here. This used to return outright, so a
+        // visitor with a selected store never had their coordinates resolved
+        // and could never see a distance on anything, even with permission
+        // already granted.
+        resolveOriginSilently();
         return;
       }
       clearSelectedLocation();
