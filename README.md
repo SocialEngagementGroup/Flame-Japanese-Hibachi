@@ -48,18 +48,26 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 app/                      # App Router: routes, root layout, global styles
   layout.tsx              # Root layout (fonts, theme, Navbar/Footer)
   page.tsx                # Home
-  menu/page.tsx           # Menu
+  menu/page.tsx           # Menu (generic, no location)
+  menu/[location]/page.tsx      # Menu, one static page per location slug
+  catering/page.tsx       # Catering (generic, no location)
+  catering/[location]/page.tsx  # Catering, one static page per location slug
+  order/[slug]/route.ts   # Redirects a location slug to its order.online URL
   locations/page.tsx      # Locations
   contact/page.tsx        # Contact
+  sitemap.ts              # Sitemap, generated from locationsData.ts
   globals.css             # Global styles + design tokens (typography scale, colors)
 components/
   blocks/                 # Page sections: hero, menu, locations, contact, about, catering, franchise
+  blocks/location/        # LocationAutoRedirect, LocationBanner (shared by menu + catering location pages)
   layout/                 # Navbar, NavbarBottom, Footer
-  providers/              # ThemeProvider
+  providers/              # ThemeProvider, NearestLocationProvider (GPS/cache-based nearest-store resolver)
   sections/, ui/          # Shared sections and UI primitives
-data/                     # Static content (e.g. locationsData.ts)
+data/                     # Static content (e.g. locationsData.ts — the single source of truth for all 14 locations)
 lib/
-  api/                    # Data accessors (e.g. locations)
+  api/                    # Data accessors (e.g. locations, getLocationBySlug)
+  geo/                    # Distance sorting (Haversine) + order URL resolution
+  seo/                    # Canonical URL + shared schema.org Restaurant JSON-LD builder
   constants.ts            # Shared constants (e.g. external order URL)
   types/                  # Shared TypeScript types
 public/
@@ -68,12 +76,18 @@ public/
   theme-init.js, icon.png
 ```
 
+See [docs/location-pages-guide.md](docs/location-pages-guide.md) for how the
+per-location menu/catering routes work and how to add a new location.
+
 ## Pages
 
 | Route | Description |
 | --- | --- |
 | `/` | Home — hero, brand highlights, locations, catering |
-| `/menu` | Interactive menu with category navigation |
+| `/menu` | Interactive menu with category navigation (redirects to `/menu/[location]` once a nearest location is resolved) |
+| `/menu/[location]` | Location-specific menu page, e.g. `/menu/baltimore-md` |
+| `/catering` | Catering overview (redirects to `/catering/[location]` once a nearest location is resolved) |
+| `/catering/[location]` | Location-specific catering page, e.g. `/catering/laurel-md` |
 | `/locations` | Restaurant locations with an embedded map |
 | `/contact` | Contact information and form |
 

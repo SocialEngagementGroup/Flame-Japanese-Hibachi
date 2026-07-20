@@ -3,24 +3,48 @@
 import React from "react";
 import Link from "next/link";
 import type { IconType } from "react-icons";
-import { TbBrandFacebook, TbBrandInstagram, TbBrandTiktok, TbBrandYoutube } from "react-icons/tb";
-import { ORDER_URL } from "@/lib/constants";
+import {
+  TbBrandFacebook,
+  TbBrandInstagram,
+  TbBrandTiktok,
+  TbBrandYoutube,
+} from "react-icons/tb";
+import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 import { getActiveLocations } from "@/lib/api/locations";
 
 const NavbarBottom = () => {
   const locations = getActiveLocations().map((loc) => loc.name.toUpperCase());
+  const orderUrl = useOrderUrl();
 
   return (
     <section className="w-full bg-[#242323] py-0 flex items-center h-[50px] overflow-hidden relative z-[11]">
       <div className="w-full px-[var(--space-lg)] flex items-center h-full relative">
         {/* Social Icons - Left Aligned */}
         <div className="flex-none flex items-center gap-1.5 sm:gap-3 text-white z-20">
-          {([
-            { href: "https://www.facebook.com/flamejapanesehibachi", alt: "Facebook", Icon: TbBrandFacebook },
-            { href: "https://www.instagram.com/flamejapanesehibachi?igsh=MTNmNHMycXo0ZHl2bA%3D%3D&utm_source=qr", alt: "Instagram", Icon: TbBrandInstagram },
-            { href: "https://www.tiktok.com/@flame.japanese.hi?_r=1&_t=ZT-95mfJglR2ez", alt: "TikTok", Icon: TbBrandTiktok },
-            { href: "https://www.youtube.com/@flamejapanesehibachi", alt: "YouTube", Icon: TbBrandYoutube },
-          ] as { href: string; alt: string; Icon: IconType }[]).map((l) => (
+          {(
+            [
+              {
+                href: "https://www.facebook.com/flamejapanesehibachi",
+                alt: "Facebook",
+                Icon: TbBrandFacebook,
+              },
+              {
+                href: "https://www.instagram.com/flamejapanesehibachi?igsh=MTNmNHMycXo0ZHl2bA%3D%3D&utm_source=qr",
+                alt: "Instagram",
+                Icon: TbBrandInstagram,
+              },
+              {
+                href: "https://www.tiktok.com/@flame.japanese.hi?_r=1&_t=ZT-95mfJglR2ez",
+                alt: "TikTok",
+                Icon: TbBrandTiktok,
+              },
+              {
+                href: "https://www.youtube.com/@flamejapanesehibachi",
+                alt: "YouTube",
+                Icon: TbBrandYoutube,
+              },
+            ] as { href: string; alt: string; Icon: IconType }[]
+          ).map((l) => (
             <Link
               key={l.alt}
               href={l.href}
@@ -66,7 +90,7 @@ const NavbarBottom = () => {
 
         <div className="hidden min-[1100px]:flex flex-none items-center h-full z-20">
           <a
-            href={ORDER_URL}
+            href={orderUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-primary hover:bg-secondary text-white w-[147.31px] h-[36px] max-[1300px]:w-[125px] max-[1300px]:h-[32px] flex items-center justify-center font-medium text-base max-[1300px]:text-small tracking-[1.2px] transition-all uppercase"

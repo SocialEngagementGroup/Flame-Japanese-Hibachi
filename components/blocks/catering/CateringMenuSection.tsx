@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-import { ORDER_URL } from "@/lib/constants";
+import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 import type { CateringPackage } from "@/lib/types";
 import CateringCard from "./CateringCard";
 
@@ -17,10 +17,12 @@ interface CateringMenuSectionProps {
 const CateringMenuSection: React.FC<CateringMenuSectionProps> = ({
     title,
     subtitle,
-    orderUrl = ORDER_URL,
+    orderUrl: orderUrlProp,
     items,
     cardVariant = "catering",
 }) => {
+    const autoOrderUrl = useOrderUrl();
+    const orderUrl = orderUrlProp?.trim() ? orderUrlProp : autoOrderUrl;
     const [activeCardId, setActiveCardId] = useState("");
     const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 

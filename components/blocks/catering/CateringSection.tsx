@@ -5,7 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import type { Swiper as SwiperType } from "swiper";
-import { ORDER_URL } from "@/lib/constants";
+import Image from "next/image";
+import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 
 import "swiper/css";
 
@@ -62,6 +63,7 @@ const slides = [
 
 const CateringSection = () => {
   const swiperRef = useRef<SwiperType | null>(null);
+  const orderUrl = useOrderUrl();
 
   return (
     <section className="w-full py-[var(--space-2xl)] overflow-hidden bg-[#FFFFFF] dark:bg-black transition-colors duration-300">
@@ -100,7 +102,7 @@ const CateringSection = () => {
           }}
           spaceBetween={16}
           slidesPerView={1}
-          loop={true}
+          loop={slides.length >= 10}
           loopAdditionalSlides={slides.length}
           grabCursor={true}
           breakpoints={{
@@ -129,16 +131,18 @@ const CateringSection = () => {
           {slides.map((slide, i) => (
             <SwiperSlide key={i}>
               <a
-                href={ORDER_URL}
+                href={orderUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative block w-full h-[clamp(340px,50vh,500px)] overflow-hidden group"
               >
                 {/* Image */}
-                <img
+                <Image
                   src={slide.image}
                   alt={slide.label}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  fill
+                  sizes="(min-width: 1600px) 20vw, (min-width: 1100px) 30vw, (min-width: 768px) 40vw, 90vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
 
                 {/* Gradient overlay */}

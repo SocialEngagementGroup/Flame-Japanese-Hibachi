@@ -1,76 +1,19 @@
 import Hero from "@/components/blocks/hero/Hero";
 import LocationsSection from "@/components/blocks/locations/LocationsSection";
 import ContactSection from "@/components/blocks/contact/ContactSection";
-import { getCanonicalUrl } from "@/lib/seo/seo";
+import { buildPageMetadata } from "@/lib/seo/seo";
+import { buildRestaurantSchema } from "@/lib/seo/restaurantSchema";
 import { activeLocations } from "@/data/locationsData";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "All Flame Japanese Hibachi Locations (MD, VA, FL, PA)",
   description:
     "Find a Flame Japanese Hibachi location near you. Twelve-plus open restaurants across Maryland, Virginia, Florida and Pennsylvania, with more coming soon.",
-  alternates: {
-    canonical: getCanonicalUrl("/locations"),
-  },
-};
-
-function buildOpeningHours() {
-  return [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
-      opens: "11:00",
-      closes: "22:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Sunday"],
-      opens: "11:00",
-      closes: "21:00",
-    },
-  ];
-}
-
-function buildRestaurantSchema(loc: (typeof activeLocations)[0]) {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "@id": `https://www.flamehibachi.com/locations#${loc.slug}`,
-    name: loc.schemaName,
-    url: `https://www.flamehibachi.com/locations#${loc.slug}`,
-    servesCuisine: ["Japanese", "Hibachi", "Sushi", "Halal"],
-    priceRange: "$$",
-    hasMenu: "https://www.flamehibachi.com/menu",
-    acceptsReservations: false,
-    telephone: loc.phone,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: loc.streetAddress,
-      addressLocality: loc.city,
-      addressRegion: loc.state,
-      postalCode: loc.postalCode,
-      addressCountry: "US",
-    },
-    openingHoursSpecification: buildOpeningHours(),
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: loc.lat,
-      longitude: loc.lng,
-    },
-    ...(loc.image ? { image: loc.image } : {}),
-  };
-
-  return schema;
-}
+  path: "/locations",
+});
 
 export default function LocationsPage() {
-  const restaurantSchemas = activeLocations.map(buildRestaurantSchema);
+  const restaurantSchemas = activeLocations.map((loc) => buildRestaurantSchema(loc));
 
   return (
     <div className="flex flex-col w-full">

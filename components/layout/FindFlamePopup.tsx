@@ -1,13 +1,10 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { X, Search, Phone, Clock, MapPin } from "lucide-react";
 import { getActiveLocations } from "@/lib/api/locations";
-
-type Props = {
-  open: boolean;
-  onClose: () => void;
-};
+import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 
 const activeLocations = getActiveLocations();
 
@@ -16,11 +13,79 @@ const googleMapsUrl = (address: string) =>
     `Flame Japanese Hibachi ${address}`
   )}`;
 
-const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
+const LOCATION_PAGE_PATTERN = /^\/(menu|catering)\/[^/]+$/;
+
+// Open state comes from NearestLocationProvider, not props, so every trigger
+// (navbar button, "Not your location?" on a location page) opens this same
+// single instance — mounted once in app/layout.tsx.
+const FindFlamePopup: React.FC = () => {
+  const {
+    nearest,
+    selectLocation,
+    findFlameOpen: open,
+    closeFindFlame: onClose,
+  } = useNearestLocation();
+  const router = useRouter();
+  const pathname = usePathname();
+  const findYourFlameText = nearest ? nearest.name : "FLAME";
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<number>(activeLocations[0].id);
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-  const cardRefs = useRef<Record<number, HTMLButtonElement | null>>({});
+  const [mapSrc, setMapSrc] = useState("");
+
+  // Nearest store moves to the top of the list once geolocation resolves.
+  const sortedActiveLocations = useMemo(() => {
+    if (!nearest) return activeLocations;
+    const idx = activeLocations.findIndex((l) => l.id === nearest.id);
+    if (idx <= 0) return activeLocations;
+    const copy = [...activeLocations];
+    const [match] = copy.splice(idx, 1);
+    copy.unshift(match);
+    return copy;
+  }, [nearest]);
+
+  useEffect(() => {
+    if (open && nearest) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- sync highlighted card when the active location changes
+      setSelectedId(nearest.id);
+    }
+  }, [open, nearest]);
+
+  // Opening the popup is a strong intent signal a store switch is coming, so
+  // warm the router cache. The heavy menu/catering tree lives in the layout and
+  // is already mounted, so each of these payloads is only the page delta (~4 KB)
+  // — cheap enough to prefetch every store, which makes any pick instant.
+  // Still staggered so 14 requests don't land as one burst.
+  useEffect(() => {
+    if (!open) return;
+    const base = pathname.startsWith("/catering") ? "catering" : "menu";
+    let i = 0;
+    const id = setInterval(() => {
+      if (i >= sortedActiveLocations.length) {
+        clearInterval(id);
+        return;
+      }
+      router.prefetch(`/${base}/${sortedActiveLocations[i].slug}`);
+      i++;
+    }, 100);
+    return () => clearInterval(id);
+  }, [open, pathname, router, sortedActiveLocations]);
+
+  const handleLocationSelect = (storeId: number) => {
+    setSelectedId(storeId);
+    selectLocation(storeId);
+    onClose();
+
+    // If already viewing a location-specific menu/catering page, switching stores
+    // here should carry the visitor to that same page for the newly picked store —
+    // otherwise the page keeps showing the old store's menu/order links until reload.
+    const locationPageMatch = pathname.match(LOCATION_PAGE_PATTERN);
+    if (locationPageMatch) {
+      const store = activeLocations.find((l) => l.id === storeId);
+      if (store) {
+        router.push(`/${locationPageMatch[1]}/${store.slug}`);
+      }
+    }
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -38,51 +103,27 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
 
   const filteredActive = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return activeLocations;
-    return activeLocations.filter(
+    if (!q) return sortedActiveLocations;
+    return sortedActiveLocations.filter(
       (l) =>
-        l.name.toLowerCase().includes(q) ||
-        l.address.toLowerCase().includes(q)
+        l.name.toLowerCase().includes(q) || l.address.toLowerCase().includes(q)
     );
-  }, [query]);
-
-  // Scroll-sync: update selected location based on which card is most visible in the scroll area
-  useEffect(() => {
-    if (!open) return;
-    const root = scrollRef.current;
-    if (!root) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Pick the most-visible card among intersecting entries
-        let best: IntersectionObserverEntry | null = null;
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          if (!best || entry.intersectionRatio > best.intersectionRatio) {
-            best = entry;
-          }
-        }
-        if (best) {
-          const id = Number((best.target as HTMLElement).dataset.locationId);
-          if (!Number.isNaN(id)) setSelectedId(id);
-        }
-      },
-      {
-        root,
-        rootMargin: "-30% 0px -50% 0px",
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-      }
-    );
-
-    Object.values(cardRefs.current).forEach((el) => {
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [open, filteredActive]);
+  }, [query, sortedActiveLocations]);
 
   const selected =
     activeLocations.find((l) => l.id === selectedId) ?? activeLocations[0];
+
+  // Debounce the Google Maps iframe src so rapid store clicks don't reload the map every time.
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setMapSrc(
+        `https://maps.google.com/maps?q=${encodeURIComponent(
+          `Flame Japanese Hibachi ${selected.address}`
+        )}&t=k&z=17&ie=UTF8&iwloc=&output=embed`
+      );
+    }, 300);
+    return () => clearTimeout(id);
+  }, [selected.address]);
 
   if (!open) return null;
 
@@ -103,7 +144,7 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
           <div>
             <h3 className="heading-h3">
               <span className="text-black dark:text-white">FIND YOUR </span>
-              <span className="text-primary">FLAME</span>
+              <span className="text-primary">{findYourFlameText}</span>
             </h3>
             <p className="text-gray-700 dark:text-gray-300 text-small leading-relaxed font-medium mt-2 max-w-md">
               Pick a location to view it on the map or get directions.
@@ -134,10 +175,7 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
           </div>
         </div>
 
-        <div
-          ref={scrollRef}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--gap-lg)] px-[var(--space-lg)] py-[var(--space-md)] overflow-y-auto flex-1"
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--gap-lg)] px-[var(--space-lg)] py-[var(--space-md)] overflow-y-auto flex-1">
           <div className="order-1 lg:order-2 lg:sticky lg:top-0 self-start">
             <div className="w-full h-[260px] lg:h-[460px] bg-zinc-200 dark:bg-zinc-900 border border-black/5 dark:border-white/10 overflow-hidden shadow-2xl">
               <iframe
@@ -148,9 +186,8 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
                 scrolling="no"
                 marginHeight={0}
                 marginWidth={0}
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(
-                  `Flame Japanese Hibachi ${selected.address}`
-                )}&t=k&z=17&ie=UTF8&iwloc=&output=embed`}
+                loading="lazy"
+                src={mapSrc}
               />
             </div>
             <a
@@ -179,20 +216,18 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
                   return (
                     <button
                       key={loc.id}
-                      ref={(el) => {
-                        cardRefs.current[loc.id] = el;
-                      }}
-                      data-location-id={loc.id}
-                      onClick={() => setSelectedId(loc.id)}
-                      className={`w-full text-left p-[var(--space-md)] border transition-all relative overflow-hidden ${isSelected
+                      onClick={() => handleLocationSelect(loc.id)}
+                      className={`w-full text-left p-[var(--space-md)] border transition-all relative overflow-hidden ${
+                        isSelected
                           ? "bg-zinc-900 border-primary"
                           : "bg-[#1C1B1B] border-white/5 hover:border-primary/50"
-                        }`}
+                      }`}
                     >
                       <div className="flex justify-between items-start gap-3">
                         <h4
-                          className={`heading-h4 leading-tight uppercase ${isSelected ? "text-primary" : "text-white"
-                            }`}
+                          className={`heading-h4 leading-tight uppercase ${
+                            isSelected ? "text-primary" : "text-white"
+                          }`}
                         >
                           {loc.name}
                           <span className="block text-small font-normal text-gray-400 mt-1 normal-case">
@@ -217,6 +252,14 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
                             {loc.hours}
                           </span>
                         </div>
+                        {nearest?.id === loc.id && (
+                          <div className="flex items-center gap-2 text-primary text-small">
+                            <MapPin size={14} />
+                            <span className="font-bold uppercase">
+                              {nearest.distanceMiles.toFixed(1)} mi away
+                            </span>
+                          </div>
+                        )}
                       </div>
                     </button>
                   );

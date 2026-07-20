@@ -11,6 +11,7 @@ import {
   getActiveLocations,
   getComingSoonLocations,
 } from "@/lib/api/locations";
+import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -32,13 +33,42 @@ const LocationsSection = ({
 }: LocationsSectionProps = {}) => {
   const [selectedLocation, setSelectedLocation] = useState(activeLocations[0]);
   const [mapLoading, setMapLoading] = useState(false);
+  const { nearest } = useNearestLocation();
+  const findYourFlameText = "FLAME";
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const mobileSwiperRef = useRef<SwiperType | null>(null);
+  const nearestAppliedRef = useRef(false);
+
+  // Nearest store moves to the top of the list once geolocation resolves.
+  // Falls back to the default (unsorted) order when no nearest store is known yet.
+  const sortedActiveLocations = React.useMemo(() => {
+    if (!nearest) return activeLocations;
+    const idx = activeLocations.findIndex((l) => l.id === nearest.id);
+    if (idx <= 0) return activeLocations;
+    const copy = [...activeLocations];
+    const [match] = copy.splice(idx, 1);
+    copy.unshift(match);
+    return copy;
+  }, [nearest]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- reset map spinner when the selected location changes
     setMapLoading(true);
   }, [selectedLocation.id]);
+
+  // Seed the highlighted card to the nearest store the first time it resolves,
+  // so the top card's highlight/map matches the newly-reordered list.
+  useEffect(() => {
+    if (nearest && !nearestAppliedRef.current) {
+      nearestAppliedRef.current = true;
+      const match = activeLocations.find((l) => l.id === nearest.id);
+      if (match) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time seed once geolocation resolves, guarded by nearestAppliedRef
+        setSelectedLocation(match);
+        mobileSwiperRef.current?.slideTo(0, 0);
+      }
+    }
+  }, [nearest]);
 
   const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
     `Flame Japanese Hibachi ${selectedLocation.address}`
@@ -89,23 +119,23 @@ const LocationsSection = ({
         }
       });
 
-      let finalIndex = isAtBottom ? activeLocations.length - 1 : (bestIndex !== -1 ? bestIndex : closestIndex);
+      let finalIndex = isAtBottom ? sortedActiveLocations.length - 1 : (bestIndex !== -1 ? bestIndex : closestIndex);
 
       // Force last card if we've scrolled 10px past the second-to-last card's activation point
-      if (finalIndex === activeLocations.length - 2 && activeLocations.length >= 2) {
-        const secondLastCard = cardRefs.current[activeLocations.length - 2];
+      if (finalIndex === sortedActiveLocations.length - 2 && sortedActiveLocations.length >= 2) {
+        const secondLastCard = cardRefs.current[sortedActiveLocations.length - 2];
         if (secondLastCard) {
           const rect = secondLastCard.getBoundingClientRect();
           if (triggerY - rect.top > 12) {
-            finalIndex = activeLocations.length - 1;
+            finalIndex = sortedActiveLocations.length - 1;
           }
         }
       }
 
       if (finalIndex !== -1) {
         setSelectedLocation((prev) => {
-          if (prev.id !== activeLocations[finalIndex].id) {
-            return activeLocations[finalIndex];
+          if (prev.id !== sortedActiveLocations[finalIndex].id) {
+            return sortedActiveLocations[finalIndex];
           }
           return prev;
         });
@@ -122,7 +152,7 @@ const LocationsSection = ({
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, []);
+  }, [sortedActiveLocations]);
 
   const handleCardClick = (loc: typeof activeLocations[0]) => {
     window.open(googleMapsUrl(loc.address), "_blank");
@@ -138,7 +168,7 @@ const LocationsSection = ({
           <>
             <h2 className="heading-h3 mb-[var(--space-md)]">
               <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
-              <span className="text-primary">FLAME</span>
+              <span className="text-primary">{findYourFlameText}</span>
             </h2>
             <p className="text-gray-700 dark:text-gray-300 text-small leading-relaxed font-medium mb-[var(--space-lg)] transition-colors duration-300">
               Experience the heat near you. Browse our active restaurants or see where we&apos;re striking next.
@@ -157,6 +187,7 @@ const LocationsSection = ({
               scrolling="no"
               marginHeight={0}
               marginWidth={0}
+              loading="lazy"
               src={mapSrc}
               onLoad={() => setMapLoading(false)}
               className={`transition-opacity duration-500 ease-in-out ${mapLoading ? 'opacity-0' : 'opacity-100'}`}
@@ -179,11 +210,11 @@ const LocationsSection = ({
             }}
             onSlideChange={(swiper) => {
               const index = swiper.realIndex;
-              setSelectedLocation(activeLocations[index]);
+              setSelectedLocation(sortedActiveLocations[index]);
             }}
             className="w-full h-auto"
           >
-            {activeLocations.map((loc) => (
+            {sortedActiveLocations.map((loc) => (
               <SwiperSlide key={loc.id}>
                 <div
                   id={loc.slug}
@@ -193,9 +224,16 @@ const LocationsSection = ({
                     : "bg-[#1C1B1B] border-white/5"
                     }`}
                 >
-                  <span className={`text-small font-black tracking-[3px] uppercase font-sans mb-3 ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>
-                    OPEN NOW
-                  </span>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className={`text-small font-black tracking-[3px] uppercase font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>
+                      OPEN NOW
+                    </span>
+                    {nearest?.id === loc.id && (
+                      <span className={`text-small font-black uppercase font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>
+                        {nearest.distanceMiles.toFixed(1)} MI AWAY
+                      </span>
+                    )}
+                  </div>
                   <h3
                     className={`heading-h4 mb-3 leading-tight uppercase text-white`}
                   >
@@ -214,6 +252,13 @@ const LocationsSection = ({
                       <span className="font-bold uppercase">{loc.hours}</span>
                     </div>
                   </div>
+                  <Link
+                    href={`/menu/${loc.slug}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className={`mt-3 inline-block w-fit text-small font-black uppercase tracking-[1.5px] underline underline-offset-2 ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}
+                  >
+                    View Menu
+                  </Link>
                 </div>
               </SwiperSlide>
             ))}
@@ -287,7 +332,7 @@ const LocationsSection = ({
                 <>
                   <h2 className="heading-h3 mb-[var(--space-xl)] whitespace-nowrap text-left">
                     <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
-                    <span className="text-primary">FLAME</span>
+                    <span className="text-primary">{findYourFlameText}</span>
                   </h2>
                   <p className="text-gray-700 dark:text-gray-300 text-base mb-10 max-w-sm leading-relaxed font-medium transition-colors duration-300">
                     Experience the heat near you. Browse our active restaurants or see where we&apos;re striking next.
@@ -306,6 +351,7 @@ const LocationsSection = ({
                     scrolling="no"
                     marginHeight={0}
                     marginWidth={0}
+                    loading="lazy"
                     src={mapSrc}
                     onLoad={() => setMapLoading(false)}
                     className={`transition-opacity duration-500 ease-in-out ${mapLoading ? 'opacity-0' : 'opacity-100'}`}
@@ -356,7 +402,7 @@ const LocationsSection = ({
                 <>
                   <h2 className="heading-h3 mb-[var(--space-xl)] whitespace-nowrap text-left">
                     <span className="text-black dark:text-white transition-colors duration-300">FIND YOUR </span>
-                    <span className="text-primary">FLAME</span>
+                    <span className="text-primary">{findYourFlameText}</span>
                   </h2>
                   <p className="text-gray-700 dark:text-gray-300 text-base mb-10 max-w-sm leading-relaxed font-medium transition-colors duration-300">
                     Experience the heat near you. Browse our active restaurants or see where we&apos;re striking next.
@@ -365,7 +411,7 @@ const LocationsSection = ({
               )}
             </div>
             <div className="space-y-6">
-              {activeLocations.map((loc, index) => (
+              {sortedActiveLocations.map((loc, index) => (
                 <div
                   key={loc.id}
                   id={loc.slug}
@@ -384,6 +430,11 @@ const LocationsSection = ({
 
                   <div className="flex justify-between items-start mb-4">
                     <span className={`text-small font-black tracking-[3px] uppercase font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>OPEN NOW</span>
+                    {nearest?.id === loc.id && (
+                      <span className={`text-small font-black uppercase font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>
+                        {nearest.distanceMiles.toFixed(1)} MI AWAY
+                      </span>
+                    )}
                   </div>
 
                   <h3 className={`heading-h4 transition-colors leading-tight max-w-[90%] mb-6 uppercase ${selectedLocation.id === loc.id ? "text-white" : "text-white group-hover:text-primary"
@@ -402,6 +453,14 @@ const LocationsSection = ({
                       <span className="font-bold uppercase">{loc.hours}</span>
                     </div>
                   </div>
+
+                  <Link
+                    href={`/menu/${loc.slug}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className={`relative z-10 mt-4 inline-block w-fit text-small font-black uppercase tracking-[1.5px] underline underline-offset-2 ${selectedLocation.id === loc.id ? "text-white" : "text-primary group-hover:text-white"}`}
+                  >
+                    View Menu
+                  </Link>
 
                   {/* Map Indicator */}
                   {selectedLocation.id === loc.id && (

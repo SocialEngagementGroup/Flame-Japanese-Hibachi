@@ -56,7 +56,7 @@ export default function Home() {
       />
 
       <div className="flex flex-col min-h-[calc(100dvh-100px)] md:min-h-[calc(100dvh-115px)]">
-        <Hero />
+        <Hero posterSrc="/homepage/hero/hero-bg-desk-poster.webp" />
         {/* <HeroCTA /> hidden until login system is live */}
       </div>
       <MenuGrid />

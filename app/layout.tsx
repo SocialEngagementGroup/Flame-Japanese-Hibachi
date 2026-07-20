@@ -5,10 +5,12 @@ import Navbar from "@/components/layout/Navbar";
 import NavbarBottom from "@/components/layout/NavbarBottom";
 import Footer from "@/components/layout/Footer";
 import TopLoader from "@/components/layout/TopLoader";
+import LocationPermissionPrompt from "@/components/layout/LocationPermissionPrompt";
+import FindFlamePopup from "@/components/layout/FindFlamePopup";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { NearestLocationProvider } from "@/components/providers/NearestLocationProvider";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 import type { Metadata } from "next";
-
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -21,7 +23,8 @@ const raleway = Raleway({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.flamehibachi.com";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.flamehibachi.com";
 const defaultTitle = "Flame Japanese Hibachi | Halal Hibachi, Sushi & Bento";
 const defaultDescription =
   "100% Halal Japanese hibachi cooked fresh in front of you, plus sushi, bento, loaded fries and boba. Find a Flame Japanese Hibachi location or order online today.";
@@ -102,15 +105,48 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-W85NMRDW');`,
           }}
         />
+
+        {/* Meta Pixel Code */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            alt=""
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=1625079182515012&ev=PageView&noscript=1"
+          />
+        </noscript>
+        <Script
+          id="meta-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `!function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1625079182515012');
+            fbq('track', 'PageView');`,
+          }}
+        />
+        {/* End Meta Pixel Code */}
+
         <Script src="/theme-init.js" strategy="beforeInteractive" />
         <ThemeProvider>
-          <TopLoader />
-          <header className="fixed top-0 left-0 w-full z-50">
-            <Navbar />
-            <NavbarBottom />
-          </header>
-          <main className="flex-1 pt-[100px] md:pt-[115px]">{children}</main>
-          <Footer />
+          <NearestLocationProvider>
+            <TopLoader />
+            <header className="fixed top-0 left-0 w-full z-50">
+              <Navbar />
+              <NavbarBottom />
+            </header>
+            <main className="flex-1 pt-[100px] md:pt-[115px]">{children}</main>
+            <Footer />
+            <LocationPermissionPrompt />
+            <FindFlamePopup />
+          </NearestLocationProvider>
         </ThemeProvider>
       </body>
     </html>

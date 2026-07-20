@@ -2,59 +2,67 @@
 
 import React from "react";
 import Link from "next/link";
-import { ORDER_URL } from "@/lib/constants";
+import Image from "next/image";
+import { useOrderUrl } from "@/lib/geo/useOrderUrl";
+import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 
-const categories = [
-  {
-    name: "BUILD YOUR OWN PLATTER",
-    href: ORDER_URL,
-    external: true,
-    image: "/homepage/menu/BUILD YOUR OWN PLATTER.png",
-    mobileImage: "/homepage/menu/build-your-own-platter-mobile.png",
-  },
+type MenuCategory = {
+  name: string;
+  href: string;
+  image: string;
+  mobileImage?: string;
+  external?: boolean;
+};
+
+const staticCategorySections: {
+  name: string;
+  section: string;
+  image: string;
+  mobileImage?: string;
+}[] = [
   {
     name: "HIBACHI",
-    href: "/menu#section-hibachi",
+    section: "section-hibachi",
     image: "/homepage/menu/HIBACHI.png",
     mobileImage: "/homepage/menu/hibachi-mobile.png",
   },
   {
     name: "FLAME COMBO",
-    href: "/menu#section-combo",
+    section: "section-combo",
     image: "/homepage/menu/FLAME COMBO.png",
     mobileImage: "/homepage/menu/flame-combo-mobile.png",
   },
   {
     name: "BENTO",
-    href: "/menu#section-bento",
+    section: "section-bento",
     image: "/homepage/menu/BENTO.png",
     mobileImage: "/homepage/menu/bento-mobile.png",
   },
   {
     name: "SUSHI",
-    href: "/menu#section-sushi",
+    section: "section-sushi",
     image: "/homepage/menu/SUSHI.png",
     mobileImage: "/homepage/menu/sushi-mobile.png",
   },
   {
     name: "WINGS/TENDERS",
-    href: "/menu#section-wings",
+    section: "section-wings",
     image: "/homepage/menu/WINGS  TENDERS.png",
     mobileImage: "/homepage/menu/wings-tenders-mobile.png",
   },
   {
     name: "FLAME LOADED FRIES",
-    href: "/menu#section-fries",
+    section: "section-fries",
     image: "/homepage/menu/FLAME LOADED FRIES.png",
   },
   {
     name: "BOBA TEA/SMOOTHIES",
-    href: "/menu#section-boba",
+    section: "section-boba",
     image: "/homepage/menu/BOBA TEA  SMOOTHIES  Drinks.png",
   },
   {
     name: "ADD ONS/APPETIZER",
-    href: "/menu#section-addons",
+    section: "section-addons",
     image: "/homepage/menu/ADD ONS.png",
   },
 ];
@@ -63,6 +71,27 @@ const cardClassName =
   "group relative aspect-[275.67/280] md:aspect-[378.67/278] overflow-hidden bg-card";
 
 const MenuGrid = () => {
+  const orderUrl = useOrderUrl();
+  const { nearest } = useNearestLocation();
+  // Route straight to the visitor's known location page when we have one, so
+  // the tap skips the edge proxy's location-detection redirect entirely.
+  const menuBase = nearest ? `/menu/${nearest.slug}` : "/menu";
+  const categories: MenuCategory[] = [
+    {
+      name: "BUILD YOUR OWN PLATTER",
+      href: orderUrl,
+      external: true,
+      image: "/homepage/menu/BUILD YOUR OWN PLATTER.png",
+      mobileImage: "/homepage/menu/build-your-own-platter-mobile.png",
+    },
+    ...staticCategorySections.map((cat) => ({
+      name: cat.name,
+      href: `${menuBase}#${cat.section}`,
+      image: cat.image,
+      mobileImage: cat.mobileImage,
+    })),
+  ];
+
   return (
     <section className="w-full bg-background py-[var(--space-lg)] px-[var(--space-lg)] transition-colors duration-300">
       <div className="max-w-[1800px] mx-auto">
@@ -75,7 +104,7 @@ const MenuGrid = () => {
           </div>
 
           <a
-            href={ORDER_URL}
+            href={orderUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:block text-foreground text-small font-bold uppercase tracking-[2px] border-b border-foreground pb-1 hover:text-primary hover:border-primary transition-all whitespace-nowrap"
@@ -90,16 +119,32 @@ const MenuGrid = () => {
             const inner = (
               <>
                 {/* Responsive image: mobile-specific crop on small screens. Zooms on hover. */}
-                <picture className="absolute inset-0 w-full h-full z-0">
-                  {cat.mobileImage && (
-                    <source media="(max-width: 768px)" srcSet={cat.mobileImage} />
-                  )}
-                  <img
+                {cat.mobileImage ? (
+                  <>
+                    <Image
+                      src={cat.image}
+                      alt={cat.name}
+                      fill
+                      sizes="33vw"
+                      className="hidden md:block object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
+                    />
+                    <Image
+                      src={cat.mobileImage}
+                      alt={cat.name}
+                      fill
+                      sizes="33vw"
+                      className="block md:hidden object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
+                    />
+                  </>
+                ) : (
+                  <Image
                     src={cat.image}
                     alt={cat.name}
-                    className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-110"
+                    fill
+                    sizes="33vw"
+                    className="object-cover transition-transform duration-[800ms] group-hover:scale-110 z-0"
                   />
-                </picture>
+                )}
 
                 {/* Default gradient overlay for resting readability — fades out on hover */}
                 <div

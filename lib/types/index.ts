@@ -13,6 +13,8 @@ export type Location = {
   lat: number;
   lng: number;
   image?: string;
+  /** Per-store order.online URL. Falls back to lib/constants.ts ORDER_URL when unset/empty. */
+  orderUrl?: string;
 };
 
 export type ComingSoonLocation = {
