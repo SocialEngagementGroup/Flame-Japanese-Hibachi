@@ -1,4 +1,3 @@
-import Hero from "@/components/blocks/hero/Hero";
 import LocationAutoRedirect from "@/components/blocks/location/LocationAutoRedirect";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 
@@ -15,21 +14,8 @@ export const metadata = {
 export default function MenuPage() {
   return (
     <>
+      {/* Hero lives in app/menu/layout.tsx — shared with /menu/[location]. */}
       <LocationAutoRedirect basePath="/menu" />
-      <Hero
-        tagline="SIZZLING PERFECTION, EVERY TIME."
-        title={
-          <>
-            <span className="block md:inline whitespace-nowrap">SAVOR THE </span>
-            <span className="block md:inline whitespace-nowrap">FLAVORS.</span>
-          </>
-        }
-        ctaLabel={null}
-        align="center"
-        fullHeight={false}
-        bgImageDesk="/menupage/hero/flame-japanese-hibachi-menu-hero-spread-mob.png"
-        bgImageMob="/menupage/hero/flame-japanese-hibachi-menu-hero-spread-desk.png"
-      />
     </>
   );
 }

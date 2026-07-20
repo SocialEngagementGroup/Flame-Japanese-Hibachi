@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Hero from "@/components/blocks/hero/Hero";
 import LocationBanner from "@/components/blocks/location/LocationBanner";
 import LocationContextSync from "@/components/blocks/location/LocationContextSync";
 import { getActiveLocations, getLocationBySlug } from "@/lib/api/locations";
-import { resolveOrderUrl } from "@/lib/geo/orderUrl";
 import { buildRestaurantSchema } from "@/lib/seo/restaurantSchema";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 
@@ -43,7 +41,6 @@ export default async function LocationMenuPage({
   const location = getLocationBySlug(slug);
   if (!location) notFound();
 
-  const orderUrl = resolveOrderUrl(location);
   const canonical = getCanonicalUrl(`/menu/${location.slug}`);
   const schema = buildRestaurantSchema(location, {
     pageUrl: canonical,
@@ -58,24 +55,8 @@ export default async function LocationMenuPage({
       />
       <LocationContextSync storeId={location.id} />
 
-      <Hero
-        tagline="SIZZLING PERFECTION, EVERY TIME."
-        title={
-          <>
-            <span className="block md:inline whitespace-nowrap">SAVOR THE </span>
-            <span className="block md:inline whitespace-nowrap">
-              FLAVORS IN {location.city.toUpperCase()}.
-            </span>
-          </>
-        }
-        ctaLabel="ORDER NOW"
-        ctaHref={orderUrl}
-        align="center"
-        fullHeight={false}
-        bgImageDesk="/menupage/hero/flame-japanese-hibachi-menu-hero-spread-mob.png"
-        bgImageMob="/menupage/hero/flame-japanese-hibachi-menu-hero-spread-desk.png"
-      />
-
+      {/* The hero lives in app/menu/layout.tsx so its video survives a store
+          switch — it reads the city from the route param itself. */}
       <LocationBanner location={location} pageLabel="menu" />
     </>
   );

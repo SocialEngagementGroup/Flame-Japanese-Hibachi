@@ -8,9 +8,22 @@ import { isWithinUsServiceArea } from "@/lib/geo/serviceArea";
 const SELECTED_LOCATION_KEY = "fjh-selected-location-v1";
 const ONE_YEAR_SECONDS = 60 * 60 * 24 * 365;
 
+// Crawlers hit us from US IPs, so the geo branch below would 307 them off
+// /menu and /catering onto one arbitrary store's page — the generic pages
+// would then never be indexed on their own content. Bots always get the
+// generic page; only real visitors get geo-routed.
+const BOT_UA_PATTERN =
+  /bot|crawl|spider|slurp|bingpreview|facebookexternalhit|embedly|quora link preview|whatsapp|telegram|lighthouse|chrome-lighthouse|headlesschrome/i;
+
+function isCrawler(request: NextRequest): boolean {
+  return BOT_UA_PATTERN.test(request.headers.get("user-agent") ?? "");
+}
+
 export function proxy(request: NextRequest) {
   const url = request.nextUrl.clone();
   const activeLocations = getActiveLocations();
+
+  if (isCrawler(request)) return NextResponse.next();
 
   // Manual selection wins because it is explicit and can be read before render.
   const cookieVal = request.cookies.get(SELECTED_LOCATION_KEY)?.value;
