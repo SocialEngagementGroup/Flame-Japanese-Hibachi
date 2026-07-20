@@ -252,13 +252,6 @@ const LocationsSection = ({
                       <span className="font-bold uppercase">{loc.hours}</span>
                     </div>
                   </div>
-                  <Link
-                    href={`/menu/${loc.slug}`}
-                    onClick={(e) => e.stopPropagation()}
-                    className={`mt-3 inline-block w-fit text-small font-black uppercase tracking-[1.5px] underline underline-offset-2 ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}
-                  >
-                    View Menu
-                  </Link>
                 </div>
               </SwiperSlide>
             ))}
@@ -453,14 +446,6 @@ const LocationsSection = ({
                       <span className="font-bold uppercase">{loc.hours}</span>
                     </div>
                   </div>
-
-                  <Link
-                    href={`/menu/${loc.slug}`}
-                    onClick={(e) => e.stopPropagation()}
-                    className={`relative z-10 mt-4 inline-block w-fit text-small font-black uppercase tracking-[1.5px] underline underline-offset-2 ${selectedLocation.id === loc.id ? "text-white" : "text-primary group-hover:text-white"}`}
-                  >
-                    View Menu
-                  </Link>
 
                   {/* Map Indicator */}
                   {selectedLocation.id === loc.id && (
