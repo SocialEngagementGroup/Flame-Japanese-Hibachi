@@ -12,6 +12,8 @@ import {
   getComingSoonLocations,
 } from "@/lib/api/locations";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
+import { haversineDistanceMiles } from "@/lib/geo/distance";
+import { formatDistance } from "@/lib/geo/formatDistance";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -33,7 +35,16 @@ const LocationsSection = ({
 }: LocationsSectionProps = {}) => {
   const [selectedLocation, setSelectedLocation] = useState(activeLocations[0]);
   const [mapLoading, setMapLoading] = useState(false);
-  const { nearest } = useNearestLocation();
+  const { nearest, origin } = useNearestLocation();
+
+  /** Distance from the visitor to a store, or null when we simply don't know.
+   * Only a shared location (GPS/IP/ZIP) produces an origin — a store picked by
+   * hand doesn't, and inventing a number there is what previously showed
+   * "0.0 MI AWAY" to someone who had never shared their location at all.
+   * Works from anywhere in the world; being outside the delivery area affects
+   * ordering, not whether a distance can be measured. */
+  const distanceTo = (loc: { lat: number; lng: number }) =>
+    origin ? haversineDistanceMiles(origin, loc) : null;
   const findYourFlameText = "FLAME";
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const mobileSwiperRef = useRef<SwiperType | null>(null);
@@ -228,9 +239,9 @@ const LocationsSection = ({
                     <span className={`text-small font-black tracking-[3px] uppercase font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>
                       OPEN NOW
                     </span>
-                    {nearest?.id === loc.id && (
+                    {distanceTo(loc) !== null && (
                       <span className={`text-small font-black uppercase font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>
-                        {nearest.distanceMiles.toFixed(1)} MI AWAY
+                        {formatDistance(distanceTo(loc)!)}
                       </span>
                     )}
                   </div>
@@ -252,13 +263,6 @@ const LocationsSection = ({
                       <span className="font-bold uppercase">{loc.hours}</span>
                     </div>
                   </div>
-                  <Link
-                    href={`/menu/${loc.slug}`}
-                    onClick={(e) => e.stopPropagation()}
-                    className={`mt-3 inline-block w-fit text-small font-black uppercase tracking-[1.5px] underline underline-offset-2 ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}
-                  >
-                    View Menu
-                  </Link>
                 </div>
               </SwiperSlide>
             ))}
@@ -430,9 +434,9 @@ const LocationsSection = ({
 
                   <div className="flex justify-between items-start mb-4">
                     <span className={`text-small font-black tracking-[3px] uppercase font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>OPEN NOW</span>
-                    {nearest?.id === loc.id && (
+                    {distanceTo(loc) !== null && (
                       <span className={`text-small font-black uppercase font-sans ${selectedLocation.id === loc.id ? "text-white" : "text-primary"}`}>
-                        {nearest.distanceMiles.toFixed(1)} MI AWAY
+                        {formatDistance(distanceTo(loc)!)}
                       </span>
                     )}
                   </div>
@@ -453,14 +457,6 @@ const LocationsSection = ({
                       <span className="font-bold uppercase">{loc.hours}</span>
                     </div>
                   </div>
-
-                  <Link
-                    href={`/menu/${loc.slug}`}
-                    onClick={(e) => e.stopPropagation()}
-                    className={`relative z-10 mt-4 inline-block w-fit text-small font-black uppercase tracking-[1.5px] underline underline-offset-2 ${selectedLocation.id === loc.id ? "text-white" : "text-primary group-hover:text-white"}`}
-                  >
-                    View Menu
-                  </Link>
 
                   {/* Map Indicator */}
                   {selectedLocation.id === loc.id && (
