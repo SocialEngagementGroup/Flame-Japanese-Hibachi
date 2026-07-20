@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&text=0123456789.,$&display=swap');
+/* Work Sans and Raleway are both loaded via next/font in app/layout.tsx and
+   exposed as --font-sans / --font-serif-next. A Google Fonts @import used to
+   sit here as well; it was stripped from the production CSS at build time and
+   never fetched, so it was doing nothing. Add fonts through next/font only —
+   it self-hosts them, which avoids a render-blocking third-party request. */
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -204,6 +208,12 @@ body {
   line-height: 1;
   letter-spacing: -0.05em;
   text-transform: uppercase;
+  /* Location headings interpolate a city name, so their length isn't known up
+     front — "ROYAL PALM BEACH" is ~3x "LAUREL". Without this a long single
+     word runs past the viewport instead of wrapping. No effect on headings
+     that already fit. */
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 @media (min-width: 1100px) {

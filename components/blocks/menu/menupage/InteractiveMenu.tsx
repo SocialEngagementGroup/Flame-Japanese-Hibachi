@@ -806,8 +806,10 @@ const InteractiveMenu = () => {
     }, 800);
   };
 
+  // pt-0 on every breakpoint: this sits directly under the location banner and
+  // used to have md:pt-10, which left a visible gap between the two.
   return (
-    <section className="w-full bg-background text-foreground pt-0 md:pt-10 pb-0 transition-colors duration-300">
+    <section className="w-full bg-background text-foreground pt-0 pb-0 transition-colors duration-300">
       <div className="w-full md:px-8 xl:px-12">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 relative">
           <MenuSidebar

@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { ShoppingCart, Menu, X, MapPin, Moon, Sun } from "lucide-react";
+// ShoppingCart is still referenced inside the commented-out cart markup below;
+// re-add it to this import when that gets re-enabled.
+import { Menu, X, MapPin, Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { usePathname } from "next/navigation";
 import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 import { getLocationBySlug } from "@/lib/api/locations";
-import FindFlamePopup from "@/components/layout/FindFlamePopup";
 
 const LOCATION_PAGE_PATTERN = /^\/(?:menu|catering)\/([^/]+)$/;
 
@@ -16,7 +17,7 @@ const Navbar = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const orderUrl = useOrderUrl();
-  const { nearest } = useNearestLocation();
+  const { nearest, openFindFlame } = useNearestLocation();
   const pathname = usePathname();
   // On a location-specific page, show that page's own location immediately —
   // don't wait for the global context to sync via an effect, which lags a
@@ -34,7 +35,6 @@ const Navbar = () => {
   const locationSlug = activeLocation?.slug;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isFindFlameOpen, setIsFindFlameOpen] = useState(false);
   const desktopVideoRef = React.useRef<HTMLVideoElement>(null);
   const mobileVideoRef = React.useRef<HTMLVideoElement>(null);
 
@@ -105,7 +105,7 @@ const Navbar = () => {
     >
       <div className="w-full px-[var(--space-lg)] flex items-center justify-between relative">
         {/* Left: Mobile Sign In / Desktop Logo */}
-        <div className="flex-none flex justify-start items-center z-10">
+        <div className="flex-1 basis-0 min-w-0 flex justify-start items-center z-10">
           {/* Sign In hidden for now - re-enable when accounts go live.
               Spacer keeps the original mobile navbar height (the logo is absolutely
               positioned, so the button was what set the row height). */}
@@ -166,8 +166,13 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Desktop Links */}
-          <div className="hidden min-[1100px]:flex items-center justify-center gap-[var(--gap-lg)] max-[1300px]:gap-[12px]">
+          {/* Desktop Links. These stay put regardless of which store is
+              selected: the left and right columns are equal-width (flex-1
+              basis-0), so this middle column always lands on the row's centre.
+              Previously the columns were flex-none, so a longer location name
+              on the right ("Northern Pkwy (Baltimore), MD" vs "Laurel, MD")
+              shifted these links sideways. */}
+          <div className="hidden min-[1100px]:flex items-center justify-center gap-[var(--gap-lg)] max-[1300px]:gap-[12px] whitespace-nowrap">
             {navLinks.map((link) => {
               const isActive =
                 !link.external &&
@@ -201,18 +206,18 @@ const Navbar = () => {
         </div>
 
         {/* Right: Actions */}
-        <div className="flex-none flex items-center justify-end gap-[var(--gap-md)] max-[1300px]:gap-[10px] z-10">
+        <div className="flex-1 basis-0 min-w-0 flex items-center justify-end gap-[var(--gap-md)] max-[1300px]:gap-[10px] z-10">
           {/* Find a Flame */}
           <button
-            onClick={() => setIsFindFlameOpen(true)}
-            className="hidden min-[1100px]:flex items-center gap-[var(--gap-xs)] text-white hover:text-primary transition-colors"
+            onClick={() => openFindFlame()}
+            className="hidden min-[1100px]:flex items-center gap-[var(--gap-xs)] text-white hover:text-primary transition-colors min-w-0"
           >
             <MapPin
               size={17}
               className="w-[18px] h-[18px] max-[1300px]:w-[14px] max-[1300px]:h-[14px]"
               strokeWidth={2.5}
             />
-            <span className="text-small font-black tracking-[1.2px] uppercase">
+            <span className="text-small font-black tracking-[1.2px] uppercase truncate">
               {findFlameText}
             </span>
           </button>
@@ -246,7 +251,9 @@ const Navbar = () => {
           </a>
           */}
 
-          {/* Cart - Desktop Only */}
+          {/* Cart - Desktop Only - hidden for now; there is no cart yet, the
+              badge was always "0" and it just linked out to the order page.
+              Re-enable when ordering happens on-site.
           <a
             href={orderUrl}
             target="_blank"
@@ -262,6 +269,7 @@ const Navbar = () => {
               0
             </span>
           </a>
+          */}
 
           {/* Mobile Menu Toggle */}
           <button
@@ -379,6 +387,7 @@ const Navbar = () => {
                 </span>
               </button>
 
+              {/* Cart - hidden for now, see the desktop cart above.
               <a
                 href={orderUrl}
                 target="_blank"
@@ -397,13 +406,14 @@ const Navbar = () => {
                   CART
                 </span>
               </a>
+              */}
             </div>
 
             <button
               className="flex items-center gap-3 max-[500px]:gap-2 text-white hover:text-primary transition-colors text-base max-[500px]:text-sm font-black tracking-widest uppercase mt-4 max-[500px]:mt-2"
               onClick={() => {
                 setIsMobileMenuOpen(false);
-                setIsFindFlameOpen(true);
+                openFindFlame();
               }}
             >
               <MapPin className="w-[22px] h-[22px] max-[500px]:w-[18px] max-[500px]:h-[18px]" />
@@ -423,10 +433,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      <FindFlamePopup
-        open={isFindFlameOpen}
-        onClose={() => setIsFindFlameOpen(false)}
-      />
     </nav>
   );
 };
