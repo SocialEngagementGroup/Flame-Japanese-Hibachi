@@ -30,6 +30,60 @@ If a slug isn't found (typo'd URL, or a location that no longer exists),
 `generateMetadata`/the page both call `getLocationBySlug()` and bail out with
 `notFound()` → real 404, not a broken page.
 
+## Slug format
+
+One rule:
+
+```
+slug = kebab-case(name without its state) + "-" + lowercase(state)
+```
+
+| `name` | slug |
+| --- | --- |
+| Laurel, MD | `laurel-md` |
+| Royal Palm Beach, FL | `royal-palm-beach-fl` |
+| Forest Hill (Richmond), VA | `forest-hill-richmond-va` |
+| Northern Pkwy (Baltimore), MD | `northern-pkwy-baltimore-md` |
+
+Derive it from **`name`, never `city`**. `city` is the postal city and often
+isn't what the store is called — "Seven Corners" has `city: "Falls Church"`.
+Three slugs used to be built from `city` (or with the words reversed), so
+`/menu/falls-church-va` served a page headed "Seven Corners". They're now
+`seven-corners-va`, `forest-hill-richmond-va` and `northern-pkwy-baltimore-md`.
+
+**The slug is the store's permanent URL identity, shared by every
+location-scoped section** — so a store is the same word in every URL it
+appears in:
+
+```
+/menu/laurel-md
+/catering/laurel-md
+/order/laurel-md
+/blog/laurel-md          <- a future section costs no new slug
+```
+
+Adding a section later means adding a route that reads the same `slug`, not
+inventing a second identifier. Build these paths with `locationPath()`
+(`lib/api/locations.ts`) rather than interpolating by hand — then a new
+section only needs registering in one place:
+
+```ts
+locationPath("menu", store)      // "/menu/laurel-md"
+```
+
+Helpers in `lib/api/locations.ts`:
+
+- `toLocationSlug(location)` — what a store's slug *should* be. `slug` stays a
+  literal in the data file so it's greppable and can't silently change under a
+  published store; this is for authoring and checking.
+- `findMalformedLocationSlugs()` — returns every store that breaks the rule.
+  Empty array means the file is consistent.
+
+Renaming a slug changes a public URL. It was free here because production has
+no `[location]` routes yet, so none of these had ever been served. **Once they
+are live, a rename needs a 301 from the old path in `next.config.mjs`** or it
+drops that page's search ranking and breaks shared links.
+
 ## How a visitor lands on their page
 
 `NearestLocationProvider` (wraps the whole app in `app/layout.tsx`) already
