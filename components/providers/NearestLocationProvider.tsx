@@ -409,7 +409,7 @@ export function NearestLocationProvider({
     const resolveOriginSilently = () => {
       if (storedOrigin) return;
 
-      const useIpFallback = () =>
+      const tryIpLookup = () =>
         fetch("/api/geo/ip")
           .then((res) => (res.ok ? res.json() : null))
           .then((coords: Coordinates | null) => {
@@ -418,12 +418,12 @@ export function NearestLocationProvider({
           .catch(() => {});
 
       if (typeof navigator === "undefined" || !("geolocation" in navigator)) {
-        useIpFallback();
+        tryIpLookup();
         return;
       }
 
       if (!navigator.permissions?.query) {
-        useIpFallback();
+        tryIpLookup();
         return;
       }
 
@@ -436,14 +436,14 @@ export function NearestLocationProvider({
               (position) => {
                 if (!cancelled) resolveFromPosition(position);
               },
-              () => useIpFallback(),
+              () => tryIpLookup(),
               GEO_OPTIONS
             );
           } else {
-            useIpFallback();
+            tryIpLookup();
           }
         })
-        .catch(useIpFallback);
+        .catch(tryIpLookup);
     };
 
     if (selectedStoreId !== null) {
