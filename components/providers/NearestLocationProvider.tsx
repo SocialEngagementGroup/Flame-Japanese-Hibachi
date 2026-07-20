@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { getActiveLocations } from "@/lib/api/locations";
-import { findNearest } from "@/lib/geo/distance";
+import { findNearest, type Coordinates } from "@/lib/geo/distance";
 import { isWithinUsServiceArea } from "@/lib/geo/serviceArea";
 import type { Location } from "@/lib/types";
 
@@ -21,6 +21,11 @@ type CachedResult = {
   storeId: number;
   distanceMiles: number;
   timestamp: number;
+  /** Where the visitor actually was. Kept so consumers can measure every store
+   * against it, not just the nearest one — FindFlamePopup lists a distance per
+   * location. Optional because caches written before this existed won't have
+   * it; those simply show no distances until the next resolve. */
+  origin?: Coordinates;
 };
 
 type SelectedLocation = {
@@ -45,6 +50,11 @@ type NearestLocationContextValue = NearestLocationState & {
    * not in Navbar, so every entry point (navbar button, the "Not your
    * location?" link on a location page, …) opens the exact same modal. */
   findFlameOpen: boolean;
+  /** The visitor's own coordinates, once known via GPS, IP or a ZIP lookup.
+   * Lets consumers measure every store against it rather than only reading
+   * `nearest.distanceMiles`. Null until a location is resolved, and null for
+   * a purely manual store pick — there is no "here" in that case. */
+  origin: Coordinates | null;
   requestLocation: () => void;
   dismissPrompt: () => void;
   dismissOutsideServiceArea: () => void;
@@ -52,7 +62,7 @@ type NearestLocationContextValue = NearestLocationState & {
   openFindFlame: () => void;
   closeFindFlame: () => void;
   /** Resolves the nearest store from a plain lat/lng (e.g. a ZIP code lookup) instead of a GeolocationPosition. Returns the resolved store, or null if none (outside service area or no match). */
-  resolveFromCoordinates: (origin: { lat: number; lng: number }) => Location | null;
+  resolveFromCoordinates: (coords: Coordinates) => Location | null;
 };
 
 const defaultContextValue: NearestLocationContextValue = {
@@ -62,6 +72,7 @@ const defaultContextValue: NearestLocationContextValue = {
   promptVisible: false,
   outsideServiceAreaVisible: false,
   findFlameOpen: false,
+  origin: null,
   requestLocation: () => {},
   dismissPrompt: () => {},
   dismissOutsideServiceArea: () => {},
@@ -211,13 +222,15 @@ export function NearestLocationProvider({
   const outsideAreaDismissedRef = React.useRef(false);
 
   const [findFlameOpen, setFindFlameOpen] = React.useState(false);
+  const [origin, setOrigin] = React.useState<Coordinates | null>(null);
   const openFindFlame = React.useCallback(() => setFindFlameOpen(true), []);
   const closeFindFlame = React.useCallback(() => setFindFlameOpen(false), []);
 
   const resolveFromCoordinates = React.useCallback(
-    (origin: { lat: number; lng: number }): Location | null => {
+    // Named `coords` rather than `origin` so it doesn't shadow the origin state.
+    (coords: Coordinates): Location | null => {
       const activeLocations = getActiveLocations();
-      if (!isWithinUsServiceArea(origin.lat, origin.lng)) {
+      if (!isWithinUsServiceArea(coords.lat, coords.lng)) {
         setState({
           status: "unavailable",
           nearest: null,
@@ -228,15 +241,19 @@ export function NearestLocationProvider({
         return null;
       }
 
-      const result = findNearest(origin, activeLocations);
+      const result = findNearest(coords, activeLocations);
       if (!result) {
         setState(keepResolvedOrUnavailable);
         return null;
       }
+      // Recorded even when a manual pick wins below: the visitor is still
+      // physically here, so every store's distance stays meaningful.
+      setOrigin(coords);
       writeCache({
         storeId: result.item.id,
         distanceMiles: result.distanceMiles,
         timestamp: Date.now(),
+        origin: coords,
       });
       if (readSelectedStoreId() !== null) return result.item;
       setState({
@@ -323,6 +340,10 @@ export function NearestLocationProvider({
     const activeLocations = getActiveLocations();
     const selectedStoreId = readSelectedStoreId();
     const cached = readCache();
+
+    // Restore where the visitor was, so per-store distances are present on
+    // first paint after a reload instead of only once geolocation re-resolves.
+    if (cached?.origin) setOrigin(cached.origin);
 
     const applyStoreId = (
       storeId: number,
@@ -445,6 +466,7 @@ export function NearestLocationProvider({
     () => ({
       ...state,
       findFlameOpen,
+      origin,
       requestLocation,
       dismissPrompt,
       dismissOutsideServiceArea,
@@ -456,6 +478,7 @@ export function NearestLocationProvider({
     [
       state,
       findFlameOpen,
+      origin,
       requestLocation,
       dismissPrompt,
       dismissOutsideServiceArea,

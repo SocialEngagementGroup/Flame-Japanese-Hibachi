@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { X, Search, Phone, Clock, MapPin } from "lucide-react";
 import { getActiveLocations } from "@/lib/api/locations";
+import { haversineDistanceMiles } from "@/lib/geo/distance";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 
 const activeLocations = getActiveLocations();
@@ -15,12 +16,22 @@ const googleMapsUrl = (address: string) =>
 
 const LOCATION_PAGE_PATTERN = /^\/(menu|catering)\/[^/]+$/;
 
+/** Straight-line distance, phrased for a list of restaurants. Under half a
+ * mile "0.3 mi away" is noise, and one decimal place stops reading as precise
+ * once the number is large — nobody needs "127.4 mi away". */
+function formatDistance(miles: number): string {
+  if (miles < 0.5) return "Right here";
+  if (miles < 10) return `${miles.toFixed(1)} mi away`;
+  return `${Math.round(miles)} mi away`;
+}
+
 // Open state comes from NearestLocationProvider, not props, so every trigger
 // (navbar button, "Not your location?" on a location page) opens this same
 // single instance — mounted once in app/layout.tsx.
 const FindFlamePopup: React.FC = () => {
   const {
     nearest,
+    origin,
     selectLocation,
     findFlameOpen: open,
     closeFindFlame: onClose,
@@ -32,16 +43,36 @@ const FindFlamePopup: React.FC = () => {
   const [selectedId, setSelectedId] = useState<number>(activeLocations[0].id);
   const [mapSrc, setMapSrc] = useState("");
 
-  // Nearest store moves to the top of the list once geolocation resolves.
+  // Once the visitor's own coordinates are known, every store gets a distance
+  // and the whole list sorts nearest-first — previously only the nearest store
+  // showed one, and it just got hoisted to the top of an otherwise arbitrary
+  // order, so "is the Laurel or Baltimore branch closer to me?" was unanswerable.
+  //
+  // With no origin (no GPS/IP/ZIP yet, or a purely manual pick) there is no
+  // "here" to measure from: distances are omitted and the previous behaviour
+  // of just hoisting the active store applies.
   const sortedActiveLocations = useMemo(() => {
-    if (!nearest) return activeLocations;
-    const idx = activeLocations.findIndex((l) => l.id === nearest.id);
-    if (idx <= 0) return activeLocations;
-    const copy = [...activeLocations];
+    if (origin) {
+      return activeLocations
+        .map((location) => ({
+          ...location,
+          distanceMiles: haversineDistanceMiles(origin, location),
+        }))
+        .sort((a, b) => a.distanceMiles - b.distanceMiles);
+    }
+
+    const withoutDistance = activeLocations.map((location) => ({
+      ...location,
+      distanceMiles: null as number | null,
+    }));
+    if (!nearest) return withoutDistance;
+    const idx = withoutDistance.findIndex((l) => l.id === nearest.id);
+    if (idx <= 0) return withoutDistance;
+    const copy = [...withoutDistance];
     const [match] = copy.splice(idx, 1);
     copy.unshift(match);
     return copy;
-  }, [nearest]);
+  }, [nearest, origin]);
 
   useEffect(() => {
     if (open && nearest) {
@@ -252,11 +283,11 @@ const FindFlamePopup: React.FC = () => {
                             {loc.hours}
                           </span>
                         </div>
-                        {nearest?.id === loc.id && (
+                        {loc.distanceMiles !== null && (
                           <div className="flex items-center gap-2 text-primary text-small">
                             <MapPin size={14} />
                             <span className="font-bold uppercase">
-                              {nearest.distanceMiles.toFixed(1)} mi away
+                              {formatDistance(loc.distanceMiles)}
                             </span>
                           </div>
                         )}
