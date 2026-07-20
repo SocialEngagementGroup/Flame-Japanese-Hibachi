@@ -42,26 +42,74 @@ that resolved location and, the moment one exists, does a client-side
 `router.replace()` to the matching `/menu/[slug]` or `/catering/[slug]` page.
 
 Important: it only fires once a location is actually **resolved**. First-time
-visitors (no cache yet, no GPS answer yet) and crawlers (which never grant
-geolocation) simply keep seeing the generic page — so `/menu` and `/catering`
-stay indexable and don't cloak content for search engines.
+visitors (no cache yet, no GPS answer yet) simply keep seeing the generic page.
+
+`proxy.ts` does the same job server-side (307 at the edge, using Vercel's geo
+headers or the selected-store cookie) and is the fast path. The two don't
+race: `LocationAutoRedirect` only mounts on `/menu` and `/catering`, so if the
+proxy already redirected, that page never renders. It's the client-side
+fallback for when the edge has no geo signal.
+
+Crawlers are excluded from the proxy redirect by user-agent, so `/menu` and
+`/catering` stay indexable on their own content instead of being bounced to
+one arbitrary store.
+
+## Keeping a location switch cheap
+
+The per-location difference is tiny — a heading, a banner, the JSON-LD and the
+order URL. Everything expensive (the menu grid, catering cards, contact
+section) lives in `app/menu/layout.tsx` / `app/catering/layout.tsx`, which
+persist across sibling route navigations. Measured on a
+`/menu/baltimore-md → /menu/manassas-va` switch: **188 of 190 images stay
+mounted and the whole switch costs ~4 KB** (the RSC payload). Only the two
+hero variants remount, since `Hero` is in the page.
+
+Two rules follow from this:
+
+- **Don't move heavy shared UI into the page.** If it's identical across
+  locations, it belongs in the layout.
+- **Don't let `Hero` inherit the default `bgVideo`.** Pages that want a still
+  background must pass `bgVideo={null}`, or they silently pull in the 26 MB
+  homepage hero MP4 — which also re-downloads on every store switch, because
+  `Hero` remounts. `/catering` passes its own video deliberately; `/menu`
+  passes `null`.
 
 ## Order links on a location page
 
 Every location page must link "Order Now" / "Add to Cart" to *that location's*
 `order.online` URL — not whatever the visitor's browser-detected nearest store
 happens to be (those can differ if someone opens a shared link from another
-city). That's why `resolveOrderUrl(location)` (`lib/geo/orderUrl.ts`) is
-called once per page and threaded down as an `orderUrl` prop through:
+city).
 
-```
-page.tsx → InteractiveMenu → MenuMainContent / MenuCTA
-page.tsx → CateringMenuSection / CateringAddOns / MenuCTA
-```
+This is enforced in one place: **`useOrderUrl()` (`lib/geo/useOrderUrl.ts`)
+reads the `[location]` slug off the URL and prefers it**, falling back to the
+nearest-location context only on pages with no location in the URL (`/`,
+`/menu`, `/contact`, …) and then to the site-wide default.
 
-Each of those components falls back to the site-wide `useOrderUrl()` hook
-(nearest-location context) when no `orderUrl` prop is passed — that's what
-keeps the *generic* `/menu` and `/catering` pages working exactly as before.
+Doing it in the hook rather than by prop-threading is deliberate. The heavy
+menu/catering trees live in the *layout* (see below), so they can't receive a
+prop from the page at all — an earlier prop-drilled version silently broke
+when those components moved, leaving the hero button on one store and all 64
+"Add to Cart" links on another.
+
+Components may still accept an explicit `orderUrl` prop to override the hook;
+nothing needs to pass one for correctness.
+
+### Changing a store's ordering link
+
+Edit `orderUrl` on that store in `data/locationsData.ts`. That is the only
+place to change it — every "Order Now" / "Add to Cart" on the store's pages,
+the navbar and footer CTAs, and `/order/[slug]` all read through it. No
+ordering URL is hardcoded in any component.
+
+A store with `orderUrl: ""` falls back to `ORDER_URL` in `lib/constants.ts`
+(the brand-wide ordering page). `bristow-va` is currently in that state, and
+its 184 order links resolve to the fallback — that's expected, not a bug.
+Fill in the real URL when the store goes live and every button follows.
+
+The same holds for the rest of the store record: `address` drives every map
+embed and "Get Directions" link, `lat`/`lng` drive nearest-store detection,
+and `slug` drives the routes.
 
 ## SEO pieces
 
@@ -77,9 +125,18 @@ keeps the *generic* `/menu` and `/catering` pages working exactly as before.
   all 14 pages — the menu items themselves are intentionally shared, since the
   menu genuinely doesn't change by store.
 
-## Deferred (not part of this pass)
+## Changing store
 
-IP-based geolocation and manual ZIP entry (tiers 2–3 of the fallback chain)
-aren't implemented yet — today it's GPS + cache + manual store pick only. See
-the auto-location brief for the planned approach (edge geo headers, a
-server-side ZIP lookup) when that work starts.
+There is exactly one store picker: `FindFlamePopup`. It is mounted once in
+`app/layout.tsx`, and its open state lives on `NearestLocationProvider`
+(`findFlameOpen` / `openFindFlame()` / `closeFindFlame()`) rather than in any
+one component. Both the navbar location button and the "Not your location?"
+control on a location banner call `openFindFlame()`, so changing store is the
+same interaction everywhere.
+
+Anything new that needs to offer a store change should call `openFindFlame()`
+too — don't link to `/locations` and don't mount a second popup.
+
+Opening the popup prefetches every location's page for the section you're in.
+That's affordable precisely because of the layout split above (~4 KB each), and
+it's what makes picking a store feel instant.
