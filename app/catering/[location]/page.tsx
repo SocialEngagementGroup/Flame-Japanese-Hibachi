@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import LocationBanner from "@/components/blocks/location/LocationBanner";
 import LocationContextSync from "@/components/blocks/location/LocationContextSync";
-import { getActiveLocations, getLocationBySlug } from "@/lib/api/locations";
+import {
+  getActiveLocations,
+  getLocationBySlug,
+  locationPath,
+} from "@/lib/api/locations";
 import { buildRestaurantSchema } from "@/lib/seo/restaurantSchema";
-import { getCanonicalUrl } from "@/lib/seo/seo";
+import { buildPageMetadata, getCanonicalUrl } from "@/lib/seo/seo";
 
 type LocationCateringPageParams = { location: string };
 
@@ -21,17 +25,13 @@ export async function generateMetadata({
   const location = getLocationBySlug(slug);
   if (!location) return {};
 
-  const canonical = getCanonicalUrl(`/catering/${location.slug}`);
-
-  return {
-    // The root layout's title template already appends
-    // "| Flame Japanese Hibachi" — repeating it here doubled the brand suffix.
+  return buildPageMetadata({
+    // No brand suffix here — the root layout's title template appends
+    // "| Flame Japanese Hibachi" already, and repeating it doubled it.
     title: `Hibachi Catering in ${location.name}`,
     description: `Hibachi catering for weddings, corporate events and parties near ${location.name}. Custom packages, 100% Halal, fresh prep. Request a quote from Flame Japanese Hibachi today.`,
-    alternates: {
-      canonical,
-    },
-  };
+    path: locationPath("catering", location),
+  });
 }
 
 export default async function LocationCateringPage({

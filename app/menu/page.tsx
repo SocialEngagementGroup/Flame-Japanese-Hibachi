@@ -1,14 +1,12 @@
 import LocationAutoRedirect from "@/components/blocks/location/LocationAutoRedirect";
-import { getCanonicalUrl } from "@/lib/seo/seo";
+import { buildPageMetadata } from "@/lib/seo/seo";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "Menu — Halal Hibachi, Sushi, Bento & Boba",
   description:
     "Browse the full Flame Japanese Hibachi menu: hibachi platters, sushi rolls, bento boxes, loaded fries, wings, smoothies and boba. 100% Halal, freshly prepared.",
-  alternates: {
-    canonical: getCanonicalUrl("/menu"),
-  },
-};
+  path: "/menu",
+});
 
 
 export default function MenuPage() {

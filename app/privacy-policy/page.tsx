@@ -1,16 +1,14 @@
-import { getCanonicalUrl } from "@/lib/seo/seo";
+import { buildPageMetadata } from "@/lib/seo/seo";
 import PrivacyPolicyContent from "@/components/blocks/privacy/PrivacyPolicyContent";
 import Hero from "@/components/blocks/hero/Hero";
 import AccordionEffectiveDate from "@/components/Accordion/AccordionEffectiveDate";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "Privacy Policy",
   description:
     "Read how Flame Japanese Hibachi collects, uses and protects your personal information when you visit the site, place an order or contact our team.",
-  alternates: {
-    canonical: getCanonicalUrl("/privacy-policy"),
-  },
-};
+  path: "/privacy-policy",
+});
 
 export default function PrivacyPolicyPage() {
   return (

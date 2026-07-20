@@ -1,16 +1,14 @@
-import { getCanonicalUrl } from "@/lib/seo/seo";
+import { buildPageMetadata } from "@/lib/seo/seo";
 import TermsConditionsContent from "@/components/blocks/terms/TermsConditionsContent";
 import Hero from "@/components/blocks/hero/Hero";
 import AccordionEffectiveDate from "@/components/Accordion/AccordionEffectiveDate";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "Terms and Conditions",
   description:
     "The terms and conditions that govern your use of the Flame Japanese Hibachi website, online ordering experience and catering inquiry services.",
-  alternates: {
-    canonical: getCanonicalUrl("/terms-conditions"),
-  },
-};
+  path: "/terms-conditions",
+});
 
 export default function TermsConditionsPage() {
   return (

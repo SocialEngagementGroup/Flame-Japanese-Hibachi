@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import LocationBanner from "@/components/blocks/location/LocationBanner";
 import LocationContextSync from "@/components/blocks/location/LocationContextSync";
-import { getActiveLocations, getLocationBySlug } from "@/lib/api/locations";
+import {
+  getActiveLocations,
+  getLocationBySlug,
+  locationPath,
+} from "@/lib/api/locations";
 import { buildRestaurantSchema } from "@/lib/seo/restaurantSchema";
-import { getCanonicalUrl } from "@/lib/seo/seo";
+import { buildPageMetadata, getCanonicalUrl } from "@/lib/seo/seo";
 
 type LocationMenuPageParams = { location: string };
 
@@ -21,15 +25,11 @@ export async function generateMetadata({
   const location = getLocationBySlug(slug);
   if (!location) return {};
 
-  const canonical = getCanonicalUrl(`/menu/${location.slug}`);
-
-  return {
+  return buildPageMetadata({
     title: `Menu — ${location.name} Halal Hibachi, Sushi & Bento`,
     description: `Browse the Flame Japanese Hibachi menu at our ${location.name} location: hibachi platters, sushi rolls, bento boxes, loaded fries, wings, smoothies and boba. 100% Halal, freshly prepared.`,
-    alternates: {
-      canonical,
-    },
-  };
+    path: locationPath("menu", location),
+  });
 }
 
 export default async function LocationMenuPage({

@@ -1,18 +1,16 @@
 import Hero from "@/components/blocks/hero/Hero";
 import LocationsSection from "@/components/blocks/locations/LocationsSection";
 import ContactSection from "@/components/blocks/contact/ContactSection";
-import { getCanonicalUrl } from "@/lib/seo/seo";
+import { buildPageMetadata } from "@/lib/seo/seo";
 import { buildRestaurantSchema } from "@/lib/seo/restaurantSchema";
 import { activeLocations } from "@/data/locationsData";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "All Flame Japanese Hibachi Locations (MD, VA, FL, PA)",
   description:
     "Find a Flame Japanese Hibachi location near you. Twelve-plus open restaurants across Maryland, Virginia, Florida and Pennsylvania, with more coming soon.",
-  alternates: {
-    canonical: getCanonicalUrl("/locations"),
-  },
-};
+  path: "/locations",
+});
 
 export default function LocationsPage() {
   const restaurantSchemas = activeLocations.map((loc) => buildRestaurantSchema(loc));

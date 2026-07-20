@@ -3,16 +3,14 @@ import AccordionEffectiveDate from "@/components/Accordion/AccordionEffectiveDat
 import AccordionRenderer from "@/components/Accordion/AccordionRenderer";
 import type { AccordionContentBlock } from "@/components/Accordion/accordion.types";
 import { faqSections } from "@/lib/data/faq-data";
-import { getCanonicalUrl } from "@/lib/seo/seo";
+import { buildPageMetadata } from "@/lib/seo/seo";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "Frequently Asked Questions",
   description:
     "Answers to common questions about Flame Japanese Hibachi - Halal certification, ordering, catering, locations, hours, allergens and franchise opportunities.",
-  alternates: {
-    canonical: getCanonicalUrl("/faq"),
-  },
-};
+  path: "/faq",
+});
 
 function getAnswerText(answer: AccordionContentBlock[]) {
   return answer
