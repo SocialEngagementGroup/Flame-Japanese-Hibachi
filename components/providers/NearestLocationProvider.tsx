@@ -9,6 +9,10 @@ import type { Location } from "@/lib/types";
 const STORAGE_KEY = "fjh-nearest-location-v1";
 const SELECTED_LOCATION_KEY = "fjh-selected-location-v1";
 const PROMPT_DISMISSED_KEY = "fjh-location-prompt-dismissed-v1";
+// Stored on its own rather than inside the nearest-store cache: a visitor
+// outside the service area has coordinates but no nearest store, and their
+// distances should still survive a reload.
+const ORIGIN_KEY = "fjh-origin-v1";
 const MAX_CACHE_AGE_MS = 1000 * 60 * 60 * 24 * 14;
 const PROMPT_SNOOZE_MS = 1000 * 60 * 60 * 24 * 7;
 const GEO_OPTIONS: PositionOptions = {
@@ -35,7 +39,7 @@ type SelectedLocation = {
 
 type NearestLocationState = {
   status: "idle" | "resolved" | "unavailable";
-  nearest: (Location & { distanceMiles: number }) | null;
+  nearest: (Location & { distanceMiles: number | null }) | null;
   /** True when the current location was set by an explicit in-app user pick
    * (FindFlamePopup). False for auto-detection (GPS/IP/cache). Used to
    * prevent LocationContextSync on transitioning-away pages from overwriting
@@ -84,6 +88,26 @@ const defaultContextValue: NearestLocationContextValue = {
 
 const NearestLocationContext =
   React.createContext<NearestLocationContextValue>(defaultContextValue);
+
+function readOrigin(): Coordinates | null {
+  try {
+    const raw = localStorage.getItem(ORIGIN_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<Coordinates>;
+    if (typeof parsed.lat !== "number" || typeof parsed.lng !== "number") {
+      return null;
+    }
+    return { lat: parsed.lat, lng: parsed.lng };
+  } catch {
+    return null;
+  }
+}
+
+function writeOrigin(coords: Coordinates) {
+  try {
+    localStorage.setItem(ORIGIN_KEY, JSON.stringify(coords));
+  } catch {}
+}
 
 function readCache(): CachedResult | null {
   try {
@@ -196,10 +220,15 @@ function keepResolvedOrUnavailable(prev: NearestLocationState) {
   return prev.status === "resolved" ? prev : unavailableState;
 }
 
+/** `distanceMiles` is null when it genuinely isn't known — a store picked by
+ * hand, or restored from the cookie, without the visitor ever sharing their
+ * location. It used to default to 0, which rendered as "0.0 MI AWAY" on
+ * /locations and told someone in another country they were standing in the
+ * restaurant. Only a real measurement from real coordinates fills this in. */
 function toResolvedLocation(
   location: Location,
-  distanceMiles: number = 0
-): Location & { distanceMiles: number } {
+  distanceMiles: number | null = null
+): Location & { distanceMiles: number | null } {
   return { ...location, distanceMiles };
 }
 
@@ -230,6 +259,15 @@ export function NearestLocationProvider({
     // Named `coords` rather than `origin` so it doesn't shadow the origin state.
     (coords: Coordinates): Location | null => {
       const activeLocations = getActiveLocations();
+
+      // Recorded before the service-area check on purpose. Coordinates are
+      // valid for measuring distance no matter where they are — someone in
+      // Dhaka should still see how far each store is, they just can't order.
+      // This used to sit after the early return below, so anyone outside the
+      // US got no distances at all even after granting permission.
+      setOrigin(coords);
+      writeOrigin(coords);
+
       if (!isWithinUsServiceArea(coords.lat, coords.lng)) {
         setState({
           status: "unavailable",
@@ -246,9 +284,6 @@ export function NearestLocationProvider({
         setState(keepResolvedOrUnavailable);
         return null;
       }
-      // Recorded even when a manual pick wins below: the visitor is still
-      // physically here, so every store's distance stays meaningful.
-      setOrigin(coords);
       writeCache({
         storeId: result.item.id,
         distanceMiles: result.distanceMiles,
@@ -343,7 +378,8 @@ export function NearestLocationProvider({
 
     // Restore where the visitor was, so per-store distances are present on
     // first paint after a reload instead of only once geolocation re-resolves.
-    if (cached?.origin) setOrigin(cached.origin);
+    const storedOrigin = readOrigin() ?? cached?.origin ?? null;
+    if (storedOrigin) setOrigin(storedOrigin);
 
     const applyStoreId = (
       storeId: number,

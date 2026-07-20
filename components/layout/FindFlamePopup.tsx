@@ -5,6 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { X, Search, Phone, Clock, MapPin } from "lucide-react";
 import { getActiveLocations } from "@/lib/api/locations";
 import { haversineDistanceMiles } from "@/lib/geo/distance";
+import { formatDistance } from "@/lib/geo/formatDistance";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 
 const activeLocations = getActiveLocations();
@@ -15,15 +16,6 @@ const googleMapsUrl = (address: string) =>
   )}`;
 
 const LOCATION_PAGE_PATTERN = /^\/(menu|catering)\/[^/]+$/;
-
-/** Straight-line distance, phrased for a list of restaurants. Under half a
- * mile "0.3 mi away" is noise, and one decimal place stops reading as precise
- * once the number is large — nobody needs "127.4 mi away". */
-function formatDistance(miles: number): string {
-  if (miles < 0.5) return "Right here";
-  if (miles < 10) return `${miles.toFixed(1)} mi away`;
-  return `${Math.round(miles)} mi away`;
-}
 
 // Open state comes from NearestLocationProvider, not props, so every trigger
 // (navbar button, "Not your location?" on a location page) opens this same
