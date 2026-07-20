@@ -6,11 +6,6 @@ import { X, Search, Phone, Clock, MapPin } from "lucide-react";
 import { getActiveLocations } from "@/lib/api/locations";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 
-type Props = {
-  open: boolean;
-  onClose: () => void;
-};
-
 const activeLocations = getActiveLocations();
 
 const googleMapsUrl = (address: string) =>
@@ -20,8 +15,16 @@ const googleMapsUrl = (address: string) =>
 
 const LOCATION_PAGE_PATTERN = /^\/(menu|catering)\/[^/]+$/;
 
-const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
-  const { nearest, selectLocation } = useNearestLocation();
+// Open state comes from NearestLocationProvider, not props, so every trigger
+// (navbar button, "Not your location?" on a location page) opens this same
+// single instance — mounted once in app/layout.tsx.
+const FindFlamePopup: React.FC = () => {
+  const {
+    nearest,
+    selectLocation,
+    findFlameOpen: open,
+    closeFindFlame: onClose,
+  } = useNearestLocation();
   const router = useRouter();
   const pathname = usePathname();
   const findYourFlameText = nearest ? nearest.name : "FLAME";
@@ -48,21 +51,22 @@ const FindFlamePopup: React.FC<Props> = ({ open, onClose }) => {
   }, [open, nearest]);
 
   // Opening the popup is a strong intent signal a store switch is coming, so
-  // warm the router cache. To avoid saturating the network on Vercel preview,
-  // we only prefetch the top 3 nearest locations and stagger them.
+  // warm the router cache. The heavy menu/catering tree lives in the layout and
+  // is already mounted, so each of these payloads is only the page delta (~4 KB)
+  // — cheap enough to prefetch every store, which makes any pick instant.
+  // Still staggered so 14 requests don't land as one burst.
   useEffect(() => {
     if (!open) return;
     const base = pathname.startsWith("/catering") ? "catering" : "menu";
-    const toPreload = sortedActiveLocations.slice(0, 3);
     let i = 0;
     const id = setInterval(() => {
-      if (i >= toPreload.length) {
+      if (i >= sortedActiveLocations.length) {
         clearInterval(id);
         return;
       }
-      router.prefetch(`/${base}/${toPreload[i].slug}`);
+      router.prefetch(`/${base}/${sortedActiveLocations[i].slug}`);
       i++;
-    }, 150); // stagger 150ms between each
+    }, 100);
     return () => clearInterval(id);
   }, [open, pathname, router, sortedActiveLocations]);
 

@@ -6,6 +6,7 @@ import NavbarBottom from "@/components/layout/NavbarBottom";
 import Footer from "@/components/layout/Footer";
 import TopLoader from "@/components/layout/TopLoader";
 import LocationPermissionPrompt from "@/components/layout/LocationPermissionPrompt";
+import FindFlamePopup from "@/components/layout/FindFlamePopup";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { NearestLocationProvider } from "@/components/providers/NearestLocationProvider";
 import { getCanonicalUrl } from "@/lib/seo/seo";
@@ -144,6 +145,7 @@ export default function RootLayout({
             <main className="flex-1 pt-[100px] md:pt-[115px]">{children}</main>
             <Footer />
             <LocationPermissionPrompt />
+            <FindFlamePopup />
           </NearestLocationProvider>
         </ThemeProvider>
       </body>

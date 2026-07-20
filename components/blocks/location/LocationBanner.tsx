@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { Location } from "@/lib/types";
+import ChangeLocationButton from "./ChangeLocationButton";
 
 interface LocationBannerProps {
   location: Location;
@@ -17,12 +17,7 @@ export default function LocationBanner({
       Viewing {pageLabel} for{" "}
       <span className="font-bold text-[#FF7808]">{location.name}</span>
       {" · "}
-      <Link
-        href="/locations"
-        className="underline underline-offset-2 hover:text-[#FF7808]"
-      >
-        Not your location?
-      </Link>
+      <ChangeLocationButton />
     </div>
   );
 }

@@ -41,10 +41,16 @@ type NearestLocationState = {
 };
 
 type NearestLocationContextValue = NearestLocationState & {
+  /** Whether the shared "Find your Flame" store picker is open. Lives here,
+   * not in Navbar, so every entry point (navbar button, the "Not your
+   * location?" link on a location page, …) opens the exact same modal. */
+  findFlameOpen: boolean;
   requestLocation: () => void;
   dismissPrompt: () => void;
   dismissOutsideServiceArea: () => void;
   selectLocation: (storeId: number) => void;
+  openFindFlame: () => void;
+  closeFindFlame: () => void;
   /** Resolves the nearest store from a plain lat/lng (e.g. a ZIP code lookup) instead of a GeolocationPosition. Returns the resolved store, or null if none (outside service area or no match). */
   resolveFromCoordinates: (origin: { lat: number; lng: number }) => Location | null;
 };
@@ -55,10 +61,13 @@ const defaultContextValue: NearestLocationContextValue = {
   isManuallySelected: false,
   promptVisible: false,
   outsideServiceAreaVisible: false,
+  findFlameOpen: false,
   requestLocation: () => {},
   dismissPrompt: () => {},
   dismissOutsideServiceArea: () => {},
   selectLocation: () => {},
+  openFindFlame: () => {},
+  closeFindFlame: () => {},
   resolveFromCoordinates: () => null,
 };
 
@@ -201,6 +210,10 @@ export function NearestLocationProvider({
   // check already showed and was dismissed) can't reopen the notice.
   const outsideAreaDismissedRef = React.useRef(false);
 
+  const [findFlameOpen, setFindFlameOpen] = React.useState(false);
+  const openFindFlame = React.useCallback(() => setFindFlameOpen(true), []);
+  const closeFindFlame = React.useCallback(() => setFindFlameOpen(false), []);
+
   const resolveFromCoordinates = React.useCallback(
     (origin: { lat: number; lng: number }): Location | null => {
       const activeLocations = getActiveLocations();
@@ -293,6 +306,7 @@ export function NearestLocationProvider({
     );
     if (!store) return;
     writeSelectedLocation(store.id);
+    setFindFlameOpen(false);
     setState({
       status: "resolved",
       nearest: toResolvedLocation(store),
@@ -430,18 +444,24 @@ export function NearestLocationProvider({
   const value = React.useMemo(
     () => ({
       ...state,
+      findFlameOpen,
       requestLocation,
       dismissPrompt,
       dismissOutsideServiceArea,
       selectLocation,
+      openFindFlame,
+      closeFindFlame,
       resolveFromCoordinates,
     }),
     [
       state,
+      findFlameOpen,
       requestLocation,
       dismissPrompt,
       dismissOutsideServiceArea,
       selectLocation,
+      openFindFlame,
+      closeFindFlame,
       resolveFromCoordinates,
     ]
   );
