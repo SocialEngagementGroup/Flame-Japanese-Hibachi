@@ -31,6 +31,74 @@ type HeroProps = {
  * and uses the H.264 file, so this stays safe by default. */
 const toHevcSrc = (src: string) => src.replace(/\.mp4$/, "-hevc.mp4");
 
+/**
+ * Decides when — and whether — the hero video should start downloading.
+ *
+ * An `autoPlay` <video> defaults to `preload="auto"`, so the browser pulls the
+ * whole file as part of the initial page load, competing with the CSS, JS,
+ * fonts and images needed to render anything at all. The hero is 7-8 MB, so on
+ * anything short of fast wifi that is the page "loading slowly" — even though
+ * the poster it needs to paint is only 86 KB.
+ *
+ * So: hold the <source> elements back until the browser is idle. The poster
+ * paints immediately, then the video attaches and fades in. Nothing about the
+ * design changes; it just stops blocking first paint.
+ *
+ * It also stays a still image entirely when playing it would be unwanted or
+ * expensive: reduced-motion users, Data Saver, and 2G/slow-2G connections.
+ */
+function useDeferredVideo(enabled: boolean) {
+  const [shouldLoad, setShouldLoad] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!enabled) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const connection = (
+      navigator as Navigator & {
+        connection?: { saveData?: boolean; effectiveType?: string };
+      }
+    ).connection;
+    if (connection?.saveData) return;
+    if (connection?.effectiveType && /(^|-)2g$/.test(connection.effectiveType))
+      return;
+
+    const start = () => setShouldLoad(true);
+
+    let idleId: number | undefined;
+    let timerId: number | undefined;
+
+    // Idle alone isn't enough: the main thread goes idle while the network is
+    // still busy, so requestIdleCallback on its own fired ~170ms in and the
+    // video went straight back to competing with the rest of the page. Wait
+    // for `load` (critical resources done) and *then* for idle.
+    const scheduleAfterLoad = () => {
+      // The timeout is the backstop: on a busy main thread idle may never come.
+      // Safari only shipped requestIdleCallback in 16.4, so fall back to a timer.
+      if (typeof window.requestIdleCallback === "function") {
+        idleId = window.requestIdleCallback(start, { timeout: 2500 });
+      } else {
+        timerId = window.setTimeout(start, 300);
+      }
+    };
+
+    if (document.readyState === "complete") {
+      scheduleAfterLoad();
+    } else {
+      window.addEventListener("load", scheduleAfterLoad, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener("load", scheduleAfterLoad);
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timerId !== undefined) window.clearTimeout(timerId);
+    };
+  }, [enabled]);
+
+  return shouldLoad;
+}
+
 const Hero = ({
   tagline = "SIZZLING PERFECTION, EVERY TIME.",
   title = (
@@ -53,6 +121,16 @@ const Hero = ({
   const orderUrl = useOrderUrl();
   const resolvedCtaHref = ctaHref ?? orderUrl;
 
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const loadVideo = useDeferredVideo(Boolean(bgVideo));
+
+  // Adding <source> children doesn't make an already-mounted <video> fetch
+  // them — it needs an explicit load(). autoPlay then takes over, since the
+  // element is muted.
+  React.useEffect(() => {
+    if (loadVideo) videoRef.current?.load();
+  }, [loadVideo]);
+
   const alignmentClass =
     align === "center"
       ? "items-center mx-auto text-center max-w-none"
@@ -70,22 +148,31 @@ const Hero = ({
       <div className="absolute inset-0 z-0">
         {bgVideo ? (
           <video
+            ref={videoRef}
             className="w-full h-full object-cover"
             autoPlay
             loop
             muted
             playsInline
+            // Nothing is fetched until useDeferredVideo says so — see there for
+            // why. Until then the poster is the hero, and it is only ~86 KB.
+            preload="none"
             poster={posterSrc ?? bgImageDesk}
           >
-            {/* Safari/iOS is the only engine that decodes HEVC, and it picks
-                the first source it can play — so Apple devices get the much
-                smaller HEVC file and everyone else falls through to H.264.
-                This is what fixes the long black hero on iPhones/Macs. */}
-            <source
-              src={toHevcSrc(bgVideo)}
-              type='video/mp4; codecs="hvc1"'
-            />
-            <source src={bgVideo} type="video/mp4" />
+            {loadVideo && (
+              <>
+                {/* Safari/iOS is the only engine that decodes HEVC, and it
+                    picks the first source it can play — so Apple devices get
+                    the much smaller HEVC file and everyone else falls through
+                    to H.264. This is what fixes the long black hero on
+                    iPhones/Macs. */}
+                <source
+                  src={toHevcSrc(bgVideo)}
+                  type='video/mp4; codecs="hvc1"'
+                />
+                <source src={bgVideo} type="video/mp4" />
+              </>
+            )}
           </video>
         ) : (
           <>
