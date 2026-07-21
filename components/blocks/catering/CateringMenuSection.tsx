@@ -2,14 +2,13 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-import { useOrderUrl } from "@/lib/geo/useOrderUrl";
+import { useCateringQuote } from "@/components/providers/CateringQuoteProvider";
 import type { CateringPackage } from "@/lib/types";
 import CateringCard from "./CateringCard";
 
 interface CateringMenuSectionProps {
     title: string;
     subtitle: string;
-    orderUrl?: string;
     items: CateringPackage[];
     cardVariant?: "catering" | "shop";
 }
@@ -17,12 +16,10 @@ interface CateringMenuSectionProps {
 const CateringMenuSection: React.FC<CateringMenuSectionProps> = ({
     title,
     subtitle,
-    orderUrl: orderUrlProp,
     items,
     cardVariant = "catering",
 }) => {
-    const autoOrderUrl = useOrderUrl();
-    const orderUrl = orderUrlProp?.trim() ? orderUrlProp : autoOrderUrl;
+    const { openQuote } = useCateringQuote();
     const [activeCardId, setActiveCardId] = useState("");
     const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -65,7 +62,7 @@ const CateringMenuSection: React.FC<CateringMenuSectionProps> = ({
                                 key={item.id}
                                 item={item}
                                 isActive={activeCardId === item.id}
-                                orderUrl={orderUrl}
+                                onRequestQuote={openQuote}
                                 detailsMinHeight={detailsMinHeight}
                                 onActivate={activateCard}
                                 onReset={resetToDefaultCard}
@@ -84,7 +81,7 @@ const CateringMenuSection: React.FC<CateringMenuSectionProps> = ({
                                 key={item.id}
                                 item={item}
                                 isActive={activeCardId === item.id}
-                                orderUrl={orderUrl}
+                                onRequestQuote={openQuote}
                                 detailsMinHeight={detailsMinHeight}
                                 onActivate={activateCard}
                                 onReset={resetToDefaultCard}

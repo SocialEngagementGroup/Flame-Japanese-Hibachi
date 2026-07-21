@@ -7,7 +7,8 @@ const FALLBACK_IMAGE = "/homepage/menu/HIBACHI.png";
 interface CateringCardProps {
   item: CateringPackage;
   isActive: boolean;
-  orderUrl: string;
+  /** Adds this package to the quote and opens the modal. */
+  onRequestQuote: (id: string) => void;
   detailsMinHeight: number;
   onActivate: (id: string) => void;
   onReset: () => void;
@@ -30,7 +31,7 @@ const HeartIcon = () => (
 const CateringCard: React.FC<CateringCardProps> = ({
   item,
   isActive,
-  orderUrl,
+  onRequestQuote,
   detailsMinHeight,
   onActivate,
   onReset,
@@ -41,15 +42,15 @@ const CateringCard: React.FC<CateringCardProps> = ({
   // ── SHOP VARIANT (Wings section) — cloned from menu page wing card design ──
   if (cardVariant === "shop") {
     return (
-      <a
-        href={orderUrl}
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        type="button"
+        onClick={() => onRequestQuote(item.id)}
         onMouseEnter={() => onActivate(item.id)}
         onMouseLeave={onReset}
         onFocus={() => onActivate(item.id)}
         onBlur={onReset}
-        className="w-full min-h-[300px] md:min-h-[355px] aspect-square sm:aspect-[6/5] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block"
+        aria-label={`Add ${item.people} ${item.category} to quote`}
+        className="w-full min-h-[300px] md:min-h-[355px] aspect-square sm:aspect-[6/5] mx-auto flex flex-col bg-zinc-950 overflow-hidden border border-zinc-900/60 group rounded-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,120,8,0.15)] relative cursor-pointer block text-left"
       >
         {/* Full image */}
         <Image
@@ -106,13 +107,13 @@ const CateringCard: React.FC<CateringCardProps> = ({
                 className="text-white text-[9px] xl:text-[11px] font-bold uppercase tracking-[1px] px-3 py-[6px] xl:px-4 xl:py-[8px] whitespace-nowrap transition-colors duration-300"
                 style={{ backgroundColor: isActive ? "#ff8f32" : "#353232" }}
               >
-                Add to Cart
+                Add to Quote
               </span>
               <span className="text-white flex-shrink-0 xl:[&>svg]:w-[20px] xl:[&>svg]:h-[20px]"><CartIcon /></span>
             </span>
           </div>
         </div>
-      </a>
+      </button>
     );
   }
 
@@ -125,12 +126,14 @@ const CateringCard: React.FC<CateringCardProps> = ({
     >
       {/* ── MOBILE list layout (<xl) ── */}
       <div className="xl:hidden w-full">
-        <a
-          href={orderUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => { if (!isActive) { e.preventDefault(); onActivate(item.id); } }}
-          className={`block w-full border transition-all duration-300 overflow-hidden ${
+        {/* One tap adds to the quote. The old two-tap flow (tap to reveal, tap
+            again to act) was a holdover from when the card was a link — with a
+            quote modal there is nothing to reveal, so the first tap should act. */}
+        <button
+          type="button"
+          onClick={() => onRequestQuote(item.id)}
+          aria-label={`Add ${item.people} ${item.category} to quote`}
+          className={`block w-full text-left border transition-all duration-300 overflow-hidden ${
             isActive
               ? "border-[#FF7808] shadow-[0_0_18px_rgba(255,120,8,0.35)]"
               : "border-zinc-700 dark:border-white"
@@ -155,16 +158,6 @@ const CateringCard: React.FC<CateringCardProps> = ({
               <span className="text-white font-bold text-[20px] leading-none">{item.price}</span>
             </div>
 
-            {/* Middle: ADD TO CART only */}
-            <div className="flex flex-col items-end justify-center px-3 py-3">
-              <span
-                className="text-[9px] font-bold uppercase tracking-[1px] text-white px-[10px] py-[10px] leading-none whitespace-nowrap transition-colors duration-300"
-                style={{ backgroundColor: isActive ? "#f88f38" : "#424141" }}
-              >
-                ADD TO CART
-              </span>
-            </div>
-
             {/* Right: image */}
             <div className="relative w-[100px] self-stretch overflow-hidden flex-shrink-0">
               <Image
@@ -184,31 +177,17 @@ const CateringCard: React.FC<CateringCardProps> = ({
               {item.details.join(" · ")}
             </p>
           </div>
-        </a>
-
-        {/* Add to Cart — smooth slide-in */}
-        <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out ${isActive ? "max-h-[50px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"}`}
-        >
-          <a
-            href={orderUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex h-[50px] items-center justify-center gap-3 bg-[#FF7808]"
-          >
-            <span className="font-['Work_Sans'] text-[13px] font-bold uppercase tracking-[6px] text-white">Call Now</span>
-          </a>
-        </div>
+        </button>
       </div>
 
       {/* ── DESKTOP square card (xl+) ── */}
-      <a
-        href={orderUrl}
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        type="button"
+        onClick={() => onRequestQuote(item.id)}
         onFocus={() => onActivate(item.id)}
         onBlur={onReset}
-        className={`group relative z-10 hidden xl:block h-fit w-full overflow-visible transition-all duration-300 hover:-translate-y-2 ${
+        aria-label={`Add ${item.people} ${item.category} to quote`}
+        className={`group relative z-10 hidden xl:block h-fit w-full text-left overflow-visible transition-all duration-300 hover:-translate-y-2 ${
           isActive
             ? "shadow-[0_0_18px_rgba(255,120,8,0.35)]"
             : "hover:shadow-[0_0_18px_rgba(255,120,8,0.35)]"
@@ -266,11 +245,11 @@ const CateringCard: React.FC<CateringCardProps> = ({
           </div>
         </div>
 
-        {/* Add to Cart — slides from behind */}
+        {/* Add to Quote — slides from behind */}
         <div className={`absolute left-0 top-[99.5%] z-0 h-[59px] w-full border-x border-[#FF7808] bg-[#FF7808] transition-all duration-500 ease-out flex items-center justify-center gap-3 ${isActive ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}>
-          <span className="font-['Work_Sans'] text-[14px] font-bold uppercase tracking-[9px] text-white">Call Now</span>
+          <span className="font-['Work_Sans'] text-[14px] font-bold uppercase tracking-[9px] text-white">Add to Quote</span>
         </div>
-      </a>
+      </button>
     </div>
   );
 };

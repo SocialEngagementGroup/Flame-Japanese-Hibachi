@@ -1,4 +1,4 @@
-import type { CateringMenuBlock } from "@/lib/types";
+import type { CateringAddOn, CateringMenuBlock } from "@/lib/types";
 
 export const cateringMenuSections: CateringMenuBlock[] = [
   {
@@ -303,5 +303,46 @@ export const cateringMenuSections: CateringMenuBlock[] = [
         ],
       },
     ],
+  },
+];
+
+/** Lives here rather than inline in the layout so the quote route can price
+ *  add-ons server-side instead of trusting whatever the browser submits. */
+export const cateringAddOns: CateringAddOn[] = [
+  {
+    id: "spring-rolls",
+    name: "SPRING ROLLS",
+    price: "$0.50/PER PERSON",
+    unit: "per_person",
+    unitPrice: 0.5,
+    image: "/menupage/add-ons/4-pcs-spring-roll.png",
+    afterSectionId: "menu-4-cbs",
+  },
+  {
+    id: "dumplings",
+    name: "DUMPLINGS",
+    price: "$0.75/PER PERSON",
+    unit: "per_person",
+    unitPrice: 0.75,
+    image: "/menupage/add-ons/5-pcs-dumplings.png",
+    afterSectionId: "menu-4-cbs",
+  },
+  {
+    id: "fries-half-tray",
+    name: "FRIES HALF TRAY",
+    price: "$40",
+    unit: "flat",
+    unitPrice: 40,
+    image: "/homepage/menu/FLAME LOADED FRIES.png",
+    afterSectionId: "menu-5-wings",
+  },
+  {
+    id: "fries-full-tray",
+    name: "FRIES FULL TRAY",
+    price: "$75",
+    unit: "flat",
+    unitPrice: 75,
+    image: "/homepage/menu/FLAME LOADED FRIES.png",
+    afterSectionId: "menu-5-wings",
   },
 ];
