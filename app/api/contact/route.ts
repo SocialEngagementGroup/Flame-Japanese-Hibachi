@@ -61,6 +61,9 @@ export async function POST(request: Request) {
   if (!isEmail(fields.email)) {
     fieldErrors.email = "Please enter a valid email address.";
   }
+  if (!fields.phone) {
+    fieldErrors.phone = "Please enter a phone number we can reach you on.";
+  }
   if (!fields.message) fieldErrors.message = "Please tell us how we can help.";
 
   if (Object.keys(fieldErrors).length > 0) {
