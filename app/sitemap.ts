@@ -1,8 +1,12 @@
 import { MetadataRoute } from "next";
 import { getActiveLocations } from "@/lib/api/locations";
+import { getCanonicalUrl } from "@/lib/seo/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.flamehibachi.com";
+  // Shares the canonical helper with every page's metadata rather than
+  // hardcoding the host — otherwise a preview deployment emits a sitemap
+  // pointing at production, and the two disagree about what the site's URL is.
+  const baseUrl = getCanonicalUrl("/");
   const lastModified = new Date();
 
   const locationMenuAndCateringUrls = getActiveLocations().flatMap((location) => [

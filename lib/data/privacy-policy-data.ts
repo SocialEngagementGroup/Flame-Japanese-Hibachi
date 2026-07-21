@@ -76,6 +76,25 @@ export const privacyPolicySections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
+                        content: `If you request a catering quote, we also collect the details needed to price and fulfil your event:`
+                    },
+                    {
+                        type: "list",
+                        items: [
+                            "Company or organization name, if you provide one",
+                            "Event date, serving time, and expected number of guests",
+                            "Occasion type and any setup you require",
+                            "Delivery or venue address, where applicable",
+                            "The packages and add-ons you select",
+                            "Any dietary requirements, allergies, or notes you choose to share"
+                        ]
+                    },
+                    {
+                        type: "paragraph",
+                        content: `Dietary and allergy information may reveal details about your health or beliefs. We ask for it only so we can cater your event safely, we use it for no other purpose, and you are free to leave it blank.`
+                    },
+                    {
+                        type: "paragraph",
                         content: `We do not operate our own online ordering system. All food orders are processed through DoorDash (see Section 5 for details).`
                     },
                     {
@@ -228,7 +247,15 @@ export const privacyPolicySections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `We share data with trusted vendors who assist in operating our website and digital services, including Google (analytics and tag management), Meta (advertising), Supabase (backend database hosting), and our web hosting provider. These vendors are contractually required to use your data only as directed by us.`
+                        content: `We share data with trusted vendors who assist in operating our website and digital services, including Google (analytics and tag management), Meta (advertising), and our web hosting provider. These vendors are contractually required to use your data only as directed by us.`
+                    },
+                    {
+                        type: "subheading",
+                        content: "Enquiry Handling"
+                    },
+                    {
+                        type: "paragraph",
+                        content: `Contact and catering enquiries submitted through this website are passed to our workflow automation service, which records them in Google Workspace (Google Sheets and Google Chat) so our team can respond and follow up. Only our staff and the location handling your enquiry can see these records. We do not use them for advertising and we do not share them with any other party.`
                     },
                     {
                         type: "subheading",
@@ -274,6 +301,7 @@ export const privacyPolicySections: AccordionRendererSection[] = [
                         type: "list",
                         items: [
                             "Contact form submissions: Retained for up to 24 months from the date of submission.",
+                            "Catering quote requests: Retained for up to 24 months from the date of the event so we can honor repeat bookings and meet our accounting obligations. Requests that do not lead to a booking are deleted within 12 months.",
                             "Website analytics data: Retained in aggregated or anonymized form for up to 26 months, consistent with Google Analytics default settings.",
                             "Advertising data (Meta Pixel): Retained per Meta's data policies; typically 180 days for event matching."
                         ]
