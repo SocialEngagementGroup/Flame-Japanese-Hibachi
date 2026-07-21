@@ -9,9 +9,9 @@ Marketing and storefront website for **Flame Japanese Hibachi** — a hibachi re
 - **[Next.js](https://nextjs.org) 16.2.2** — App Router, built with Turbopack
 - **React 19** + **TypeScript**
 - **[Tailwind CSS](https://tailwindcss.com) v4** — utility-first styling (via `@tailwindcss/postcss`)
-- **[next-themes](https://github.com/pacocoursey/next-themes)** — dark/light theme (with a `beforeInteractive` init script to avoid a flash of the wrong theme)
+- **Theming** — hand-rolled light/dark provider (`components/providers/ThemeProvider.tsx`), with a `beforeInteractive` init script to avoid a flash of the wrong theme
 - **[Swiper](https://swiperjs.com)** — carousels / sliders
-- **[Leaflet](https://leafletjs.com)** — maps
+- **Maps** — embedded Google Maps iframes (no map library)
 - **Fonts:** Work Sans + Raleway (via `next/font/google`)
 - **Icons:** `lucide-react`, `react-icons`
 - **Tooling:** ESLint 9 + Prettier
