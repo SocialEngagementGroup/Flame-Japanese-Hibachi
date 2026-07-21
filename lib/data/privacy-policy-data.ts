@@ -228,7 +228,7 @@ export const privacyPolicySections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `We share data with trusted vendors who assist in operating our website and digital services, including Google (analytics and tag management), Meta (advertising), Supabase (backend database hosting), and our web hosting provider. These vendors are contractually required to use your data only as directed by us.`
+                        content: `We share data with trusted vendors who assist in operating our website and digital services, including Google (analytics and tag management), Meta (advertising), and our web hosting provider. These vendors are contractually required to use your data only as directed by us.`
                     },
                     {
                         type: "subheading",
