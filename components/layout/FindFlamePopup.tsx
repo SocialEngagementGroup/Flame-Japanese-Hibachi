@@ -30,40 +30,39 @@ const FindFlamePopup: React.FC = () => {
   } = useNearestLocation();
   const router = useRouter();
   const pathname = usePathname();
-  const findYourFlameText = nearest ? nearest.name : "FLAME";
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<number>(activeLocations[0].id);
   const [mapSrc, setMapSrc] = useState("");
 
   // Once the visitor's own coordinates are known, every store gets a distance
-  // and the whole list sorts nearest-first — previously only the nearest store
-  // showed one, and it just got hoisted to the top of an otherwise arbitrary
-  // order, so "is the Laurel or Baltimore branch closer to me?" was unanswerable.
-  //
+  // and the list sorts nearest-first — previously only the nearest store showed
+  // one, so "is the Laurel or Baltimore branch closer to me?" was unanswerable.
   // With no origin (no GPS/IP/ZIP yet, or a purely manual pick) there is no
-  // "here" to measure from: distances are omitted and the previous behaviour
-  // of just hoisting the active store applies.
+  // "here" to measure from, so distances are omitted.
+  //
+  // Either way the active store is pinned to the top afterwards. Someone who
+  // deliberately picked a farther branch still expects to find it first, and
+  // sorting it back into the middle of the list reads as having lost their
+  // choice. Everything below it stays ordered nearest-first.
   const sortedActiveLocations = useMemo(() => {
-    if (origin) {
-      return activeLocations
-        .map((location) => ({
-          ...location,
-          distanceMiles: haversineDistanceMiles(origin, location),
-        }))
-        .sort((a, b) => a.distanceMiles - b.distanceMiles);
-    }
-
-    const withoutDistance = activeLocations.map((location) => ({
+    const withDistance = activeLocations.map((location) => ({
       ...location,
-      distanceMiles: null as number | null,
+      distanceMiles: origin ? haversineDistanceMiles(origin, location) : null,
     }));
-    if (!nearest) return withoutDistance;
-    const idx = withoutDistance.findIndex((l) => l.id === nearest.id);
-    if (idx <= 0) return withoutDistance;
-    const copy = [...withoutDistance];
-    const [match] = copy.splice(idx, 1);
-    copy.unshift(match);
-    return copy;
+
+    const ordered = origin
+      ? withDistance.sort(
+          (a, b) => (a.distanceMiles ?? 0) - (b.distanceMiles ?? 0),
+        )
+      : withDistance;
+
+    if (!nearest) return ordered;
+    const idx = ordered.findIndex((l) => l.id === nearest.id);
+    if (idx <= 0) return ordered;
+    const pinned = [...ordered];
+    const [active] = pinned.splice(idx, 1);
+    pinned.unshift(active);
+    return pinned;
   }, [nearest, origin]);
 
   useEffect(() => {
@@ -166,8 +165,11 @@ const FindFlamePopup: React.FC = () => {
         <div className="flex items-start justify-between gap-4 px-[var(--space-lg)] pt-[var(--space-lg)] pb-[var(--space-md)] border-b border-black/5 dark:border-white/5">
           <div>
             <h3 className="heading-h3">
+              {/* Always "FIND YOUR FLAME" — this is the brand line, not a
+                  readout of the active store. The selected store is already
+                  named in the navbar and pinned to the top of the list below. */}
               <span className="text-black dark:text-white">FIND YOUR </span>
-              <span className="text-primary">{findYourFlameText}</span>
+              <span className="text-primary">FLAME</span>
             </h3>
             <p className="text-gray-700 dark:text-gray-300 text-small leading-relaxed font-medium mt-2 max-w-md">
               Pick a location to view it on the map or get directions.

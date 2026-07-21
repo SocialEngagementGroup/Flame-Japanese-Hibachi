@@ -29,14 +29,20 @@ export default function MenuHero() {
     <Hero
       tagline="SIZZLING PERFECTION, EVERY TIME."
       title={
-        <>
-          <span className="block md:inline">SAVOR THE </span>
-          <span className="block md:inline">
-            {location
-              ? `FLAVORS IN ${getLocationLabel(location).toUpperCase()}.`
-              : "FLAVORS."}
-          </span>
-        </>
+        // Same shape as CateringHero: the city drops to its own line so the
+        // heading reads as two balanced lines instead of one long one. Without
+        // a location there is no second line to break to.
+        location ? (
+          <>
+            <span className="block md:inline">SAVOR THE FLAVORS</span>
+            <br className="hidden md:block" />
+            <span className="block md:inline">
+              IN {getLocationLabel(location).toUpperCase()}.
+            </span>
+          </>
+        ) : (
+          "SAVOR THE FLAVORS."
+        )
       }
       ctaLabel={null}
       align="center"

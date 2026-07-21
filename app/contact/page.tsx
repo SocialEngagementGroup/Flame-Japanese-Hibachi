@@ -27,7 +27,6 @@ export default function ContactPage() {
         fullHeight={false}
       />
       <ContactDetails />
-      <LocationsSection />
       <ContactSection
         heading={
           <>
@@ -37,6 +36,7 @@ export default function ContactPage() {
         subheading="SEND US A MESSAGE"
         submitLabel="SUBMIT APPLICATION"
       />
+      <LocationsSection />
     </div>
   );
 }

@@ -2,10 +2,8 @@ import type { AccordionRendererSection } from "@/components/Accordion/AccordionR
 
 export const privacyPolicySections: AccordionRendererSection[] = [
     {
-        type: "with-image",
+        type: "default",
         title: "PRIVACY POLICY",
-        imageSrc: "/faq/faq-section-img.png",
-        imageAlt: "Flame Japanese Hibachi Privacy Policy",
         items: [
             {
                 id: "who-we-are",

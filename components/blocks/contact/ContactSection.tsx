@@ -173,6 +173,7 @@ const ContactSection = ({
             name="phone"
             type="tel"
             placeholder="+1 (555) 000-0000"
+            required
             error={fieldErrors.phone}
           />
           <Field

@@ -222,8 +222,12 @@ const Hero = ({
             {title}
           </h1>
 
+          {/* The description's height comes from its text. A fixed min-height
+              here used to add ~140px of empty space to every hero carrying one,
+              making those pages visibly taller than the menu and catering
+              heroes for no reason a reader could see. */}
           {description && (
-            <p className="w-full max-w-[779px] min-h-[192px] flex flex-col justify-center text-white text-center font-raleway text-[16px] font-semibold leading-[25px] tracking-[3px] uppercase mb-[var(--space-xl)]">
+            <p className="w-full max-w-[779px] text-white text-center font-raleway text-[16px] font-semibold leading-[25px] tracking-[3px] uppercase mb-[var(--space-xl)]">
               {description}
             </p>
           )}
