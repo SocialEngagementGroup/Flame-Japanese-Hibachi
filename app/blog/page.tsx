@@ -1,9 +1,10 @@
+import Script from "next/script";
 import Hero from "@/components/blocks/hero/Hero";
 import BlogGrid from "@/components/blocks/blog/BlogGrid";
 import LocationsSection from "@/components/blocks/locations/LocationsSection";
 import ContactSection from "@/components/blocks/contact/ContactSection";
-import { getBlogCategories } from "@/lib/data/blog-data";
-import { buildPageMetadata } from "@/lib/seo/seo";
+import { getBlogCategories, getBlogPostSummaries } from "@/lib/data/blog-data";
+import { buildPageMetadata, getCanonicalUrl } from "@/lib/seo/seo";
 
 export const metadata = buildPageMetadata({
   title: "Blog",
@@ -14,6 +15,28 @@ export const metadata = buildPageMetadata({
 
 export default async function BlogListingPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const categories = getBlogCategories();
+  const posts = getBlogPostSummaries();
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Flame Japanese Hibachi Blog",
+    description:
+      "Cooking tips, recipes, and food inspiration from Flame Japanese Hibachi.",
+    url: getCanonicalUrl("/blog"),
+    publisher: {
+      "@type": "Organization",
+      name: "Flame Japanese Hibachi",
+      url: getCanonicalUrl("/"),
+    },
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.excerpt,
+      datePublished: new Date(post.date).toISOString(),
+      url: getCanonicalUrl(`/blog/${post.slug}`),
+      image: getCanonicalUrl(post.image),
+    })),
+  };
   
   // Await searchParams as required by Next 15+
   const resolvedParams = await searchParams;
@@ -26,6 +49,11 @@ export default async function BlogListingPage({ searchParams }: { searchParams: 
 
   return (
     <div className="flex flex-col w-full">
+      <Script
+        id="blog-list-json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
       <Hero
         title="FJH BLOGS"
         description={

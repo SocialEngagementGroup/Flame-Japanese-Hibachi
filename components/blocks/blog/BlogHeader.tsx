@@ -12,14 +12,14 @@ export default function BlogHeader({ post, categories }: BlogHeaderProps) {
     <div className="w-full bg-background px-4 sm:px-5 md:px-8 pt-[var(--space-xl)] transition-colors duration-300">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-[var(--space-lg)] border-b border-border/40">
         <p 
-          className="text-small font-semibold uppercase tracking-[3px] text-muted-foreground flex items-center flex-wrap gap-1"
+          className="flex min-w-0 flex-wrap items-center gap-x-1 gap-y-2 text-[12px] font-semibold uppercase leading-[1.4] tracking-[1.5px] text-muted-foreground sm:text-small sm:tracking-[3px]"
           style={{ fontFamily: "Work Sans" }}
         >
           <Link href="/blog" className="hover:text-primary transition-colors whitespace-nowrap">
             Blog
           </Link>
           <span className="whitespace-nowrap">{" / "}</span>
-          <span className="font-black text-foreground line-clamp-1 sm:line-clamp-none break-words">
+          <span className="min-w-0 flex-1 basis-full font-black text-foreground line-clamp-2 break-words sm:basis-auto sm:line-clamp-none">
             {post.title}
           </span>
         </p>

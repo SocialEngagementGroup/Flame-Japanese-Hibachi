@@ -18,7 +18,7 @@ export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex h-full flex-col cursor-pointer"
+      className="group flex h-full flex-col cursor-pointer border-b border-border/60 pb-8 md:border-b-0 md:pb-0"
     >
       <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#EBEBEB] dark:bg-zinc-900 mb-6 transition-colors duration-300">
         <Image
@@ -45,7 +45,7 @@ export default function BlogCard({ post }: BlogCardProps) {
           {post.excerpt}
         </p>
         
-        <div className="flex items-center justify-between mt-auto border-t border-border/40 pt-4">
+        <div className="flex items-center justify-between mt-auto pt-2 md:pt-4 md:border-t md:border-border/40">
           <span 
             className="text-small font-semibold uppercase tracking-[3px] text-muted-foreground"
             style={{ fontFamily: "Work Sans" }}

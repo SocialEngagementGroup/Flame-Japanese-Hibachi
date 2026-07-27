@@ -24,19 +24,7 @@ export default function BlogRelatedPosts({ posts }: BlogRelatedPostsProps) {
 
   return (
     <section className="w-full bg-background px-4 sm:px-5 md:px-8 py-[var(--space-2xl)] transition-colors duration-300">
-      <h2
-        className="mb-[var(--space-xl)]"
-        style={{
-          color: "#FFF",
-          fontFamily: "Raleway",
-          fontSize: "48px",
-          fontStyle: "normal",
-          fontWeight: 800,
-          lineHeight: "53px",
-          letterSpacing: "4.8px",
-          textTransform: "uppercase",
-        }}
-      >
+      <h2 className="mb-[var(--space-xl)] font-['Raleway'] text-[34px] font-black uppercase leading-[59px] text-foreground md:text-[48px] md:font-extrabold md:leading-[53px] md:tracking-[4.8px]">
         Keep Reading
       </h2>
 
