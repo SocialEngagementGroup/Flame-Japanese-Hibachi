@@ -97,6 +97,7 @@ const Navbar = () => {
     // { name: "PROMOTIONS", href: ORDER_URL, external: true },
     // { name: "JOIN FLAME", href: ORDER_URL, external: true },
     { name: "CONTACT", href: "/contact", external: false },
+    { name: "BLOG", href: "/blog", activePath: "/blog", external: false },
   ];
 
   return (
