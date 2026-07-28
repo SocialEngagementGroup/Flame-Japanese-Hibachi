@@ -4,7 +4,7 @@ import type { MenuCategory, MenuItem } from "@/lib/types";
  * The dine-in menu.
  *
  * Lives here rather than inside InteractiveMenu so it can be read on the server
- * — the component is client-only, which previously made this data unreachable
+ * - the component is client-only, which previously made this data unreachable
  * for structured data, and unusable anywhere but that one screen.
  */
 

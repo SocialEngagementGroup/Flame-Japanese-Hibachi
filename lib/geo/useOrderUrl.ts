@@ -13,7 +13,7 @@ export { resolveOrderUrl } from "@/lib/geo/orderUrl";
  *
  * The URL wins over the geolocation context. On `/menu/baltimore-md` every
  * order link must point at Baltimore even if the browser's nearest store is
- * Manassas — otherwise a shared link shows one store's page while its buttons
+ * Manassas - otherwise a shared link shows one store's page while its buttons
  * order from another. Falls back to the nearest-location context on pages with
  * no location in the URL (`/`, `/menu`, `/contact`, …), then to the site-wide
  * default.

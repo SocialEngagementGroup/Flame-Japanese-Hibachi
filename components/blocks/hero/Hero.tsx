@@ -14,12 +14,12 @@ type HeroProps = {
   fullHeight?: boolean;
   bgImageDesk?: string;
   bgImageMob?: string;
-  /** Still frame shown while the video buffers — on a slow connection this is
+  /** Still frame shown while the video buffers - on a slow connection this is
    * what the visitor actually looks at first, so it wants to be small. Unlike
    * bgImageDesk it can't go through next/image (the <video> poster attribute
    * takes a plain URL), so pass a pre-optimized file. Defaults to bgImageDesk. */
   posterSrc?: string;
-  /** Pass null to opt out of the default homepage hero video — pages that only
+  /** Pass null to opt out of the default homepage hero video - pages that only
    * want a still background must do this, or they inherit a 26 MB autoplaying
    * MP4 they never asked for. */
   bgVideo?: string | null;
@@ -32,12 +32,12 @@ type HeroProps = {
 const toHevcSrc = (src: string) => src.replace(/\.mp4$/, "-hevc.mp4");
 
 /**
- * Decides when — and whether — the hero video should start downloading.
+ * Decides when - and whether - the hero video should start downloading.
  *
  * An `autoPlay` <video> defaults to `preload="auto"`, so the browser pulls the
  * whole file as part of the initial page load, competing with the CSS, JS,
  * fonts and images needed to render anything at all. The hero is 7-8 MB, so on
- * anything short of fast wifi that is the page "loading slowly" — even though
+ * anything short of fast wifi that is the page "loading slowly" - even though
  * the poster it needs to paint is only 86 KB.
  *
  * So: hold the <source> elements back until the browser is idle. The poster
@@ -121,11 +121,17 @@ const Hero = ({
   const orderUrl = useOrderUrl();
   const resolvedCtaHref = ctaHref ?? orderUrl;
 
+  // In-page anchors ("#open-roles") and internal routes ("/menu") must stay in
+  // the same tab - only external ordering links open in a new one. Without this
+  // a hash CTA would spawn a blank tab instead of scrolling.
+  const ctaIsInternal =
+    resolvedCtaHref.startsWith("#") || resolvedCtaHref.startsWith("/");
+
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const loadVideo = useDeferredVideo(Boolean(bgVideo));
 
   // Adding <source> children doesn't make an already-mounted <video> fetch
-  // them — it needs an explicit load(). autoPlay then takes over, since the
+  // them - it needs an explicit load(). autoPlay then takes over, since the
   // element is muted.
   React.useEffect(() => {
     if (loadVideo) videoRef.current?.load();
@@ -154,7 +160,7 @@ const Hero = ({
             loop
             muted
             playsInline
-            // Nothing is fetched until useDeferredVideo says so — see there for
+            // Nothing is fetched until useDeferredVideo says so - see there for
             // why. Until then the poster is the hero, and it is only ~86 KB.
             preload="none"
             poster={posterSrc ?? bgImageDesk}
@@ -162,7 +168,7 @@ const Hero = ({
             {loadVideo && (
               <>
                 {/* Safari/iOS is the only engine that decodes HEVC, and it
-                    picks the first source it can play — so Apple devices get
+                    picks the first source it can play - so Apple devices get
                     the much smaller HEVC file and everyone else falls through
                     to H.264. This is what fixes the long black hero on
                     iPhones/Macs. */}
@@ -235,8 +241,8 @@ const Hero = ({
           {ctaLabel && (
             <a
               href={resolvedCtaHref}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={ctaIsInternal ? undefined : "_blank"}
+              rel={ctaIsInternal ? undefined : "noopener noreferrer"}
               className="hero-button"
             >
               {ctaLabel}

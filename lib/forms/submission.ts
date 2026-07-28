@@ -24,7 +24,7 @@ export type ForwardResult =
  * Posts a validated payload to an n8n webhook.
  *
  * The webhook uses Header Auth, so `secret` must match the credential on the
- * Webhook node — when it's absent the header is simply omitted and n8n replies
+ * Webhook node - when it's absent the header is simply omitted and n8n replies
  * 403, which surfaces to the visitor as a retry prompt rather than a silent
  * loss.
  */
@@ -51,7 +51,7 @@ export async function forwardToWebhook(
 
     return { ok: true };
   } catch (error) {
-    // Timeout, DNS failure, n8n down — the lead is lost either way, so log the
+    // Timeout, DNS failure, n8n down - the lead is lost either way, so log the
     // full payload to make it recoverable from server logs.
     console.error("[forms] could not reach n8n", { error, payload });
     return { ok: false, reason: "network" };

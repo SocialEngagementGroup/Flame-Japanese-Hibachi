@@ -5,7 +5,7 @@
  * "3.6 mi away" in one place and "3.57 mi away" in another.
  *
  * Under half a mile "0.3 mi away" is noise, and one decimal stops reading as
- * meaningful once the number is large — nobody needs "127.4 mi away", and a
+ * meaningful once the number is large - nobody needs "127.4 mi away", and a
  * haversine doesn't have that precision anyway.
  */
 export function formatDistance(miles: number): string {

@@ -1,7 +1,7 @@
 import React from "react";
 
 type StatusMessageProps = {
-  /** Small uppercase line above the heading — "ERROR 404", "SOMETHING WENT WRONG". */
+  /** Small uppercase line above the heading - "ERROR 404", "SOMETHING WENT WRONG". */
   eyebrow: string;
   heading: React.ReactNode;
   description: string;

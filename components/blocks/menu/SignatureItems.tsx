@@ -54,7 +54,7 @@ const SignatureItems = () => {
 
   return (
     <section className="w-full bg-[#FFFFFF] dark:bg-black py-[var(--space-2xl)] overflow-hidden transition-colors duration-300">
-      {/* Header — constrained to content width */}
+      {/* Header - constrained to content width */}
       <div className="w-full flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
         <h2 className="heading-h3 text-left">
           <span className="text-[#1C1B1B] dark:text-white transition-colors duration-300">
@@ -81,7 +81,7 @@ const SignatureItems = () => {
         </div>
       </div>
 
-      {/* Slider — full width */}
+      {/* Slider - full width */}
       <div className="px-[var(--space-lg)]">
         <Swiper
           modules={[Autoplay, Navigation]}
@@ -131,7 +131,7 @@ const SignatureItems = () => {
           ))}
         </Swiper>
 
-        {/* Mobile arrows — below the cards */}
+        {/* Mobile arrows - below the cards */}
         <div className="flex md:hidden justify-center gap-2 mt-[var(--space-md)]">
           <button
             onClick={() => swiperRef.current?.slidePrev()}

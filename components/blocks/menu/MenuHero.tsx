@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import Hero from "@/components/blocks/hero/Hero";
 import { getLocationBySlug, getLocationLabel } from "@/lib/api/locations";
 
-// There is no menu-specific hero clip — this is the same video the homepage
+// There is no menu-specific hero clip - this is the same video the homepage
 // uses, which is what the menu hero has always played.
 const MENU_HERO_VIDEO = "/homepage/hero/flame-japanese-hibachi-hero.mp4";
 
@@ -17,7 +17,7 @@ const MENU_HERO_VIDEO = "/homepage/hero/flame-japanese-hibachi-hero.mp4";
  * instead of unmounting the <video> and re-downloading it.
  *
  * The city comes from the route param, so each statically generated location
- * page still ships its own H1 in the prerendered HTML — the layout is rendered
+ * page still ships its own H1 in the prerendered HTML - the layout is rendered
  * per page at build time, not shared at runtime.
  */
 export default function MenuHero() {

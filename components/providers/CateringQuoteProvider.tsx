@@ -42,7 +42,7 @@ const withQty = (lines: QuoteLine[], id: string, qty: number): QuoteLine[] => {
  * Holds the in-progress catering quote.
  *
  * State lives above the cards so a visitor can add packages from several menu
- * sections before opening the modal — the alternative, keeping it inside the
+ * sections before opening the modal - the alternative, keeping it inside the
  * modal, forces them to build the whole order in one sitting without being able
  * to scroll back and look at the other menus.
  */

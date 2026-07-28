@@ -13,7 +13,7 @@ export type EstimateLine = {
   kind: "package" | "addon";
   id: string;
   label: string;
-  /** What the quantity means, spelled out — "100 PEOPLE", "× 120 guests". */
+  /** What the quantity means, spelled out - "100 PEOPLE", "× 120 guests". */
   detail: string;
   qty: number;
   total: number;
@@ -55,7 +55,7 @@ export const findAddOn = (id: string): CateringAddOn | null =>
 export const allPackages = (): ResolvedPackage[] => [...packageIndex.values()];
 
 /**
- * How many guests a package feeds, or null when it isn't measured in people —
+ * How many guests a package feeds, or null when it isn't measured in people -
  * the wings menu is sold by the piece ("150 PIECES"), so it must not count
  * toward the headcount coverage check.
  */
@@ -72,7 +72,7 @@ export const maxQtyFor = (addOn: CateringAddOn): number =>
  * Prices a quote.
  *
  * Per-person add-ons multiply by the *event headcount*, not by the combined
- * capacity of the chosen packages — someone ordering a 100-guest tray for 120
+ * capacity of the chosen packages - someone ordering a 100-guest tray for 120
  * people still wants 120 spring rolls. The multiplier is surfaced in the UI so
  * a customer who disagrees corrects the headcount rather than being quietly
  * overcharged.

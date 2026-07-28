@@ -19,7 +19,7 @@ const LOCATION_PAGE_PATTERN = /^\/(menu|catering)\/[^/]+$/;
 
 // Open state comes from NearestLocationProvider, not props, so every trigger
 // (navbar button, "Not your location?" on a location page) opens this same
-// single instance — mounted once in app/layout.tsx.
+// single instance - mounted once in app/layout.tsx.
 const FindFlamePopup: React.FC = () => {
   const {
     nearest,
@@ -35,7 +35,7 @@ const FindFlamePopup: React.FC = () => {
   const [mapSrc, setMapSrc] = useState("");
 
   // Once the visitor's own coordinates are known, every store gets a distance
-  // and the list sorts nearest-first — previously only the nearest store showed
+  // and the list sorts nearest-first - previously only the nearest store showed
   // one, so "is the Laurel or Baltimore branch closer to me?" was unanswerable.
   // With no origin (no GPS/IP/ZIP yet, or a purely manual pick) there is no
   // "here" to measure from, so distances are omitted.
@@ -75,7 +75,7 @@ const FindFlamePopup: React.FC = () => {
   // Opening the popup is a strong intent signal a store switch is coming, so
   // warm the router cache. The heavy menu/catering tree lives in the layout and
   // is already mounted, so each of these payloads is only the page delta (~4 KB)
-  // — cheap enough to prefetch every store, which makes any pick instant.
+  // - cheap enough to prefetch every store, which makes any pick instant.
   // Still staggered so 14 requests don't land as one burst.
   useEffect(() => {
     if (!open) return;
@@ -98,7 +98,7 @@ const FindFlamePopup: React.FC = () => {
     onClose();
 
     // If already viewing a location-specific menu/catering page, switching stores
-    // here should carry the visitor to that same page for the newly picked store —
+    // here should carry the visitor to that same page for the newly picked store -
     // otherwise the page keeps showing the old store's menu/order links until reload.
     const locationPageMatch = pathname.match(LOCATION_PAGE_PATTERN);
     if (locationPageMatch) {
@@ -165,7 +165,7 @@ const FindFlamePopup: React.FC = () => {
         <div className="flex items-start justify-between gap-4 px-[var(--space-lg)] pt-[var(--space-lg)] pb-[var(--space-md)] border-b border-black/5 dark:border-white/5">
           <div>
             <h3 className="heading-h3">
-              {/* Always "FIND YOUR FLAME" — this is the brand line, not a
+              {/* Always "FIND YOUR FLAME" - this is the brand line, not a
                   readout of the active store. The selected store is already
                   named in the navbar and pinned to the top of the list below. */}
               <span className="text-black dark:text-white">FIND YOUR </span>

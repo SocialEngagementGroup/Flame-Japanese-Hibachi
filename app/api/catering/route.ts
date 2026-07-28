@@ -42,7 +42,7 @@ type Fulfilment = (typeof FULFILMENTS)[number];
 /**
  * Rebuilds the submitted line items from our own price data.
  *
- * Only the ids and quantities are taken from the request — every price is
+ * Only the ids and quantities are taken from the request - every price is
  * looked up server-side. A quote is a commercial document, and prices arriving
  * from a browser are attacker-controlled.
  */
@@ -135,7 +135,7 @@ export async function POST(request: Request) {
   const location = getLocationBySlug(asText(payload.locationSlug, 80));
 
   // Flag near-term events so the team can triage them ahead of a booking that's
-  // months out. No date is rejected — the request still reaches the sheet.
+  // months out. No date is rejected - the request still reaches the sheet.
   const eventAt = new Date(`${fields.eventDate}T00:00:00`).getTime();
   const isShortNotice =
     Number.isFinite(eventAt) && eventAt - Date.now() < 48 * 60 * 60 * 1000;
