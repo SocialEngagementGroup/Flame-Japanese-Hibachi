@@ -1,10 +1,11 @@
 import { MetadataRoute } from "next";
 import { getActiveLocations } from "@/lib/api/locations";
+import { jobPostings } from "@/lib/data/careers";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Shares the canonical helper with every page's metadata rather than
-  // hardcoding the host — otherwise a preview deployment emits a sitemap
+  // hardcoding the host - otherwise a preview deployment emits a sitemap
   // pointing at production, and the two disagree about what the site's URL is.
   const baseUrl = getCanonicalUrl("/");
   const lastModified = new Date();
@@ -50,6 +51,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     ...locationMenuAndCateringUrls,
+    {
+      url: `${baseUrl}/careers`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    },
+    ...jobPostings.map((job) => ({
+      url: `${baseUrl}/careers/${job.slug}`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.4,
+    })),
     {
       url: `${baseUrl}/contact`,
       lastModified,

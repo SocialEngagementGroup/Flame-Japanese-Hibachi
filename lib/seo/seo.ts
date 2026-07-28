@@ -13,12 +13,12 @@ export function getCanonicalUrl(pathname: string): string {
  *
  * Use this on every page instead of hand-writing `{ title, description,
  * alternates }`. The root layout defines a static `openGraph` (title + url),
- * and Next *merges* metadata rather than replacing it — so a page that sets
+ * and Next *merges* metadata rather than replacing it - so a page that sets
  * only `title` and `canonical` silently keeps the **homepage's** og:title and
  * og:url. That is what every page here used to do, which meant all 36 URLs
  * previewed as the homepage when shared to WhatsApp, iMessage, Facebook,
  * LinkedIn or Slack. For a 14-location restaurant that is the difference
- * between sharing "Menu — Laurel, MD" and sharing a generic brand card.
+ * between sharing "Menu - Laurel, MD" and sharing a generic brand card.
  *
  * `path` is the page's own path ("/menu/laurel-md"); it drives both the
  * canonical and og:url so the two can't drift apart.
@@ -39,7 +39,7 @@ export function buildPageMetadata({
   description,
   path,
 }: {
-  /** Page title WITHOUT the brand suffix — the root layout's title template
+  /** Page title WITHOUT the brand suffix - the root layout's title template
    * appends "| Flame Japanese Hibachi" already. */
   title: string;
   description: string;

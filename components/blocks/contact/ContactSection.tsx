@@ -88,7 +88,7 @@ const ContactSection = ({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Captured before the first await — React nulls currentTarget afterwards.
+    // Captured before the first await - React nulls currentTarget afterwards.
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form)) as Record<
       string,
@@ -209,7 +209,7 @@ const ContactSection = ({
           <div className="md:col-span-2" aria-live="polite">
             {status === "success" && (
               <p className="text-primary text-small font-bold uppercase tracking-widest text-center">
-                Thanks — we&apos;ve got your message and will reply within one
+                Thanks - we&apos;ve got your message and will reply within one
                 business day.
               </p>
             )}

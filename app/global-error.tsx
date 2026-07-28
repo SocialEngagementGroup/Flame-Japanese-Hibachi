@@ -7,7 +7,7 @@ import "./globals.css";
  * Last-resort boundary: this replaces the root layout entirely, so there is no
  * navbar, no theme provider, and no next/font variables. Everything here is
  * therefore self-contained and avoids the font tokens the rest of the site
- * relies on — a stylesheet that half-loads is how these screens end up looking
+ * relies on - a stylesheet that half-loads is how these screens end up looking
  * broken in exactly the moment they need to look deliberate.
  */
 export default function GlobalError({

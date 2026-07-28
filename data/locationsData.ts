@@ -1,14 +1,14 @@
 /**
  * Single source of truth for every restaurant.
  *
- * Editing a store here updates it everywhere — there are no store details or
+ * Editing a store here updates it everywhere - there are no store details or
  * ordering links hardcoded anywhere else in the app:
  *
  * - `orderUrl`  → every "Order Now" / "Add to Cart" button on that store's
  *                 pages, the navbar and footer CTAs, and /order/[slug].
  *                 Resolved through `resolveOrderUrl()` / `useOrderUrl()`.
  *                 **Leave it as "" and that store falls back to ORDER_URL in
- *                 lib/constants.ts** (the brand-wide ordering page) — nothing
+ *                 lib/constants.ts** (the brand-wide ordering page) - nothing
  *                 breaks, the buttons just point at the generic link.
  * - `address`   → the Google Maps embed and every "Get Directions" link
  *                 (FindFlamePopup, /locations, the navbar marquee).
@@ -21,7 +21,7 @@
  * button for that store follows. See docs/location-pages-guide.md.
  *
  * ---------------------------------------------------------------------------
- * SLUG FORMAT — one rule, no exceptions
+ * SLUG FORMAT - one rule, no exceptions
  * ---------------------------------------------------------------------------
  *
  *     slug = kebab-case(name without its state) + "-" + lowercase(state)
@@ -32,13 +32,13 @@
  *     "Northern Pkwy (Baltimore), MD" -> "northern-pkwy-baltimore-md"
  *
  * Derive it from `name`, NOT from `city`. `city` is the postal city and often
- * differs from what the store is called — the store everyone knows as
+ * differs from what the store is called - the store everyone knows as
  * "Seven Corners" has `city: "Falls Church"`. Three slugs were previously
  * built from `city` (or with the words reversed), which meant a visitor on
  * /menu/falls-church-va saw a page headed "Seven Corners". They are now
  * seven-corners-va, forest-hill-richmond-va and northern-pkwy-baltimore-md.
  *
- * Punctuation — parentheses, commas, periods, "&" — collapses to a single "-".
+ * Punctuation - parentheses, commas, periods, "&" - collapses to a single "-".
  * No double hyphens, no leading/trailing hyphen.
  *
  * THE SLUG IS THE STORE'S PERMANENT URL IDENTITY. It is deliberately shared by
@@ -66,7 +66,7 @@ export const activeLocations = [
     id: 1,
     slug: "baltimore-md",
     name: "Baltimore, MD",
-    schemaName: "Flame Japanese Hibachi — Baltimore",
+    schemaName: "Flame Japanese Hibachi - Baltimore",
     address: "5230 Moravia Rd, Suite B, Baltimore, MD 21206",
     streetAddress: "5230 Moravia Rd, Suite B",
     city: "Baltimore",
@@ -83,7 +83,7 @@ export const activeLocations = [
     id: 2,
     slug: "manassas-va",
     name: "Manassas, VA",
-    schemaName: "Flame Japanese Hibachi — Manassas",
+    schemaName: "Flame Japanese Hibachi - Manassas",
     address: "9522 Liberia Ave, Manassas, VA 20110",
     streetAddress: "9522 Liberia Ave",
     city: "Manassas",
@@ -100,7 +100,7 @@ export const activeLocations = [
     id: 3,
     slug: "laurel-md",
     name: "Laurel, MD",
-    schemaName: "Flame Japanese Hibachi — Laurel",
+    schemaName: "Flame Japanese Hibachi - Laurel",
     address: "13600 Baltimore Ave #310, Laurel, MD 20707",
     streetAddress: "13600 Baltimore Ave #310",
     city: "Laurel",
@@ -117,7 +117,7 @@ export const activeLocations = [
     id: 4,
     slug: "pasadena-md",
     name: "Pasadena, MD",
-    schemaName: "Flame Japanese Hibachi — Pasadena",
+    schemaName: "Flame Japanese Hibachi - Pasadena",
     address: "8036 Ritchie Hwy, Suite 1-C, Pasadena, MD 21122",
     streetAddress: "8036 Ritchie Hwy, Suite 1-C",
     city: "Pasadena",
@@ -134,7 +134,7 @@ export const activeLocations = [
     id: 5,
     slug: "alexandria-va",
     name: "Alexandria, VA",
-    schemaName: "Flame Japanese Hibachi — Alexandria",
+    schemaName: "Flame Japanese Hibachi - Alexandria",
     address: "6676 Richmond Hwy, Alexandria, VA 22306",
     streetAddress: "6676 Richmond Hwy",
     city: "Alexandria",
@@ -151,7 +151,7 @@ export const activeLocations = [
     id: 6,
     slug: "forest-hill-richmond-va",
     name: "Forest Hill (Richmond), VA",
-    schemaName: "Flame Japanese Hibachi — Richmond",
+    schemaName: "Flame Japanese Hibachi - Richmond",
     address: "7037 Forest Hill Avenue, Suite B, Richmond, VA 23225",
     streetAddress: "7037 Forest Hill Avenue, Suite B",
     city: "Richmond",
@@ -168,7 +168,7 @@ export const activeLocations = [
     id: 7,
     slug: "tamarac-fl",
     name: "Tamarac, FL",
-    schemaName: "Flame Japanese Hibachi — Tamarac",
+    schemaName: "Flame Japanese Hibachi - Tamarac",
     address: "5707 University Dr, Tamarac, FL 33321",
     streetAddress: "5707 University Dr",
     city: "Tamarac",
@@ -185,7 +185,7 @@ export const activeLocations = [
     id: 8,
     slug: "seven-corners-va",
     name: "Seven Corners, VA",
-    schemaName: "Flame Japanese Hibachi — Seven Corners",
+    schemaName: "Flame Japanese Hibachi - Seven Corners",
     address: "6379 Seven Corners Center, VA 22044",
     streetAddress: "6379 Seven Corners Center",
     city: "Falls Church",
@@ -202,7 +202,7 @@ export const activeLocations = [
     id: 9,
     slug: "northern-pkwy-baltimore-md",
     name: "Northern Pkwy (Baltimore), MD",
-    schemaName: "Flame Japanese Hibachi — Baltimore Northern Parkway",
+    schemaName: "Flame Japanese Hibachi - Baltimore Northern Parkway",
     address: "4460 W Northern Parkway, Baltimore, MD 21215",
     streetAddress: "4460 W Northern Parkway",
     city: "Baltimore",
@@ -219,7 +219,7 @@ export const activeLocations = [
     id: 10,
     slug: "philadelphia-pa",
     name: "Philadelphia, PA",
-    schemaName: "Flame Japanese Hibachi — Philadelphia",
+    schemaName: "Flame Japanese Hibachi - Philadelphia",
     address: "101 E Olney Avenue, Philadelphia, PA 19120",
     streetAddress: "101 E Olney Avenue",
     city: "Philadelphia",
@@ -236,7 +236,7 @@ export const activeLocations = [
     id: 11,
     slug: "royal-palm-beach-fl",
     name: "Royal Palm Beach, FL",
-    schemaName: "Flame Japanese Hibachi — Royal Palm Beach",
+    schemaName: "Flame Japanese Hibachi - Royal Palm Beach",
     address: "9940 Belvedere Rd #F, Royal Palm Beach, FL 33411",
     streetAddress: "9940 Belvedere Rd #F",
     city: "Royal Palm Beach",
@@ -253,7 +253,7 @@ export const activeLocations = [
     id: 12,
     slug: "aberdeen-md",
     name: "Aberdeen, MD",
-    schemaName: "Flame Japanese Hibachi — Aberdeen",
+    schemaName: "Flame Japanese Hibachi - Aberdeen",
     address: "939 Beards Hill Rd, Aberdeen, MD 21001",
     streetAddress: "939 Beards Hill Rd",
     city: "Aberdeen",
@@ -270,7 +270,7 @@ export const activeLocations = [
     id: 13,
     slug: "mechanicsville-va",
     name: "Mechanicsville, VA",
-    schemaName: "Flame Japanese Hibachi — Mechanicsville",
+    schemaName: "Flame Japanese Hibachi - Mechanicsville",
     address: "7354 Bell Creek Rd, Mechanicsville, VA 23111",
     streetAddress: "7354 Bell Creek Rd",
     city: "Mechanicsville",
@@ -287,7 +287,7 @@ export const activeLocations = [
     id: 14,
     slug: "bristow-va",
     name: "Bristow, VA",
-    schemaName: "Flame Japanese Hibachi — Bristow",
+    schemaName: "Flame Japanese Hibachi - Bristow",
     address: "10286 Bristow Center Dr, Bristow, VA 20136",
     streetAddress: "10286 Bristow Center Dr",
     city: "Bristow",

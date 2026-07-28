@@ -38,7 +38,7 @@ const LocationsSection = ({
   const { nearest, origin } = useNearestLocation();
 
   /** Distance from the visitor to a store, or null when we simply don't know.
-   * Only a shared location (GPS/IP/ZIP) produces an origin — a store picked by
+   * Only a shared location (GPS/IP/ZIP) produces an origin - a store picked by
    * hand doesn't, and inventing a number there is what previously showed
    * "0.0 MI AWAY" to someone who had never shared their location at all.
    * Works from anywhere in the world; being outside the delivery area affects
@@ -171,7 +171,7 @@ const LocationsSection = ({
 
   return (
     <section className="w-full bg-[#F0EDED] dark:bg-black px-[var(--space-lg)] relative overflow-visible py-[var(--space-2xl)] transition-colors duration-300">
-      {/* MOBILE LAYOUT — heading → map → cards → coming soon → button */}
+      {/* MOBILE LAYOUT - heading → map → cards → coming soon → button */}
       <div className="lg:hidden max-w-[600px] mx-auto">
         {leftHeader && <div className="mb-[var(--space-xl)]">{leftHeader}</div>}
 
@@ -268,7 +268,7 @@ const LocationsSection = ({
             ))}
           </Swiper>
 
-          {/* Mobile arrows — below the cards */}
+          {/* Mobile arrows - below the cards */}
           <div className="flex justify-center gap-2 mt-[var(--space-md)]">
             <button
               onClick={() => mobileSwiperRef.current?.slidePrev()}
@@ -398,7 +398,7 @@ const LocationsSection = ({
         {/* Right Side: Desktop Scrollable Cards */}
         <div className="w-full flex flex-col items-start py-0">
           <div className={`block w-full max-w-[900px] ${hideMap ? "" : `${hideViewAll ? "lg:pb-[52.7vh]" : "lg:pb-[calc(52.7vh+84px)]"} pb-[var(--space-xl)]`}`}>
-            {/* Spacer — mirrors the left-column heading height so the first card aligns with the map / leftHeader */}
+            {/* Spacer - mirrors the left-column heading height so the first card aligns with the map / leftHeader */}
             <div className="invisible" aria-hidden="true" id="desktop-spacer">
               {leftHeader ? (
                 <div className="mb-[var(--space-xl)]">{leftHeader}</div>

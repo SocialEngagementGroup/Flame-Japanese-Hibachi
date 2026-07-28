@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-/** Web app manifest — makes the site installable and gives Android/Chrome a
+/** Web app manifest - makes the site installable and gives Android/Chrome a
  * proper name, colours and icon instead of guessing from the page. */
 export const dynamic = "force-static";
 

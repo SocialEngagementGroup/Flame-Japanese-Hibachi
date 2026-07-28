@@ -2,7 +2,7 @@ import { getActiveLocations, locationPath } from "@/lib/api/locations";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 
 /**
- * /llms.txt — a plain-text map of the site for LLMs and AI search crawlers
+ * /llms.txt - a plain-text map of the site for LLMs and AI search crawlers
  * (ChatGPT, Claude, Perplexity, Gemini), which increasingly look for this file
  * the way search engines look for sitemap.xml.
  *

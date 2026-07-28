@@ -1,7 +1,7 @@
 /* Work Sans and Raleway are both loaded via next/font in app/layout.tsx and
    exposed as --font-sans / --font-serif-next. A Google Fonts @import used to
    sit here as well; it was stripped from the production CSS at build time and
-   never fetched, so it was doing nothing. Add fonts through next/font only —
+   never fetched, so it was doing nothing. Add fonts through next/font only -
    it self-hosts them, which avoids a render-blocking third-party request. */
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
@@ -90,7 +90,7 @@
 @theme {
   --breakpoint-lg: 1100px;
 
-  /* Typography Scale — registered as Tailwind utilities (text-h1, text-body, etc.) */
+  /* Typography Scale - registered as Tailwind utilities (text-h1, text-body, etc.) */
   --text-h1: clamp(34px, 5.5vw, 96px);
   --text-h2: clamp(18px, 2vw, 26px);
   --text-h3: clamp(28px, 3.5vw, 52px);
@@ -129,7 +129,7 @@
 
 /* Robustly clip any horizontal overflow so the fixed navbar can never be panned
    or drift on mobile. Unlayered so it beats Tailwind's overflow utilities, and
-   `clip` (unlike `hidden`) creates no scroll container — nothing to pan. */
+   `clip` (unlike `hidden`) creates no scroll container - nothing to pan. */
 html,
 body {
   overflow-x: clip;
@@ -138,7 +138,7 @@ body {
 @layer base {
   html {
     /* Reserve the scrollbar gutter so the viewport width never changes when the
-       scrollbar appears/disappears — keeps the fixed navbar from squeezing on scroll. */
+       scrollbar appears/disappears - keeps the fixed navbar from squeezing on scroll. */
     scrollbar-gutter: stable;
   }
 
@@ -174,7 +174,7 @@ body {
   }
 }
 
-/* Dialog entrance — the backdrop fades while the card lifts and settles.
+/* Dialog entrance - the backdrop fades while the card lifts and settles.
    Both are skipped under prefers-reduced-motion below. */
 @keyframes dialog-backdrop-in {
   from {
@@ -249,7 +249,7 @@ body {
   letter-spacing: -0.05em;
   text-transform: uppercase;
   /* Location headings interpolate a city name, so their length isn't known up
-     front — "ROYAL PALM BEACH" is ~3x "LAUREL". Without this a long single
+     front - "ROYAL PALM BEACH" is ~3x "LAUREL". Without this a long single
      word runs past the viewport instead of wrapping. No effect on headings
      that already fit. */
   overflow-wrap: break-word;

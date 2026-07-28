@@ -13,7 +13,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `It's easy! Click the "Order Now" button on our website and you'll be taken to our ordering page powered by DoorDash. From there, you can browse our menu, customize your meal, and pay securely—all through DoorDash's platform.`,
+                        content: `It's easy! Click the "Order Now" button on our website and you'll be taken to our ordering page powered by DoorDash. From there, you can browse our menu, customize your meal, and pay securely-all through DoorDash's platform.`,
                     },
                 ],
             },
@@ -72,7 +72,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `When you visit our website, we may collect basic technical information such as your IP address, browser type, and pages visited—automatically through analytics tools. If you contact us via our contact form or email, we collect the information you voluntarily provide, like your name, email address, and message. We do not collect payment details, delivery addresses, or order information directly.`,
+                        content: `When you visit our website, we may collect basic technical information such as your IP address, browser type, and pages visited-automatically through analytics tools. If you contact us via our contact form or email, we collect the information you voluntarily provide, like your name, email address, and message. We do not collect payment details, delivery addresses, or order information directly.`,
                     },
                 ],
             },
@@ -103,7 +103,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `We use tools like Google Analytics to understand how people use our website—for example, which pages are most popular, how long visitors stay, and where they come from. This helps us improve our site and better serve you. This data is aggregated and does not identify you personally.`,
+                        content: `We use tools like Google Analytics to understand how people use our website-for example, which pages are most popular, how long visitors stay, and where they come from. This helps us improve our site and better serve you. This data is aggregated and does not identify you personally.`,
                     },
                 ],
             },
@@ -132,7 +132,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `DoorDash uses industry-standard security practices, including encryption and secure payment processing, to protect your payment information. Because payment data flows entirely through DoorDash's systems—not ours—their security standards apply directly to your financial data. You can review DoorDash's security practices in their Privacy Policy at doordash.com/privacy.`,
+                        content: `DoorDash uses industry-standard security practices, including encryption and secure payment processing, to protect your payment information. Because payment data flows entirely through DoorDash's systems-not ours-their security standards apply directly to your financial data. You can review DoorDash's security practices in their Privacy Policy at doordash.com/privacy.`,
                     },
                 ],
             },
@@ -170,7 +170,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `Yes. You can control cookies through your browser settings—most browsers let you block or delete cookies at any time. You can also opt out of Google Analytics tracking by installing the Google Analytics Opt-Out Browser Add-on (available at tools.google.com/dlpage/gaoptout), and opt out of Meta ad tracking through your Facebook ad preferences at facebook.com/ads/preferences. Note that disabling certain cookies may affect how some parts of our website work.`,
+                        content: `Yes. You can control cookies through your browser settings-most browsers let you block or delete cookies at any time. You can also opt out of Google Analytics tracking by installing the Google Analytics Opt-Out Browser Add-on (available at tools.google.com/dlpage/gaoptout), and opt out of Meta ad tracking through your Facebook ad preferences at facebook.com/ads/preferences. Note that disabling certain cookies may affect how some parts of our website work.`,
                     },
                 ],
             },
@@ -256,7 +256,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `Every plate is cooked fresh when you order. We do not pre-cook and hold your meal—your food is prepared to order so it arrives hot, flavorful, and at its best. Because each dish is made fresh, preparation times may vary slightly during busy periods, and we appreciate your patience while we cook your order just right.`,
+                        content: `Every plate is cooked fresh when you order. We do not pre-cook and hold your meal-your food is prepared to order so it arrives hot, flavorful, and at its best. Because each dish is made fresh, preparation times may vary slightly during busy periods, and we appreciate your patience while we cook your order just right.`,
                     },
                 ],
             },
@@ -304,7 +304,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `Of course. If you have a special request—a custom spread, specific dishes, dietary considerations, or a feast for a large crowd—our team is happy to work with you. Just contact our customer support at ask@flamejapanesehibachi.com or +1 888-786-5411 with the details of your event, and we’ll tailor an order to fit your occasion.`,
+                        content: `Of course. If you have a special request-a custom spread, specific dishes, dietary considerations, or a feast for a large crowd-our team is happy to work with you. Just contact our customer support at ask@flamejapanesehibachi.com or +1 888-786-5411 with the details of your event, and we’ll tailor an order to fit your occasion.`,
                     },
                 ],
             },
@@ -332,7 +332,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `If and when we launch a loyalty program, we will clearly explain what data is collected, how it is used, and how you can opt out—prior to enrollment. We will update this FAQ and our Privacy Policy accordingly. We will never enroll you in any program without your explicit consent.`,
+                        content: `If and when we launch a loyalty program, we will clearly explain what data is collected, how it is used, and how you can opt out-prior to enrollment. We will update this FAQ and our Privacy Policy accordingly. We will never enroll you in any program without your explicit consent.`,
                     },
                 ],
             },

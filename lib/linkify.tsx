@@ -7,7 +7,7 @@ import React from "react";
  * without re-typing every mention as JSX.
  */
 
-// Detect-only patterns (no global flag) — combined into one global regex below.
+// Detect-only patterns (no global flag) - combined into one global regex below.
 const EMAIL = /[a-zA-Z0-9][\w+.-]*@[\w.-]+\.[a-z]{2,}/;
 // URLs match greedily up to whitespace/quote; trailing sentence punctuation
 // is stripped after the match so periods etc. don't break the link.

@@ -15,14 +15,50 @@ import {
   maxQtyFor,
 } from "@/lib/catering/quote";
 import { getActiveLocations, getLocationBySlug } from "@/lib/api/locations";
+import FilterSelect, { type SelectGroup } from "@/components/ui/FilterSelect";
 
 const activeLocations = getActiveLocations();
+
+/** Trigger styling that matches the catering form's other inputs (orange
+ * border) while using the site's shared custom dropdown. */
+const formSelectTrigger = `flex w-full items-center justify-between gap-2 border border-primary px-4 py-3 text-body text-left text-[#1C1B1B] dark:text-white outline-none transition-all focus-visible:ring-2 focus-visible:ring-primary/30`;
+
+const VENUE_SETTING_GROUPS: SelectGroup[] = [
+  {
+    options: [
+      { value: "", label: "Select…" },
+      { value: "Indoor", label: "Indoor" },
+      { value: "Outdoor", label: "Outdoor" },
+      { value: "Both", label: "Both" },
+    ],
+  },
+];
+
+const LOCATION_HEADER_GROUPS: SelectGroup[] = [
+  {
+    options: activeLocations.map((l) => ({
+      value: String(l.id),
+      label: l.name,
+    })),
+  },
+];
+
+const VENUE_POWER_GROUPS: SelectGroup[] = [
+  {
+    options: [
+      { value: "", label: "Select…" },
+      { value: "Yes", label: "Yes" },
+      { value: "No", label: "No" },
+      { value: "Not sure", label: "Not sure" },
+    ],
+  },
+];
 
 type Fulfilment = "delivery" | "pickup" | "onsite_chef";
 type FieldErrors = Partial<Record<string, string>>;
 type Status = "idle" | "submitting" | "success" | "error";
 
-/** Draft only covers the typed fields — selections already live in the provider. */
+/** Draft only covers the typed fields - selections already live in the provider. */
 const DRAFT_KEY = "fjh-catering-draft-v1";
 const SHORT_NOTICE_HOURS = 48;
 
@@ -126,7 +162,7 @@ export default function CateringQuoteModal() {
 
   /**
    * Switching store navigates to that store's catering page. The catering
-   * layout — which owns the quote provider and this modal — persists across
+   * layout - which owns the quote provider and this modal - persists across
    * sibling route changes, so the modal stays open and the selection survives;
    * only the location label re-renders.
    */
@@ -148,6 +184,19 @@ export default function CateringQuoteModal() {
   const [headcount, setHeadcount] = useState("");
   const [eventDate, setEventDate] = useState("");
   const [setup, setSetup] = useState<string[]>([]);
+  const [occasion, setOccasion] = useState("");
+  const [venueSetting, setVenueSetting] = useState("");
+  const [venuePower, setVenuePower] = useState("");
+
+  // Options for the occasion dropdown (built from OCCASIONS + a placeholder).
+  const occasionGroups: SelectGroup[] = [
+    {
+      options: [
+        { value: "", label: "Select…" },
+        ...OCCASIONS.map((o) => ({ value: o, label: o })),
+      ],
+    },
+  ];
 
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
@@ -163,7 +212,7 @@ export default function CateringQuoteModal() {
   // entirely of those must not trigger a "you're under-ordering" warning.
   const showCoverageNudge = guests > 0 && covered > 0 && covered < guests;
 
-  // Computed when the date changes rather than during render — reading the
+  // Computed when the date changes rather than during render - reading the
   // clock while rendering is impure and risks a server/client mismatch.
   const [isShortNotice, setIsShortNotice] = useState(false);
   const changeEventDate = (value: string) => {
@@ -176,7 +225,7 @@ export default function CateringQuoteModal() {
     );
   };
 
-  // Remember what opened the modal so focus can go back there on close —
+  // Remember what opened the modal so focus can go back there on close -
   // without it, keyboard users are dumped at the top of the document.
   useEffect(() => {
     if (open) {
@@ -231,7 +280,7 @@ export default function CateringQuoteModal() {
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
-      // "" not "unset" — preserves the CSS overflow-x: clip the navbar relies on
+      // "" not "unset" - preserves the CSS overflow-x: clip the navbar relies on
       document.body.style.overflow = "";
     };
   }, [open, handleClose]);
@@ -320,7 +369,7 @@ export default function CateringQuoteModal() {
         JSON.stringify({ fulfilment, headcount, eventDate, setup }),
       );
     } catch {
-      // Private browsing can refuse writes — not worth surfacing.
+      // Private browsing can refuse writes - not worth surfacing.
     }
   };
 
@@ -356,7 +405,7 @@ export default function CateringQuoteModal() {
             {/* The sm: font size needs an explicit length hint. Without one
                 Tailwind reads the arbitrary value as a colour, so the override
                 silently does nothing and the mobile size applies everywhere.
-                Avoid writing class-like tokens in comments here — the scanner
+                Avoid writing class-like tokens in comments here - the scanner
                 reads comments too and will emit CSS for whatever it finds. */}
             <h3
               id="catering-quote-title"
@@ -368,26 +417,22 @@ export default function CateringQuoteModal() {
             <p className="text-gray-700 dark:text-gray-300 text-small font-medium mt-1 sm:mt-2">
               {status === "success"
                 ? "We've got your request."
-                : `Step ${step} of 2 — ${step === 1 ? "your order" : "event details"}`}
+                : `Step ${step} of 2 - ${step === 1 ? "your order" : "event details"}`}
             </p>
 
             {status !== "success" && (
-              <label className="mt-2 flex items-center gap-1.5 text-small text-gray-700 dark:text-gray-300">
+              <div className="mt-2 flex items-center gap-1.5 text-small text-gray-700 dark:text-gray-300">
                 <MapPin className="w-4 h-4 text-primary shrink-0" />
-                <span className="sr-only">Serving location</span>
-                <select
-                  value={location?.id ?? ""}
-                  onChange={(e) => changeLocation(Number(e.target.value))}
-                  className="bg-transparent border-b border-primary/50 text-primary font-bold py-0.5 pr-5 max-w-[190px] sm:max-w-none truncate outline-none focus:border-primary cursor-pointer"
-                >
-                  {!location && <option value="">Choose a location…</option>}
-                  {activeLocations.map((l) => (
-                    <option key={l.id} value={l.id} className="text-black">
-                      {l.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
+                <FilterSelect
+                  label="Serving location"
+                  value={location ? String(location.id) : ""}
+                  onChange={(v) => changeLocation(Number(v))}
+                  groups={LOCATION_HEADER_GROUPS}
+                  placeholder="Choose a location…"
+                  triggerClassName="inline-flex items-center gap-1.5 bg-transparent border-b border-primary/50 text-primary font-bold text-small py-0.5 max-w-[200px] sm:max-w-[280px] outline-none"
+                  panelClassName="min-w-[240px]"
+                />
+              </div>
             )}
           </div>
           <button
@@ -402,7 +447,7 @@ export default function CateringQuoteModal() {
         {status === "success" ? (
           <div className="px-[var(--space-lg)] py-[var(--space-2xl)] text-center">
             <p className="text-primary text-body font-black uppercase tracking-widest mb-3">
-              Thanks — your quote request is in.
+              Thanks - your quote request is in.
             </p>
             <p className="text-gray-700 dark:text-gray-300 text-small max-w-md mx-auto">
               Our team will confirm availability and pricing within one business
@@ -428,7 +473,7 @@ export default function CateringQuoteModal() {
                   <h4 className={labelClass}>Your packages</h4>
                   {selectedPackages.length === 0 && (
                     <p className="text-gray-600 dark:text-gray-400 text-small mb-4">
-                      Nothing selected yet — pick a package below.
+                      Nothing selected yet - pick a package below.
                     </p>
                   )}
 
@@ -531,7 +576,7 @@ export default function CateringQuoteModal() {
                           />
                         </div>
                         <span className="flex-1 min-w-0 text-[#1C1B1B] dark:text-white text-small truncate">
-                          {addOn.name} — {addOn.price}
+                          {addOn.name} - {addOn.price}
                         </span>
                         <Stepper
                           value={addOnQty(addOn.id)}
@@ -567,7 +612,7 @@ export default function CateringQuoteModal() {
                       </span>
                     </div>
                     <p className="text-gray-600 dark:text-gray-400 text-[12px] mt-2">
-                      Estimate only — delivery, tax and any on-site chef fee are
+                      Estimate only - delivery, tax and any on-site chef fee are
                       confirmed by our team. Per-person add-ons use your guest
                       count from the next step.
                     </p>
@@ -636,7 +681,7 @@ export default function CateringQuoteModal() {
 
                   {isShortNotice && (
                     <p className="border border-primary bg-primary/10 px-4 py-3 text-small text-[#1C1B1B] dark:text-white mb-4">
-                      ⚡ <strong>Short notice</strong> — for events this soon,
+                      ⚡ <strong>Short notice</strong> - for events this soon,
                       call us
                       {location ? ` at ${location.phone}` : ""} so we can confirm
                       capacity right away. You can still submit below.
@@ -671,18 +716,16 @@ export default function CateringQuoteModal() {
                       <label htmlFor="occasion" className={labelClass}>
                         Occasion
                       </label>
-                      <select
+                      <FilterSelect
                         id="occasion"
-                        name="occasion"
-                        className={`${inputClass} ${borderFor()}`}
-                      >
-                        <option value="">Select…</option>
-                        {OCCASIONS.map((o) => (
-                          <option key={o} value={o}>
-                            {o}
-                          </option>
-                        ))}
-                      </select>
+                        label="Occasion"
+                        value={occasion}
+                        onChange={setOccasion}
+                        groups={occasionGroups}
+                        placeholder="Select…"
+                        triggerClassName={formSelectTrigger}
+                      />
+                      <input type="hidden" name="occasion" value={occasion} />
                     </div>
                   </div>
 
@@ -717,7 +760,7 @@ export default function CateringQuoteModal() {
 
                   {fulfilment === "pickup" && location && (
                     <p className="border border-black/10 dark:border-white/10 px-4 py-3 text-small text-gray-700 dark:text-gray-300 mb-4">
-                      Collect from <strong>{location.name}</strong> —{" "}
+                      Collect from <strong>{location.name}</strong> -{" "}
                       {location.address}. {location.hours}
                     </p>
                   )}
@@ -747,31 +790,39 @@ export default function CateringQuoteModal() {
                           <label htmlFor="venueSetting" className={labelClass}>
                             Indoor or outdoor
                           </label>
-                          <select
+                          <FilterSelect
                             id="venueSetting"
+                            label="Indoor or outdoor"
+                            value={venueSetting}
+                            onChange={setVenueSetting}
+                            groups={VENUE_SETTING_GROUPS}
+                            placeholder="Select…"
+                            triggerClassName={formSelectTrigger}
+                          />
+                          <input
+                            type="hidden"
                             name="venueSetting"
-                            className={`${inputClass} ${borderFor()}`}
-                          >
-                            <option value="">Select…</option>
-                            <option value="Indoor">Indoor</option>
-                            <option value="Outdoor">Outdoor</option>
-                            <option value="Both">Both</option>
-                          </select>
+                            value={venueSetting}
+                          />
                         </div>
                         <div>
                           <label htmlFor="venuePower" className={labelClass}>
                             Power at the venue
                           </label>
-                          <select
+                          <FilterSelect
                             id="venuePower"
+                            label="Power at the venue"
+                            value={venuePower}
+                            onChange={setVenuePower}
+                            groups={VENUE_POWER_GROUPS}
+                            placeholder="Select…"
+                            triggerClassName={formSelectTrigger}
+                          />
+                          <input
+                            type="hidden"
                             name="venuePower"
-                            className={`${inputClass} ${borderFor()}`}
-                          >
-                            <option value="">Select…</option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                            <option value="Not sure">Not sure</option>
-                          </select>
+                            value={venuePower}
+                          />
                         </div>
                       </div>
                       <p className="text-gray-600 dark:text-gray-400 text-[12px]">
@@ -854,7 +905,7 @@ export default function CateringQuoteModal() {
                     />
                   </div>
 
-                  {/* Honeypot — hidden from sight and screen readers; bots fill it. */}
+                  {/* Honeypot - hidden from sight and screen readers; bots fill it. */}
                   <div className="sr-only" aria-hidden="true">
                     <label htmlFor="company_website">Company Website</label>
                     <input
@@ -898,7 +949,7 @@ export default function CateringQuoteModal() {
                   >
                     <span className="sm:hidden">Next</span>
                     <span className="hidden sm:inline">
-                      Next — event details
+                      Next - event details
                     </span>
                   </button>
                 ) : (

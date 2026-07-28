@@ -19,7 +19,7 @@ const Navbar = () => {
   const orderUrl = useOrderUrl();
   const { nearest, openFindFlame } = useNearestLocation();
   const pathname = usePathname();
-  // On a location-specific page, show that page's own location immediately —
+  // On a location-specific page, show that page's own location immediately -
   // don't wait for the global context to sync via an effect, which lags a
   // render behind the page (that's already visibly correct) by definition.
   const urlLocationMatch = pathname.match(LOCATION_PAGE_PATTERN);

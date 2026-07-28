@@ -53,7 +53,7 @@ const FlameDifference = () => {
               key={index}
               className="flex flex-col items-center justify-center text-center px-4 py-8 md:p-[var(--space-lg)] border w-full min-h-[380px] md:min-h-[480px] min-[1100px]:min-h-[520px] bg-[#EBEBEB] dark:bg-[#131313] border-transparent dark:border-white/5"
             >
-              {/* Icon — fixed frame so the headline below sits at the same line on every card */}
+              {/* Icon - fixed frame so the headline below sits at the same line on every card */}
               <div className="w-[clamp(80px,24vw,120px)] h-[clamp(80px,24vw,120px)] md:w-[clamp(160px,20vw,260px)] md:h-[clamp(160px,20vw,260px)] flex items-center justify-center mb-3 md:mb-[var(--space-md)]">
                 <video
                   src={feature.icon}

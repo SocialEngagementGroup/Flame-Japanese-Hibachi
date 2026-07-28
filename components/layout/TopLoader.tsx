@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 /**
  * Slim top progress bar (GitHub-style) shown during client-side route changes.
  * Starts when an internal link is clicked and completes once the new pathname
- * commits. Self-contained — no external dependency.
+ * commits. Self-contained - no external dependency.
  */
 export default function TopLoader() {
   const pathname = usePathname();

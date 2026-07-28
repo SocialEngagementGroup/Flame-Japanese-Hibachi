@@ -15,7 +15,7 @@ export function getLocationBySlug(slug: string): Location | undefined {
 }
 
 /**
- * The store's name without its trailing state — "Seven Corners, VA" →
+ * The store's name without its trailing state - "Seven Corners, VA" →
  * "Seven Corners". Use this anywhere a location is named in body copy or a
  * heading.
  *
@@ -34,7 +34,7 @@ export function getLocationLabel(location: Pick<Location, "name">): string {
  * Builds the slug a store should have, from the same fields the slug format is
  * defined against (see the SLUG FORMAT block in data/locationsData.ts).
  *
- * This is the authoring/verification helper — `slug` stays a literal in the
+ * This is the authoring/verification helper - `slug` stays a literal in the
  * data file so it is greppable and can never silently change under a store
  * that is already published. Use this to work out what a new store's slug
  * should be, and `assertLocationSlugs()` to check the file still agrees.
@@ -49,7 +49,7 @@ export function toLocationSlug(
   return `${base}-${location.state.toLowerCase()}`;
 }
 
-/** Location-scoped sections. Add a new one here when its route is created —
+/** Location-scoped sections. Add a new one here when its route is created -
  * it reuses the store's existing slug rather than introducing another id. */
 export type LocationSection = "menu" | "catering" | "order";
 
