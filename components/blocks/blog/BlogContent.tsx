@@ -122,6 +122,38 @@ export default function BlogContent({ post }: BlogContentProps) {
             );
           }
 
+          if (block.type === "table") {
+            return (
+              <div key={index} className="w-full overflow-x-auto">
+                <table className="w-full border-collapse text-body text-foreground">
+                  <thead>
+                    <tr className="border-b-2 border-primary">
+                      {block.headers.map((header, hi) => (
+                        <th
+                          key={hi}
+                          className="text-left py-3 pr-4 text-small font-black uppercase tracking-[1.5px] text-primary"
+                        >
+                          {header}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {block.rows.map((row, ri) => (
+                      <tr key={ri} className="border-b border-border/40">
+                        {row.map((cell, ci) => (
+                          <td key={ci} className="py-3 pr-4 align-top leading-relaxed">
+                            {renderRich(cell)}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            );
+          }
+
           return (
             <p key={index} className="text-body text-foreground leading-relaxed">
               {renderRich(block.content)}

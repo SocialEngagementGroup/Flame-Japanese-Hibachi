@@ -7,7 +7,9 @@ export type BlogContentBlock =
   // A row of inline links (menu, location, order, sibling post). Internal hrefs
   // ("/menu/...") render as Next Links; external ones (order.online) open in a
   // new tab. Keeps the SEO brief's required internal links without Markdown.
-  | { type: "links"; items: { label: string; href: string }[] };
+  | { type: "links"; items: { label: string; href: string }[] }
+  // A simple data table (wing counts, order sizes, lead times, etc.).
+  | { type: "table"; headers: string[]; rows: string[][] };
 
 export type BlogPost = {
   slug: string;
