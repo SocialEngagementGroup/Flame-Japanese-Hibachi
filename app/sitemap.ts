@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { getActiveLocations } from "@/lib/api/locations";
 import { jobPostings } from "@/lib/data/careers";
+import { getBlogPostSummaries } from "@/lib/data/blog-data";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -24,6 +25,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.75,
     },
   ]);
+
+  // Every location's blog hub (/blog/<slug>). Generated from the location list
+  // so a new store's hub appears here automatically.
+  const blogHubUrls = getActiveLocations().map((location) => ({
+    url: `${baseUrl}/blog/${location.slug}`,
+    lastModified,
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
+  // Every blog post (/blog/<slug>). Generated from the post data, so any new
+  // post added to lib/data/blog-data.ts is picked up here with no extra step.
+  // Each post's own date drives lastModified; an unparseable date falls back to
+  // the build time rather than emitting an invalid <lastmod>.
+  const blogPostUrls = getBlogPostSummaries().map((post) => {
+    const parsed = new Date(post.date);
+    return {
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: Number.isNaN(parsed.getTime()) ? lastModified : parsed,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    };
+  });
 
   return [
     {
@@ -50,7 +74,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
     ...locationMenuAndCateringUrls,
+    ...blogHubUrls,
+    ...blogPostUrls,
     {
       url: `${baseUrl}/careers`,
       lastModified,
