@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { X, Search, Phone, Clock, MapPin } from "lucide-react";
-import { getActiveLocations } from "@/lib/api/locations";
+import { getActiveLocations, getLocationBySlug } from "@/lib/api/locations";
 import { haversineDistanceMiles } from "@/lib/geo/distance";
 import { formatDistance } from "@/lib/geo/formatDistance";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
@@ -79,7 +79,11 @@ const FindFlamePopup: React.FC = () => {
   // Still staggered so 14 requests don't land as one burst.
   useEffect(() => {
     if (!open) return;
-    const base = pathname.startsWith("/catering") ? "catering" : "menu";
+    const base = pathname.startsWith("/catering")
+      ? "catering"
+      : pathname.startsWith("/blog")
+        ? "blog"
+        : "menu";
     let i = 0;
     const id = setInterval(() => {
       if (i >= sortedActiveLocations.length) {
@@ -100,12 +104,21 @@ const FindFlamePopup: React.FC = () => {
     // If already viewing a location-specific menu/catering page, switching stores
     // here should carry the visitor to that same page for the newly picked store -
     // otherwise the page keeps showing the old store's menu/order links until reload.
+    const store = activeLocations.find((l) => l.id === storeId);
+    if (!store) return;
+
     const locationPageMatch = pathname.match(LOCATION_PAGE_PATTERN);
     if (locationPageMatch) {
-      const store = activeLocations.find((l) => l.id === storeId);
-      if (store) {
-        router.push(`/${locationPageMatch[1]}/${store.slug}`);
-      }
+      router.push(`/${locationPageMatch[1]}/${store.slug}`);
+      return;
+    }
+
+    // The blog reuses one /blog/[slug] route for both location hubs and posts,
+    // so only redirect when the current slug is actually a location hub - never
+    // yank a reader off an article they're partway through.
+    const blogMatch = pathname.match(/^\/blog\/([^/]+)$/);
+    if (blogMatch && getLocationBySlug(blogMatch[1])) {
+      router.push(`/blog/${store.slug}`);
     }
   };
 

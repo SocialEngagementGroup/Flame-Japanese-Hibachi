@@ -4,9 +4,14 @@ import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import type { IconType } from "react-icons";
 import { TbMail, TbBrandFacebook, TbBrandInstagram, TbBrandTiktok, TbBrandYoutube } from "react-icons/tb";
+import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 
 const Footer = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  // With a store selected, the blog link goes straight to that location's hub
+  // (common + its dedicated posts), mirroring how Navbar routes menu/catering.
+  const { nearest } = useNearestLocation();
+  const blogHref = nearest?.slug ? `/blog/${nearest.slug}` : "/blog";
 
   useEffect(() => {
     if (videoRef.current) {
@@ -50,6 +55,7 @@ const Footer = () => {
                   { label: "HOME", href: "/" },
                   { label: "MENU", href: "/menu" },
                   { label: "CATERING", href: "/catering" },
+                  { label: "BLOG", href: blogHref },
                 ].map((link) => (
                   <li key={link.label}>
                     <Link
