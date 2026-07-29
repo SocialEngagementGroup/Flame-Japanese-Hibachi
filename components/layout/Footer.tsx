@@ -144,7 +144,7 @@ const SocialIcons = () => {
   const iconClass = "hover:opacity-80 transition-opacity flex items-center justify-center w-[36px] h-[36px] shrink-0 text-white";
 
   const links: { href: string; alt: string; Icon: IconType; external?: boolean }[] = [
-    { href: "mailto:ask@flamejapanesehibachi.com", alt: "Email", Icon: TbMail },
+    { href: "mailto:daiyan05@yahoo.com", alt: "Email", Icon: TbMail },
     { href: "https://www.facebook.com/flamejapanesehibachi", alt: "Facebook", Icon: TbBrandFacebook, external: true },
     { href: "https://www.instagram.com/flamejapanesehibachi?igsh=MTNmNHMycXo0ZHl2bA%3D%3D&utm_source=qr", alt: "Instagram", Icon: TbBrandInstagram, external: true },
     { href: "https://www.tiktok.com/@flame.japanese.hi?_r=1&_t=ZT-95mfJglR2ez", alt: "TikTok", Icon: TbBrandTiktok, external: true },

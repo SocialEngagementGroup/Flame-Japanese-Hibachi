@@ -39,7 +39,7 @@ export const privacyPolicySections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `5411c Backlick Rd, Springfield, VA 22151, USA\nEmail: ask@flamejapanesehibachi.com   |   Phone: +1 888-786-5411`
+                        content: `5411C Backlick road, Springfield, VA 22151, USA\nEmail: daiyan05@yahoo.com   |   Phone: +1 888-786-5411`
                     },
                     {
                         type: "paragraph",
@@ -336,7 +336,7 @@ export const privacyPolicySections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `However, no method of transmission over the internet is 100% secure. While we strive to protect your information, we cannot guarantee absolute security. If you believe your information has been compromised, please contact us immediately at ask@flamejapanesehibachi.com.`
+                        content: `However, no method of transmission over the internet is 100% secure. While we strive to protect your information, we cannot guarantee absolute security. If you believe your information has been compromised, please contact us immediately at daiyan05@yahoo.com.`
                     }
                 ]
             }
@@ -422,7 +422,7 @@ export const privacyPolicySections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `To submit a verifiable consumer request, contact us at ask@flamejapanesehibachi.com or call +1 888-786-5411. We will respond within 45 days as required by law.`
+                        content: `To submit a verifiable consumer request, contact us at daiyan05@yahoo.com or call +1 888-786-5411. We will respond within 45 days as required by law.`
                     },
                     {
                         type: "subheading",
@@ -430,7 +430,7 @@ export const privacyPolicySections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `If you are a Virginia resident, the Virginia Consumer Data Protection Act (VCDPA) grants you rights to access, correct, delete, and obtain a portable copy of your personal data. You also have the right to opt out of targeted advertising. To exercise these rights, contact us at ask@flamejapanesehibachi.com.`
+                        content: `If you are a Virginia resident, the Virginia Consumer Data Protection Act (VCDPA) grants you rights to access, correct, delete, and obtain a portable copy of your personal data. You also have the right to opt out of targeted advertising. To exercise these rights, contact us at daiyan05@yahoo.com.`
                     },
                     {
                         type: "subheading",
@@ -462,7 +462,7 @@ export const privacyPolicySections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `Our website is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have inadvertently collected such information, we will delete it promptly. If you believe a child has provided us with personal information, please contact us at ask@flamejapanesehibachi.com.`
+                        content: `Our website is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have inadvertently collected such information, we will delete it promptly. If you believe a child has provided us with personal information, please contact us at daiyan05@yahoo.com.`
                     }
                 ]
             }
@@ -515,9 +515,9 @@ export const privacyPolicySections: AccordionRendererSection[] = [
                     {
                         type: "list",
                         items: [
-                            "Email: ask@flamejapanesehibachi.com",
+                            "Email: daiyan05@yahoo.com",
                             "Phone: +1 888-786-5411",
-                            "Mail: Flame Japanese Hibachi, 5411c Backlick Rd, Springfield, VA 22151, USA"
+                            "Mail: Flame Japanese Hibachi, 5411C Backlick road, Springfield, VA 22151, USA"
                         ]
                     },
                     {
