@@ -1787,6 +1787,16 @@ export function getBlogCategories(): string[] {
   return Array.from(new Set(blogPosts.map((post) => post.category)));
 }
 
+/**
+ * Categories present in a given location's set (common + that location's
+ * dedicated posts), or across all posts when no location is given. Lets the
+ * category filter on the master page recompute as the location filter changes.
+ */
+export function getBlogCategoriesForLocation(locationSlug?: string): string[] {
+  const posts = locationSlug ? getBlogPostsForLocation(locationSlug) : blogPosts;
+  return Array.from(new Set(posts.map((post) => post.category)));
+}
+
 export function getBlogPostSummaries() {
   return blogPosts.map((post) => ({
     slug: post.slug,

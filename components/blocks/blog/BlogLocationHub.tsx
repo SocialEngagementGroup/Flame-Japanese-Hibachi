@@ -22,7 +22,6 @@ type BlogLocationHubProps = {
 export default function BlogLocationHub({ location, searchParams }: BlogLocationHubProps) {
   const label = getLocationLabel(location);
   const posts = getBlogPostsForLocation(location.slug);
-  const categories = Array.from(new Set(posts.map((post) => post.category)));
 
   const hubJsonLd = {
     "@context": "https://schema.org",
@@ -72,11 +71,7 @@ export default function BlogLocationHub({ location, searchParams }: BlogLocation
       />
 
       <div className="w-full md:w-[80%] mx-auto">
-        <BlogGrid
-          categories={categories}
-          searchParams={searchParams}
-          location={location.slug}
-        />
+        <BlogGrid searchParams={searchParams} location={location.slug} />
       </div>
     </div>
   );

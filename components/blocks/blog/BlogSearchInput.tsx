@@ -89,7 +89,8 @@ export default function BlogSearchInput() {
       params.delete("q");
     }
     params.delete("page"); // Reset page
-    router.replace(`${pathname}?${params.toString()}`);
+    // scroll: false keeps the reader in place rather than jumping to the top.
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     setIsOpen(false);
   };
 
