@@ -1,7 +1,7 @@
 import Script from "next/script";
 import Hero from "@/components/blocks/hero/Hero";
 import BlogGrid from "@/components/blocks/blog/BlogGrid";
-import { getBlogCategories, getBlogPostSummaries } from "@/lib/data/blog-data";
+import { getBlogPostSummaries } from "@/lib/data/blog-data";
 import { buildPageMetadata, getCanonicalUrl } from "@/lib/seo/seo";
 
 export const metadata = buildPageMetadata({
@@ -12,7 +12,6 @@ export const metadata = buildPageMetadata({
 });
 
 export default async function BlogListingPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
-  const categories = getBlogCategories();
   const posts = getBlogPostSummaries();
   const blogJsonLd = {
     "@context": "https://schema.org",
@@ -43,6 +42,7 @@ export default async function BlogListingPage({ searchParams }: { searchParams: 
     q: typeof resolvedParams.q === "string" ? resolvedParams.q : undefined,
     category: typeof resolvedParams.category === "string" ? resolvedParams.category : undefined,
     page: typeof resolvedParams.page === "string" ? resolvedParams.page : undefined,
+    location: typeof resolvedParams.location === "string" ? resolvedParams.location : undefined,
   };
 
   return (
@@ -73,7 +73,7 @@ export default async function BlogListingPage({ searchParams }: { searchParams: 
       />
 
       <div className="w-full md:w-[80%] mx-auto">
-        <BlogGrid categories={categories} searchParams={parsedParams} />
+        <BlogGrid searchParams={parsedParams} showLocationFilter />
       </div>
     </div>
   );
