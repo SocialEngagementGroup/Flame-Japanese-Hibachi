@@ -383,7 +383,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `Before filing any formal claim, you agree to first contact us at ask@flamejapanesehibachi.com and provide a brief written description of your concern. We will attempt in good faith to resolve the matter informally within thirty (30) days of receiving your notice. Most concerns can be resolved this way.`
+                        content: `Before filing any formal claim, you agree to first contact us at daiyan05@yahoo.com and provide a brief written description of your concern. We will attempt in good faith to resolve the matter informally within thirty (30) days of receiving your notice. Most concerns can be resolved this way.`
                     },
                     {
                         type: "subheading",
@@ -522,10 +522,10 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                     {
                         type: "list",
                         items: [
-                            "Email: ask@flamejapanesehibachi.com",
+                            "Email: daiyan05@yahoo.com",
                             "Phone: +1 888-786-5411",
                             "Website: www.flamehibachi.com/contact",
-                            "Mail: Flame Japanese Hibachi, 5411c Backlick Rd, Springfield, VA 22151, USA"
+                            "Mail: Flame Japanese Hibachi, 5411C Backlick road, Springfield, VA 22151, USA"
                         ]
                     },
                     {

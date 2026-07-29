@@ -199,7 +199,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `Yes. Depending on your state of residence, you may have the right to know what personal information we hold about you, correct inaccurate information, or request deletion. To make a request, email us at ask@flamejapanesehibachi.com with "Privacy Request" in the subject line, or call +1 888-786-5411. We will respond within 45 days. Note: requests related to order history or payment data should be directed to DoorDash, as we do not hold that information.`,
+                        content: `Yes. Depending on your state of residence, you may have the right to know what personal information we hold about you, correct inaccurate information, or request deletion. To make a request, email us at daiyan05@yahoo.com with "Privacy Request" in the subject line, or call +1 888-786-5411. We will respond within 45 days. Note: requests related to order history or payment data should be directed to DoorDash, as we do not hold that information.`,
                     },
                 ],
             },
@@ -209,7 +209,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `California residents have the right to know what personal information we've collected, delete that information, correct inaccuracies, opt out of the sale or sharing of their data, and be free from discrimination for exercising these rights. We do not sell your data. For cross-context advertising (e.g., Meta Pixel), you can opt out through your browser settings or Meta's ad preferences. To submit a verifiable request under the CCPA, contact us at ask@flamejapanesehibachi.com.`,
+                        content: `California residents have the right to know what personal information we've collected, delete that information, correct inaccuracies, opt out of the sale or sharing of their data, and be free from discrimination for exercising these rights. We do not sell your data. For cross-context advertising (e.g., Meta Pixel), you can opt out through your browser settings or Meta's ad preferences. To submit a verifiable request under the CCPA, contact us at daiyan05@yahoo.com.`,
                     },
                 ],
             },
@@ -219,7 +219,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `Yes. Under the Virginia Consumer Data Protection Act (VCDPA), you have the right to access, correct, delete, and receive a portable copy of your personal data. You also have the right to opt out of targeted advertising. To exercise any of these rights, please contact us at ask@flamejapanesehibachi.com.`,
+                        content: `Yes. Under the Virginia Consumer Data Protection Act (VCDPA), you have the right to access, correct, delete, and receive a portable copy of your personal data. You also have the right to opt out of targeted advertising. To exercise any of these rights, please contact us at daiyan05@yahoo.com.`,
                     },
                 ],
             },
@@ -229,7 +229,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `If you've signed up to receive promotional emails from us, you can unsubscribe at any time by clicking the "Unsubscribe" link at the bottom of any marketing email. You can also email us at ask@flamejapanesehibachi.com and request removal from our mailing list. Please allow up to 10 business days to process your request.`,
+                        content: `If you've signed up to receive promotional emails from us, you can unsubscribe at any time by clicking the "Unsubscribe" link at the bottom of any marketing email. You can also email us at daiyan05@yahoo.com and request removal from our mailing list. Please allow up to 10 business days to process your request.`,
                     },
                 ],
             },
@@ -246,7 +246,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `Yes. The meat we serve at Flame Japanese Hibachi is 100% Halal. We are committed to sourcing and preparing our proteins in accordance with Halal standards so that our guests can dine with confidence. If you have questions about a specific menu item or location, please contact us at ask@flamejapanesehibachi.com or call +1 888-786-5411.`,
+                        content: `Yes. The meat we serve at Flame Japanese Hibachi is 100% Halal. We are committed to sourcing and preparing our proteins in accordance with Halal standards so that our guests can dine with confidence. If you have questions about a specific menu item or location, please contact us at daiyan05@yahoo.com or call +1 888-786-5411.`,
                     },
                 ],
             },
@@ -283,7 +283,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `Yes! Whether you’re feeding a small gathering or planning a feast for a large group, we’d love to cook for your event. Catering and large-group orders are arranged directly with our team rather than through the DoorDash platform. To get started, simply contact our customer support at ask@flamejapanesehibachi.com or call +1 888-786-5411, and we’ll help you build the perfect menu.`,
+                        content: `Yes! Whether you’re feeding a small gathering or planning a feast for a large group, we’d love to cook for your event. Catering and large-group orders are arranged directly with our team rather than through the DoorDash platform. To get started, simply contact our customer support at daiyan05@yahoo.com or call +1 888-786-5411, and we’ll help you build the perfect menu.`,
                     },
                 ],
             },
@@ -293,7 +293,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `Catering and large orders are handled directly by our team, not through online checkout. Reach out to our customer support by emailing ask@flamejapanesehibachi.com or calling +1 888-786-5411. To help us serve you best, please share the date and time of your event, the number of guests, your preferred location, and any menu items you have in mind. We’ll confirm availability, pricing, and pickup or delivery details with you.`,
+                        content: `Catering and large orders are handled directly by our team, not through online checkout. Reach out to our customer support by emailing daiyan05@yahoo.com or calling +1 888-786-5411. To help us serve you best, please share the date and time of your event, the number of guests, your preferred location, and any menu items you have in mind. We’ll confirm availability, pricing, and pickup or delivery details with you.`,
                     },
                 ],
             },
@@ -304,7 +304,7 @@ export const faqSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `Of course. If you have a special request-a custom spread, specific dishes, dietary considerations, or a feast for a large crowd-our team is happy to work with you. Just contact our customer support at ask@flamejapanesehibachi.com or +1 888-786-5411 with the details of your event, and we’ll tailor an order to fit your occasion.`,
+                        content: `Of course. If you have a special request-a custom spread, specific dishes, dietary considerations, or a feast for a large crowd-our team is happy to work with you. Just contact our customer support at daiyan05@yahoo.com or +1 888-786-5411 with the details of your event, and we’ll tailor an order to fit your occasion.`,
                     },
                 ],
             },
@@ -355,10 +355,10 @@ export const faqSections: AccordionRendererSection[] = [
                     {
                         type: "list",
                         items: [
-                            "Email: ask@flamejapanesehibachi.com",
+                            "Email: daiyan05@yahoo.com",
                             "Phone: +1 888-786-5411 (Office) | +1 786-200-3917 (Cell)",
                             "Website: www.flamehibachi.com/contact",
-                            "Mail: 5411c Backlick Rd, Springfield, VA 22151, USA",
+                            "Mail: 5411C Backlick road, Springfield, VA 22151, USA",
                         ],
                     },
                     {
