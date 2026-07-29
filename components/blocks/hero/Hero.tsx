@@ -24,6 +24,10 @@ type HeroProps = {
    * MP4 they never asked for. */
   bgVideo?: string | null;
   heightClass?: string;
+  /** Softens the still background with a blur + a touch more darkening, the
+   * way /careers subdues its header photo so the type stays legible. Only
+   * affects the image branch (bgVideo={null}); ignored for the video hero. */
+  blurBackground?: boolean;
 };
 
 /** Every hero .mp4 in public/ ships alongside a `-hevc.mp4` sibling encoded for
@@ -117,6 +121,7 @@ const Hero = ({
   posterSrc,
   bgVideo = "/homepage/hero/flame-japanese-hibachi-hero.mp4",
   heightClass,
+  blurBackground = false,
 }: HeroProps) => {
   const orderUrl = useOrderUrl();
   const resolvedCtaHref = ctaHref ?? orderUrl;
@@ -193,7 +198,9 @@ const Hero = ({
               fill
               sizes="(max-width: 767px) 16px, 100vw"
               priority
-              className="hidden md:block object-cover"
+              className={`hidden md:block object-cover ${
+                blurBackground ? "blur-[3px] scale-105" : ""
+              }`}
             />
             <Image
               src={bgImageMob}
@@ -201,12 +208,19 @@ const Hero = ({
               fill
               sizes="(max-width: 767px) 100vw, 16px"
               priority
-              className="block md:hidden object-cover"
+              className={`block md:hidden object-cover ${
+                blurBackground ? "blur-[3px] scale-105" : ""
+              }`}
             />
           </>
         )}
-        {/* Dark overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-black/40 z-10" />
+        {/* Dark overlay to ensure text readability - a touch heavier when the
+            image is blurred, since blur lifts the photo's contrast. */}
+        <div
+          className={`absolute inset-0 z-10 ${
+            blurBackground ? "bg-black/55" : "bg-black/40"
+          }`}
+        />
       </div>
 
       {/* Content Container */}

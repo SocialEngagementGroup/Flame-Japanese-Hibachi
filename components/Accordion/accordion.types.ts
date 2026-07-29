@@ -39,8 +39,8 @@ export type AccordionItemType = {
 
 export type AccordionSectionProps = {
     title: string;
-
     items: AccordionItemType[];
+    className?: string;
 };
 
 export type AccordionSectionWithImageProps = {
