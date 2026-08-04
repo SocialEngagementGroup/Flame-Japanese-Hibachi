@@ -10,6 +10,8 @@ type HeroProps = {
   description?: React.ReactNode;
   ctaLabel?: string | null;
   ctaHref?: string;
+  secondaryCtaLabel?: string | null;
+  secondaryCtaHref?: string;
   align?: "left" | "center";
   fullHeight?: boolean;
   bgImageDesk?: string;
@@ -110,6 +112,8 @@ const Hero = ({
   description,
   ctaLabel = "ORDER NOW",
   ctaHref,
+  secondaryCtaLabel,
+  secondaryCtaHref,
   align = "left",
   fullHeight = true,
   bgImageDesk = "/homepage/hero/hero-bg-desk.png",
@@ -227,20 +231,37 @@ const Hero = ({
               making those pages visibly taller than the menu and catering
               heroes for no reason a reader could see. */}
           {description && (
-            <p className="w-full max-w-[779px] text-white text-center font-raleway text-[16px] font-semibold leading-[25px] tracking-[3px] uppercase mb-[var(--space-xl)]">
+            <p 
+              className="w-full max-w-[779px] text-white text-center font-raleway text-[16px] font-semibold mb-[var(--space-xl)]"
+              style={{ lineHeight: '25px', letterSpacing: '3px', textTransform: 'uppercase' }}
+            >
               {description}
             </p>
           )}
 
-          {ctaLabel && (
-            <a
-              href={resolvedCtaHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-button"
-            >
-              {ctaLabel}
-            </a>
+          {(ctaLabel || secondaryCtaLabel) && (
+            <div className={`flex flex-wrap gap-4 ${align === "center" ? "justify-center" : ""}`}>
+              {ctaLabel && (
+                <a
+                  href={resolvedCtaHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hero-button"
+                >
+                  {ctaLabel}
+                </a>
+              )}
+              {secondaryCtaLabel && (
+                <a
+                  href={secondaryCtaHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hero-button !bg-transparent !shadow-none !border !border-primary hover:!bg-primary/10"
+                >
+                  {secondaryCtaLabel}
+                </a>
+              )}
+            </div>
           )}
         </div>
       </div>

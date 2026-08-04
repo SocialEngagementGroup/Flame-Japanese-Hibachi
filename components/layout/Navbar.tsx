@@ -94,6 +94,7 @@ const Navbar = () => {
       external: false,
     },
     { name: "LOCATIONS", href: "/locations", external: false },
+    { name: "STORE", href: "/store", external: false },
     // { name: "PROMOTIONS", href: ORDER_URL, external: true },
     // { name: "JOIN FLAME", href: ORDER_URL, external: true },
     { name: "CONTACT", href: "/contact", external: false },

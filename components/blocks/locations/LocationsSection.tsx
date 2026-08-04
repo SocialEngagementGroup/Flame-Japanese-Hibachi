@@ -14,6 +14,7 @@ import {
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 import { haversineDistanceMiles } from "@/lib/geo/distance";
 import { formatDistance } from "@/lib/geo/formatDistance";
+import ComingSoonList from "@/components/blocks/locations/ComingSoonList";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -292,29 +293,13 @@ const LocationsSection = ({
           <span className="text-primary text-small font-black tracking-[3px] uppercase block font-sans mb-4">
             COMING SOON
           </span>
-          <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2 scrollbar-hide">
-            {comingSoonLocations.map((loc) => (
-              <div
-                key={loc.id}
-                className="border-b border-black/10 dark:border-white/10 pb-4 transition-colors duration-300"
-              >
-                <h3 className="heading-h4 text-black dark:text-white mb-1 transition-colors duration-300 uppercase">
-                  {loc.name}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-500 text-small font-medium transition-colors duration-300 mb-2">
-                  {loc.address}
-                </p>
-                <div className="flex items-center gap-4 flex-wrap">
-                  <span className="text-primary text-small font-bold uppercase tracking-widest font-sans">
-                    OPEN UNTIL {loc.openUntil}
-                  </span>
-                  <span className="text-gray-400 dark:text-gray-600 text-small font-bold uppercase tracking-widest transition-colors duration-300 font-sans">
-                    {loc.distance}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ComingSoonList
+            locations={comingSoonLocations}
+            maxHeightClass="max-h-[400px]"
+            gapClass="space-y-4"
+            paddingClass="pr-2"
+            wrap
+          />
         </div>
 
         {!hideViewAll && (
@@ -372,18 +357,12 @@ const LocationsSection = ({
               {/* Coming Soon Section */}
               <div className="mt-12 relative">
                 <span className="text-primary text-xl font-black tracking-[3px] uppercase mb-6 block font-sans sticky top-0 bg-[#F0EDED] dark:bg-black py-2 z-10 transition-colors">COMING SOON</span>
-                <div className="space-y-6 max-h-[300px] overflow-y-auto pr-4 scrollbar-hide">
-                  {comingSoonLocations.map((loc) => (
-                    <div key={loc.id} className="border-b border-black/10 dark:border-white/10 pb-4 transition-colors duration-300">
-                      <h3 className="heading-h4 text-black dark:text-white mb-1 transition-colors duration-300 uppercase">{loc.name}</h3>
-                      <p className="text-gray-600 dark:text-gray-500 text-small font-medium transition-colors duration-300 mb-2">{loc.address}</p>
-                      <div className="flex items-center gap-4">
-                        <span className="text-primary text-small font-bold uppercase tracking-widest font-sans">OPEN UNTIL {loc.openUntil}</span>
-                        <span className="text-gray-400 dark:text-gray-600 text-small font-bold uppercase tracking-widest transition-colors duration-300 font-sans">{loc.distance}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <ComingSoonList
+                  locations={comingSoonLocations}
+                  maxHeightClass="max-h-[300px]"
+                  gapClass="space-y-6"
+                  paddingClass="pr-4"
+                />
               </div>
 
               {!hideViewAll && (
