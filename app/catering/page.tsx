@@ -13,7 +13,7 @@ export default function CateringPage() {
   return (
     <>
       <LocationAutoRedirect basePath="/catering" />
-      {/* Hero lives in app/catering/layout.tsx — shared with /catering/[location]. */}
+      {/* Hero lives in app/catering/layout.tsx - shared with /catering/[location]. */}
     </>
   );
 }

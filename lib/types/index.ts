@@ -28,3 +28,4 @@ export type ComingSoonLocation = {
 
 export * from "./catering";
 export * from "./menu";
+export * from "./careers";

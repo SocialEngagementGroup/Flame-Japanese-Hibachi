@@ -10,7 +10,7 @@ interface CateringAddOnsProps {
 }
 
 /** The stepper used to be a link to the ordering platform showing a hardcoded
- *  "0" — it now drives the real quote state. */
+ *  "0" - it now drives the real quote state. */
 const Stepper = ({
   addOn,
   size,
@@ -89,7 +89,7 @@ const CateringAddOns: React.FC<CateringAddOnsProps> = ({ addons }) => {
 
             {/* Desktop: single row */}
             <span className="hidden md:block font-['Work_Sans'] text-[24px] font-normal uppercase text-[#FF7808] text-center whitespace-nowrap leading-[59px]">
-              {addon.name} — {addon.price}
+              {addon.name} - {addon.price}
             </span>
             <div className="hidden md:block">
               <Stepper addOn={addon} size="desktop" />

@@ -1,7 +1,7 @@
 export interface MenuItem {
   id: string;
   name: string;
-  /** Dollars, without the sign — e.g. "11.85". */
+  /** Dollars, without the sign - e.g. "11.85". */
   price: string;
   tag: string;
   image: string;

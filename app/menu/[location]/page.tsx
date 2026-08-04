@@ -26,7 +26,7 @@ export async function generateMetadata({
   if (!location) return {};
 
   return buildPageMetadata({
-    title: `Menu — ${location.name} Halal Hibachi, Sushi & Bento`,
+    title: `Menu - ${location.name} Halal Hibachi, Sushi & Bento`,
     description: `Browse the Flame Japanese Hibachi menu at our ${location.name} location: hibachi platters, sushi rolls, bento boxes, loaded fries, wings, smoothies and boba. 100% Halal, freshly prepared.`,
     path: locationPath("menu", location),
   });
@@ -56,7 +56,7 @@ export default async function LocationMenuPage({
       <LocationContextSync storeId={location.id} />
 
       {/* The hero lives in app/menu/layout.tsx so its video survives a store
-          switch — it reads the city from the route param itself. */}
+          switch - it reads the city from the route param itself. */}
       <LocationBanner location={location} pageLabel="menu" />
     </>
   );

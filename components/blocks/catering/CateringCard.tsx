@@ -39,7 +39,7 @@ const CateringCard: React.FC<CateringCardProps> = ({
 }) => {
   const [imgSrc, setImgSrc] = useState(item.image);
 
-  // ── SHOP VARIANT (Wings section) — cloned from menu page wing card design ──
+  // ── SHOP VARIANT (Wings section) - cloned from menu page wing card design ──
   if (cardVariant === "shop") {
     return (
       <button
@@ -127,7 +127,7 @@ const CateringCard: React.FC<CateringCardProps> = ({
       {/* ── MOBILE list layout (<xl) ── */}
       <div className="xl:hidden w-full">
         {/* One tap adds to the quote. The old two-tap flow (tap to reveal, tap
-            again to act) was a holdover from when the card was a link — with a
+            again to act) was a holdover from when the card was a link - with a
             quote modal there is nothing to reveal, so the first tap should act. */}
         <button
           type="button"
@@ -245,7 +245,7 @@ const CateringCard: React.FC<CateringCardProps> = ({
           </div>
         </div>
 
-        {/* Add to Quote — slides from behind */}
+        {/* Add to Quote - slides from behind */}
         <div className={`absolute left-0 top-[99.5%] z-0 h-[59px] w-full border-x border-[#FF7808] bg-[#FF7808] transition-all duration-500 ease-out flex items-center justify-center gap-3 ${isActive ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}>
           <span className="font-['Work_Sans'] text-[14px] font-bold uppercase tracking-[9px] text-white">Add to Quote</span>
         </div>

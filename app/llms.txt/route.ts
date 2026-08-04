@@ -1,8 +1,9 @@
 import { getActiveLocations, locationPath } from "@/lib/api/locations";
+import { getBlogPostSummaries } from "@/lib/data/blog-data";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 
 /**
- * /llms.txt — a plain-text map of the site for LLMs and AI search crawlers
+ * /llms.txt - a plain-text map of the site for LLMs and AI search crawlers
  * (ChatGPT, Claude, Perplexity, Gemini), which increasingly look for this file
  * the way search engines look for sitemap.xml.
  *
@@ -16,6 +17,32 @@ export const dynamic = "force-static";
 
 export function GET() {
   const locations = getActiveLocations();
+  const posts = getBlogPostSummaries();
+  const locationName = (slug: string) =>
+    locations.find((l) => l.slug === slug)?.name ?? slug;
+
+  // Blog listing, grouped by the store each post is dedicated to. Generated
+  // from the post data so new posts appear here automatically, the same way
+  // the locations block is generated. Common posts (no location) list last.
+  const blogByLocation = locations
+    .map((l) => {
+      const forLocation = posts.filter((p) => p.locationSlugs?.includes(l.slug));
+      if (forLocation.length === 0) return "";
+      return `### ${l.name}
+${forLocation
+  .map((p) => `- [${p.title}](${getCanonicalUrl(`/blog/${p.slug}`)}): ${p.excerpt}`)
+  .join("\n")}`;
+    })
+    .filter(Boolean)
+    .join("\n\n");
+  const commonPosts = posts.filter(
+    (p) => !p.locationSlugs || p.locationSlugs.length === 0,
+  );
+  const commonBlogBlock = commonPosts.length
+    ? `\n\n### Brand-wide\n${commonPosts
+        .map((p) => `- [${p.title}](${getCanonicalUrl(`/blog/${p.slug}`)}): ${p.excerpt}`)
+        .join("\n")}`
+    : "";
 
   const body = `# Flame Japanese Hibachi
 
@@ -35,6 +62,7 @@ and smoothies. All meat is 100% Halal. Online ordering is handled by DoorDash.
 - [Menu](${getCanonicalUrl("/menu")}): full menu with prices
 - [Catering](${getCanonicalUrl("/catering")}): hibachi catering for weddings, corporate events and parties
 - [Locations](${getCanonicalUrl("/locations")}): all locations with addresses, hours and directions
+- [Blog](${getCanonicalUrl("/blog")}): local halal hibachi guides — is-hibachi-halal explainers, catering and ordering guides, per location
 - [Contact](${getCanonicalUrl("/contact")}): contact details and catering enquiries
 - [FAQ](${getCanonicalUrl("/faq")}): ordering, Halal certification, delivery and catering questions
 
@@ -54,6 +82,13 @@ ${locations
 - Catering: ${getCanonicalUrl(locationPath("catering", l))}`
   )
   .join("\n\n")}
+
+## Blog
+
+Local, halal-focused guides written per location. Each post lives at
+/blog/<post-slug> and also appears on its store's hub at /blog/<location-slug>.
+
+${blogByLocation}${commonBlogBlock}
 
 ## Notes for AI agents
 

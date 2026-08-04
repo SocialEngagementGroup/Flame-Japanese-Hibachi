@@ -55,7 +55,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `We grant you a limited, non-exclusive, non-transferable, revocable license to access and use the Site for your personal, non-commercial purposes — such as browsing our menu, locating our restaurants, learning about our offerings, and contacting us — in accordance with these Terms.`
+                        content: `We grant you a limited, non-exclusive, non-transferable, revocable license to access and use the Site for your personal, non-commercial purposes - such as browsing our menu, locating our restaurants, learning about our offerings, and contacting us - in accordance with these Terms.`
                     },
                     {
                         type: "paragraph",
@@ -101,7 +101,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `Once you leave our Site and enter the DoorDash platform, your transaction is governed entirely by DoorDash's own Terms of Service and Privacy Policy — not by these Terms. DoorDash is solely responsible for processing payments, collecting delivery and contact information, dispatching delivery drivers, and handling order fulfillment through its platform.`
+                        content: `Once you leave our Site and enter the DoorDash platform, your transaction is governed entirely by DoorDash's own Terms of Service and Privacy Policy - not by these Terms. DoorDash is solely responsible for processing payments, collecting delivery and contact information, dispatching delivery drivers, and handling order fulfillment through its platform.`
                     },
                     {
                         type: "paragraph",
@@ -113,7 +113,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                             "Flame does not collect, receive, or store your full payment card details, billing information, or delivery address. This information is handled by DoorDash. We may receive limited order-related information (such as items ordered and order status) for the sole purpose of preparing your food.",
                             "Pricing, fees, service charges, delivery charges, tips, taxes, promotions, and availability shown on the DoorDash platform are set and controlled in whole or in part by DoorDash and may differ from in-store prices.",
                             "Delivery times, driver conduct, order tracking, refunds, cancellations, and delivery-related issues are managed by DoorDash. Flame does not control and is not responsible for the acts or omissions of DoorDash or its delivery drivers.",
-                            "For any issue relating to a delivery order — including missing items, incorrect orders, late delivery, or payment disputes — you should contact DoorDash directly through the DoorDash app, or contact the specific restaurant location that prepared your order."
+                            "For any issue relating to a delivery order - including missing items, incorrect orders, late delivery, or payment disputes - you should contact DoorDash directly through the DoorDash app, or contact the specific restaurant location that prepared your order."
                         ]
                     },
                     {
@@ -166,7 +166,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `Our food is prepared in kitchens that handle common allergens — including but not limited to soy, wheat/gluten, eggs, fish, shellfish, tree nuts, peanuts, sesame, and dairy. We cannot guarantee that any menu item is free from any specific allergen, and cross-contact between ingredients may occur during preparation and cooking.`
+                        content: `Our food is prepared in kitchens that handle common allergens - including but not limited to soy, wheat/gluten, eggs, fish, shellfish, tree nuts, peanuts, sesame, and dairy. We cannot guarantee that any menu item is free from any specific allergen, and cross-contact between ingredients may occur during preparation and cooking.`
                     },
                     {
                         type: "paragraph",
@@ -198,7 +198,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `All content on the Site — including the "Flame Japanese Hibachi" name, logos, trademarks, service marks, trade dress, menu names and descriptions, text, graphics, photographs, images, illustrations, page layouts, design elements, and the selection and arrangement thereof (collectively, the "Content") — is owned by or licensed to Flame and is protected by United States and international copyright, trademark, and other intellectual property laws.`
+                        content: `All content on the Site - including the "Flame Japanese Hibachi" name, logos, trademarks, service marks, trade dress, menu names and descriptions, text, graphics, photographs, images, illustrations, page layouts, design elements, and the selection and arrangement thereof (collectively, the "Content") - is owned by or licensed to Flame and is protected by United States and international copyright, trademark, and other intellectual property laws.`
                     },
                     {
                         type: "paragraph",
@@ -259,7 +259,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                 answer: [
                     {
                         type: "paragraph",
-                        content: `TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL FLAME, ITS OWNERS, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES — INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, GOODWILL, OR OTHER INTANGIBLE LOSSES — ARISING OUT OF OR RELATING TO YOUR ACCESS TO OR USE OF, OR INABILITY TO ACCESS OR USE, THE SITE.`
+                        content: `TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL FLAME, ITS OWNERS, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES - INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, GOODWILL, OR OTHER INTANGIBLE LOSSES - ARISING OUT OF OR RELATING TO YOUR ACCESS TO OR USE OF, OR INABILITY TO ACCESS OR USE, THE SITE.`
                     },
                     {
                         type: "paragraph",
@@ -331,7 +331,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `Our Site uses cookies and similar tracking technologies — including essential cookies, analytics cookies (Google Analytics and Google Tag Manager), and advertising cookies (Meta Pixel) — to operate the Site, understand visitor behavior, and measure advertising performance. By using the Site, you consent to our use of cookies as described in our Privacy Policy.`
+                        content: `Our Site uses cookies and similar tracking technologies - including essential cookies, analytics cookies (Google Analytics and Google Tag Manager), and advertising cookies (Meta Pixel) - to operate the Site, understand visitor behavior, and measure advertising performance. By using the Site, you consent to our use of cookies as described in our Privacy Policy.`
                     },
                     {
                         type: "paragraph",
@@ -359,7 +359,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `Where you interact with a specific restaurant location, certain matters — such as in-store conduct, local consumer protection statutes, and food-safety regulations — may also be subject to the laws of the state in which that location operates (Maryland, Virginia, Pennsylvania, or Florida). Nothing in these Terms deprives you of the protection of any mandatory consumer-protection laws of the state in which you reside.`
+                        content: `Where you interact with a specific restaurant location, certain matters - such as in-store conduct, local consumer protection statutes, and food-safety regulations - may also be subject to the laws of the state in which that location operates (Maryland, Virginia, Pennsylvania, or Florida). Nothing in these Terms deprives you of the protection of any mandatory consumer-protection laws of the state in which you reside.`
                     }
                 ]
             }
@@ -383,7 +383,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `Before filing any formal claim, you agree to first contact us at ask@flamejapanesehibachi.com and provide a brief written description of your concern. We will attempt in good faith to resolve the matter informally within thirty (30) days of receiving your notice. Most concerns can be resolved this way.`
+                        content: `Before filing any formal claim, you agree to first contact us at daiyan05@yahoo.com and provide a brief written description of your concern. We will attempt in good faith to resolve the matter informally within thirty (30) days of receiving your notice. Most concerns can be resolved this way.`
                     },
                     {
                         type: "subheading",
@@ -391,7 +391,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `Disputes concerning a food order placed through DoorDash — including payment, refunds, delivery, or order accuracy — must be directed to DoorDash and are subject to DoorDash's dispute resolution procedures, not these Terms.`
+                        content: `Disputes concerning a food order placed through DoorDash - including payment, refunds, delivery, or order accuracy - must be directed to DoorDash and are subject to DoorDash's dispute resolution procedures, not these Terms.`
                     },
                     {
                         type: "subheading",
@@ -427,7 +427,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `We will not be liable to you or any third party for any modification, suspension, or discontinuation of the Site. Provisions that by their nature should survive termination — including intellectual property rights, disclaimers, limitations of liability, indemnification, and governing law — shall survive.`
+                        content: `We will not be liable to you or any third party for any modification, suspension, or discontinuation of the Site. Provisions that by their nature should survive termination - including intellectual property rights, disclaimers, limitations of liability, indemnification, and governing law - shall survive.`
                     },
                     {
                         type: "paragraph",
@@ -522,10 +522,10 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                     {
                         type: "list",
                         items: [
-                            "Email: ask@flamejapanesehibachi.com",
+                            "Email: daiyan05@yahoo.com",
                             "Phone: +1 888-786-5411",
                             "Website: www.flamehibachi.com/contact",
-                            "Mail: Flame Japanese Hibachi, 5411c Backlick Rd, Springfield, VA 22151, USA"
+                            "Mail: Flame Japanese Hibachi, 5411C Backlick road, Springfield, VA 22151, USA"
                         ]
                     },
                     {

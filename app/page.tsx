@@ -27,11 +27,11 @@ const organizationSchema = {
   url: "https://www.flamehibachi.com",
   logo: "https://www.flamehibachi.com/site-logo/FJH-logo-white.png",
   image: "https://www.flamehibachi.com/homepage/hero/hero-bg-desk.png",
-  email: "ask@flamejapanesehibachi.com",
+  email: "daiyan05@yahoo.com",
   telephone: "+1-888-786-5411",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "5411c Backlick Rd",
+    streetAddress: "5411C Backlick road",
     addressLocality: "Springfield",
     addressRegion: "VA",
     postalCode: "22151",

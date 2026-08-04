@@ -8,7 +8,7 @@ import { buildPageMetadata } from "@/lib/seo/seo";
 export const metadata = buildPageMetadata({
   title: "Contact Us & Catering Inquiries",
   description:
-    "Get in touch with Flame Japanese Hibachi. Send catering inquiries, partnership questions or general feedback — our team responds within one business day.",
+    "Get in touch with Flame Japanese Hibachi. Send catering inquiries, partnership questions or general feedback - our team responds within one business day.",
   path: "/contact",
 });
 

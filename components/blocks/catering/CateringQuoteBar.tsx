@@ -8,7 +8,7 @@ import { calculateEstimate, formatMoney } from "@/lib/catering/quote";
  * Floating summary that appears once anything is in the quote.
  *
  * Without it, adding a second package means reopening the modal after every
- * card — this lets someone scroll all five menus, accumulate as they go, and
+ * card - this lets someone scroll all five menus, accumulate as they go, and
  * open the form once at the end.
  *
  * The total shown ignores per-person add-ons, which can't be priced until the
@@ -23,7 +23,7 @@ export default function CateringQuoteBar() {
 
   return (
     <>
-      {/* The bar is fixed, so this reserves the space it covers — otherwise the
+      {/* The bar is fixed, so this reserves the space it covers - otherwise the
           last ~90px of the catering page, including the contact form's submit
           button, sits permanently underneath it. Padding on <body> doesn't work
           here: body is height-constrained with border-box, so the padding is

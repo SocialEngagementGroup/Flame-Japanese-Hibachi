@@ -31,31 +31,19 @@ export default function BlogCard({ post }: BlogCardProps) {
       </div>
       
       <div className="flex flex-col flex-grow">
-        <h3
-          className="heading-h4 text-foreground mb-3 leading-[1.2] line-clamp-2"
-          style={{ fontFamily: "Raleway" }}
-        >
+        <h3 className="heading-h4 text-foreground mb-3 leading-[1.2] line-clamp-2 min-h-[2.4em]">
           {post.title}
         </h3>
-        
-        <p 
-          className="text-small text-muted-foreground leading-[1.5] line-clamp-2 mb-6"
-          style={{ fontFamily: "Raleway" }}
-        >
+
+        <p className="text-small text-muted-foreground leading-[1.5] line-clamp-2 min-h-[3em] mb-6">
           {post.excerpt}
         </p>
-        
+
         <div className="flex items-center justify-between mt-auto pt-2 md:pt-4 md:border-t md:border-border/40">
-          <span 
-            className="text-small font-semibold uppercase tracking-[3px] text-muted-foreground"
-            style={{ fontFamily: "Work Sans" }}
-          >
+          <span className="text-small font-semibold uppercase tracking-[3px] text-muted-foreground">
             {post.date}
           </span>
-          <span 
-            className="inline-flex items-center gap-1 text-small font-black uppercase tracking-[3px] text-primary transition-transform duration-300 group-hover:translate-x-1"
-            style={{ fontFamily: "Work Sans" }}
-          >
+          <span className="inline-flex items-center gap-1 text-small font-black uppercase tracking-[3px] text-primary transition-transform duration-300 group-hover:translate-x-1">
             Read Article
             <ArrowUpRight
               size={14}

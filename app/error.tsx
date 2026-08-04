@@ -15,7 +15,7 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // The digest is the only handle on the real stack trace in production —
+    // The digest is the only handle on the real stack trace in production -
     // without logging it here, a reported error can't be matched to anything.
     console.error("[route error]", error.digest ?? "", error);
   }, [error]);
@@ -29,7 +29,7 @@ export default function Error({
           <span className="text-primary">LOAD PROPERLY.</span>
         </>
       }
-      description="That's on us, not you. Try again — and if it keeps happening, call your nearest location and we'll help directly."
+      description="That's on us, not you. Try again - and if it keeps happening, call your nearest location and we'll help directly."
     >
       <button type="button" onClick={reset} className={actionClass}>
         Try Again

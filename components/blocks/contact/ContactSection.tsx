@@ -70,6 +70,12 @@ type ContactSectionProps = {
   heading?: React.ReactNode;
   subheading?: React.ReactNode;
   submitLabel?: string;
+  /**
+   * "section" (default) is the full-width band used across the site. "sidebar"
+   * renders a compact single-column card meant to sit in a sticky aside, the
+   * way the careers page docks its apply box beside the content.
+   */
+  variant?: "section" | "sidebar";
 };
 
 const ContactSection = ({
@@ -80,6 +86,7 @@ const ContactSection = ({
   ),
   subheading = "JOIN THE FASTEST GROWING HIBACHI BRAND IN THE NATION",
   submitLabel = "SUBMIT APPLICATION",
+  variant = "section",
 }: ContactSectionProps) => {
   const [status, setStatus] = useState<Status>("idle");
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
@@ -88,7 +95,7 @@ const ContactSection = ({
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Captured before the first await — React nulls currentTarget afterwards.
+    // Captured before the first await - React nulls currentTarget afterwards.
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form)) as Record<
       string,
@@ -130,21 +137,41 @@ const ContactSection = ({
   };
 
   const isSubmitting = status === "submitting";
+  const isSidebar = variant === "sidebar";
 
-  return (
-    <section className="w-full bg-[#F0EDED] dark:bg-black py-[var(--space-2xl)] px-[var(--space-lg)] transition-colors duration-300">
-      <div className="max-w-[1100px] mx-auto">
-        <h2 className="heading-h3 text-center text-[#1C1B1B] dark:text-white mb-[var(--space-md)] transition-colors duration-300">
-          {heading}
-        </h2>
-        <p className="text-center text-gray-700 dark:text-gray-400 text-small font-bold uppercase tracking-[2px] mb-[var(--space-xl)] transition-colors duration-300">
-          {subheading}
-        </p>
+  const headingBlock = (
+    <>
+      <h2
+        className={
+          isSidebar
+            ? "heading-h4 text-[#1C1B1B] dark:text-white mb-[var(--space-sm)]"
+            : "heading-h3 text-center text-[#1C1B1B] dark:text-white mb-[var(--space-md)] transition-colors duration-300"
+        }
+      >
+        {heading}
+      </h2>
+      <p
+        className={
+          isSidebar
+            ? "text-gray-600 dark:text-gray-400 text-small font-bold uppercase tracking-[2px] mb-[var(--space-lg)]"
+            : "text-center text-gray-700 dark:text-gray-400 text-small font-bold uppercase tracking-[2px] mb-[var(--space-xl)] transition-colors duration-300"
+        }
+      >
+        {subheading}
+      </p>
+    </>
+  );
 
+  const formBlock = (
+    <>
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="grid grid-cols-1 md:grid-cols-2 gap-[var(--gap-md)]"
+          className={
+            isSidebar
+              ? "flex flex-col gap-[var(--gap-md)]"
+              : "grid grid-cols-1 md:grid-cols-2 gap-[var(--gap-md)]"
+          }
         >
           <Field
             label="FIRST NAME"
@@ -209,7 +236,7 @@ const ContactSection = ({
           <div className="md:col-span-2" aria-live="polite">
             {status === "success" && (
               <p className="text-primary text-small font-bold uppercase tracking-widest text-center">
-                Thanks — we&apos;ve got your message and will reply within one
+                Thanks - we&apos;ve got your message and will reply within one
                 business day.
               </p>
             )}
@@ -228,6 +255,23 @@ const ContactSection = ({
             {isSubmitting ? "SENDING…" : submitLabel}
           </button>
         </form>
+    </>
+  );
+
+  if (isSidebar) {
+    return (
+      <div className="bg-white dark:bg-[#111111] border border-border p-[var(--space-lg)] transition-colors duration-300">
+        {headingBlock}
+        {formBlock}
+      </div>
+    );
+  }
+
+  return (
+    <section className="w-full bg-[#F0EDED] dark:bg-black py-[var(--space-2xl)] px-[var(--space-lg)] transition-colors duration-300">
+      <div className="max-w-[1100px] mx-auto">
+        {headingBlock}
+        {formBlock}
       </div>
     </section>
   );

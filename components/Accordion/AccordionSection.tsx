@@ -9,7 +9,7 @@ import { AccordionSectionProps } from "./accordion.types";
 export default function AccordionSection({
     title,
     items,
-    className
+    className,
 }: AccordionSectionProps) {
     // All items open by default; toggle on click adds/removes that index.
     const [openIndices, setOpenIndices] = useState<Set<number>>(

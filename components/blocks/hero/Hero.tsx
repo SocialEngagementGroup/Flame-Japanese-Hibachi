@@ -16,16 +16,20 @@ type HeroProps = {
   fullHeight?: boolean;
   bgImageDesk?: string;
   bgImageMob?: string;
-  /** Still frame shown while the video buffers — on a slow connection this is
+  /** Still frame shown while the video buffers - on a slow connection this is
    * what the visitor actually looks at first, so it wants to be small. Unlike
    * bgImageDesk it can't go through next/image (the <video> poster attribute
    * takes a plain URL), so pass a pre-optimized file. Defaults to bgImageDesk. */
   posterSrc?: string;
-  /** Pass null to opt out of the default homepage hero video — pages that only
+  /** Pass null to opt out of the default homepage hero video - pages that only
    * want a still background must do this, or they inherit a 26 MB autoplaying
    * MP4 they never asked for. */
   bgVideo?: string | null;
   heightClass?: string;
+  /** Softens the still background with a blur + a touch more darkening, the
+   * way /careers subdues its header photo so the type stays legible. Only
+   * affects the image branch (bgVideo={null}); ignored for the video hero. */
+  blurBackground?: boolean;
 };
 
 /** Every hero .mp4 in public/ ships alongside a `-hevc.mp4` sibling encoded for
@@ -34,12 +38,12 @@ type HeroProps = {
 const toHevcSrc = (src: string) => src.replace(/\.mp4$/, "-hevc.mp4");
 
 /**
- * Decides when — and whether — the hero video should start downloading.
+ * Decides when - and whether - the hero video should start downloading.
  *
  * An `autoPlay` <video> defaults to `preload="auto"`, so the browser pulls the
  * whole file as part of the initial page load, competing with the CSS, JS,
  * fonts and images needed to render anything at all. The hero is 7-8 MB, so on
- * anything short of fast wifi that is the page "loading slowly" — even though
+ * anything short of fast wifi that is the page "loading slowly" - even though
  * the poster it needs to paint is only 86 KB.
  *
  * So: hold the <source> elements back until the browser is idle. The poster
@@ -121,15 +125,24 @@ const Hero = ({
   posterSrc,
   bgVideo = "/homepage/hero/flame-japanese-hibachi-hero.mp4",
   heightClass,
+  blurBackground = false,
 }: HeroProps) => {
   const orderUrl = useOrderUrl();
   const resolvedCtaHref = ctaHref ?? orderUrl;
+
+  // In-page anchors ("#open-roles") and internal routes ("/menu") must stay in
+  // the same tab - only external ordering links open in a new one. Without this
+  // a hash CTA would spawn a blank tab instead of scrolling.
+  const ctaIsInternal =
+    resolvedCtaHref.startsWith("#") || resolvedCtaHref.startsWith("/");
+  const secondaryCtaIsInternal =
+    secondaryCtaHref?.startsWith("#") || secondaryCtaHref?.startsWith("/");
 
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const loadVideo = useDeferredVideo(Boolean(bgVideo));
 
   // Adding <source> children doesn't make an already-mounted <video> fetch
-  // them — it needs an explicit load(). autoPlay then takes over, since the
+  // them - it needs an explicit load(). autoPlay then takes over, since the
   // element is muted.
   React.useEffect(() => {
     if (loadVideo) videoRef.current?.load();
@@ -158,7 +171,7 @@ const Hero = ({
             loop
             muted
             playsInline
-            // Nothing is fetched until useDeferredVideo says so — see there for
+            // Nothing is fetched until useDeferredVideo says so - see there for
             // why. Until then the poster is the hero, and it is only ~86 KB.
             preload="none"
             poster={posterSrc ?? bgImageDesk}
@@ -166,7 +179,7 @@ const Hero = ({
             {loadVideo && (
               <>
                 {/* Safari/iOS is the only engine that decodes HEVC, and it
-                    picks the first source it can play — so Apple devices get
+                    picks the first source it can play - so Apple devices get
                     the much smaller HEVC file and everyone else falls through
                     to H.264. This is what fixes the long black hero on
                     iPhones/Macs. */}
@@ -191,7 +204,9 @@ const Hero = ({
               fill
               sizes="(max-width: 767px) 16px, 100vw"
               priority
-              className="hidden md:block object-cover"
+              className={`hidden md:block object-cover ${
+                blurBackground ? "blur-[3px] scale-105" : ""
+              }`}
             />
             <Image
               src={bgImageMob}
@@ -199,12 +214,19 @@ const Hero = ({
               fill
               sizes="(max-width: 767px) 100vw, 16px"
               priority
-              className="block md:hidden object-cover"
+              className={`block md:hidden object-cover ${
+                blurBackground ? "blur-[3px] scale-105" : ""
+              }`}
             />
           </>
         )}
-        {/* Dark overlay to ensure text readability */}
-        <div className="absolute inset-0 bg-black/40 z-10" />
+        {/* Dark overlay to ensure text readability - a touch heavier when the
+            image is blurred, since blur lifts the photo's contrast. */}
+        <div
+          className={`absolute inset-0 z-10 ${
+            blurBackground ? "bg-black/55" : "bg-black/40"
+          }`}
+        />
       </div>
 
       {/* Content Container */}
@@ -244,8 +266,8 @@ const Hero = ({
               {ctaLabel && (
                 <a
                   href={resolvedCtaHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={ctaIsInternal ? undefined : "_blank"}
+                  rel={ctaIsInternal ? undefined : "noopener noreferrer"}
                   className="hero-button"
                 >
                   {ctaLabel}
@@ -254,8 +276,8 @@ const Hero = ({
               {secondaryCtaLabel && (
                 <a
                   href={secondaryCtaHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={secondaryCtaIsInternal ? undefined : "_blank"}
+                  rel={secondaryCtaIsInternal ? undefined : "noopener noreferrer"}
                   className="hero-button !bg-transparent !shadow-none !border !border-primary hover:!bg-primary/10"
                 >
                   {secondaryCtaLabel}

@@ -26,7 +26,7 @@ export default function CateringHero() {
       }
       ctaLabel={null}
       align="center"
-      // No heightClass — falls through to the same default the menu hero uses,
+      // No heightClass - falls through to the same default the menu hero uses,
       // so both heroes are the same height.
       fullHeight={false}
       bgImageDesk="/catering/hero/flame-japanese-hibachi-catering-hero-desk.jpg"

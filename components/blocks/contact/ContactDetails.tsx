@@ -12,7 +12,7 @@ const ContactDetails = () => {
   const rows: Row[] = [
     {
       icon: <MapPin size={22} />,
-      text: "547C Blacksill Rd., Springfield, VA 22151, USA",
+      text: "5411C Backlick road, Springfield, VA 22151, USA",
     },
     {
       icon: <Phone size={22} />,
@@ -40,10 +40,10 @@ const ContactDetails = () => {
       icon: <Mail size={22} />,
       text: (
         <a
-          href="mailto:ask@flamejapanesehibachi.com"
+          href="mailto:daiyan05@yahoo.com"
           className="hover:text-primary transition-colors"
         >
-          ask@flamejapanesehibachi.com
+          daiyan05@yahoo.com
         </a>
       ),
     },

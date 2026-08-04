@@ -26,7 +26,7 @@ export async function generateMetadata({
   if (!location) return {};
 
   return buildPageMetadata({
-    // No brand suffix here — the root layout's title template appends
+    // No brand suffix here - the root layout's title template appends
     // "| Flame Japanese Hibachi" already, and repeating it doubled it.
     title: `Hibachi Catering in ${location.name}`,
     description: `Hibachi catering for weddings, corporate events and parties near ${location.name}. Custom packages, 100% Halal, fresh prep. Request a quote from Flame Japanese Hibachi today.`,
@@ -58,7 +58,7 @@ export default async function LocationCateringPage({
       <LocationContextSync storeId={location.id} />
 
       {/* The hero lives in app/catering/layout.tsx so its video survives a
-          store switch — it reads the city from the route param itself. */}
+          store switch - it reads the city from the route param itself. */}
       <LocationBanner location={location} pageLabel="catering" />
     </>
   );

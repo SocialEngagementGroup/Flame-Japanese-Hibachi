@@ -24,7 +24,7 @@ const BTN_PRIMARY = `${BTN_BASE} bg-primary text-white hover:bg-secondary hover:
 const BTN_GHOST = `${BTN_BASE} text-white/50 hover:text-white`;
 
 /**
- * The shell both cards share — backdrop, framing, icon, heading and close
+ * The shell both cards share - backdrop, framing, icon, heading and close
  * button. Previously each variant repeated all of this, so they had already
  * drifted apart slightly.
  */
@@ -39,7 +39,7 @@ function PromptCard({
   dismissLabel: string;
   children: ReactNode;
 }) {
-  // Escape closes it, and the page behind is locked while it's open —
+  // Escape closes it, and the page behind is locked while it's open -
   // matching FindFlamePopup. "" rather than "unset" on cleanup so the CSS
   // overflow-x: clip that keeps the navbar fixed stays in effect.
   useEffect(() => {
@@ -143,7 +143,7 @@ export default function LocationPermissionPrompt() {
   if (!promptVisible && !outsideServiceAreaVisible) return null;
 
   // Once a visitor blocks the browser's location permission, it won't
-  // prompt again — a plain retry silently fails with no feedback at all.
+  // prompt again - a plain retry silently fails with no feedback at all.
   // Check the permission state first so we can explain what happened
   // instead of just re-showing the same card with no explanation.
   const handleUseLocation = async () => {
@@ -181,12 +181,12 @@ export default function LocationPermissionPrompt() {
       const resolved = resolveFromCoordinates(coordinates);
       if (!resolved) {
         // A real ZIP that resolves outside the service area used to leave the
-        // form looking like nothing happened — the submit succeeded, no error
+        // form looking like nothing happened - the submit succeeded, no error
         // appeared, and the visitor was left staring at an unchanged prompt.
         setZipError("We don't have a location near that ZIP code yet.");
         return;
       }
-      // A ZIP lookup is just as deliberate a pick as a Find-a-Flame selection —
+      // A ZIP lookup is just as deliberate a pick as a Find-a-Flame selection -
       // persist it the same way, and if already on a location-specific page,
       // carry the visitor to that store's page instead of leaving them on the
       // old store's menu/order links.

@@ -24,7 +24,7 @@ export interface CateringAddOn {
   /** Display string, shown on the page exactly as written. */
   price: string;
   unit: CateringAddOnUnit;
-  /** `price` as a number — dollars per guest, or per tray for flat add-ons. */
+  /** `price` as a number - dollars per guest, or per tray for flat add-ons. */
   unitPrice: number;
   image: string;
   /** The menu section this add-on block is rendered after. */

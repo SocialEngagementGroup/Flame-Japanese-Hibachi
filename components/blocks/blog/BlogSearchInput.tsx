@@ -89,7 +89,8 @@ export default function BlogSearchInput() {
       params.delete("q");
     }
     params.delete("page"); // Reset page
-    router.replace(`${pathname}?${params.toString()}`);
+    // scroll: false keeps the reader in place rather than jumping to the top.
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
     setIsOpen(false);
   };
 
@@ -128,7 +129,6 @@ export default function BlogSearchInput() {
           }}
           placeholder="Search FJH Blogs"
           className="w-full bg-transparent text-primary placeholder:text-primary/70 text-body outline-none"
-          style={{ fontFamily: "Raleway" }}
           aria-expanded={isOpen}
           role="combobox"
           aria-autocomplete="list"

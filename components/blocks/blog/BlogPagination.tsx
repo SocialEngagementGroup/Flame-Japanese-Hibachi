@@ -54,7 +54,6 @@ export default function BlogPagination({ totalPages, currentPage }: { totalPages
                 : "bg-transparent text-muted-foreground hover:bg-primary hover:text-white"
             }`}
             aria-current={isCurrent ? "page" : undefined}
-            style={{ fontFamily: "Work Sans" }}
           >
             {pageNumber}
           </Link>

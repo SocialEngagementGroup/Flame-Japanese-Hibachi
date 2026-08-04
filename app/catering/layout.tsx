@@ -12,7 +12,7 @@ import ContactSection from "@/components/blocks/contact/ContactSection";
 
 // Shared by /catering and /catering/[location]. Layouts persist across
 // sibling route navigations in the App Router, so switching stores re-renders
-// only the page (JSON-LD + banner) below — the hero video and this heavy
+// only the page (JSON-LD + banner) below - the hero video and this heavy
 // client tree (catering cards) and their images never unmount, decode, or
 // refetch on a location switch.
 export default function CateringLayout({ children }: { children: ReactNode }) {

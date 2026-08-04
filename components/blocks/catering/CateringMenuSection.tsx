@@ -54,7 +54,7 @@ const CateringMenuSection: React.FC<CateringMenuSectionProps> = ({
                     </p>
                 </div>
 
-                {/* Desktop grid (xl+) — all variants */}
+                {/* Desktop grid (xl+) - all variants */}
                 <div className="hidden w-full overflow-visible pb-[70px] xl:block">
                     <div className="grid grid-cols-3 items-start gap-5 overflow-visible xl:grid-cols-4">
                         {items.map((item) => (
@@ -72,7 +72,7 @@ const CateringMenuSection: React.FC<CateringMenuSectionProps> = ({
                     </div>
                 </div>
 
-                {/* Mobile / tablet — every section uses the same compact vertical list
+                {/* Mobile / tablet - every section uses the same compact vertical list
                     (the shop variant is desktop-only) so all sections look consistent. */}
                 <div className="xl:hidden w-full">
                     <div className="space-y-3">

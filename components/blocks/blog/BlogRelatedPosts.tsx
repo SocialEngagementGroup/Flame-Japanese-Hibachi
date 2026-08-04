@@ -1,80 +1,31 @@
-"use client";
-
-import { useState } from "react";
-import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
-import BlogCard, { type BlogCardData } from "./BlogCard";
-
-const POSTS_PER_PAGE = 3;
+import BlogSlider from "./BlogSlider";
+import { type BlogCardData } from "./BlogCard";
 
 type BlogRelatedPostsProps = {
   posts: BlogCardData[];
 };
 
 export default function BlogRelatedPosts({ posts }: BlogRelatedPostsProps) {
-  const [page, setPage] = useState(1);
-
   if (posts.length === 0) return null;
-
-  const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
-  const currentPage = Math.min(page, totalPages);
-  const paginatedPosts = posts.slice(
-    (currentPage - 1) * POSTS_PER_PAGE,
-    currentPage * POSTS_PER_PAGE
-  );
 
   return (
     <section className="w-full bg-background px-4 sm:px-5 md:px-8 py-[var(--space-2xl)] transition-colors duration-300">
-      <h2 className="mb-[var(--space-xl)] font-['Raleway'] text-[34px] font-black uppercase leading-[59px] text-foreground md:text-[48px] md:font-extrabold md:leading-[53px] md:tracking-[4.8px]">
-        Keep Reading
-      </h2>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3! gap-x-[var(--gap-lg)] gap-y-[var(--space-xl)]">
-        {paginatedPosts.map((post) => (
-          <BlogCard key={post.slug} post={post} />
-        ))}
+      <div className="mb-[var(--space-xl)]">
+        <p className="text-small font-black uppercase tracking-[3px] text-primary mb-[var(--space-xs)]">
+          More to explore
+        </p>
+        <div className="flex items-center gap-[var(--space-lg)]">
+          <h2 className="heading-h3 text-foreground uppercase whitespace-nowrap">
+            Keep <span className="text-primary">Reading</span>
+          </h2>
+          <span
+            aria-hidden
+            className="hidden sm:block h-px flex-1 bg-gradient-to-r from-primary/40 to-transparent"
+          />
+        </div>
       </div>
 
-      {totalPages > 1 && (
-        <div className="flex items-center justify-center gap-3 mt-[var(--space-2xl)]">
-          <button
-            type="button"
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
-            disabled={currentPage === 1}
-            className="w-9 h-9 flex items-center justify-center border-2 border-primary text-primary hover:bg-primary hover:text-white disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-primary transition-colors duration-300"
-            aria-label="Previous page"
-          >
-            <FaArrowLeftLong size={16} />
-          </button>
-
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-            (pageNumber) => (
-              <button
-                key={pageNumber}
-                type="button"
-                onClick={() => setPage(pageNumber)}
-                className={`w-[55px] h-[55px] flex items-center justify-center font-sans font-black text-[20px] border-2 border-primary transition-colors duration-300 ${
-                  pageNumber === currentPage
-                    ? "bg-primary text-white"
-                    : "bg-transparent text-muted-foreground hover:bg-primary hover:text-white"
-                }`}
-                aria-current={pageNumber === currentPage ? "page" : undefined}
-              >
-                {pageNumber}
-              </button>
-            )
-          )}
-
-          <button
-            type="button"
-            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-            disabled={currentPage === totalPages}
-            className="w-9 h-9 flex items-center justify-center border-2 border-primary text-primary hover:bg-primary hover:text-white disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-primary transition-colors duration-300"
-            aria-label="Next page"
-          >
-            <FaArrowRightLong size={16} />
-          </button>
-        </div>
-      )}
+      <BlogSlider posts={posts} />
     </section>
   );
 }

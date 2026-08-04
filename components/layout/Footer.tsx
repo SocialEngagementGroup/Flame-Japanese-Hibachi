@@ -4,9 +4,14 @@ import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import type { IconType } from "react-icons";
 import { TbMail, TbBrandFacebook, TbBrandInstagram, TbBrandTiktok, TbBrandYoutube } from "react-icons/tb";
+import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 
 const Footer = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  // With a store selected, the blog link goes straight to that location's hub
+  // (common + its dedicated posts), mirroring how Navbar routes menu/catering.
+  const { nearest } = useNearestLocation();
+  const blogHref = nearest?.slug ? `/blog/${nearest.slug}` : "/blog";
 
   useEffect(() => {
     if (videoRef.current) {
@@ -50,6 +55,7 @@ const Footer = () => {
                   { label: "HOME", href: "/" },
                   { label: "MENU", href: "/menu" },
                   { label: "CATERING", href: "/catering" },
+                  { label: "BLOG", href: blogHref },
                 ].map((link) => (
                   <li key={link.label}>
                     <Link
@@ -72,6 +78,7 @@ const Footer = () => {
               <ul className="space-y-6">
                 {[
                   { label: "LOCATION", href: "/locations" },
+                  { label: "CAREERS", href: "/careers" },
                   { label: "CONTACT", href: "/contact" },
                   { label: "FAQ", href: "/faq" },
                 ].map((link) => (
@@ -137,7 +144,7 @@ const SocialIcons = () => {
   const iconClass = "hover:opacity-80 transition-opacity flex items-center justify-center w-[36px] h-[36px] shrink-0 text-white";
 
   const links: { href: string; alt: string; Icon: IconType; external?: boolean }[] = [
-    { href: "mailto:ask@flamejapanesehibachi.com", alt: "Email", Icon: TbMail },
+    { href: "mailto:daiyan05@yahoo.com", alt: "Email", Icon: TbMail },
     { href: "https://www.facebook.com/flamejapanesehibachi", alt: "Facebook", Icon: TbBrandFacebook, external: true },
     { href: "https://www.instagram.com/flamejapanesehibachi?igsh=MTNmNHMycXo0ZHl2bA%3D%3D&utm_source=qr", alt: "Instagram", Icon: TbBrandInstagram, external: true },
     { href: "https://www.tiktok.com/@flame.japanese.hi?_r=1&_t=ZT-95mfJglR2ez", alt: "TikTok", Icon: TbBrandTiktok, external: true },

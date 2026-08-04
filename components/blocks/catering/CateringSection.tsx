@@ -67,7 +67,7 @@ const CateringSection = () => {
 
   return (
     <section className="w-full py-[var(--space-2xl)] overflow-hidden bg-[#FFFFFF] dark:bg-black transition-colors duration-300">
-      {/* Header — constrained to content width */}
+      {/* Header - constrained to content width */}
       <div className="w-full flex items-center justify-between px-[var(--space-lg)] mb-[var(--space-xl)]">
           <h3 className="heading-h3 text-left">
             <span className="text-[#1C1B1B] dark:text-white transition-colors duration-300">FLAME MONTHLY </span>
@@ -148,7 +148,7 @@ const CateringSection = () => {
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-                {/* Text — bottom left */}
+                {/* Text - bottom left */}
                 <div className="absolute bottom-0 left-0 p-5 md:p-7">
                   <p className="item-label mb-2">
                     {slide.label}
@@ -173,7 +173,7 @@ const CateringSection = () => {
           ))}
         </Swiper>
 
-        {/* Mobile arrows — below the cards */}
+        {/* Mobile arrows - below the cards */}
         <div className="flex md:hidden justify-center gap-2 mt-[var(--space-md)]">
           <button
             onClick={() => swiperRef.current?.slidePrev()}

@@ -10,7 +10,7 @@ interface LocationContextSyncProps {
 /**
  * Keeps the global "nearest location" context (navbar name, order links
  * elsewhere on the site) in sync with whichever location-specific page the
- * visitor is actually viewing — covers direct links, shared URLs, and
+ * visitor is actually viewing - covers direct links, shared URLs, and
  * reloads, not just in-app "Find a Flame" selection. Renders nothing.
  *
  * Guard: skips the sync when `isManuallySelected` is true. This prevents a

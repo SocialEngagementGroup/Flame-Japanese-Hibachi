@@ -26,7 +26,7 @@ type CachedResult = {
   distanceMiles: number;
   timestamp: number;
   /** Where the visitor actually was. Kept so consumers can measure every store
-   * against it, not just the nearest one — FindFlamePopup lists a distance per
+   * against it, not just the nearest one - FindFlamePopup lists a distance per
    * location. Optional because caches written before this existed won't have
    * it; those simply show no distances until the next resolve. */
   origin?: Coordinates;
@@ -57,7 +57,7 @@ type NearestLocationContextValue = NearestLocationState & {
   /** The visitor's own coordinates, once known via GPS, IP or a ZIP lookup.
    * Lets consumers measure every store against it rather than only reading
    * `nearest.distanceMiles`. Null until a location is resolved, and null for
-   * a purely manual store pick — there is no "here" in that case. */
+   * a purely manual store pick - there is no "here" in that case. */
   origin: Coordinates | null;
   requestLocation: () => void;
   dismissPrompt: () => void;
@@ -163,7 +163,7 @@ function readSelectedLocationCookie(): number | null {
 
 // The cookie is what proxy.ts (server) already used to decide this
 // visitor's redirect, so it's the source of truth. localStorage is checked
-// only as a fallback — e.g. right after that redirect, on this device,
+// only as a fallback - e.g. right after that redirect, on this device,
 // localStorage hasn't been written yet even though the cookie has.
 function readSelectedStoreId(): number | null {
   const cookieStoreId = readSelectedLocationCookie();
@@ -220,7 +220,7 @@ function keepResolvedOrUnavailable(prev: NearestLocationState) {
   return prev.status === "resolved" ? prev : unavailableState;
 }
 
-/** `distanceMiles` is null when it genuinely isn't known — a store picked by
+/** `distanceMiles` is null when it genuinely isn't known - a store picked by
  * hand, or restored from the cookie, without the visitor ever sharing their
  * location. It used to default to 0, which rendered as "0.0 MI AWAY" on
  * /locations and told someone in another country they were standing in the
@@ -261,7 +261,7 @@ export function NearestLocationProvider({
       const activeLocations = getActiveLocations();
 
       // Recorded before the service-area check on purpose. Coordinates are
-      // valid for measuring distance no matter where they are — someone in
+      // valid for measuring distance no matter where they are - someone in
       // Dhaka should still see how far each store is, they just can't order.
       // This used to sit after the early return below, so anyone outside the
       // US got no distances at all even after granting permission.
@@ -294,7 +294,7 @@ export function NearestLocationProvider({
       setState({
         status: "resolved",
         nearest: toResolvedLocation(result.item, result.distanceMiles),
-        // Auto-detected by GPS/IP — not a deliberate user pick.
+        // Auto-detected by GPS/IP - not a deliberate user pick.
         isManuallySelected: false,
         promptVisible: false,
         outsideServiceAreaVisible: false,
@@ -318,7 +318,7 @@ export function NearestLocationProvider({
     clearSelectedLocation();
     setState((prev) => ({
       ...prev,
-      // User explicitly asked for GPS — clear the manual override so
+      // User explicitly asked for GPS - clear the manual override so
       // the GPS result can take effect without being blocked.
       isManuallySelected: false,
       promptVisible: false,
@@ -404,7 +404,7 @@ export function NearestLocationProvider({
     // Learns where the visitor is WITHOUT ever prompting, purely so distances
     // can be shown. Only touches GPS when permission is already granted; other-
     // wise falls back to the silent IP lookup. It can't change which store is
-    // selected — resolveFromCoordinates bails out early when a selection
+    // selected - resolveFromCoordinates bails out early when a selection
     // exists, setting the origin and nothing else.
     const resolveOriginSilently = () => {
       if (storedOrigin) return;
@@ -454,7 +454,7 @@ export function NearestLocationProvider({
         writeSelectedLocation(selectedStore.id);
         // Pass manually=true so the restored pick is treated as intentional,
         // preventing LocationContextSync on other pages from overwriting it.
-        // distanceMiles is null, not 0 — a stored pick says nothing about how
+        // distanceMiles is null, not 0 - a stored pick says nothing about how
         // far away the visitor actually is.
         applyStoreId(selectedStore.id, null, true);
         // Deliberately NOT returning here. This used to return outright, so a
@@ -469,7 +469,7 @@ export function NearestLocationProvider({
 
     // 1. Immediately apply cache if available (fallback)
     if (cached) {
-      // GPS cache is auto-detected — not marked as a manual pick.
+      // GPS cache is auto-detected - not marked as a manual pick.
       applyStoreId(cached.storeId, cached.distanceMiles);
     }
 
