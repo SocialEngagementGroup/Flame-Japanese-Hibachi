@@ -24,10 +24,13 @@ const StoreGoodFoodEnergy = () => {
     `Flame Japanese Hibachi ${location.address}`
   )}`;
   const telHref = `tel:${location.phone.replace(/\s+/g, "")}`;
+  const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
+    `Flame Japanese Hibachi ${location.address}`
+  )}&t=k&z=15&ie=UTF8&iwloc=&output=embed`;
 
   return (
-    <section className="w-full px-[var(--space-lg)] transition-colors duration-300">
-      <div className="bg-[#242323] px-[var(--space-lg)] py-[var(--space-2xl)]">
+    <section className="w-full bg-[#242323] px-[var(--space-lg)] py-[var(--space-2xl)] transition-colors duration-300">
+      <div className="w-full md:w-[80%] mx-auto">
         <div className="flex flex-col gap-[var(--space-xl)]">
           {/* Good Food. Great Energy. */}
           <div className="flex flex-col gap-[var(--space-md)]">
@@ -110,12 +113,13 @@ const StoreGoodFoodEnergy = () => {
 
           {/* Map */}
           <div className="w-full aspect-[16/9] relative overflow-hidden border border-white/10">
-            <Image
-              src="/store/store-location-map.png"
-              alt={`Map of Flame Japanese Hibachi ${getLocationLabel(location)}`}
-              fill
-              sizes="(max-width: 900px) 100vw, 900px"
-              className="object-cover"
+            <iframe
+              title={`Map of Flame Japanese Hibachi ${getLocationLabel(location)}`}
+              src={mapSrc}
+              className="absolute inset-0 w-full h-full"
+              frameBorder="0"
+              scrolling="no"
+              loading="lazy"
             />
           </div>
 

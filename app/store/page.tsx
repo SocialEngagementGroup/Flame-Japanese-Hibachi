@@ -25,24 +25,18 @@ export default function StorePage() {
         align="center"
         fullHeight={false}
         bgVideo={null}
-        bgImageDesk="/menupage/hero/flame-japanese-hibachi-menu-hero-spread-desk.png"
-        bgImageMob="/menupage/hero/flame-japanese-hibachi-menu-hero-spread-mob.png"
+        bgImageDesk="/store/store-hero-bg.png"
+        bgImageMob="/store/store-hero-bg.png"
+        blurBackground
       />
 
       <div className="w-full md:w-[80%] mx-auto">
         <StoreLocalFlame />
-        <StoreGoodFoodEnergy />
       </div>
 
-      <ContactSection
-        heading={
-          <>
-            QUESTIONS ABOUT AN <span className="text-primary">ORDER?</span>
-          </>
-        }
-        subheading="SEND US A MESSAGE"
-        submitLabel="SEND MESSAGE"
-      />
+      <StoreGoodFoodEnergy />
+
+      <ContactSection />
     </div>
   );
 }

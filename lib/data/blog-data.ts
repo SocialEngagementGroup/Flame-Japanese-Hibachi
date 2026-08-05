@@ -57,7 +57,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 20, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-baltimore-md.jpg",
     featuredImageAlt:
       "Halal chicken hibachi cooking on the grill at Flame Japanese Hibachi in Baltimore, MD",
     intro:
@@ -118,7 +118,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 22, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/salmon-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-northern-pkwy-baltimore-md.jpg",
     featuredImageAlt:
       "Halal salmon hibachi at Flame Japanese Hibachi on Northern Parkway, Baltimore",
     intro:
@@ -179,7 +179,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 21, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/bento/chicken-and-beef-bento.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-laurel-md.jpg",
     featuredImageAlt:
       "Halal chicken and beef bento box at Flame Japanese Hibachi in Laurel, MD",
     intro:
@@ -240,7 +240,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 23, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-pasadena-md.jpg",
     featuredImageAlt:
       "Halal chicken, beef and shrimp hibachi combo at Flame Japanese Hibachi Pasadena, MD",
     intro:
@@ -301,7 +301,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 22, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/beef-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-aberdeen-md.jpg",
     featuredImageAlt:
       "Halal chicken hibachi at Flame Japanese Hibachi in Aberdeen, MD",
     intro:
@@ -362,7 +362,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 20, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/chicken-and-beef.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-manassas-va.jpg",
     featuredImageAlt:
       "Halal chicken and beef hibachi combo at Flame Japanese Hibachi in Manassas, VA",
     intro:
@@ -423,7 +423,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 21, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/salmon-and-shrimp.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-alexandria-va.jpg",
     featuredImageAlt:
       "Halal salmon and shrimp hibachi combo at Flame Japanese Hibachi in Alexandria, VA",
     intro:
@@ -484,7 +484,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 22, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/sushi/green-dragon.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-seven-corners-va.jpg",
     featuredImageAlt:
       "Halal sushi rolls at Flame Japanese Hibachi in Falls Church, VA",
     intro:
@@ -545,7 +545,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 23, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/beef-and-shrimp.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-bristow-va.jpg",
     featuredImageAlt:
       "Build your own halal hibachi platter at Flame Japanese Hibachi in Bristow, VA",
     intro:
@@ -606,7 +606,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 21, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/salmon-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-forest-hill-richmond-va.jpg",
     featuredImageAlt:
       "Halal salmon hibachi at Flame Japanese Hibachi on Forest Hill Avenue, Richmond VA",
     intro:
@@ -667,7 +667,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 23, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-mechanicsville-va.jpg",
     featuredImageAlt:
       "Halal chicken hibachi at Flame Japanese Hibachi in Mechanicsville, VA",
     intro:
@@ -728,7 +728,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 20, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/bento/beef-and-shrimp-bento.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-philadelphia-pa.jpg",
     featuredImageAlt:
       "Halal chicken and beef bento at Flame Japanese Hibachi on Olney Avenue, Philadelphia",
     intro:
@@ -789,7 +789,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 20, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/salmon-and-shrimp.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-tamarac-fl.jpg",
     featuredImageAlt:
       "Halal salmon and shrimp hibachi combo at Flame Japanese Hibachi in Tamarac, FL",
     intro:
@@ -850,7 +850,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 22, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/chicken-and-salmon.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-royal-palm-beach-fl.jpg",
     featuredImageAlt:
       "Halal chicken, beef and shrimp hibachi combo at Flame Japanese Hibachi Royal Palm Beach, FL",
     intro:
