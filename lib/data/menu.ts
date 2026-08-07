@@ -139,7 +139,6 @@ export const menuItemsByCategory: Record<string, MenuItem[]> = {
       tag: "FLAME COMBO",
       image: "/menupage/flame-combo/beef-and-shrimp.jpg",
     },
-    /* HIDDEN - Chicken & Salmon Combo (not available)
     {
       id: "comb-4",
       name: "CHICKEN & SALMON COMBO",
@@ -147,7 +146,6 @@ export const menuItemsByCategory: Record<string, MenuItem[]> = {
       tag: "FLAME COMBO",
       image: "/menupage/flame-combo/chicken-and-salmon.jpg",
     },
-    */
     {
       id: "comb-5",
       name: "SALMON & SHRIMP COMBO",
