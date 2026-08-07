@@ -7,6 +7,7 @@ import {
   getActiveLocations,
   getLocationBySlug,
   getLocationLabel,
+  locationDirectionsUrl,
 } from "@/lib/api/locations";
 import {
   storeBodyText,
@@ -30,9 +31,7 @@ const StoreLocalFlame = () => {
   const location = urlLocation ?? nearest ?? defaultLocation;
   const cityLabel = getLocationLabel(location).toUpperCase();
   const telHref = `tel:${location.phone.replace(/\s+/g, "")}`;
-  const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `Flame Japanese Hibachi ${location.address}`
-  )}`;
+  const directionsUrl = locationDirectionsUrl(location);
 
   // The closing image runs full-bleed on mobile, so the section drops its
   // bottom padding there - otherwise that padding drew a band of this

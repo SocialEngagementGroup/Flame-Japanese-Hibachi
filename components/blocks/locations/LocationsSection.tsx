@@ -10,6 +10,8 @@ import type { Swiper as SwiperType } from "swiper";
 import {
   getActiveLocations,
   getComingSoonLocations,
+  locationDirectionsUrl,
+  locationMapEmbedSrc,
 } from "@/lib/api/locations";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 import { haversineDistanceMiles } from "@/lib/geo/distance";
@@ -83,12 +85,7 @@ const LocationsSection = ({
     }
   }, [nearest]);
 
-  const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
-    `Flame Japanese Hibachi ${selectedLocation.address}`
-  )}&t=k&z=17&ie=UTF8&iwloc=&output=embed`;
-
-  const googleMapsUrl = (address: string) =>
-    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Flame Japanese Hibachi ${address}`)}`;
+  const mapSrc = locationMapEmbedSrc(selectedLocation);
 
   // Scroll listener for perfectly aligning the active card with the map box top
   useEffect(() => {
@@ -168,7 +165,7 @@ const LocationsSection = ({
   }, [sortedActiveLocations]);
 
   const handleCardClick = (loc: typeof activeLocations[0]) => {
-    window.open(googleMapsUrl(loc.address), "_blank");
+    window.open(locationDirectionsUrl(loc), "_blank");
   };
 
   return (

@@ -4,17 +4,17 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { X, Search, Phone, Clock, MapPin } from "lucide-react";
 import MapEmbed from "@/components/blocks/location/MapEmbed";
-import { getActiveLocations, getLocationBySlug } from "@/lib/api/locations";
+import {
+  getActiveLocations,
+  getLocationBySlug,
+  locationDirectionsUrl,
+  locationMapEmbedSrc,
+} from "@/lib/api/locations";
 import { haversineDistanceMiles } from "@/lib/geo/distance";
 import { formatDistance } from "@/lib/geo/formatDistance";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 
 const activeLocations = getActiveLocations();
-
-const googleMapsUrl = (address: string) =>
-  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `Flame Japanese Hibachi ${address}`
-  )}`;
 
 const LOCATION_PAGE_PATTERN = /^\/(menu|catering|store)\/[^/]+$/;
 
@@ -107,12 +107,18 @@ const FindFlamePopup: React.FC = () => {
     // If already viewing a location-specific menu/catering page, switching stores
     // here should carry the visitor to that same page for the newly picked store -
     // otherwise the page keeps showing the old store's menu/order links until reload.
+    //
+    // `scroll: false` because these are the same page for a different store, not
+    // a new destination. Next scrolls to the top on navigation by default, which
+    // threw anyone reading halfway down back to the hero and made them find their
+    // place again. Staying put means the section they were looking at just
+    // re-renders with the new store's details.
     const store = activeLocations.find((l) => l.id === storeId);
     if (!store) return;
 
     const locationPageMatch = pathname.match(LOCATION_PAGE_PATTERN);
     if (locationPageMatch) {
-      router.push(`/${locationPageMatch[1]}/${store.slug}`);
+      router.push(`/${locationPageMatch[1]}/${store.slug}`, { scroll: false });
       return;
     }
 
@@ -121,7 +127,7 @@ const FindFlamePopup: React.FC = () => {
     // yank a reader off an article they're partway through.
     const blogMatch = pathname.match(/^\/blog\/([^/]+)$/);
     if (blogMatch && getLocationBySlug(blogMatch[1])) {
-      router.push(`/blog/${store.slug}`);
+      router.push(`/blog/${store.slug}`, { scroll: false });
     }
   };
 
@@ -154,14 +160,10 @@ const FindFlamePopup: React.FC = () => {
   // Debounce the Google Maps iframe src so rapid store clicks don't reload the map every time.
   useEffect(() => {
     const id = setTimeout(() => {
-      setMapSrc(
-        `https://maps.google.com/maps?q=${encodeURIComponent(
-          `Flame Japanese Hibachi ${selected.address}`
-        )}&t=k&z=17&ie=UTF8&iwloc=&output=embed`
-      );
+      setMapSrc(locationMapEmbedSrc(selected));
     }, 300);
     return () => clearTimeout(id);
-  }, [selected.address]);
+  }, [selected]);
 
   if (!open) return null;
 
@@ -224,7 +226,7 @@ const FindFlamePopup: React.FC = () => {
               className="relative w-full h-[260px] lg:h-[460px] bg-zinc-200 dark:bg-zinc-900 border border-black/5 dark:border-white/10 overflow-hidden shadow-2xl"
             />
             <a
-              href={googleMapsUrl(selected.address)}
+              href={locationDirectionsUrl(selected)}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-[var(--space-md)] w-full bg-primary hover:bg-secondary text-white py-4 text-small font-black tracking-[3px] uppercase transition-all flex items-center justify-center gap-2"

@@ -165,13 +165,17 @@ export default function CateringQuoteModal() {
    * layout - which owns the quote provider and this modal - persists across
    * sibling route changes, so the modal stays open and the selection survives;
    * only the location label re-renders.
+   *
+   * `scroll: false` keeps the page behind the modal where it was - the default
+   * scroll-to-top would have the visitor close the modal onto a completely
+   * different part of the page than the one they opened it from.
    */
   const changeLocation = (storeId: number) => {
     const store = activeLocations.find((l) => l.id === storeId);
     if (!store) return;
     selectLocation(storeId);
     const base = pathname.startsWith("/catering") ? "catering" : "menu";
-    router.push(`/${base}/${store.slug}`);
+    router.push(`/${base}/${store.slug}`, { scroll: false });
   };
 
   const [step, setStep] = useState<1 | 2>(1);

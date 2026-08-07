@@ -193,7 +193,11 @@ export default function LocationPermissionPrompt() {
       selectLocation(resolved.id);
       const locationPageMatch = pathname.match(LOCATION_PAGE_PATTERN);
       if (locationPageMatch) {
-        router.push(`/${locationPageMatch[1]}/${resolved.slug}`);
+        // Same page, different store - hold the scroll position rather than
+        // bouncing the visitor to the top. See FindFlamePopup.
+        router.push(`/${locationPageMatch[1]}/${resolved.slug}`, {
+          scroll: false,
+        });
       }
     } catch {
       setZipError("Something went wrong. Please try again.");

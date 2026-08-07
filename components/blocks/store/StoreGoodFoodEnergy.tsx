@@ -9,6 +9,8 @@ import {
   getActiveLocations,
   getLocationBySlug,
   getLocationLabel,
+  locationDirectionsUrl,
+  locationMapEmbedSrc,
 } from "@/lib/api/locations";
 import { useOrderUrl } from "@/lib/geo/useOrderUrl";
 import {
@@ -30,13 +32,9 @@ const StoreGoodFoodEnergy = () => {
   const orderUrl = useOrderUrl();
   const cityLabel = getLocationLabel(location).toUpperCase();
   const stateLabel = location.state.toUpperCase();
-  const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `Flame Japanese Hibachi ${location.address}`
-  )}`;
+  const directionsUrl = locationDirectionsUrl(location);
   const telHref = `tel:${location.phone.replace(/\s+/g, "")}`;
-  const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
-    `Flame Japanese Hibachi ${location.address}`
-  )}&t=k&z=17&ie=UTF8&iwloc=&output=embed`;
+  const mapSrc = locationMapEmbedSrc(location);
 
   return (
     <section className="store-body-alt w-full bg-[#242323] px-[var(--space-lg)] py-[var(--space-2xl)] transition-colors duration-300">

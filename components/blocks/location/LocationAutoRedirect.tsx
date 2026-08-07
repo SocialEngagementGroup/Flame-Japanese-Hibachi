@@ -26,7 +26,10 @@ export default function LocationAutoRedirect({
 
   useEffect(() => {
     if (status === "resolved" && nearest) {
-      router.replace(`${basePath}/${nearest.slug}`);
+      // A GPS fix can land seconds after the page does, by which point the
+      // visitor may already be reading. `scroll: false` swaps the generic page
+      // for their store's without yanking them back to the top.
+      router.replace(`${basePath}/${nearest.slug}`, { scroll: false });
     }
   }, [status, nearest, basePath, router]);
 
