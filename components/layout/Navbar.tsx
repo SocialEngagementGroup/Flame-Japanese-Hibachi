@@ -96,11 +96,15 @@ const Navbar = () => {
       external: false,
     },
     { name: "LOCATIONS", href: "/locations", external: false },
-    { name: "STORE", href: "/store", external: false },
+    {
+      name: "STORE",
+      href: locationSlug ? `/store/${locationSlug}` : "/store",
+      activePath: "/store",
+      external: false,
+    },
     // { name: "PROMOTIONS", href: ORDER_URL, external: true },
     // { name: "JOIN FLAME", href: ORDER_URL, external: true },
     { name: "CONTACT", href: "/contact", external: false },
-    { name: "BLOG", href: "/blog", activePath: "/blog", external: false },
   ];
 
   return (

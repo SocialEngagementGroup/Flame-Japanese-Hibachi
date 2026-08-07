@@ -124,7 +124,13 @@
   --color-flame-light: var(--foreground);
 
   --font-sans: var(--font-sans), ui-sans-serif, system-ui;
-  --font-serif: 'Work Sans', var(--font-serif-next), ui-serif, Georgia, serif;
+  /* --font-serif is the heading/accent font (Raleway, loaded as
+     --font-serif-next in app/layout.tsx). This used to list the literal
+     string 'Work Sans' first, which isn't an installed font on most
+     machines, so it silently fell through to Raleway by luck rather than by
+     rule - on any machine that does have a font literally named "Work Sans"
+     installed, headings would render in that instead. */
+  --font-serif: var(--font-serif-next), ui-serif, Georgia, serif;
 }
 
 /* Robustly clip any horizontal overflow so the fixed navbar can never be panned
@@ -405,4 +411,21 @@ body {
   nav {
     padding-block: 20px !important;
   }
+}
+
+/* Store page only (StoreLocalFlame / StoreGoodFoodEnergy): client wants the
+   sitewide heading/body font pairing swapped just here - headings in Work
+   Sans instead of Raleway, body copy in Raleway instead of Work Sans. Scoped
+   classes rather than touching --font-serif/--font-sans or .heading-h3,
+   which are shared by every other page (including the Hero component used
+   on menu/catering/home). Declared last so it wins the cascade tie-break
+   against .heading-h3/.heading-h4 when combined on the same element - equal
+   specificity is broken by source order, not by which class comes first in
+   the className string. */
+.store-heading-alt {
+  font-family: var(--font-sans);
+}
+
+.store-body-alt {
+  font-family: var(--font-serif);
 }

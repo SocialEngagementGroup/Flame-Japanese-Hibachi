@@ -24,6 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.75,
     },
+    {
+      url: `${baseUrl}/store/${location.slug}`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
   ]);
 
   // Every location's blog hub (/blog/<slug>). Generated from the location list
@@ -67,6 +73,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/store`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/locations`,

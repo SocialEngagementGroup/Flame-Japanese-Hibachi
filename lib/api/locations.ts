@@ -51,7 +51,7 @@ export function toLocationSlug(
 
 /** Location-scoped sections. Add a new one here when its route is created -
  * it reuses the store's existing slug rather than introducing another id. */
-export type LocationSection = "menu" | "catering" | "order";
+export type LocationSection = "menu" | "catering" | "order" | "store";
 
 /**
  * Canonical path for a location-scoped page: locationPath("menu", store) →

@@ -15,6 +15,7 @@ import { useNearestLocation } from "@/components/providers/NearestLocationProvid
 import { haversineDistanceMiles } from "@/lib/geo/distance";
 import { formatDistance } from "@/lib/geo/formatDistance";
 import ComingSoonList from "@/components/blocks/locations/ComingSoonList";
+import MapEmbed from "@/components/blocks/location/MapEmbed";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -190,24 +191,17 @@ const LocationsSection = ({
 
         {/* Mobile Map */}
         {!hideMap && (
-          <div className="w-full h-[220px] mb-[var(--space-lg)] overflow-hidden border border-black/5 dark:border-white/10 transition-colors duration-300 relative bg-zinc-200 dark:bg-zinc-900">
-            <iframe
-              title="Flame Japanese Hibachi Mobile Map"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              scrolling="no"
-              marginHeight={0}
-              marginWidth={0}
-              loading="lazy"
-              src={mapSrc}
-              onLoad={() => setMapLoading(false)}
-              className={`transition-opacity duration-500 ease-in-out ${mapLoading ? 'opacity-0' : 'opacity-100'}`}
-            ></iframe>
+          <MapEmbed
+            title="Flame Japanese Hibachi Mobile Map"
+            src={mapSrc}
+            onLoad={() => setMapLoading(false)}
+            className="w-full h-[220px] mb-[var(--space-lg)] overflow-hidden border border-black/5 dark:border-white/10 transition-colors duration-300 relative bg-zinc-200 dark:bg-zinc-900"
+            iframeClassName={`transition-opacity duration-500 ease-in-out ${mapLoading ? 'opacity-0' : 'opacity-100'}`}
+          >
             <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-500 ${mapLoading ? 'opacity-100' : 'opacity-0'}`}>
               <div className="w-6 h-6 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
             </div>
-          </div>
+          </MapEmbed>
         )}
 
         {/* Mobile Cards Swiper */}
@@ -331,27 +325,21 @@ const LocationsSection = ({
 
               {/* Map Container */}
               {!hideMap && (
-                <div id="desktop-map-container" className="w-full h-[500px] bg-zinc-200 dark:bg-zinc-900 border border-black/5 dark:border-white/5 relative overflow-hidden group mb-12 transition-colors duration-300 shadow-2xl">
-                  <iframe
-                    title="Flame Japanese Hibachi Location Map"
-                    width="100%"
-                    height="100%"
-                    frameBorder="0"
-                    scrolling="no"
-                    marginHeight={0}
-                    marginWidth={0}
-                    loading="lazy"
-                    src={mapSrc}
-                    onLoad={() => setMapLoading(false)}
-                    className={`transition-opacity duration-500 ease-in-out ${mapLoading ? 'opacity-0' : 'opacity-100'}`}
-                  ></iframe>
+                <MapEmbed
+                  id="desktop-map-container"
+                  title="Flame Japanese Hibachi Location Map"
+                  src={mapSrc}
+                  onLoad={() => setMapLoading(false)}
+                  className="w-full h-[500px] bg-zinc-200 dark:bg-zinc-900 border border-black/5 dark:border-white/5 relative overflow-hidden group mb-12 transition-colors duration-300 shadow-2xl"
+                  iframeClassName={`transition-opacity duration-500 ease-in-out ${mapLoading ? 'opacity-0' : 'opacity-100'}`}
+                >
                   {/* Loader */}
                   <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-500 ${mapLoading ? 'opacity-100' : 'opacity-0'}`}>
                     <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
                   </div>
                   {/* Overlay for aesthetic */}
-                  <div className="absolute inset-0 pointer-events-none border-[10px] border-white/5 dark:border-black/5 z-10"></div>
-                </div>
+                  <div className="absolute inset-0 pointer-events-none border-[10px] border-white/5 dark:border-black/5"></div>
+                </MapEmbed>
               )}
 
               {/* Coming Soon Section */}

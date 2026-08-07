@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { X, Search, Phone, Clock, MapPin } from "lucide-react";
+import MapEmbed from "@/components/blocks/location/MapEmbed";
 import { getActiveLocations, getLocationBySlug } from "@/lib/api/locations";
 import { haversineDistanceMiles } from "@/lib/geo/distance";
 import { formatDistance } from "@/lib/geo/formatDistance";
@@ -15,7 +16,7 @@ const googleMapsUrl = (address: string) =>
     `Flame Japanese Hibachi ${address}`
   )}`;
 
-const LOCATION_PAGE_PATTERN = /^\/(menu|catering)\/[^/]+$/;
+const LOCATION_PAGE_PATTERN = /^\/(menu|catering|store)\/[^/]+$/;
 
 // Open state comes from NearestLocationProvider, not props, so every trigger
 // (navbar button, "Not your location?" on a location page) opens this same
@@ -66,8 +67,8 @@ const FindFlamePopup: React.FC = () => {
   }, [nearest, origin]);
 
   useEffect(() => {
+    // Sync the highlighted card when the active location changes.
     if (open && nearest) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- sync highlighted card when the active location changes
       setSelectedId(nearest.id);
     }
   }, [open, nearest]);
@@ -81,9 +82,11 @@ const FindFlamePopup: React.FC = () => {
     if (!open) return;
     const base = pathname.startsWith("/catering")
       ? "catering"
-      : pathname.startsWith("/blog")
-        ? "blog"
-        : "menu";
+      : pathname.startsWith("/store")
+        ? "store"
+        : pathname.startsWith("/blog")
+          ? "blog"
+          : "menu";
     let i = 0;
     const id = setInterval(() => {
       if (i >= sortedActiveLocations.length) {
@@ -215,19 +218,11 @@ const FindFlamePopup: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--gap-lg)] px-[var(--space-lg)] py-[var(--space-md)] overflow-y-auto flex-1">
           <div className="order-1 lg:order-2 lg:sticky lg:top-0 self-start">
-            <div className="w-full h-[260px] lg:h-[460px] bg-zinc-200 dark:bg-zinc-900 border border-black/5 dark:border-white/10 overflow-hidden shadow-2xl">
-              <iframe
-                title="Selected Flame Location"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                scrolling="no"
-                marginHeight={0}
-                marginWidth={0}
-                loading="lazy"
-                src={mapSrc}
-              />
-            </div>
+            <MapEmbed
+              title="Selected Flame Location"
+              src={mapSrc}
+              className="relative w-full h-[260px] lg:h-[460px] bg-zinc-200 dark:bg-zinc-900 border border-black/5 dark:border-white/10 overflow-hidden shadow-2xl"
+            />
             <a
               href={googleMapsUrl(selected.address)}
               target="_blank"

@@ -19,7 +19,10 @@ const ITEM_FOCUS_MS = 550;
  * time it enters the viewport, it auto-scrolls through each location —
  * briefly enlarging/bolding the one in focus — then eases back to the top.
  * Purely a hint: nothing here disables the user's own scrolling, before,
- * during, or after.
+ * during, or after - and if the visitor scrolls the list themselves while
+ * the hint is still running, the hint bails out immediately instead of
+ * fighting their scroll position and snapping it back to the top once it
+ * finishes.
  */
 const ComingSoonList = ({
   locations,
@@ -40,14 +43,64 @@ const ComingSoonList = ({
 
     const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
+    // Scrolls only the list's own scrollTop - never itemRefs[i].scrollIntoView(),
+    // which walks up every scrollable ancestor (including the page) and was
+    // dragging the whole page's scroll position along with it.
+    //
+    // The offset is measured with getBoundingClientRect rather than
+    // item.offsetTop: offsetTop is relative to the nearest *positioned*
+    // ancestor, and this container is static, so items measured past it to
+    // whatever happened to be `relative` further up. That made every target
+    // off by a constant - harmless-looking on desktop, but on mobile the
+    // offset was large enough that item 0 already computed past the end, so
+    // the list slammed to the bottom on the first step and highlighted items
+    // that were scrolled out of sight.
+    const scrollItemIntoContainer = (item: HTMLDivElement) => {
+      const itemTop =
+        item.getBoundingClientRect().top -
+        container.getBoundingClientRect().top +
+        container.scrollTop;
+      const itemBottom = itemTop + item.offsetHeight;
+      const viewTop = container.scrollTop;
+      const viewBottom = viewTop + container.clientHeight;
+
+      if (itemTop < viewTop) {
+        container.scrollTo({ top: itemTop, behavior: "smooth" });
+      } else if (itemBottom > viewBottom) {
+        container.scrollTo({ top: itemBottom - container.clientHeight, behavior: "smooth" });
+      }
+    };
+
+    // Any sign the visitor is driving the scroll themselves cancels the hint
+    // outright - otherwise the loop below keeps moving the container over
+    // their input, and the "ease back to top" at the end would snap their
+    // own scroll position back to 0 once the hint finishes.
+    let userTookOver = false;
+    const markUserTookOver = () => {
+      userTookOver = true;
+    };
+
+    // Separate from userTookOver: the hint is a chain of awaited timeouts, so
+    // without this it keeps setting state and scrolling a detached container
+    // after a client-side navigation away mid-hint.
+    let cancelled = false;
+    container.addEventListener("wheel", markUserTookOver, { passive: true });
+    container.addEventListener("touchstart", markUserTookOver, { passive: true });
+    container.addEventListener("pointerdown", markUserTookOver, { passive: true });
+
     const playScrollHint = async () => {
       for (let i = 0; i < locations.length; i++) {
+        if (cancelled || userTookOver) break;
         setMagnifiedIndex(i);
-        itemRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        const item = itemRefs.current[i];
+        if (item) scrollItemIntoContainer(item);
         await wait(ITEM_FOCUS_MS);
       }
+      if (cancelled) return;
       setMagnifiedIndex(null);
-      container.scrollTo({ top: 0, behavior: "smooth" });
+      if (!userTookOver) {
+        container.scrollTo({ top: 0, behavior: "smooth" });
+      }
     };
 
     const observer = new IntersectionObserver(
@@ -62,13 +115,19 @@ const ComingSoonList = ({
     );
     observer.observe(container);
 
-    return () => observer.disconnect();
+    return () => {
+      cancelled = true;
+      observer.disconnect();
+      container.removeEventListener("wheel", markUserTookOver);
+      container.removeEventListener("touchstart", markUserTookOver);
+      container.removeEventListener("pointerdown", markUserTookOver);
+    };
   }, [locations]);
 
   return (
     <div
       ref={containerRef}
-      className={`${gapClass} ${maxHeightClass} overflow-y-auto overflow-x-hidden ${paddingClass} scrollbar-hide`}
+      className={`${gapClass} ${maxHeightClass} overflow-y-auto overflow-x-hidden overscroll-contain ${paddingClass} scrollbar-hide`}
     >
       {locations.map((loc, index) => (
         <div

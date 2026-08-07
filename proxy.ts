@@ -9,9 +9,9 @@ const SELECTED_LOCATION_KEY = "fjh-selected-location-v1";
 const ONE_YEAR_SECONDS = 60 * 60 * 24 * 365;
 
 // Crawlers hit us from US IPs, so the geo branch below would 307 them off
-// /menu and /catering onto one arbitrary store's page — the generic pages
-// would then never be indexed on their own content. Bots always get the
-// generic page; only real visitors get geo-routed.
+// /menu, /catering and /store onto one arbitrary store's page — the generic
+// pages would then never be indexed on their own content. Bots always get
+// the generic page; only real visitors get geo-routed.
 const BOT_UA_PATTERN =
   /bot|crawl|spider|slurp|bingpreview|facebookexternalhit|embedly|quora link preview|whatsapp|telegram|lighthouse|chrome-lighthouse|headlesschrome/i;
 
@@ -70,5 +70,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/menu", "/catering"],
+  matcher: ["/menu", "/catering", "/store"],
 };
