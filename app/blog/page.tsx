@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import Hero from "@/components/blocks/hero/Hero";
 import BlogGrid from "@/components/blocks/blog/BlogGrid";
-import BlogLocationDirectory from "@/components/blocks/blog/BlogLocationDirectory";
+import BlogPostDirectory from "@/components/blocks/blog/BlogPostDirectory";
 import { getBlogPostSummaries, searchBlogPosts } from "@/lib/data/blog-data";
 import { buildPageMetadata, getCanonicalUrl } from "@/lib/seo/seo";
 
@@ -100,11 +100,11 @@ export default async function BlogListingPage({ searchParams }: { searchParams: 
         blurBackground
       />
 
-      <BlogLocationDirectory />
-
       <div className="w-full md:w-[80%] mx-auto">
         <BlogGrid searchParams={parsedParams} showLocationFilter />
       </div>
+
+      <BlogPostDirectory />
     </div>
   );
 }
