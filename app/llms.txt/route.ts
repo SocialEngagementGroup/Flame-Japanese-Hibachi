@@ -3,9 +3,9 @@ import { getBlogPostSummaries } from "@/lib/data/blog-data";
 import { getCanonicalUrl } from "@/lib/seo/seo";
 
 /**
- * /llms.txt - a plain-text map of the site for LLMs and AI search crawlers
- * (ChatGPT, Claude, Perplexity, Gemini), which increasingly look for this file
- * the way search engines look for sitemap.xml.
+ * /llms.txt - a plain-text map of the site following the open llms.txt
+ * proposal. It complements the sitemap and visible internal links; it is not
+ * treated as a guaranteed crawler or ranking directive.
  *
  * It is generated from `activeLocations`, not hand-written, so it can't drift:
  * add a store to data/locationsData.ts and it appears here automatically with
@@ -61,15 +61,16 @@ and smoothies. All meat is 100% Halal. Online ordering is handled by DoorDash.
 
 - [Menu](${getCanonicalUrl("/menu")}): full menu with prices
 - [Catering](${getCanonicalUrl("/catering")}): hibachi catering for weddings, corporate events and parties
-- [Locations](${getCanonicalUrl("/locations")}): all locations with addresses, hours and directions
+- [Locations](${getCanonicalUrl("/locations")}): all locations with links to their dedicated store pages, addresses, hours and directions
 - [Blog](${getCanonicalUrl("/blog")}): local halal hibachi guides — is-hibachi-halal explainers, catering and ordering guides, per location
 - [Contact](${getCanonicalUrl("/contact")}): contact details and catering enquiries
 - [FAQ](${getCanonicalUrl("/faq")}): ordering, Halal certification, delivery and catering questions
 
 ## Locations
 
-Each location has its own menu and catering page. The URL slug is stable and
-shared across sections: /menu/<slug>, /catering/<slug>, /order/<slug>.
+Each location has dedicated store, menu, catering and blog hub pages. The URL
+slug is stable and shared across sections: /store/<slug>, /menu/<slug>,
+/catering/<slug>, /blog/<slug>, /order/<slug>.
 
 ${locations
   .map(
@@ -78,8 +79,10 @@ ${locations
 - Address: ${l.address}
 - Phone: ${l.phone}
 - Hours: ${l.hours}
+- Store: ${getCanonicalUrl(locationPath("store", l))}
 - Menu: ${getCanonicalUrl(locationPath("menu", l))}
-- Catering: ${getCanonicalUrl(locationPath("catering", l))}`
+- Catering: ${getCanonicalUrl(locationPath("catering", l))}
+- Blog hub: ${getCanonicalUrl(`/blog/${l.slug}`)}`
   )
   .join("\n\n")}
 
@@ -97,7 +100,10 @@ ${blogByLocation}${commonBlogBlock}
   details, hours and the ordering link differ.
 - Online orders are fulfilled through DoorDash; /order/<slug> redirects to that
   location's ordering page.
-- Structured data (schema.org Restaurant) is embedded on every location page.
+- Each restaurant's canonical entity is its /store/<slug> page, where visible
+  NAP, hours, geo data and FAQs match the embedded structured data.
+- The same Restaurant entity is referenced consistently from its menu,
+  catering, blog hub and locations-directory entries.
 - Sitemap: ${getCanonicalUrl("/sitemap.xml")}
 `;
 

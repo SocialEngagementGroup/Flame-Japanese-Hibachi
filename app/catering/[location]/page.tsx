@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import LocationBanner from "@/components/blocks/location/LocationBanner";
 import LocationContextSync from "@/components/blocks/location/LocationContextSync";
 import {
   getActiveLocations,
@@ -43,9 +42,7 @@ export default async function LocationCateringPage({
   const location = getLocationBySlug(slug);
   if (!location) notFound();
 
-  const canonical = getCanonicalUrl(`/catering/${location.slug}`);
   const schema = buildRestaurantSchema(location, {
-    pageUrl: canonical,
     menuUrl: getCanonicalUrl(`/menu/${location.slug}`),
   });
 
@@ -56,10 +53,6 @@ export default async function LocationCateringPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <LocationContextSync storeId={location.id} />
-
-      {/* The hero lives in app/catering/layout.tsx so its video survives a
-          store switch - it reads the city from the route param itself. */}
-      <LocationBanner location={location} pageLabel="catering" />
     </>
   );
 }

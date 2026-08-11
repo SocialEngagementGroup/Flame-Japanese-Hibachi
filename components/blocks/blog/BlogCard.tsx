@@ -20,7 +20,7 @@ export default function BlogCard({ post }: BlogCardProps) {
       href={`/blog/${post.slug}`}
       className="group flex h-full flex-col cursor-pointer border-b border-border/60 pb-8 md:border-b-0 md:pb-0"
     >
-      <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#EBEBEB] dark:bg-zinc-900 mb-6 transition-colors duration-300">
+      <div className="relative w-full aspect-[1.85] overflow-hidden border-2 border-primary/20 bg-[#EBEBEB] dark:bg-zinc-900 mb-6 transition-colors duration-300">
         <Image
           src={post.image}
           alt={post.title}
