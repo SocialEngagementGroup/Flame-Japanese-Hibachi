@@ -8,7 +8,7 @@ import { activeLocations } from "@/data/locationsData";
 export const metadata = buildPageMetadata({
   title: "All Flame Japanese Hibachi Locations (MD, VA, FL, PA)",
   description:
-    "Find a Flame Japanese Hibachi location near you. Twelve-plus open restaurants across Maryland, Virginia, Florida and Pennsylvania, with more coming soon.",
+    "Find one of 14 Flame Japanese Hibachi restaurants across Maryland, Virginia, Florida and Pennsylvania, with addresses, hours, directions and local details.",
   path: "/locations",
 });
 

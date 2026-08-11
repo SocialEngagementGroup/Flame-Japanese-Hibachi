@@ -15,7 +15,7 @@ const googleMapsUrl = (address: string) =>
     `Flame Japanese Hibachi ${address}`
   )}`;
 
-const LOCATION_PAGE_PATTERN = /^\/(menu|catering)\/[^/]+$/;
+const LOCATION_PAGE_PATTERN = /^\/(menu|catering|store)\/[^/]+$/;
 
 // Open state comes from NearestLocationProvider, not props, so every trigger
 // (navbar button, "Not your location?" on a location page) opens this same
@@ -52,7 +52,7 @@ const FindFlamePopup: React.FC = () => {
 
     const ordered = origin
       ? withDistance.sort(
-          (a, b) => (a.distanceMiles ?? 0) - (b.distanceMiles ?? 0),
+          (a, b) => (a.distanceMiles ?? 0) - (b.distanceMiles ?? 0)
         )
       : withDistance;
 
@@ -81,9 +81,11 @@ const FindFlamePopup: React.FC = () => {
     if (!open) return;
     const base = pathname.startsWith("/catering")
       ? "catering"
-      : pathname.startsWith("/blog")
-        ? "blog"
-        : "menu";
+      : pathname.startsWith("/store")
+        ? "store"
+        : pathname.startsWith("/blog")
+          ? "blog"
+          : "menu";
     let i = 0;
     const id = setInterval(() => {
       if (i >= sortedActiveLocations.length) {
@@ -101,7 +103,7 @@ const FindFlamePopup: React.FC = () => {
     selectLocation(storeId);
     onClose();
 
-    // If already viewing a location-specific menu/catering page, switching stores
+    // If already viewing a location-specific menu/catering/store page, switching stores
     // here should carry the visitor to that same page for the newly picked store -
     // otherwise the page keeps showing the old store's menu/order links until reload.
     const store = activeLocations.find((l) => l.id === storeId);

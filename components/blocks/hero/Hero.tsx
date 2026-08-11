@@ -10,6 +10,8 @@ type HeroProps = {
   description?: React.ReactNode;
   ctaLabel?: string | null;
   ctaHref?: string;
+  secondaryCtaLabel?: string | null;
+  secondaryCtaHref?: string;
   align?: "left" | "center";
   fullHeight?: boolean;
   bgImageDesk?: string;
@@ -34,6 +36,12 @@ type HeroProps = {
  * Apple devices. If one is ever missing the browser just skips that <source>
  * and uses the H.264 file, so this stays safe by default. */
 const toHevcSrc = (src: string) => src.replace(/\.mp4$/, "-hevc.mp4");
+
+// Shared across every hero headline, tagline and description. Two restrained
+// shadow layers keep type readable over both moving video and detailed photos
+// without giving the lettering a heavy outlined or glowing appearance.
+const heroTextShadow =
+  "[text-shadow:0_2px_3px_rgba(0,0,0,0.78),0_5px_14px_rgba(0,0,0,0.52)]";
 
 /**
  * Decides when - and whether - the hero video should start downloading.
@@ -114,6 +122,8 @@ const Hero = ({
   description,
   ctaLabel = "ORDER NOW",
   ctaHref,
+  secondaryCtaLabel,
+  secondaryCtaHref,
   align = "left",
   fullHeight = true,
   bgImageDesk = "/homepage/hero/hero-bg-desk.png",
@@ -131,6 +141,8 @@ const Hero = ({
   // a hash CTA would spawn a blank tab instead of scrolling.
   const ctaIsInternal =
     resolvedCtaHref.startsWith("#") || resolvedCtaHref.startsWith("/");
+  const secondaryCtaIsInternal =
+    secondaryCtaHref?.startsWith("#") || secondaryCtaHref?.startsWith("/");
 
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const loadVideo = useDeferredVideo(Boolean(bgVideo));
@@ -214,20 +226,22 @@ const Hero = ({
             />
           </>
         )}
-        {/* Dark overlay to ensure text readability - a touch heavier when the
-            image is blurred, since blur lifts the photo's contrast. */}
+        {/* A balanced base shade plus a soft vertical vignette keeps both
+            bright video frames and detailed photos behind the copy. The
+            image remains visible rather than looking covered by a flat veil. */}
         <div
           className={`absolute inset-0 z-10 ${
-            blurBackground ? "bg-black/55" : "bg-black/40"
+            blurBackground ? "bg-black/55" : "bg-black/45"
           }`}
         />
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/20 via-transparent to-black/25" />
       </div>
 
       {/* Content Container */}
       <div className="relative z-20 w-full max-w-[1440px] mx-auto px-[var(--space-lg)]">
         <div className={`flex flex-col ${alignmentClass}`}>
           <p
-            className={`hero-paragraph mb-[var(--space-sm)] ${
+            className={`hero-paragraph ${heroTextShadow} mb-[var(--space-sm)] ${
               align === "center" ? "!text-center" : ""
             }`}
           >
@@ -235,7 +249,7 @@ const Hero = ({
           </p>
 
           <h1
-            className={`heading-h1 ${
+            className={`heading-h1 ${heroTextShadow} ${
               description ? "mb-[var(--space-md)]" : "mb-[var(--space-xl)]"
             } ${align === "center" ? "!text-center" : ""}`}
           >
@@ -247,20 +261,40 @@ const Hero = ({
               making those pages visibly taller than the menu and catering
               heroes for no reason a reader could see. */}
           {description && (
-            <p className="w-full max-w-[779px] text-white text-center font-raleway text-[16px] font-semibold leading-[25px] tracking-[3px] uppercase mb-[var(--space-xl)]">
+            <p className={`w-full max-w-[779px] text-white text-center font-raleway text-[16px] font-semibold leading-[25px] tracking-[3px] uppercase mb-[var(--space-xl)] ${heroTextShadow}`}>
               {description}
             </p>
           )}
 
-          {ctaLabel && (
-            <a
-              href={resolvedCtaHref}
-              target={ctaIsInternal ? undefined : "_blank"}
-              rel={ctaIsInternal ? undefined : "noopener noreferrer"}
-              className="hero-button"
+          {(ctaLabel || secondaryCtaLabel) && (
+            <div
+              className={`flex flex-wrap gap-4 ${
+                align === "center" ? "justify-center" : ""
+              }`}
             >
-              {ctaLabel}
-            </a>
+              {ctaLabel && (
+                <a
+                  href={resolvedCtaHref}
+                  target={ctaIsInternal ? undefined : "_blank"}
+                  rel={ctaIsInternal ? undefined : "noopener noreferrer"}
+                  className="hero-button"
+                >
+                  {ctaLabel}
+                </a>
+              )}
+              {secondaryCtaLabel && (
+                <a
+                  href={secondaryCtaHref}
+                  target={secondaryCtaIsInternal ? undefined : "_blank"}
+                  rel={
+                    secondaryCtaIsInternal ? undefined : "noopener noreferrer"
+                  }
+                  className="hero-button !bg-transparent !shadow-none !border !border-primary hover:!bg-primary/10"
+                >
+                  {secondaryCtaLabel}
+                </a>
+              )}
+            </div>
           )}
         </div>
       </div>

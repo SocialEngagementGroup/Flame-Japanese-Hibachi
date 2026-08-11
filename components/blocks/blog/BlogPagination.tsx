@@ -18,7 +18,8 @@ export default function BlogPagination({ totalPages, currentPage }: { totalPages
     } else {
       params.delete("page");
     }
-    return `${pathname}?${params.toString()}`;
+    const query = params.toString();
+    return query ? `${pathname}?${query}` : pathname;
   };
 
   return (

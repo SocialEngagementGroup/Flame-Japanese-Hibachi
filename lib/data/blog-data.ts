@@ -57,7 +57,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 20, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-baltimore-md.jpg",
     featuredImageAlt:
       "Halal chicken hibachi cooking on the grill at Flame Japanese Hibachi in Baltimore, MD",
     intro:
@@ -118,7 +118,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 22, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/salmon-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-northern-pkwy-baltimore-md.jpg",
     featuredImageAlt:
       "Halal salmon hibachi at Flame Japanese Hibachi on Northern Parkway, Baltimore",
     intro:
@@ -179,7 +179,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 21, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/bento/chicken-and-beef-bento.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-laurel-md.jpg",
     featuredImageAlt:
       "Halal chicken and beef bento box at Flame Japanese Hibachi in Laurel, MD",
     intro:
@@ -240,7 +240,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 23, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-pasadena-md.jpg",
     featuredImageAlt:
       "Halal chicken, beef and shrimp hibachi combo at Flame Japanese Hibachi Pasadena, MD",
     intro:
@@ -301,7 +301,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 22, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/beef-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-aberdeen-md.jpg",
     featuredImageAlt:
       "Halal chicken hibachi at Flame Japanese Hibachi in Aberdeen, MD",
     intro:
@@ -362,7 +362,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 20, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/chicken-and-beef.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-manassas-va.jpg",
     featuredImageAlt:
       "Halal chicken and beef hibachi combo at Flame Japanese Hibachi in Manassas, VA",
     intro:
@@ -423,7 +423,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 21, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/salmon-and-shrimp.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-alexandria-va.jpg",
     featuredImageAlt:
       "Halal salmon and shrimp hibachi combo at Flame Japanese Hibachi in Alexandria, VA",
     intro:
@@ -484,7 +484,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 22, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/sushi/green-dragon.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-seven-corners-va.jpg",
     featuredImageAlt:
       "Halal sushi rolls at Flame Japanese Hibachi in Falls Church, VA",
     intro:
@@ -545,7 +545,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 23, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/beef-and-shrimp.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-bristow-va.jpg",
     featuredImageAlt:
       "Build your own halal hibachi platter at Flame Japanese Hibachi in Bristow, VA",
     intro:
@@ -606,7 +606,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 21, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/salmon-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-forest-hill-richmond-va.jpg",
     featuredImageAlt:
       "Halal salmon hibachi at Flame Japanese Hibachi on Forest Hill Avenue, Richmond VA",
     intro:
@@ -667,7 +667,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 23, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-mechanicsville-va.jpg",
     featuredImageAlt:
       "Halal chicken hibachi at Flame Japanese Hibachi in Mechanicsville, VA",
     intro:
@@ -728,7 +728,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 20, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/bento/beef-and-shrimp-bento.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-philadelphia-pa.jpg",
     featuredImageAlt:
       "Halal chicken and beef bento at Flame Japanese Hibachi on Olney Avenue, Philadelphia",
     intro:
@@ -789,7 +789,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 20, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/salmon-and-shrimp.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-tamarac-fl.jpg",
     featuredImageAlt:
       "Halal salmon and shrimp hibachi combo at Flame Japanese Hibachi in Tamarac, FL",
     intro:
@@ -850,7 +850,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 22, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/chicken-and-salmon.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-royal-palm-beach-fl.jpg",
     featuredImageAlt:
       "Halal chicken, beef and shrimp hibachi combo at Flame Japanese Hibachi Royal Palm Beach, FL",
     intro:
@@ -1795,7 +1795,7 @@ export const blogPosts: BlogPost[] = [
       links([{ label: "Manassas catering", href: "/catering/manassas-va" }, { label: "Start an order", href: orderUrlFor("manassas-va") }]),
       h("Visit us"),
       p(`Iftar catering on Liberia Avenue, planned around your maghrib, not ours. Flame Japanese Hibachi Manassas, 9522 Liberia Ave, Manassas, VA 20110. 703-789-8289.`),
-      links([{ label: "Order now", href: orderUrlFor("manassas-va") }, { label: "See the Manassas location", href: "/locations/manassas-va" }, { label: "Read: Eid dinner guide", href: "/blog/eid-dinner-manassas-va" }]),
+      links([{ label: "Order now", href: orderUrlFor("manassas-va") }, { label: "See the Manassas location", href: "/store/manassas-va" }, { label: "Read: Eid dinner guide", href: "/blog/eid-dinner-manassas-va" }]),
     ],
     faq: [
       faqItem("mift-1", "How far ahead should I book iftar catering?", "Three to four weeks for the first Friday or the final ten nights, one to two weeks for an ordinary weeknight, and earlier is always safer."),
@@ -1840,7 +1840,7 @@ export const blogPosts: BlogPost[] = [
       links([{ label: "Manassas catering", href: "/catering/manassas-va" }, { label: "Start an order", href: orderUrlFor("manassas-va") }]),
       h("Visit us"),
       p(`Eid spreads on Liberia Avenue, built for a full table. Flame Japanese Hibachi Manassas, 9522 Liberia Ave, Manassas, VA 20110. 703-789-8289.`),
-      links([{ label: "Order now", href: orderUrlFor("manassas-va") }, { label: "See the Manassas location", href: "/locations/manassas-va" }, { label: "Read: Iftar catering guide", href: "/blog/iftar-catering-manassas-va" }]),
+      links([{ label: "Order now", href: orderUrlFor("manassas-va") }, { label: "See the Manassas location", href: "/store/manassas-va" }, { label: "Read: Iftar catering guide", href: "/blog/iftar-catering-manassas-va" }]),
     ],
     faq: [
       faqItem("meid-1", "How far ahead should I book for Eid?", "Two to three weeks for the morning-prayer rush on the day itself, about a week for a later or smaller family order."),
@@ -1888,7 +1888,7 @@ export const blogPosts: BlogPost[] = [
       links([{ label: "Manassas hibachi menu", href: "/menu/manassas-va" }, { label: "Start an order", href: orderUrlFor("manassas-va") }]),
       h("Visit us"),
       p(`A halal table where kids have real options too. Flame Japanese Hibachi Manassas, 9522 Liberia Ave, Manassas, VA 20110. 703-789-8289.`),
-      links([{ label: "Order now", href: orderUrlFor("manassas-va") }, { label: "See the Manassas location", href: "/locations/manassas-va" }, { label: "Read: Hibachi and sushi in Laurel", href: "/blog/hibachi-teppanyaki-sushi-laurel-md" }]),
+      links([{ label: "Order now", href: orderUrlFor("manassas-va") }, { label: "See the Manassas location", href: "/store/manassas-va" }, { label: "Read: Hibachi and sushi in Laurel", href: "/blog/hibachi-teppanyaki-sushi-laurel-md" }]),
     ],
     faq: [
       faqItem("mkid-1", "What should I order for a picky eater's first visit?", "Chicken tenders or plain chicken hibachi, with sauce on the side, plus one small piece of something new like a California Roll."),
@@ -1938,7 +1938,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Alexandria, 6676 Richmond Hwy, Alexandria, VA 22306. 571-683-3199.`),
       links([
         { label: "Order now", href: orderUrlFor("alexandria-va") },
-        { label: "See the Alexandria location", href: "/locations/alexandria-va" },
+        { label: "See the Alexandria location", href: "/store/alexandria-va" },
         { label: "Read: Is Hibachi Halal?", href: "/blog/is-hibachi-halal-alexandria-va" }
       ])
     ],
@@ -1988,7 +1988,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Alexandria, 6676 Richmond Hwy, Alexandria, VA 22306. 571-683-3199.`),
       links([
         { label: "Order now", href: orderUrlFor("alexandria-va") },
-        { label: "See the Alexandria location", href: "/locations/alexandria-va" },
+        { label: "See the Alexandria location", href: "/store/alexandria-va" },
         { label: "Read: The Richmond Highway Food Map", href: "/blog/richmond-highway-restaurants-alexandria-va" }
       ])
     ],
@@ -2043,7 +2043,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Alexandria, 6676 Richmond Hwy, Alexandria, VA 22306. 571-683-3199.`),
       links([
         { label: "Order now", href: orderUrlFor("alexandria-va") },
-        { label: "See the Alexandria location", href: "/locations/alexandria-va" },
+        { label: "See the Alexandria location", href: "/store/alexandria-va" },
         { label: "Read: Hibachi, Teppanyaki, and Sushi Explained", href: "/blog/hibachi-teppanyaki-sushi-laurel-md" }
       ])
     ],
@@ -2105,7 +2105,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Seven Corners, 6379 Seven Corners Center, Falls Church, VA 22044. 571-480-5161.`),
       links([
         { label: "Order now", href: orderUrlFor("seven-corners-va") },
-        { label: "See the Seven Corners location", href: "/locations/seven-corners-va" },
+        { label: "See the Seven Corners location", href: "/store/seven-corners-va" },
         { label: "Read: Is Sushi Halal?", href: "/blog/is-sushi-halal-seven-corners-va" },
       ]),
     ],
@@ -2167,7 +2167,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Seven Corners, 6379 Seven Corners Center, Falls Church, VA 22044. 571-480-5161.`),
       links([
         { label: "Order now", href: orderUrlFor("seven-corners-va") },
-        { label: "See the Seven Corners location", href: "/locations/seven-corners-va" },
+        { label: "See the Seven Corners location", href: "/store/seven-corners-va" },
         { label: "Read: Eating Around Seven Corners", href: "/blog/seven-corners-restaurants-falls-church-va" },
       ]),
     ],
@@ -2227,7 +2227,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Seven Corners, 6379 Seven Corners Center, Falls Church, VA 22044. 571-480-5161.`),
       links([
         { label: "Order now", href: orderUrlFor("seven-corners-va") },
-        { label: "See the Seven Corners location", href: "/locations/seven-corners-va" },
+        { label: "See the Seven Corners location", href: "/store/seven-corners-va" },
         { label: "Read: Is Sushi Halal?", href: "/blog/is-sushi-halal-seven-corners-va" },
       ]),
     ],
@@ -2291,7 +2291,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Bristow, 10286 Bristow Center Dr, Bristow, VA 20136. 703-420-2339.`),
       links([
         { label: 'Order now', href: orderUrlFor('bristow-va') },
-        { label: 'See the Bristow location', href: '/locations/bristow-va' },
+        { label: 'See the Bristow location', href: '/store/bristow-va' },
         { label: 'Read: Is Hibachi Halal?', href: '/blog/is-hibachi-halal-bristow-va' }
       ])
     ],
@@ -2351,7 +2351,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Bristow, 10286 Bristow Center Dr, Bristow, VA 20136. 703-420-2339.`),
       links([
         { label: 'Order now', href: orderUrlFor('bristow-va') },
-        { label: 'See the Bristow location', href: '/locations/bristow-va' },
+        { label: 'See the Bristow location', href: '/store/bristow-va' },
         { label: 'Read: Dinner Before a Show at Jiffy Lube Live', href: '/blog/restaurants-near-jiffy-lube-live-bristow-va' }
       ])
     ],
@@ -2407,7 +2407,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Bristow, 10286 Bristow Center Dr, Bristow, VA 20136. 703-420-2339.`),
       links([
         { label: 'Order now', href: orderUrlFor('bristow-va') },
-        { label: 'See the Bristow location', href: '/locations/bristow-va' },
+        { label: 'See the Bristow location', href: '/store/bristow-va' },
         { label: 'Read: Is Hibachi Halal?', href: '/blog/is-hibachi-halal-bristow-va' }
       ])
     ],
@@ -2470,7 +2470,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Forest Hill, 7037 Forest Hill Ave, Suite B, Richmond, VA 23225. 804-997-7009.`),
       links([
         { label: "Order now", href: orderUrlFor("forest-hill-richmond-va") },
-        { label: "See the Forest Hill location", href: "/locations/forest-hill-richmond-va" },
+        { label: "See the Forest Hill location", href: "/store/forest-hill-richmond-va" },
         { label: "Read: Is hibachi halal?", href: "/blog/is-hibachi-halal-forest-hill-richmond-va" }
       ])
     ],
@@ -2530,7 +2530,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Forest Hill, 7037 Forest Hill Ave, Suite B, Richmond, VA 23225. 804-997-7009.`),
       links([
         { label: "Order now", href: orderUrlFor("forest-hill-richmond-va") },
-        { label: "See the Forest Hill location", href: "/locations/forest-hill-richmond-va" },
+        { label: "See the Forest Hill location", href: "/store/forest-hill-richmond-va" },
         { label: "Read: Trailhead takeout", href: "/blog/food-near-james-river-park-richmond-va" }
       ])
     ],
@@ -2595,7 +2595,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Forest Hill, 7037 Forest Hill Ave, Suite B, Richmond, VA 23225. 804-997-7009.`),
       links([
         { label: "Order now", href: orderUrlFor("forest-hill-richmond-va") },
-        { label: "See the Forest Hill location", href: "/locations/forest-hill-richmond-va" },
+        { label: "See the Forest Hill location", href: "/store/forest-hill-richmond-va" },
         { label: "Read: Halal wing flavors", href: "/blog/halal-wing-flavors-baltimore-md" }
       ])
     ],
@@ -2654,7 +2654,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Mechanicsville, 7354 Bell Creek Rd, Mechanicsville, VA 23111. 804-789-8540.`),
       links([
         { label: "Order now", href: orderUrlFor("mechanicsville-va") },
-        { label: "See the Mechanicsville location", href: "/locations/mechanicsville-va" },
+        { label: "See the Mechanicsville location", href: "/store/mechanicsville-va" },
         { label: "Read: Race Weekend: Where to Eat Near Richmond Raceway", href: "/blog/restaurants-near-richmond-raceway-mechanicsville-va" }
       ])
     ],
@@ -2712,7 +2712,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Mechanicsville, 7354 Bell Creek Rd, Mechanicsville, VA 23111. 804-789-8540.`),
       links([
         { label: "Order now", href: orderUrlFor("mechanicsville-va") },
-        { label: "See the Mechanicsville location", href: "/locations/mechanicsville-va" },
+        { label: "See the Mechanicsville location", href: "/store/mechanicsville-va" },
         { label: "Read: Halal Dining in Hanover County: What Is Actually Here", href: "/blog/halal-restaurants-hanover-county-va" }
       ])
     ],
@@ -2772,7 +2772,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Mechanicsville, 7354 Bell Creek Rd, Mechanicsville, VA 23111. 804-789-8540.`),
       links([
         { label: "Order now", href: orderUrlFor("mechanicsville-va") },
-        { label: "See the Mechanicsville location", href: "/locations/mechanicsville-va" },
+        { label: "See the Mechanicsville location", href: "/store/mechanicsville-va" },
         { label: "Read: What Is Hibachi", href: "/blog/hibachi-teppanyaki-sushi-laurel-md" }
       ])
     ],
@@ -2818,7 +2818,7 @@ export const blogPosts: BlogPost[] = [
       links([{ label: "Philadelphia hibachi menu", href: "/menu/philadelphia-pa" }, { label: "Start an order", href: orderUrlFor("philadelphia-pa") }]),
       h("Visit us"),
       p(`Flame Japanese Hibachi Philadelphia, 101 E Olney Avenue, Philadelphia, PA 19120. 215-344-6444.`),
-      links([{ label: "Order now", href: orderUrlFor("philadelphia-pa") }, { label: "See the Philadelphia location", href: "/locations/philadelphia-pa" }, { label: "Read: Is Hibachi Halal?", href: "/blog/is-hibachi-halal-philadelphia-pa" }]),
+      links([{ label: "Order now", href: orderUrlFor("philadelphia-pa") }, { label: "See the Philadelphia location", href: "/store/philadelphia-pa" }, { label: "Read: Is Hibachi Halal?", href: "/blog/is-hibachi-halal-philadelphia-pa" }]),
     ],
     faq: [
       faqItem("olney-1-fast-food", "Is there fast, hot food near Olney Transportation Center?", "Yes, ordering ahead is the key. Everything is cooked to order, so a pre-order timed to your connection is the fastest route."),
@@ -2865,7 +2865,7 @@ export const blogPosts: BlogPost[] = [
       links([{ label: "Philadelphia hibachi menu", href: "/menu/philadelphia-pa" }, { label: "Start an order", href: orderUrlFor("philadelphia-pa") }]),
       h("Visit us"),
       p(`Flame Japanese Hibachi Philadelphia, 101 E Olney Avenue, Philadelphia, PA 19120. 215-344-6444.`),
-      links([{ label: "Order now", href: orderUrlFor("philadelphia-pa") }, { label: "See the Philadelphia location", href: "/locations/philadelphia-pa" }, { label: "Read: Eating on the Broad Street Line", href: "/blog/food-near-olney-transportation-center-philadelphia-pa" }]),
+      links([{ label: "Order now", href: orderUrlFor("philadelphia-pa") }, { label: "See the Philadelphia location", href: "/store/philadelphia-pa" }, { label: "Read: Eating on the Broad Street Line", href: "/blog/food-near-olney-transportation-center-philadelphia-pa" }]),
     ],
     faq: [
       faqItem("stud-1-cheapest-meal", "What is the cheapest full meal on the menu?", "Chicken Hibachi or Tofu Hibachi at $9.85, both with two included sides."),
@@ -2905,7 +2905,7 @@ export const blogPosts: BlogPost[] = [
       links([{ label: "Philadelphia hibachi menu", href: "/menu/philadelphia-pa" }, { label: "Start an order", href: orderUrlFor("philadelphia-pa") }]),
       h("Visit us"),
       p(`Flame Japanese Hibachi Philadelphia, 101 E Olney Avenue, Philadelphia, PA 19120. 215-344-6444.`),
-      links([{ label: "Order now", href: orderUrlFor("philadelphia-pa") }, { label: "See the Philadelphia location", href: "/locations/philadelphia-pa" }, { label: "Read: Is Hibachi Halal?", href: "/blog/is-hibachi-halal-philadelphia-pa" }]),
+      links([{ label: "Order now", href: orderUrlFor("philadelphia-pa") }, { label: "See the Philadelphia location", href: "/store/philadelphia-pa" }, { label: "Read: Is Hibachi Halal?", href: "/blog/is-hibachi-halal-philadelphia-pa" }]),
     ],
     faq: [
       faqItem("cart-1-just-carts", "Is Philadelphia's halal food scene just the food carts?", "No, though the carts are a genuine and significant part of the city's food identity. Halal dining in Philadelphia now spans sit-down restaurants, bakeries and a wide range of cuisines."),
@@ -2954,7 +2954,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Tamarac, 5707 University Dr, Tamarac, FL 33321. 954-953-8848.`),
       links([
         { label: "Order now", href: orderUrlFor("tamarac-fl") },
-        { label: "See the Tamarac location", href: "/locations/tamarac-fl" },
+        { label: "See the Tamarac location", href: "/store/tamarac-fl" },
         { label: "Read: Is Hibachi Halal?", href: "/blog/is-hibachi-halal-tamarac-fl" }
       ])
     ],
@@ -3000,7 +3000,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Tamarac, 5707 University Dr, Tamarac, FL 33321. 954-953-8848.`),
       links([
         { label: "Order now", href: orderUrlFor("tamarac-fl") },
-        { label: "See the Tamarac location", href: "/locations/tamarac-fl" },
+        { label: "See the Tamarac location", href: "/store/tamarac-fl" },
         { label: "Read: Summer in Broward: What to Order When It Is Too Hot to Cook", href: "/blog/food-delivery-tamarac-fl" }
       ])
     ],
@@ -3048,7 +3048,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Tamarac, 5707 University Dr, Tamarac, FL 33321. 954-953-8848.`),
       links([
         { label: "Order now", href: orderUrlFor("tamarac-fl") },
-        { label: "See the Tamarac location", href: "/locations/tamarac-fl" },
+        { label: "See the Tamarac location", href: "/store/tamarac-fl" },
         { label: "Read: Is Hibachi Halal?", href: "/blog/is-hibachi-halal-tamarac-fl" }
       ])
     ],
@@ -3097,7 +3097,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Royal Palm Beach, 9940 Belvedere Rd, Suite F, Royal Palm Beach, FL 33411. 561-766-1038.`),
       links([
         { label: "Order now", href: orderUrlFor("royal-palm-beach-fl") },
-        { label: "See the Royal Palm Beach location", href: "/locations/royal-palm-beach-fl" },
+        { label: "See the Royal Palm Beach location", href: "/store/royal-palm-beach-fl" },
         { label: "Read: Halal Food in Western Palm Beach County", href: "/blog/halal-food-loxahatchee-fl" }
       ])
     ],
@@ -3143,7 +3143,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Royal Palm Beach, 9940 Belvedere Rd, Suite F, Royal Palm Beach, FL 33411. 561-766-1038.`),
       links([
         { label: "Order now", href: orderUrlFor("royal-palm-beach-fl") },
-        { label: "See the Royal Palm Beach location", href: "/locations/royal-palm-beach-fl" },
+        { label: "See the Royal Palm Beach location", href: "/store/royal-palm-beach-fl" },
         { label: "Read: Catering a Party in the Village", href: "/blog/party-catering-royal-palm-beach-fl" }
       ])
     ],
@@ -3206,7 +3206,7 @@ export const blogPosts: BlogPost[] = [
       p(`Flame Japanese Hibachi Royal Palm Beach, 9940 Belvedere Rd, Suite F, Royal Palm Beach, FL 33411. 561-766-1038.`),
       links([
         { label: "Order now", href: orderUrlFor("royal-palm-beach-fl") },
-        { label: "See the Royal Palm Beach location", href: "/locations/royal-palm-beach-fl" },
+        { label: "See the Royal Palm Beach location", href: "/store/royal-palm-beach-fl" },
         { label: "Read: Halal Food in Western Palm Beach County", href: "/blog/halal-food-loxahatchee-fl" }
       ])
     ],
@@ -3343,9 +3343,9 @@ export function searchBlogPosts(params: BlogSearchParams): BlogSearchResult {
   }
 
   const limit = params.limit || 6;
-  const page = Math.max(1, params.page || 1);
   const total = filtered.length;
   const totalPages = Math.max(1, Math.ceil(total / limit));
+  const page = Math.min(totalPages, Math.max(1, params.page || 1));
 
   const paginated = filtered.slice((page - 1) * limit, page * limit);
 

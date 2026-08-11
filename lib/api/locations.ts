@@ -51,7 +51,7 @@ export function toLocationSlug(
 
 /** Location-scoped sections. Add a new one here when its route is created -
  * it reuses the store's existing slug rather than introducing another id. */
-export type LocationSection = "menu" | "catering" | "order";
+export type LocationSection = "menu" | "catering" | "order" | "store";
 
 /**
  * Canonical path for a location-scoped page: locationPath("menu", store) →
@@ -66,6 +66,34 @@ export function locationPath(
   location: Pick<Location, "slug">
 ): string {
   return `/${section}/${location.slug}`;
+}
+
+/** One canonical Google Maps search shared by the store page's map and links. */
+export function locationMapQuery(
+  location: Pick<Location, "streetAddress" | "city" | "state" | "postalCode">
+): string {
+  const street = location.streetAddress
+    .split(/,?\s*(?:suite|ste\.?|unit|#)\s*/i)[0]
+    .replace(/,\s*$/, "")
+    .trim();
+
+  return `Flame Japanese Hibachi, ${street}, ${location.city}, ${location.state} ${location.postalCode}`;
+}
+
+export function locationDirectionsUrl(
+  location: Parameters<typeof locationMapQuery>[0]
+): string {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    locationMapQuery(location)
+  )}`;
+}
+
+export function locationMapEmbedSrc(
+  location: Parameters<typeof locationMapQuery>[0]
+): string {
+  return `https://maps.google.com/maps?q=${encodeURIComponent(
+    locationMapQuery(location)
+  )}&t=k&z=17&ie=UTF8&iwloc=&output=embed`;
 }
 
 /**

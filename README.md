@@ -98,7 +98,16 @@ per-location menu/catering routes work and how to add a new location.
 
 ## Images
 
-Menu and site imagery in `public/` is pre-optimized (resized and compressed) and served via standard `<img>` tags. Filenames use lowercase `kebab-case` and are grouped into category folders under `public/menupage/`.
+Menu and site imagery in `public/` is pre-optimized and organized into purpose-specific folders. Filenames and folders use lowercase `kebab-case`; blog covers are rendered through Next.js `<Image>`.
+
+Dedicated blog covers live in `public/blog/featured/` and follow one stable identity:
+
+- Filename: `<blog-post-slug>.jpg`
+- Canvas: `1400x788` (16:9 source ratio)
+- Encoding: progressive JPEG, quality 76, with metadata removed
+- Maximum file size: 400 KiB
+
+Run `npm run images:blog:optimize` after adding or replacing a cover. Run `npm run images:blog:audit` to verify naming, dimensions, encoding, file size, post-to-cover mapping, and every blog image reference.
 
 ## Development Notes
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import FilterSelect, { type SelectGroup } from "@/components/ui/FilterSelect";
 
 type BlogLocationFilterProps = {
@@ -16,7 +16,6 @@ type BlogLocationFilterProps = {
  */
 export default function BlogLocationFilter({ locations }: BlogLocationFilterProps) {
   const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const currentLocation = searchParams.get("location") || "All";
@@ -34,16 +33,9 @@ export default function BlogLocationFilter({ locations }: BlogLocationFilterProp
   ];
 
   const selectLocation = (location: string) => {
-    const params = new URLSearchParams(searchParams.toString());
-    if (location !== "All") {
-      params.set("location", location);
-    } else {
-      params.delete("location");
-    }
-    params.delete("category"); // categories depend on the location
-    params.delete("page");
-    // scroll: false keeps the reader where they are instead of jumping to the top.
-    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+    // Each location has a canonical, server-rendered hub. Navigate there
+    // instead of creating a duplicate /blog?location=... view.
+    router.push(location === "All" ? "/blog" : `/blog/${location}`);
   };
 
   return (

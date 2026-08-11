@@ -1,20 +1,15 @@
 "use client";
 
-import {
-  useEffect,
-  useState,
-  type FormEvent,
-  type ReactNode,
-} from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { Loader2, MapPin, X } from "lucide-react";
 import { useNearestLocation } from "@/components/providers/NearestLocationProvider";
 
 // Matches FindFlamePopup's pattern: only carry the visitor to the new
-// store's page if they're already viewing a location-specific menu/catering
+// store's page if they're already viewing a location-specific menu/catering/store
 // page, otherwise the generic page's own auto-redirect (or just the updated
 // navbar label) is enough.
-const LOCATION_PAGE_PATTERN = /^\/(menu|catering)\/[^/]+$/;
+const LOCATION_PAGE_PATTERN = /^\/(menu|catering|store)\/[^/]+$/;
 
 /** Shared button treatment, so every control in these cards is the same
  * height and weight instead of each one hand-rolling its padding. */

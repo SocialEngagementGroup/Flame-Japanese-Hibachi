@@ -1,11 +1,16 @@
+import Link from "next/link";
 import BlogSlider from "./BlogSlider";
 import { type BlogCardData } from "./BlogCard";
 
 type BlogRelatedPostsProps = {
   posts: BlogCardData[];
+  locationHub?: {
+    href: string;
+    label: string;
+  };
 };
 
-export default function BlogRelatedPosts({ posts }: BlogRelatedPostsProps) {
+export default function BlogRelatedPosts({ posts, locationHub }: BlogRelatedPostsProps) {
   if (posts.length === 0) return null;
 
   return (
@@ -14,7 +19,7 @@ export default function BlogRelatedPosts({ posts }: BlogRelatedPostsProps) {
         <p className="text-small font-black uppercase tracking-[3px] text-primary mb-[var(--space-xs)]">
           More to explore
         </p>
-        <div className="flex items-center gap-[var(--space-lg)]">
+        <div className="flex flex-wrap items-center gap-[var(--space-lg)]">
           <h2 className="heading-h3 text-foreground uppercase whitespace-nowrap">
             Keep <span className="text-primary">Reading</span>
           </h2>
@@ -22,6 +27,14 @@ export default function BlogRelatedPosts({ posts }: BlogRelatedPostsProps) {
             aria-hidden
             className="hidden sm:block h-px flex-1 bg-gradient-to-r from-primary/40 to-transparent"
           />
+          {locationHub && (
+            <Link
+              href={locationHub.href}
+              className="text-small font-black uppercase tracking-[2px] text-primary underline underline-offset-4 hover:text-foreground"
+            >
+              All {locationHub.label} stories
+            </Link>
+          )}
         </div>
       </div>
 

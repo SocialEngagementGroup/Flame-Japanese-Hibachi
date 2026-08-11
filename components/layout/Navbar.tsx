@@ -13,7 +13,7 @@ import { getLocationBySlug } from "@/lib/api/locations";
 
 // Blog reuses /blog/[slug] for both location hubs and posts; a post slug just
 // resolves to no location below, so it safely falls back to the nearest store.
-const LOCATION_PAGE_PATTERN = /^\/(?:menu|catering|blog)\/([^/]+)$/;
+const LOCATION_PAGE_PATTERN = /^\/(?:menu|catering|store|blog)\/([^/]+)$/;
 
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
@@ -93,6 +93,12 @@ const Navbar = () => {
       name: "CATERING",
       href: locationSlug ? `/catering/${locationSlug}` : "/catering",
       activePath: "/catering",
+      external: false,
+    },
+    {
+      name: "STORE",
+      href: locationSlug ? `/store/${locationSlug}` : "/store",
+      activePath: "/store",
       external: false,
     },
     { name: "LOCATIONS", href: "/locations", external: false },
@@ -434,7 +440,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
     </nav>
   );
 };

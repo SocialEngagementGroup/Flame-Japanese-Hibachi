@@ -12,6 +12,7 @@ import {
   getAllBlogPosts,
   getBlogPostBySlug,
   getBlogPostSummaries,
+  searchBlogPosts,
 } from "@/lib/data/blog-data";
 import {
   getActiveLocations,
@@ -24,6 +25,12 @@ import type { AccordionContentBlock } from "@/components/Accordion/accordion.typ
 
 type BlogSlugParams = { slug: string };
 type BlogSearchParams = { [key: string]: string | string[] | undefined };
+
+function requestedPage(value: string | string[] | undefined): number {
+  if (typeof value !== "string") return 1;
+  const parsed = Number.parseInt(value, 10);
+  return Number.isFinite(parsed) && parsed > 1 ? parsed : 1;
+}
 
 // Flattens an FAQ answer's rich blocks into the plain sentence that answer
 // engines (Google's "People also ask", ChatGPT, Perplexity) index from the
@@ -63,17 +70,27 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
   params,
+  searchParams,
 }: {
   params: Promise<BlogSlugParams>;
+  searchParams: Promise<BlogSearchParams>;
 }): Promise<Metadata> {
   const { slug } = await params;
 
   const location = getLocationBySlug(slug);
   if (location) {
+    const resolved = await searchParams;
+    const { page } = searchBlogPosts({
+      location: location.slug,
+      page: requestedPage(resolved.page),
+      limit: 15,
+    });
+    const hubPath = `/blog/${location.slug}`;
+
     return buildPageMetadata({
-      title: `${getLocationLabel(location)} Hibachi Blog`,
+      title: `${getLocationLabel(location)} Hibachi Blog${page > 1 ? ` - Page ${page}` : ""}`,
       description: `Recipes, cooking tips and local stories from Flame Japanese Hibachi in ${location.name}.`,
-      path: `/blog/${location.slug}`,
+      path: page > 1 ? `${hubPath}?page=${page}` : hubPath,
     });
   }
 
@@ -333,7 +350,17 @@ export default async function BlogSlugPage({
 
       {/* Constrained to the same width as the article above, not full-bleed. */}
       <div className="w-full max-w-[1430px] mx-auto">
-        <BlogRelatedPosts posts={relatedPosts} />
+        <BlogRelatedPosts
+          posts={relatedPosts}
+          locationHub={
+            postLocation
+              ? {
+                  href: `/blog/${postLocation.slug}`,
+                  label: getLocationLabel(postLocation),
+                }
+              : undefined
+          }
+        />
       </div>
     </div>
   );

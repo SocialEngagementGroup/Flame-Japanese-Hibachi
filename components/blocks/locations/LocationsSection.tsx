@@ -46,7 +46,7 @@ const LocationsSection = ({
   const distanceTo = (loc: { lat: number; lng: number }) =>
     origin ? haversineDistanceMiles(origin, loc) : null;
   const findYourFlameText = "FLAME";
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const mobileSwiperRef = useRef<SwiperType | null>(null);
   const nearestAppliedRef = useRef(false);
 
@@ -84,9 +84,6 @@ const LocationsSection = ({
   const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
     `Flame Japanese Hibachi ${selectedLocation.address}`
   )}&t=k&z=17&ie=UTF8&iwloc=&output=embed`;
-
-  const googleMapsUrl = (address: string) =>
-    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Flame Japanese Hibachi ${address}`)}`;
 
   // Scroll listener for perfectly aligning the active card with the map box top
   useEffect(() => {
@@ -165,10 +162,6 @@ const LocationsSection = ({
     };
   }, [sortedActiveLocations]);
 
-  const handleCardClick = (loc: typeof activeLocations[0]) => {
-    window.open(googleMapsUrl(loc.address), "_blank");
-  };
-
   return (
     <section className="w-full bg-[#F0EDED] dark:bg-black px-[var(--space-lg)] relative overflow-visible py-[var(--space-2xl)] transition-colors duration-300">
       {/* MOBILE LAYOUT - heading → map → cards → coming soon → button */}
@@ -227,9 +220,9 @@ const LocationsSection = ({
           >
             {sortedActiveLocations.map((loc) => (
               <SwiperSlide key={loc.id}>
-                <div
+                <Link
+                  href={`/store/${loc.slug}`}
                   id={loc.slug}
-                  onClick={() => handleCardClick(loc)}
                   className={`w-full h-[260px] p-5 border flex flex-col justify-center relative overflow-hidden cursor-pointer transition-all duration-300 ${selectedLocation.id === loc.id
                     ? "bg-primary border-primary shadow-2xl shadow-primary/40"
                     : "bg-[#1C1B1B] border-white/5"
@@ -263,7 +256,7 @@ const LocationsSection = ({
                       <span className="font-bold uppercase">{loc.hours}</span>
                     </div>
                   </div>
-                </div>
+                </Link>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -416,14 +409,14 @@ const LocationsSection = ({
             </div>
             <div className="space-y-6">
               {sortedActiveLocations.map((loc, index) => (
-                <div
+                <Link
+                  href={`/store/${loc.slug}`}
                   key={loc.id}
                   id={loc.slug}
                   ref={(el) => {
                     cardRefs.current[index] = el;
                   }}
                   data-index={index}
-                  onClick={() => handleCardClick(loc)}
                   className={`w-full min-h-[244px] p-[var(--space-lg)] border transition-all duration-300 cursor-pointer group flex flex-col justify-center relative overflow-hidden ${selectedLocation.id === loc.id
                     ? "bg-primary border-primary shadow-2xl shadow-primary/40 scale-[1.02] z-10"
                     : "bg-[#1C1B1B] border-white/5 hover:bg-zinc-900"
@@ -464,7 +457,7 @@ const LocationsSection = ({
                       <MapPin size={20} className="animate-bounce" />
                     </div>
                   )}
-                </div>
+                </Link>
               ))}
             </div>
           </div>

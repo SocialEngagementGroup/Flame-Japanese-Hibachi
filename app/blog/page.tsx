@@ -1,17 +1,45 @@
+import type { Metadata } from "next";
 import Script from "next/script";
 import Hero from "@/components/blocks/hero/Hero";
 import BlogGrid from "@/components/blocks/blog/BlogGrid";
-import { getBlogPostSummaries } from "@/lib/data/blog-data";
+import BlogLocationDirectory from "@/components/blocks/blog/BlogLocationDirectory";
+import { getBlogPostSummaries, searchBlogPosts } from "@/lib/data/blog-data";
 import { buildPageMetadata, getCanonicalUrl } from "@/lib/seo/seo";
 
-export const metadata = buildPageMetadata({
-  title: "Blog",
-  description:
-    "Discover delicious recipes made for every craving. Explore helpful cooking tips and fresh food inspiration from Flame Japanese Hibachi.",
-  path: "/blog",
-});
+type BlogListingSearchParams = {
+  [key: string]: string | string[] | undefined;
+};
 
-export default async function BlogListingPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+const BLOG_PAGE_SIZE = 15;
+const BLOG_DESCRIPTION =
+  "Discover delicious recipes made for every craving. Explore helpful cooking tips and fresh food inspiration from Flame Japanese Hibachi.";
+
+function requestedPage(value: string | string[] | undefined): number {
+  if (typeof value !== "string") return 1;
+  const parsed = Number.parseInt(value, 10);
+  return Number.isFinite(parsed) && parsed > 1 ? parsed : 1;
+}
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<BlogListingSearchParams>;
+}): Promise<Metadata> {
+  const resolved = await searchParams;
+  const { page } = searchBlogPosts({
+    page: requestedPage(resolved.page),
+    limit: BLOG_PAGE_SIZE,
+  });
+
+  return buildPageMetadata({
+    title: page > 1 ? `Blog - Page ${page}` : "Blog",
+    description: BLOG_DESCRIPTION,
+    // Google recommends a self-canonical for every page in a paginated set.
+    path: page > 1 ? `/blog?page=${page}` : "/blog",
+  });
+}
+
+export default async function BlogListingPage({ searchParams }: { searchParams: Promise<BlogListingSearchParams> }) {
   const posts = getBlogPostSummaries();
   const blogJsonLd = {
     "@context": "https://schema.org",
@@ -71,6 +99,8 @@ export default async function BlogListingPage({ searchParams }: { searchParams: 
         bgImageMob="/blog/hero/blog-hero-mob.webp"
         blurBackground
       />
+
+      <BlogLocationDirectory />
 
       <div className="w-full md:w-[80%] mx-auto">
         <BlogGrid searchParams={parsedParams} showLocationFilter />
