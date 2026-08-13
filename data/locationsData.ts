@@ -304,6 +304,24 @@ export const activeLocations = [
     image: "https://tile.openstreetmap.org/16/18651/25109.png",
     orderUrl: "", // TODO(order-url): paste bristow-va order.online URL here
   },
+  {
+    id: 15,
+    slug: "norfolk-va",
+    name: "Norfolk, VA",
+    schemaName: "Flame Japanese Hibachi - Norfolk",
+    address: "5802 E Virginia Blvd, Space #130, Norfolk, VA 23502",
+    streetAddress: "5802 E Virginia Blvd, Space #130",
+    city: "Norfolk",
+    state: "VA",
+    postalCode: "23502",
+    phone: "+1 757-937-3543",
+    hours: "Mon–Sat 11AM–11PM / Sun 11AM–10PM",
+    lat: 36.8584334,
+    lng: -76.2074724,
+    image: "https://tile.openstreetmap.org/16/18894/25540.png",
+    orderUrl:
+      "https://www.doordash.com/store/flame-japanese-hibachi-norfolk-48649221/113656348/?preview=1",
+  },
 ];
 
 export const comingSoonLocations = [
@@ -322,14 +340,6 @@ export const comingSoonLocations = [
     status: "Coming Soon",
     openUntil: "10 PM",
     distance: "4.8 MILES AWAY",
-  },
-  {
-    id: 3,
-    name: "Norfolk, VA",
-    address: "5802 E Virginia Blvd, Space #130, Norfolk, VA 23502",
-    status: "Coming Soon",
-    openUntil: "11 PM",
-    distance: "5.2 MILES AWAY",
   },
   {
     id: 6,
