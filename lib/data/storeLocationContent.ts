@@ -4,7 +4,7 @@
  * (data/locationsData.ts). Feeds `generateMetadata()`, the visible store FAQ
  * accordion, and the matching FAQPage JSON-LD.
  *
- * Sourced from the 14 location page briefs. Two source files used the
+ * Sourced from the location page briefs. Two source files used the
  * store's old working name rather than its published slug - "Northern Pkwy"
  * and "Forest Hill" - both are keyed here under their real
  * locationsData.ts slugs (`northern-pkwy-baltimore-md`,
@@ -27,7 +27,7 @@ export interface StoreLocationContent {
 /** Content date for the first complete 14-location store-page release.
  * Sitemap generation uses this stable value instead of pretending every
  * deployment changed the pages. Update it only when store-page content changes. */
-export const STORE_PAGES_LAST_MODIFIED = "2026-08-11";
+export const STORE_PAGES_LAST_MODIFIED = "2026-08-13";
 
 export const storeLocationContent: Record<string, StoreLocationContent> = {
   "baltimore-md": {
@@ -401,9 +401,36 @@ export const storeLocationContent: Record<string, StoreLocationContent> = {
       },
     ],
   },
+
+  "norfolk-va": {
+    metaDescription:
+      "Halal hibachi, sushi and boba in Norfolk, VA at 5802 E Virginia Blvd, Space #130. Order online for pickup, delivery or catering, or call +1 757-937-3543 today.",
+    faqs: [
+      {
+        question: "Is Flame Japanese Hibachi in Norfolk halal?",
+        answer:
+          "Yes, the entire menu is halal, with no pork served, stored or cooked on the premises, and sauces made in house rather than bought from a distributor.",
+      },
+      {
+        question: "Where is Flame Japanese Hibachi located in Norfolk?",
+        answer:
+          "We're at 5802 E Virginia Blvd, Space #130, Norfolk, VA 23502, in the Military Circle area just off I-264 and central to Norfolk, Chesapeake and Portsmouth.",
+      },
+      {
+        question: "Do you deliver near Naval Station Norfolk or Old Dominion University?",
+        answer:
+          "Yes, delivery and pickup are both available through our online ordering, and we're a short drive from Naval Station Norfolk, ODU and downtown Norfolk.",
+      },
+      {
+        question: "What are your hours?",
+        answer:
+          "Monday through Saturday 11AM to 11PM, Sunday 11AM to 10PM. Hours can shift on holidays, so check our Google Business Profile if you're planning a late visit.",
+      },
+    ],
+  },
 };
 
-/** All active stores currently have unique content here (14/14). Falls back
+/** All active stores currently have unique content here (15/15). Falls back
  * gracefully - a future store without an entry just skips the FAQ schema and
  * meta description falls back to a generated default, since /store/[location]
  * itself keys off `data/locationsData.ts`, not this file. */

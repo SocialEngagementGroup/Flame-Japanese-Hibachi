@@ -3220,6 +3220,118 @@ export const blogPosts: BlogPost[] = [
     ]
   },
 
+  // NORFOLK, VA 1 - IS HIBACHI HALAL
+  {
+    slug: "is-hibachi-halal-norfolk-va",
+    locationSlugs: ["norfolk-va"],
+    category: "Halal Guide",
+    title: "Norfolk Halal Hibachi: What to Check Before You Order",
+    excerpt:
+      "Is hibachi halal? Yes at our E Virginia Blvd location in Norfolk. 100% halal hibachi, no pork on site. Order online or call 757-937-3543.",
+    author: "Flame Japanese Hibachi Team",
+    date: "August 13, 2026",
+    readTime: "6 min read",
+    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImageAlt:
+      "Halal chicken hibachi cooking on the grill at Flame Japanese Hibachi in Norfolk, VA",
+    intro:
+      "Yes, hibachi can be halal, and at our East Virginia Beach Boulevard location in Norfolk it is, all of it, every day. But “hibachi” by itself tells you nothing about whether a plate is halal, which is why the question keeps getting asked. If you have been driving out toward Virginia Beach or across to Portsmouth looking for a halal dinner that is not another grill or shawarma counter, there is now one in the Military Circle area, minutes off I-264. Here is what actually makes hibachi halal or not, and what you will find when you walk into ours.",
+    body: [
+      h("The three things that decide whether hibachi is halal"),
+      p("Hibachi is a cooking method, not an ingredient. That is the first thing to understand, because it means the answer is never about the hibachi. It is about the kitchen behind it. Three things disqualify most hibachi restaurants."),
+      p("**The meat.**Chicken, beef and lamb have to come from a halal supplier and be slaughtered to halal standard. Most hibachi restaurants buy commodity meat and have no answer when you ask where it came from."),
+      p("**Pork on the premises.**A restaurant serving pork gyoza or bacon fried rice is cooking it on the same flat top as your chicken. Even a kitchen with halal chicken cannot hand you a clean plate when there is pork six inches away on the same steel."),
+      p("**Alcohol in the sauce.**This is the one almost nobody checks. Traditional teriyaki, eel sauce and many yum yum recipes are built on mirin or cooking sake. The meat can be perfectly halal and the sauce poured over it is not."),
+      p("Flame is built to clear all three. Every location serves a 100% halal menu. There is no pork anywhere in the building, so there is nothing on the grill to avoid. Our sauces are made in house rather than bought in, which is what lets us control what goes into them."),
+      p("If you are checking any other hibachi restaurant in Norfolk, those are your three questions: who supplies your meat, is there pork in the building, and what is in your teriyaki. A confident answer to all three is rare."),
+      h("At our Norfolk location"),
+      p("We are at 5802 E Virginia Blvd, Space #130, Norfolk, VA 23502, in the Military Circle area just off I-264. If you are coming from downtown Norfolk, Ghent or the Ballentine and Colonial Place stretch, you are a short run out. Old Dominion University sits a few minutes west, Naval Station Norfolk is a straight shot north, and Chesapeake and Portsmouth are both an easy drive across the interchanges."),
+      p("The kitchen runs Monday through Saturday 11AM to 11PM and Sunday 11AM to 10PM, which is later than most halal kitchens in the area keep. Holiday hours can shift around Eid and the major public holidays, so the Google Business Profile is worth a look before a long drive. Order ahead on the app or online and pick up, or eat in and watch the grill work."),
+      p("What this location gets asked more than any other: whether the wings are halal too. They are. Same kitchen, same standard, and there is a long flavor list to work through."),
+      h("Getting here, and the neighborhoods we serve"),
+      p("East Virginia Beach Boulevard is one of the easier addresses in Norfolk to reach, which is deliberate. From downtown and Ghent you are ten minutes out. Ingleside, Coleman Place and Norview sit just around Military Circle, and Norfolk International Airport is a few minutes up Military Highway. Naval Station Norfolk pulls in through I-564, and the Downtown and Midtown Tunnels put Portsmouth within reach without a long detour."),
+      p("If you are coming from Virginia Beach or the ODU side, budget fifteen to twenty minutes depending on the time of day. I-264 is usually the smoother approach than surface streets at rush hour."),
+      p("One practical note. Everything on this menu is cooked when the order comes in rather than held warm, so a walk-in at 7:30 on a Friday will wait. Ordering online or through the Flame app before you leave the house is the difference between a two-minute stop and a fifteen-minute one."),
+      h("What to order at the Norfolk location"),
+      p("Chicken Hibachi, $9.85. The entry point and the one most people start with. Comes with your choice of any two sides, so fried rice and vegetables, or lo mein if you want it heavier."),
+      p("Chicken, Beef and Shrimp Combo, $14.85. Three proteins on one plate. This is the order for anyone who came in hungry or is feeding two."),
+      p("Buffalo Wings, 10 pieces, $14.99. A deep flavor list, and halal wings in Norfolk are hard to find, so these move fast."),
+      p("California Roll, $7.85. Sushi from the same halal kitchen, which surprises people who assume they have to choose."),
+      p(PLATES_BUILT),
+      p("In Norfolk the usual pattern is fried rice and vegetables, with a wing order in the middle of the table to share. If you are ordering for a family, two combos plus a 20-piece will feed four comfortably and still come in under fifty dollars."),
+      links([
+        { label: "Norfolk hibachi menu", href: "/menu/norfolk-va" },
+        { label: "Start an order", href: orderUrlFor("norfolk-va") },
+      ]),
+      h("Visit us"),
+      p("Halal hibachi, cooked to order, on East Virginia Beach Boulevard. Flame Japanese Hibachi Norfolk, 5802 E Virginia Blvd, Space #130, Norfolk, VA 23502. 757-937-3543. Mon to Sat 11AM to 11PM, Sun 11AM to 10PM."),
+      links([
+        { label: "Order now", href: orderUrlFor("norfolk-va") },
+        { label: "See our locations", href: "/locations" },
+        { label: "Read: Dinner near Naval Station Norfolk", href: "/blog/restaurants-near-naval-station-norfolk-va" },
+      ]),
+    ],
+    faq: [
+      faqItem("nor-1", "Is the whole menu halal, or just some items?", "All of it. There is no separate halal section because there is nothing else on the menu. No pork is served, stored or cooked anywhere in the building."),
+      faqItem("nor-2", "Are the sauces halal?", "Yes. Our sauces are made in house, which is the reason we can say that. Bought-in teriyaki and eel sauce commonly contain mirin or cooking sake. A kitchen that buys its sauces in from a distributor usually cannot tell you what is in them, which is exactly why we make ours."),
+      faqItem("nor-3", "Where can I get halal hibachi in Norfolk?", "East Virginia Beach Boulevard, at 5802 E Virginia Blvd, Space #130. It is in the Military Circle area just off I-264, central to downtown Norfolk, Chesapeake and Portsmouth."),
+      faqItem("nor-4", "Is there halal food near Old Dominion University?", "Yes. We are a few minutes east of campus, and we do pickup and online ordering, which is usually what students want between classes."),
+      faqItem("nor-5", "Do you cater for events in Norfolk?", "We do, starting at $15.99 per person. Masjid events, school functions, office lunches and family gatherings. Call the Norfolk store directly at 757-937-3543 so you are talking to the kitchen that will cook it."),
+      faqItem("nor-6", "Can I order halal hibachi for delivery in Norfolk?", "Yes, through our online ordering. Pickup is faster if you are close, since everything is cooked when you order rather than held."),
+    ],
+  },
+
+  // NORFOLK, VA 2 - RESTAURANTS NEAR NAVAL STATION NORFOLK
+  {
+    slug: "restaurants-near-naval-station-norfolk-va",
+    locationSlugs: ["norfolk-va"],
+    category: "Local Guides",
+    title: "Dinner Near Naval Station Norfolk That Isn't Another Drive-Thru",
+    excerpt:
+      "A guide to eating near Naval Station Norfolk without defaulting to fast food. What is close, how long a stop takes, and what to order for a short window.",
+    author: "Flame Japanese Hibachi Team",
+    date: "August 13, 2026",
+    readTime: "6 min read",
+    featuredImage: "/menupage/bento/chicken-and-beef-bento.jpg",
+    featuredImageAlt: "Halal bento box ready for pickup near Naval Station Norfolk, VA",
+    intro: `The stretch around Naval Station Norfolk leans hard toward fast food and chains, which is fine on a rushed weeknight and gets old fast if it is your default every time. This is a guide to a real alternative a short drive south in the Military Circle area, written for anyone stationed at or working near the base who wants a hot meal that took more than ninety seconds to prepare, without turning dinner into an expedition.`,
+    body: [
+      h("What is actually close"),
+      p(`We are at 5802 E Virginia Blvd, Space #130, a short run south of the base off I-264. Coming down I-564 to the interchange, it is a straightforward drive rather than a detour deep into the city, which is the main reason this works as a regular option rather than an occasional one. We run late too, Monday through Saturday until 11PM and Sunday until 10PM, which covers the back half of most shifts.`),
+      h("What to order on a short window"),
+      p(`**Fifteen minutes or less.** Order ahead online and collect. Chicken Hibachi at $9.85 or a combo gets you a full plate, hot, with almost no wait once you arrive, because everything is cooked when the ticket comes in rather than held.`),
+      p(`**Eating at a desk or in quarters.** A bento box at $12.85 to $15.85 is the better choice over an open plate. It is sealed, holds heat, and includes sushi that does not need reheating at all.`),
+      p(`**Feeding a group or a barracks room.** Wings in twenty, thirty or fifty piece counts, split across flavors, or Build Your Own Platter for a mixed group. Call ahead for anything over thirty pieces rather than ordering online, so timing can be confirmed.`),
+      p(`**A night off, sitting down properly.** This is also a real dine-in option, not just a pickup counter. The grill is visible and the food is cooked to order either way.`),
+      h("What travels back to base well"),
+      p(`If you are picking up on the way rather than eating on site, bone-in wings and bento boxes hold their heat and texture far better than boneless wings or open plates. Sushi is the most forgiving thing on the menu for any kind of delay, since it is meant to be eaten cool.`),
+      p(`Loaded fries are the one item to eat immediately rather than transport. They have roughly a ten-minute window before the texture goes.`),
+      h("Covering a mixed group without extra planning"),
+      p(`The entire menu is halal, with no pork served, stored or cooked anywhere in the building, and our sauces are made in house rather than bought in. For anyone ordering for a group with mixed dietary needs, that removes the usual back and forth about what everyone can eat. Vegetarian options run through Tofu Hibachi at $9.85, Tofu Bento at $12.85 and the avocado rolls at $7.85.`),
+      h("Finding us from the base"),
+      p(`We are at 5802 E Virginia Blvd, Space #130, Norfolk, VA 23502, in the Military Circle area off I-264. Norfolk International Airport is a few minutes up Military Highway, downtown Norfolk and Ghent are a short run west, and Old Dominion University sits nearby on the other side of the interstate.`),
+      links([
+        { label: "Norfolk hibachi menu", href: "/menu/norfolk-va" },
+        { label: "Start an order", href: orderUrlFor("norfolk-va") }
+      ]),
+      h("Visit us"),
+      p(`Flame Japanese Hibachi Norfolk, 5802 E Virginia Blvd, Space #130, Norfolk, VA 23502. 757-937-3543. Mon to Sat 11AM to 11PM, Sun 11AM to 10PM.`),
+      links([
+        { label: "Order now", href: orderUrlFor("norfolk-va") },
+        { label: "See the Norfolk location", href: "/store/norfolk-va" },
+        { label: "Read: Norfolk Halal Hibachi guide", href: "/blog/is-hibachi-halal-norfolk-va" }
+      ])
+    ],
+    faq: [
+      faqItem("navsta-1", "What restaurants are near Naval Station Norfolk that are not fast food?", "We are a short drive south in the Military Circle area, at 5802 E Virginia Blvd, Space #130, with a full hibachi and sushi menu cooked to order."),
+      faqItem("navsta-2", "How fast is pickup near the base?", "About two minutes if you order ahead online. Everything is cooked when the order comes in, so a walk-in at a busy hour takes longer."),
+      faqItem("navsta-3", "Can I order for a group?", "Yes. Wings in larger counts and Build Your Own Platter both work well for groups, and calling ahead for anything over thirty pieces is worth doing."),
+      faqItem("navsta-4", "Is the food halal?", "Yes, the entire menu, at every location, with no pork on the premises."),
+      faqItem("navsta-5", "How late are you open?", "Monday through Saturday until 11PM and Sunday until 10PM, which covers the back half of most shifts."),
+      faqItem("navsta-6", "Is there a place to sit down and eat?", "Yes, this is a full dine-in restaurant as well as a pickup counter.")
+    ]
+  },
+
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {

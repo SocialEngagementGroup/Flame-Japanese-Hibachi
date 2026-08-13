@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import LocationContextSync from "@/components/blocks/location/LocationContextSync";
-import LocationBlogCallout from "@/components/blocks/blog/LocationBlogCallout";
 import {
   getActiveLocations,
   getLocationBySlug,
@@ -54,7 +53,6 @@ export default async function LocationCateringPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <LocationContextSync storeId={location.id} />
-      <LocationBlogCallout location={location} />
     </>
   );
 }
