@@ -326,14 +326,6 @@ export const activeLocations = [
 
 export const comingSoonLocations = [
   {
-    id: 1,
-    name: "Miami, FL",
-    address: "11195 SW 216th St, Miami, FL 33170",
-    status: "Coming Soon",
-    openUntil: "11 PM",
-    distance: "2.4 MILES AWAY",
-  },
-  {
     id: 2,
     name: "Marlow Heights, MD",
     address: "4620 St Barnabas Rd, Suite #B, Marlow Heights, MD 20748",
