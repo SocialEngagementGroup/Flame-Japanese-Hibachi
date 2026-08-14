@@ -27,7 +27,7 @@ export interface StoreLocationContent {
 /** Content date for the first complete 14-location store-page release.
  * Sitemap generation uses this stable value instead of pretending every
  * deployment changed the pages. Update it only when store-page content changes. */
-export const STORE_PAGES_LAST_MODIFIED = "2026-08-13";
+export const STORE_PAGES_LAST_MODIFIED = "2026-08-14";
 
 export const storeLocationContent: Record<string, StoreLocationContent> = {
   "baltimore-md": {
@@ -428,9 +428,36 @@ export const storeLocationContent: Record<string, StoreLocationContent> = {
       },
     ],
   },
+
+  "marlow-heights-md": {
+    metaDescription:
+      "Halal hibachi, sushi and boba in Marlow Heights, MD at 4620 St Barnabas Rd, Suite #B. Order online for pickup, delivery or catering, or call +1 240-619-4586 today.",
+    faqs: [
+      {
+        question: "Is Flame Japanese Hibachi in Marlow Heights halal?",
+        answer:
+          "Yes, the entire menu is halal, with no pork served, stored or cooked on the premises, and sauces made in house rather than bought from a distributor.",
+      },
+      {
+        question: "Where is Flame Japanese Hibachi located in Marlow Heights?",
+        answer:
+          "We're at 4620 St Barnabas Rd, Suite #B, Marlow Heights, MD 20748, near Iverson Mall just off Branch Avenue and the Capital Beltway, central to Temple Hills, Suitland and Oxon Hill.",
+      },
+      {
+        question: "Do you deliver near Joint Base Andrews or Suitland?",
+        answer:
+          "Yes, delivery and pickup are both available through our online ordering, and we're a short drive from Joint Base Andrews, Suitland, Camp Springs and Southeast DC.",
+      },
+      {
+        question: "What are your hours?",
+        answer:
+          "Sunday through Wednesday 11AM to 10PM, and Thursday through Saturday 11AM to midnight. Hours can shift on holidays, so check our Google Business Profile if you're planning a late visit.",
+      },
+    ],
+  },
 };
 
-/** All active stores currently have unique content here (15/15). Falls back
+/** All active stores currently have unique content here (16/16). Falls back
  * gracefully - a future store without an entry just skips the FAQ schema and
  * meta description falls back to a generated default, since /store/[location]
  * itself keys off `data/locationsData.ts`, not this file. */
