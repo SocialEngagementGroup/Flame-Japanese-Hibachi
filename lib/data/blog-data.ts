@@ -911,7 +911,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 24, 2026",
     readTime: "7 min read",
-    featuredImage: "/menupage/wings/combo-10-pieces.png",
+    featuredImage: "/blog/featured/halal-wing-flavors-baltimore-md.jpg",
     featuredImageAlt: "Halal Old Bay wings at Flame Japanese Hibachi in Baltimore, MD",
     intro:
       `Baltimore does not have casual opinions about Old Bay. It has positions. So the first thing worth saying is yes, Old Bay is one of our fourteen wing flavors, it is halal like everything else in our kitchen, and it goes on bone-in or boneless. The second thing worth saying is that fourteen flavors is a lot to stand at a counter and decide between. This is the guide we wish people had before they ordered, sorted by what the flavors actually taste like rather than the order they appear on the menu.`,
@@ -978,7 +978,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 24, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/cheap-halal-eats-baltimore-md.jpg",
     featuredImageAlt: "Chicken hibachi plate under $10 at Flame Japanese Hibachi Baltimore, MD",
     intro:
       `Eating halal on a budget in Baltimore usually means one of two things: a plate of something fried, or a long drive. Neither is much of a plan on a Tuesday. This is a straight breakdown of what different amounts of money actually get you at our Moravia Road kitchen, written mostly for students at Morgan State and for anyone in Belair-Edison, Frankford or Hamilton who wants a hot meal that is not a compromise. No upselling. Just what the numbers do.`,
@@ -1033,7 +1033,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 24, 2026",
     readTime: "7 min read",
-    featuredImage: "/menupage/wings/30-pieces.png",
+    featuredImage: "/blog/featured/game-day-takeout-baltimore-md.jpg",
     featuredImageAlt: "Fifty piece halal wing order for a group in Baltimore, MD",
     intro:
       `The mistake is almost never the food. It is the math and the timing. Someone volunteers to handle the food, orders at four for a five o'clock kickoff, and arrives with wings that went soft in the car and forty percent less of everything than the room needed. This is a practical guide to getting it right in Northeast Baltimore, built from what we actually see leave this kitchen on a Sunday. The numbers here work whether you are in Belair-Edison, Hamilton, Overlea or Parkville.`,
@@ -1102,7 +1102,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 25, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/wings/combo-10-pieces.png",
+    featuredImage: "/blog/featured/preakness-race-day-food-northern-pkwy-baltimore-md.jpg",
     featuredImageAlt: "Halal wings packed for a race day group in Northwest Baltimore",
     intro:
       `For the first time in the history of the race, the Preakness was not run in Baltimore in 2026. It went to Laurel Park while Pimlico came down. The new track is scheduled to open in 2027, and when it does, the third Saturday in May goes back to being the busiest day of the year in Park Heights. This is a guide to eating around it, written from four blocks away on West Northern Parkway. If you are visiting for the first time, the single most useful thing to know is that the neighborhood does not have the restaurant density people expect, and almost nothing near the track takes a large order on the day.`,
@@ -1165,7 +1165,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 25, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/bento/chicken-and-beef-bento.jpg",
+    featuredImage: "/blog/featured/food-near-sinai-hospital-northern-pkwy-baltimore-md.jpg",
     featuredImageAlt: "Halal bento box for a hospital shift near Sinai Hospital, Baltimore",
     intro:
       `Hospital food is its own category of problem. The break is short, it starts at an hour when normal restaurants are between services, and the options within walking distance narrow down to a cafeteria and a vending machine fairly quickly. This is a practical guide for anyone working at Sinai, written from West Northern Parkway, and it is mostly about timing and reheating rather than about menus. Half of it applies wherever you end up eating.`,
@@ -1218,7 +1218,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 25, 2026",
     readTime: "7 min read",
-    featuredImage: "/menupage/hibachi/beef-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/halal-and-kosher-difference-northern-pkwy-baltimore-md.jpg",
     featuredImageAlt: "Halal kitchen at Flame Japanese Hibachi on W Northern Parkway, Baltimore",
     intro:
       `Northwest Baltimore is one of the few places in the country where this question comes up at a counter regularly rather than in a classroom. Between Park Heights, Cheswolde, Fallstaff and the surrounding neighborhoods, plenty of households keep kosher, plenty keep halal, and the two communities live close enough together that people genuinely want to know how the rules compare. This is an honest explanation of where they overlap and where they do not. To be clear at the outset: our kitchen is halal. It is not kosher and it does not hold kosher certification.`,
@@ -1270,7 +1270,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 26, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/bento/chicken-and-beef-bento.jpg",
+    featuredImage: "/blog/featured/lunch-near-fort-meade-laurel-md.jpg",
     featuredImageAlt: "Halal bento box desk lunch near Fort Meade in Laurel, MD",
     intro:
       `The Fort Meade lunch problem is not a lack of restaurants. It is that the break is thirty minutes, the gate is a bottleneck, and everyone in the corridor takes lunch inside the same ninety-minute window. What starts as a plan to eat something decent ends as a bag of something from a drive-through eaten at a desk. This is a practical guide to the Route 1 corridor from our kitchen at 13600 Baltimore Ave, and most of it is about sequencing rather than food.`,
@@ -1322,7 +1322,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 26, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/bento/beef-and-shrimp-bento.jpg",
+    featuredImage: "/blog/featured/office-lunch-for-twenty-laurel-md.jpg",
     featuredImageAlt: "Halal bento boxes for an office lunch in Laurel, MD",
     intro:
       `Somebody at every company gets handed the food. It is rarely their job, there is rarely a budget conversation, and the two ways it goes wrong are always the same: not enough food, or food that arrived hot and was eaten cold ninety minutes later. This is how to get it right on the Route 1 corridor, written from a kitchen that runs these orders every week. The quantities and lead times below apply whether you order from us or not.`,
@@ -1384,7 +1384,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 26, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/hibachi-teppanyaki-sushi-laurel-md.jpg",
     featuredImageAlt: "Halal hibachi cooking on a flat top griddle in Laurel, MD",
     intro:
       `Most people ordering Japanese food in the United States are choosing between words rather than dishes, and two of those words do not mean what the menus suggest. This is a short, honest explanation of the difference, followed by the part that is actually useful: which one to order depending on who you are with and how much time you have. If you only take one thing from it, take this. The words describe how the food is cooked, not how good it is.`,
@@ -1438,7 +1438,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 27, 2026",
     readTime: "7 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/dietary-restrictions-dining-pasadena-md.jpg",
     featuredImageAlt: "A mixed table of halal and vegetarian dishes in Anne Arundel County",
     intro:
       `Anne Arundel County is a good place to eat and a hard place to eat if you have rules. Crab houses, steakhouses and chain restaurants dominate the Ritchie Highway corridor, and most of them can accommodate one restriction awkwardly and two not at all. This is a practical guide for the person in the family who ends up doing the research every time: what to ask, which questions actually get useful answers, and how to stop planning every meal around one person's constraints.`,
@@ -1490,7 +1490,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 27, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/sushi/california-roll.jpg",
+    featuredImage: "/blog/featured/boat-day-takeout-pasadena-md.jpg",
     featuredImageAlt: "Halal sushi rolls for a beach day in Anne Arundel County, Maryland",
     intro:
       `On the Pasadena peninsula, half the summer happens away from a kitchen. Downs Park, Fort Smallwood, a cousin's boat, somebody's dock. The food question gets answered badly and repeatedly: a cooler of sandwiches that go soggy, or a bag of fried food bought forty minutes too early. This is a guide to what genuinely travels, written from Ritchie Highway, and the principles hold regardless of where you buy it.`,
@@ -1543,7 +1543,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 27, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/sushi/shrimp-tempura.jpg",
+    featuredImage: "/blog/featured/sushi-without-raw-fish-pasadena-md.jpg",
     featuredImageAlt: "Cooked halal sushi rolls with no raw fish in Pasadena, MD",
     intro:
       `The single most common thing said at a sushi counter is a version of "I do not eat sushi," and most of the time it means "I do not eat raw fish." Those are different sentences, and the gap between them is the reason a lot of people have written off an entire category of food they would probably like. This is a plain guide to that gap, written for anyone in Pasadena who has been the person ordering chicken while everyone else orders rolls.`,
@@ -1596,7 +1596,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 28, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/bento/shrimp-bento.jpg",
+    featuredImage: "/blog/featured/halal-food-off-i95-aberdeen-md.jpg",
     featuredImageAlt: "Halal bento box for an I-95 road trip through Maryland",
     intro:
       `Anyone who drives the I-95 corridor regularly and eats halal knows the problem. Between the Baltimore beltway and the Delaware line there is a long stretch of service plazas, national chains and gas stations, and very little that is both halal and an actual meal. The usual solution is packing food from home or eating badly for a leg of the drive. Exit 85 at Aberdeen changes that, and this is a practical guide to using it, including the parts that have nothing to do with us.`,
@@ -1647,7 +1647,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 28, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/wings/30-pieces.png",
+    featuredImage: "/blog/featured/team-food-orders-aberdeen-md.jpg",
     featuredImageAlt: "Large halal wing order for a team in Aberdeen, MD",
     intro:
       `Team parents know this drill. The game runs long, everyone is starving, twenty people need feeding at once, and somebody has to make a decision in a parking lot with poor signal. It usually ends in pizza because pizza is the default, not because it is the best answer. This is a practical guide to doing it better in Harford County, with real numbers, written from Beards Hill Road a few minutes from Ripken Stadium.`,
@@ -1714,7 +1714,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 28, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/salmon-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/what-is-in-hibachi-sauce-aberdeen-md.jpg",
     featuredImageAlt: "Yum yum, teriyaki and ginger sauce at Flame Japanese Hibachi Aberdeen, MD",
     intro:
       `Sauce is the part of a Japanese meal that nobody asks about and that determines the most. People will check whether the chicken is halal, whether the fish is fresh, whether the fryer is shared, and then pour four ounces of something over the top without a second thought. This is a straight explanation of the three sauces you will meet at any hibachi counter, what is normally in them, and where the surprises are. It applies whether you eat with us or anywhere else.`,
@@ -1767,7 +1767,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
+    featuredImage: "/blog/featured/iftar-catering-manassas-va.jpg",
     featuredImageAlt: "Halal iftar catering platters in Manassas, VA",
     intro: `Every year the same pattern repeats in Prince William County. The first week of Ramadan, catering feels optional. By the third week, every kitchen in the corridor is booked solid for the popular dates, and the people scrambling in week four are the ones who assumed there would be room. This is a planning guide for iftar catering written from Liberia Avenue, aimed at families, study circles and masjid committees organizing for a group rather than a table.`,
     body: [
@@ -1816,7 +1816,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
+    featuredImage: "/blog/featured/eid-dinner-manassas-va.jpg",
     featuredImageAlt: "Halal Eid dinner platter for a family gathering in Manassas, VA",
     intro: `Eid dinners in Manassas tend to be bigger than the host originally planned, because Eid is the day everyone who was too busy during Ramadan finally gets together. Extended family, neighbors, the friend who is far from home this year. This is a guide to ordering for that kind of gathering, written from Liberia Avenue for families across Old Town, Yorkshire, Signal Hill and Manassas Park.`,
     body: [
@@ -1862,7 +1862,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 30, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/wings/tender-combo-4-pieces.png",
+    featuredImage: "/blog/featured/kid-friendly-halal-food-manassas-va.jpg",
     featuredImageAlt: "Halal chicken tenders and fries for a child in Manassas, VA",
     intro: `Taking kids to a Japanese restaurant for the first time is a gamble most parents in Manassas have made reluctantly, usually expecting raw fish and chopsticks to be the whole evening. It does not have to be that meal. This is a practical guide to ordering for kids at a hibachi counter, written for the parents who end up doing this planning every time, and it applies whether your children are cautious eaters or will try anything once.`,
     body: [
@@ -1911,7 +1911,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/richmond-highway-restaurants-alexandria-va.jpg",
     featuredImageAlt: "Flame Japanese Hibachi on Richmond Highway in Alexandria, Virginia",
     intro: `Richmond Highway does not photograph well and it does not get written about the way Old Town does, but it is one of the more genuinely international stretches of road in Northern Virginia, and most people driving it do not know what is actually along it. This is a local's map of the corridor between Penn Daw and Groveton, written from our kitchen at 6676 Richmond Hwy, and it is honest about what the strip is and is not.`,
     body: [
@@ -1962,7 +1962,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/restaurants-near-fort-belvoir-alexandria-va.jpg",
     featuredImageAlt: "Halal hibachi plate ready for pickup near Fort Belvoir, Alexandria VA",
     intro: `The area immediately around Fort Belvoir leans hard toward fast food and chains, which is fine on a rushed weeknight and gets old fast if it is your default every time. This is a guide to a real alternative a short drive up Richmond Highway, written for anyone stationed at or working near the installation who wants a hot meal that took more than ninety seconds to prepare, without turning dinner into an expedition.`,
     body: [
@@ -2012,7 +2012,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 30, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/bento/chicken-bento.jpg",
+    featuredImage: "/blog/featured/bento-vs-hibachi-alexandria-va.jpg",
     featuredImageAlt: "Halal hibachi plate at Flame Japanese Hibachi in Alexandria, VA",
     intro: `These two look similar on a menu and behave completely differently once you have ordered them. Both start with the same halal-cooked proteins, and the choice between them is really a choice about timing, portability and how much variety you want in one order. This is a straight comparison, written from our kitchen on Richmond Highway, and it applies to almost any Japanese menu, not just ours.`,
     body: [
@@ -2068,7 +2068,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "7 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/seven-corners-restaurants-falls-church-va.jpg",
     featuredImageAlt: "Flame Japanese Hibachi at Seven Corners Center in Falls Church, Virginia",
     intro: `Seven Corners is a genuinely unusual place to eat, not because any single restaurant here is unusual, but because of how many different food cultures sit within a few minutes of the Route 7 and Route 50 junction. This is a guide to the area written from inside it, at 6379 Seven Corners Center, aimed at giving newcomers and regulars alike an honest sense of what this stretch actually offers.`,
     body: [
@@ -2129,7 +2129,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "7 min read",
-    featuredImage: "/menupage/sushi/california-roll.jpg",
+    featuredImage: "/blog/featured/is-sushi-halal-seven-corners-va.jpg",
     featuredImageAlt: "Halal sushi rolls at Flame Japanese Hibachi in Falls Church, Virginia",
     intro: `Sushi is one of the more confusing foods to evaluate for halal status, because the question is not really about the fish. It is about several separate ingredients most people never think to check, several of which have nothing to do with whether the seafood itself is permitted. This is a component-by-component explanation, written from our kitchen at Seven Corners, and it applies to any sushi counter you visit, not just ours.`,
     body: [
@@ -2191,7 +2191,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 30, 2026",
     readTime: "7 min read",
-    featuredImage: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
+    featuredImage: "/blog/featured/office-catering-falls-church-va.jpg",
     featuredImageAlt: "Halal office catering spread in Falls Church, VA",
     intro: `Falls Church and the Seven Corners area sit inside one of the more religiously and culturally diverse workforces in Northern Virginia, and office managers here know the problem well. One team lunch, five different sets of dietary needs, and a catering order that either takes three phone calls to sort out or quietly leaves someone eating a side salad. This is a practical guide to solving that with one order rather than several, written from our kitchen at Seven Corners.`,
     body: [
@@ -2251,7 +2251,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Flame Japanese Hibachi Team',
     date: 'July 29, 2026',
     readTime: '5 min read',
-    featuredImage: '/menupage/bento/chicken-bento.jpg',
+    featuredImage: '/blog/featured/restaurants-near-jiffy-lube-live-bristow-va.jpg',
     featuredImageAlt: 'Halal bento box packed for a show night near Jiffy Lube Live, Bristow VA',
     intro: `Jiffy Lube Live runs one of the longest concert seasons the venue has had in over twenty years, and most nights follow the same pattern: doors open at a set time, the lot fills fast, and everyone in a several-mile radius is trying to eat somewhere between leaving work and finding a parking spot. This is a practical guide to doing that well, written from Bristow Center, a few minutes from the venue, including the part most guides skip. What you actually cannot bring in with you.`,
     body: [
@@ -2313,7 +2313,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Flame Japanese Hibachi Team',
     date: 'July 29, 2026',
     readTime: '5 min read',
-    featuredImage: '/menupage/wings/100-pieces.png',
+    featuredImage: '/blog/featured/team-dinner-catering-bristow-va.jpg',
     featuredImageAlt: 'Halal wing order for a youth sports team in Bristow, VA',
     intro: `Western Prince William County runs on youth sports, between the fields around Bristow and the leagues feeding Braemar, Victory Lakes and the Patriot High School area. Team parents end up solving the same food problem constantly: feeding fifteen to twenty kids plus coaches and siblings after a practice or a game, on short notice, without spending the whole evening organizing it. This is a practical sizing guide from our kitchen at Bristow Center.`,
     body: [
@@ -2373,7 +2373,7 @@ export const blogPosts: BlogPost[] = [
     author: 'Flame Japanese Hibachi Team',
     date: 'July 30, 2026',
     readTime: '5 min read',
-    featuredImage: '/menupage/hibachi/chicken-hibachi-plate.jpg',
+    featuredImage: '/blog/featured/restaurants-linton-hall-road-bristow-va.jpg',
     featuredImageAlt: 'Flame Japanese Hibachi at Bristow Center on Linton Hall Road, Bristow, Virginia',
     intro: `Western Prince William County has grown fast, and Bristow specifically has absorbed a lot of that growth without quite getting the restaurant density the population would suggest. If you have just moved into Braemar, Victory Lakes or anywhere along the Linton Hall corridor, this is an honest orientation to what is actually here, written from Bristow Center, a few minutes off Linton Hall Road itself.`,
     body: [
@@ -2432,7 +2432,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "5 min read",
-    featuredImage: "/menupage/sushi/california-roll.jpg",
+    featuredImage: "/blog/featured/food-near-james-river-park-richmond-va.jpg",
     featuredImageAlt: "Halal sushi rolls for a trailhead pickup near James River Park, Richmond VA",
     intro: `James River Park is one of the real advantages of living on Richmond's Southside, and Reedy Creek and Buttermilk are two of its busiest entrances, both a short drive from Forest Hill Avenue. The problem most people solve badly is food. Either you eat before, which means eating early, or you plan something for after, which usually means a cooler full of food that does not survive the heat, the drive, or both. This is a practical guide to doing the after part properly.`,
     body: [
@@ -2494,7 +2494,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "5 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/forest-hill-avenue-restaurants-richmond-va.jpg",
     featuredImageAlt: "Halal hibachi plate at Flame Japanese Hibachi in South Richmond",
     intro: `Forest Hill Avenue has changed noticeably over the past several years, and residents on Richmond's Southside who used to cross the river for a real range of food now have a genuine local scene to draw on. This is an honest orientation to what that scene looks like today, written from inside it at 7037 Forest Hill Ave, for anyone new to the neighborhood or anyone who has not looked closely at what has opened recently.`,
     body: [
@@ -2554,7 +2554,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 30, 2026",
     readTime: "4 min read",
-    featuredImage: "/menupage/boba-drinks/brown-sugar-milk-tea.jpg",
+    featuredImage: "/blog/featured/boba-tea-explained-richmond-va.jpg",
     featuredImageAlt: "Boba milk tea and fruit tea lineup at Flame Japanese Hibachi in Richmond, VA",
     intro: `Boba has become common enough that most people have heard of it and ordered it wrong at least once, usually by picking blind off a long list of names and toppings that mean nothing without context. This is a plain guide to what is actually on a boba menu, written from Forest Hill Avenue, aimed at anyone ordering for the first time or anyone who has been getting the same drink for years without knowing what half the terms mean.`,
     body: [
@@ -2620,7 +2620,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "5 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/halal-restaurants-hanover-county-va.jpg",
     featuredImageAlt: "Flame Japanese Hibachi on Bell Creek Road in Mechanicsville, Virginia",
     intro: `Hanover County has grown fast on the north side of Richmond, and the restaurant scene has grown with it, but halal dining specifically has lagged behind the county's broader food growth. Families here have historically driven into Richmond proper or further for a reliable halal meal. This is an honest look at the current picture from Bell Creek Road, plus a practical guide to evaluating any kitchen's halal claims, not just ours.`,
     body: [
@@ -2678,7 +2678,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/sushi/california-roll.jpg",
+    featuredImage: "/blog/featured/restaurants-near-richmond-raceway-mechanicsville-va.jpg",
     featuredImageAlt: "Halal sushi and bento boxes for race day near Richmond Raceway, Mechanicsville VA",
     intro: `Richmond Raceway sits a short drive from Bell Creek Road, and race weekends genuinely change the traffic and demand pattern across this whole part of Hanover and Henrico. Getting food sorted before the roads fill up is worth planning rather than winging. This is a practical guide to eating around race weekend, written from a kitchen a few minutes from the track.`,
     body: [
@@ -2736,7 +2736,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 30, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/what-is-hibachi-mechanicsville-va.jpg",
     featuredImageAlt: "Halal hibachi cooked on a flat top grill in Mechanicsville, Virginia",
     intro: `Hibachi is one of the most familiar words in American dining and one of the least accurately used. Most people who have never tried it picture a chef flipping shrimp into their hat at a big communal table, which is a real thing that happens at some restaurants, but is not actually what the word means or what most hibachi restaurants, including ours, serve. This is a plain explanation for anyone in Mechanicsville trying it for the first time.`,
     body: [
@@ -2796,7 +2796,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "5 min read",
-    featuredImage: "/menupage/bento/chicken-bento.jpg",
+    featuredImage: "/blog/featured/food-near-olney-transportation-center-philadelphia-pa.jpg",
     featuredImageAlt: "Halal bento box for a quick meal near Olney Transportation Center, Philadelphia",
     intro: `Anyone connecting through Olney Transportation Center knows the rhythm. There is rarely a comfortable window, and most food options near a busy transit hub are built for speed rather than quality, which usually means neither is great. This is a practical guide to eating well on a transit schedule in North Philadelphia, written for commuters, students and anyone passing through Olney with a train or bus to catch.`,
     body: [
@@ -2838,7 +2838,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "5 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/cheap-food-near-la-salle-university-philadelphia-pa.jpg",
     featuredImageAlt: "Chicken hibachi plate under $10 for students near La Salle and Temple, Philadelphia",
     intro: `College budgets in North Philadelphia get stretched thin fast, and the easiest habit to fall into is either skipping real meals or defaulting to the cheapest fast food option regardless of quality. This is a straight breakdown of what different amounts actually buy at our kitchen, written for students at La Salle, Temple and the surrounding schools who want a real meal without blowing through a week's food budget on one order.`,
     body: [
@@ -2885,7 +2885,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 30, 2026",
     readTime: "5 min read",
-    featuredImage: "/menupage/hibachi/salmon-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/halal-food-philadelphia-pa.jpg",
     featuredImageAlt: "Halal hibachi plate at Flame Japanese Hibachi in Philadelphia, PA",
     intro: `Philadelphia has one of the most visible halal cart cultures of any American city, and for a long time that was the association most people made with halal food here: a cart, a foil-wrapped platter, chicken and rice with white and hot sauce. That picture has expanded considerably, and this is a look at what the city's halal dining actually looks like now, and where hibachi and sushi fit into a scene that has historically been about carts and grills rather than a Japanese kitchen.`,
     body: [
@@ -2928,7 +2928,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "5 min read",
-    featuredImage: "/menupage/sushi/california-roll.jpg",
+    featuredImage: "/blog/featured/food-delivery-tamarac-fl.jpg",
     featuredImageAlt: "Halal sushi rolls for Florida summer takeout in Tamarac, FL",
     intro: `Broward County summers make the kitchen the last room anyone wants to be in, and the takeout habit that forms between June and September is different from the rest of the year. Heat changes what actually survives a short drive home, and it changes what you actually want to eat. This is a practical guide to ordering through a Tamarac summer, written from University Drive.`,
     body: [
@@ -2978,7 +2978,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "4 min read",
-    featuredImage: "/menupage/bento/chicken-bento.jpg",
+    featuredImage: "/blog/featured/hurricane-food-prep-broward-county-fl.jpg",
     featuredImageAlt: "Flame Japanese Hibachi on University Drive in Tamarac, Florida",
     intro: `Hurricane season runs June through November in South Florida, and most of it passes without a direct threat, but the days when a storm is actually tracking toward Broward County change how everyone in Tamarac thinks about food. This is not a replacement for official preparedness guidance, which should always come from Broward County Emergency Management and the National Hurricane Center. It is a practical, food-specific supplement for the period before a storm arrives, when restaurants are still open and decisions about what to eat and store still matter.`,
     body: [
@@ -3024,7 +3024,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 30, 2026",
     readTime: "4 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/halal-restaurants-coral-springs-fl.jpg",
     featuredImageAlt: "Flame Japanese Hibachi on University Drive in Tamarac, Florida",
     intro: `North Broward County, spanning Tamarac, Coral Springs, Sunrise and the surrounding communities, has a substantial and growing Muslim population, and halal dining options have grown with it, though unevenly across cuisines. This is an honest look at what is actually available in the area and where halal Japanese food specifically fits into that picture, written from University Drive in Tamarac.`,
     body: [
@@ -3073,7 +3073,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/bento/chicken-bento.jpg",
+    featuredImage: "/blog/featured/restaurants-near-wellington-fl.jpg",
     featuredImageAlt: "Halal bento box for equestrian season near Wellington, Florida",
     intro: `Wellington's equestrian season, running roughly from late fall through spring, brings a genuine seasonal shift to western Palm Beach County. Riders, grooms, trainers and families following the show circuit fill the area for months at a stretch, and the food demand around show grounds and nearby communities spikes accordingly. This is a practical guide to eating well during that stretch, written from Royal Palm Beach, a short drive from Wellington's show grounds.`,
     body: [
@@ -3120,7 +3120,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 29, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/halal-food-loxahatchee-fl.jpg",
     featuredImageAlt: "Halal hibachi plate at Flame Japanese Hibachi in Royal Palm Beach, Florida",
     intro: `Western Palm Beach County, spanning Royal Palm Beach, Wellington, Loxahatchee and the surrounding communities, is less dense and more spread out than the coastal parts of the county, and that shapes the local halal dining picture considerably. This is an honest look at what is actually available out here, written from Royal Palm Beach, for residents who have grown used to driving toward the coast for a reliable halal meal.`,
     body: [
@@ -3166,7 +3166,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "July 30, 2026",
     readTime: "7 min read",
-    featuredImage: "/menupage/flame-combo/chicken-beef-and-shrimp.jpg",
+    featuredImage: "/blog/featured/party-catering-royal-palm-beach-fl.jpg",
     featuredImageAlt: "Halal party catering platters in Royal Palm Beach, Florida",
     intro: `Every party host in Royal Palm Beach ends up doing the same math under pressure: how much food for how many people, and whether it will still look good three hours into the event. Getting it wrong runs in one of two directions, either a table that empties in the first hour or a table with too much left over. This is a practical sizing guide from our kitchen, built from the orders that actually run through it.`,
     body: [
