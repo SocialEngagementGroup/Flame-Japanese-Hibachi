@@ -322,17 +322,27 @@ export const activeLocations = [
     orderUrl:
       "https://www.doordash.com/store/flame-japanese-hibachi-norfolk-48649221/113656348/?preview=1",
   },
+  {
+    id: 16,
+    slug: "marlow-heights-md",
+    name: "Marlow Heights, MD",
+    schemaName: "Flame Japanese Hibachi - Marlow Heights",
+    address: "4620 St Barnabas Rd, Suite #B, Marlow Heights, MD 20748",
+    streetAddress: "4620 St Barnabas Rd, Suite #B",
+    city: "Marlow Heights",
+    state: "MD",
+    postalCode: "20748",
+    phone: "+1 240-619-4586",
+    hours: "Sun–Wed 11AM–10PM / Thu–Sat 11AM–12AM",
+    lat: 38.8264415,
+    lng: -76.9455321,
+    image: "https://tile.openstreetmap.org/16/18760/25087.png",
+    orderUrl:
+      "https://www.doordash.com/store/flame-japanese-hibachi-temple-hills-47819301/113390346/",
+  },
 ];
 
 export const comingSoonLocations = [
-  {
-    id: 2,
-    name: "Marlow Heights, MD",
-    address: "4620 St Barnabas Rd, Suite #B, Marlow Heights, MD 20748",
-    status: "Coming Soon",
-    openUntil: "10 PM",
-    distance: "4.8 MILES AWAY",
-  },
   {
     id: 6,
     name: "Bowie, MD",
