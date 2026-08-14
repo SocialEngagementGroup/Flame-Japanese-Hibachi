@@ -302,7 +302,8 @@ export const activeLocations = [
     lat: 38.73296,
     lng: -77.550344,
     image: "https://tile.openstreetmap.org/16/18651/25109.png",
-    orderUrl: "", // TODO(order-url): paste bristow-va order.online URL here
+    orderUrl:
+      "https://order.online/store/flame-hibachi-more-10286-bristow-center-dr-48174596",
   },
   {
     id: 15,
