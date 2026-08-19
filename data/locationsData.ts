@@ -302,7 +302,8 @@ export const activeLocations = [
     lat: 38.73296,
     lng: -77.550344,
     image: "https://tile.openstreetmap.org/16/18651/25109.png",
-    orderUrl: "", // TODO(order-url): paste bristow-va order.online URL here
+    orderUrl:
+      "https://order.online/store/flame-hibachi-more-10286-bristow-center-dr-48174596",
   },
   {
     id: 15,
@@ -322,25 +323,27 @@ export const activeLocations = [
     orderUrl:
       "https://www.doordash.com/store/flame-japanese-hibachi-norfolk-48649221/113656348/?preview=1",
   },
+  {
+    id: 16,
+    slug: "marlow-heights-md",
+    name: "Marlow Heights, MD",
+    schemaName: "Flame Japanese Hibachi - Marlow Heights",
+    address: "4620 St Barnabas Rd, Suite #B, Marlow Heights, MD 20748",
+    streetAddress: "4620 St Barnabas Rd, Suite #B",
+    city: "Marlow Heights",
+    state: "MD",
+    postalCode: "20748",
+    phone: "+1 240-619-4586",
+    hours: "Sun–Wed 11AM–10PM / Thu–Sat 11AM–12AM",
+    lat: 38.8264415,
+    lng: -76.9455321,
+    image: "https://tile.openstreetmap.org/16/18760/25087.png",
+    orderUrl:
+      "https://www.doordash.com/store/flame-japanese-hibachi-temple-hills-47819301/113390346/",
+  },
 ];
 
 export const comingSoonLocations = [
-  {
-    id: 1,
-    name: "Miami, FL",
-    address: "11195 SW 216th St, Miami, FL 33170",
-    status: "Coming Soon",
-    openUntil: "11 PM",
-    distance: "2.4 MILES AWAY",
-  },
-  {
-    id: 2,
-    name: "Marlow Heights, MD",
-    address: "4620 St Barnabas Rd, Suite #B, Marlow Heights, MD 20748",
-    status: "Coming Soon",
-    openUntil: "10 PM",
-    distance: "4.8 MILES AWAY",
-  },
   {
     id: 6,
     name: "Bowie, MD",
