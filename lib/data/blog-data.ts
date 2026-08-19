@@ -3231,7 +3231,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "August 13, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-norfolk-va.jpg",
     featuredImageAlt:
       "Halal chicken hibachi cooking on the grill at Flame Japanese Hibachi in Norfolk, VA",
     intro:
@@ -3292,7 +3292,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "August 13, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/bento/chicken-and-beef-bento.jpg",
+    featuredImage: "/blog/featured/restaurants-near-naval-station-norfolk-va.jpg",
     featuredImageAlt: "Halal bento box ready for pickup near Naval Station Norfolk, VA",
     intro: `The stretch around Naval Station Norfolk leans hard toward fast food and chains, which is fine on a rushed weeknight and gets old fast if it is your default every time. This is a guide to a real alternative a short drive south in the Military Circle area, written for anyone stationed at or working near the base who wants a hot meal that took more than ninety seconds to prepare, without turning dinner into an expedition.`,
     body: [
@@ -3343,7 +3343,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "August 14, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-marlow-heights-md.jpg",
     featuredImageAlt:
       "Halal chicken hibachi cooking on the grill at Flame Japanese Hibachi in Marlow Heights, MD",
     intro:
@@ -3404,7 +3404,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "August 14, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/bento/chicken-and-beef-bento.jpg",
+    featuredImage: "/blog/featured/restaurants-near-joint-base-andrews-md.jpg",
     featuredImageAlt: "Halal bento box ready for pickup near Joint Base Andrews, MD",
     intro: `The stretch around Joint Base Andrews and Camp Springs leans hard toward fast food and chains, which is fine on a rushed weeknight and gets old fast if it is your default every time. This is a guide to a real alternative a short drive north in the Marlow Heights area, written for anyone stationed at or working near the base who wants a hot meal that took more than ninety seconds to prepare, without turning dinner into an expedition.`,
     body: [
