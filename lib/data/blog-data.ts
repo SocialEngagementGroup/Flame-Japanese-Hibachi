@@ -3231,7 +3231,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "August 13, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/hibachi/chicken-hibachi-plate.jpg",
+    featuredImage: "/blog/featured/is-hibachi-halal-norfolk-va.jpg",
     featuredImageAlt:
       "Halal chicken hibachi cooking on the grill at Flame Japanese Hibachi in Norfolk, VA",
     intro:
@@ -3292,7 +3292,7 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "August 13, 2026",
     readTime: "6 min read",
-    featuredImage: "/menupage/bento/chicken-and-beef-bento.jpg",
+    featuredImage: "/blog/featured/restaurants-near-naval-station-norfolk-va.jpg",
     featuredImageAlt: "Halal bento box ready for pickup near Naval Station Norfolk, VA",
     intro: `The stretch around Naval Station Norfolk leans hard toward fast food and chains, which is fine on a rushed weeknight and gets old fast if it is your default every time. This is a guide to a real alternative a short drive south in the Military Circle area, written for anyone stationed at or working near the base who wants a hot meal that took more than ninety seconds to prepare, without turning dinner into an expedition.`,
     body: [
@@ -3329,6 +3329,118 @@ export const blogPosts: BlogPost[] = [
       faqItem("navsta-4", "Is the food halal?", "Yes, the entire menu, at every location, with no pork on the premises."),
       faqItem("navsta-5", "How late are you open?", "Monday through Saturday until 11PM and Sunday until 10PM, which covers the back half of most shifts."),
       faqItem("navsta-6", "Is there a place to sit down and eat?", "Yes, this is a full dine-in restaurant as well as a pickup counter.")
+    ]
+  },
+
+  // MARLOW HEIGHTS, MD 1 - IS HIBACHI HALAL
+  {
+    slug: "is-hibachi-halal-marlow-heights-md",
+    locationSlugs: ["marlow-heights-md"],
+    category: "Halal Guide",
+    title: "Marlow Heights Halal Hibachi: What to Check Before You Order",
+    excerpt:
+      "Is hibachi halal? Yes at our St Barnabas Rd location in Marlow Heights. 100% halal hibachi, no pork on site. Order online or call 240-619-4586.",
+    author: "Flame Japanese Hibachi Team",
+    date: "August 14, 2026",
+    readTime: "6 min read",
+    featuredImage: "/blog/featured/is-hibachi-halal-marlow-heights-md.jpg",
+    featuredImageAlt:
+      "Halal chicken hibachi cooking on the grill at Flame Japanese Hibachi in Marlow Heights, MD",
+    intro:
+      "Yes, hibachi can be halal, and at our St Barnabas Road location in Marlow Heights it is, all of it, every day. But “hibachi” by itself tells you nothing about whether a plate is halal, which is why the question keeps getting asked. If you have been driving up to Southeast DC or over to Oxon Hill looking for a halal dinner that is not another grill or shawarma counter, there is now one by Iverson Mall, minutes off Branch Avenue and the Capital Beltway. Here is what actually makes hibachi halal or not, and what you will find when you walk into ours.",
+    body: [
+      h("The three things that decide whether hibachi is halal"),
+      p("Hibachi is a cooking method, not an ingredient. That is the first thing to understand, because it means the answer is never about the hibachi. It is about the kitchen behind it. Three things disqualify most hibachi restaurants."),
+      p("**The meat.**Chicken, beef and lamb have to come from a halal supplier and be slaughtered to halal standard. Most hibachi restaurants buy commodity meat and have no answer when you ask where it came from."),
+      p("**Pork on the premises.**A restaurant serving pork gyoza or bacon fried rice is cooking it on the same flat top as your chicken. Even a kitchen with halal chicken cannot hand you a clean plate when there is pork six inches away on the same steel."),
+      p("**Alcohol in the sauce.**This is the one almost nobody checks. Traditional teriyaki, eel sauce and many yum yum recipes are built on mirin or cooking sake. The meat can be perfectly halal and the sauce poured over it is not."),
+      p("Flame is built to clear all three. Every location serves a 100% halal menu. There is no pork anywhere in the building, so there is nothing on the grill to avoid. Our sauces are made in house rather than bought in, which is what lets us control what goes into them."),
+      p("If you are checking any other hibachi restaurant in Prince George's County, those are your three questions: who supplies your meat, is there pork in the building, and what is in your teriyaki. A confident answer to all three is rare."),
+      h("At our Marlow Heights location"),
+      p("We are at 4620 St Barnabas Rd, Suite #B, Marlow Heights, MD 20748, by the Iverson Mall area just off Branch Avenue and the Capital Beltway. If you are coming from Temple Hills, Hillcrest Heights or Suitland, you are under ten minutes out. From Southeast DC and Congress Heights it is a straight shot down Branch Avenue. From Camp Springs, District Heights and Oxon Hill it is a quick hop across the Beltway, and National Harbor is a short run southwest."),
+      p("The kitchen runs Sunday through Wednesday 11AM to 10PM and Thursday through Saturday 11AM to midnight, which is later than most halal kitchens in the area keep. Holiday hours can shift around Eid and the major public holidays, so the Google Business Profile is worth a look before a long drive. Order ahead on the app or online and pick up, or eat in and watch the grill work."),
+      p("What this location gets asked more than any other: whether the wings are halal too. They are. Same kitchen, same standard, and there is a long flavor list to work through."),
+      h("Getting here, and the neighborhoods we serve"),
+      p("St Barnabas Road is one of the easier addresses in this part of the county to reach, which is deliberate. From Temple Hills and Hillcrest Heights you are five minutes out. Suitland, Camp Springs and Forestville sit inside ten, and Branch Ave Metro is a few minutes down the road. Oxon Hill, District Heights and Coral Hills are a quick run across the Beltway, and Southeast DC pulls in straight up Branch Avenue and Alabama Avenue."),
+      p("If you are coming from Waldorf or across from Fort Washington, budget fifteen to twenty minutes depending on the time of day. The Beltway is usually the smoother approach than surface streets at rush hour."),
+      p("One practical note. Everything on this menu is cooked when the order comes in rather than held warm, so a walk-in at 6:30 on a Friday will wait. Ordering online or through the Flame app before you leave the house is the difference between a two-minute stop and a fifteen-minute one."),
+      h("What to order at the Marlow Heights location"),
+      p("Chicken Hibachi, $9.85. The entry point and the one most people start with. Comes with your choice of any two sides, so fried rice and vegetables, or lo mein if you want it heavier."),
+      p("Chicken, Beef and Shrimp Combo, $14.85. Three proteins on one plate. This is the order for anyone who came in hungry or is feeding two."),
+      p("Buffalo Wings, 10 pieces, $14.99. A deep flavor list, and halal wings in Prince George's County are hard to find, so these move fast."),
+      p("California Roll, $7.85. Sushi from the same halal kitchen, which surprises people who assume they have to choose."),
+      p(PLATES_BUILT),
+      p("In Marlow Heights the usual pattern is fried rice and vegetables, with a wing order in the middle of the table to share. If you are ordering for a family, two combos plus a 20-piece will feed four comfortably and still come in under fifty dollars."),
+      links([
+        { label: "Marlow Heights hibachi menu", href: "/menu/marlow-heights-md" },
+        { label: "Start an order", href: orderUrlFor("marlow-heights-md") },
+      ]),
+      h("Visit us"),
+      p("Halal hibachi, cooked to order, on St Barnabas Road. Flame Japanese Hibachi Marlow Heights, 4620 St Barnabas Rd, Suite #B, Marlow Heights, MD 20748. 240-619-4586. Sun to Wed 11AM to 10PM, Thu to Sat 11AM to 12AM."),
+      links([
+        { label: "Order now", href: orderUrlFor("marlow-heights-md") },
+        { label: "See our locations", href: "/locations" },
+        { label: "Read: Dinner near Joint Base Andrews", href: "/blog/restaurants-near-joint-base-andrews-md" },
+      ]),
+    ],
+    faq: [
+      faqItem("marlow-1", "Is the whole menu halal, or just some items?", "All of it. There is no separate halal section because there is nothing else on the menu. No pork is served, stored or cooked anywhere in the building."),
+      faqItem("marlow-2", "Are the sauces halal?", "Yes. Our sauces are made in house, which is the reason we can say that. Bought-in teriyaki and eel sauce commonly contain mirin or cooking sake. A kitchen that buys its sauces in from a distributor usually cannot tell you what is in them, which is exactly why we make ours."),
+      faqItem("marlow-3", "Where can I get halal hibachi in Marlow Heights?", "St Barnabas Road, at 4620 St Barnabas Rd, Suite #B. It is by the Iverson Mall area just off Branch Avenue and the Capital Beltway, central to Temple Hills, Suitland and Oxon Hill."),
+      faqItem("marlow-4", "Is there halal food near Southeast DC?", "Yes. We are a short drive south down Branch Avenue from Congress Heights and Anacostia, and we do pickup and online ordering, which is usually what people want on the way home."),
+      faqItem("marlow-5", "Do you cater for events in Marlow Heights?", "We do, starting at $15.99 per person. Masjid events, school functions, office lunches and family gatherings. Call the Marlow Heights store directly at 240-619-4586 so you are talking to the kitchen that will cook it."),
+      faqItem("marlow-6", "Can I order halal hibachi for delivery in Marlow Heights?", "Yes, through our online ordering. Pickup is faster if you are close, since everything is cooked when you order rather than held."),
+    ],
+  },
+
+  // MARLOW HEIGHTS, MD 2 - RESTAURANTS NEAR JOINT BASE ANDREWS
+  {
+    slug: "restaurants-near-joint-base-andrews-md",
+    locationSlugs: ["marlow-heights-md"],
+    category: "Local Guides",
+    title: "Dinner Near Joint Base Andrews That Isn't Another Drive-Thru",
+    excerpt:
+      "A guide to eating near Joint Base Andrews without defaulting to fast food. What is close, how long a stop takes, and what to order for a short window.",
+    author: "Flame Japanese Hibachi Team",
+    date: "August 14, 2026",
+    readTime: "6 min read",
+    featuredImage: "/blog/featured/restaurants-near-joint-base-andrews-md.jpg",
+    featuredImageAlt: "Halal bento box ready for pickup near Joint Base Andrews, MD",
+    intro: `The stretch around Joint Base Andrews and Camp Springs leans hard toward fast food and chains, which is fine on a rushed weeknight and gets old fast if it is your default every time. This is a guide to a real alternative a short drive north in the Marlow Heights area, written for anyone stationed at or working near the base who wants a hot meal that took more than ninety seconds to prepare, without turning dinner into an expedition.`,
+    body: [
+      h("What is actually close"),
+      p(`We are at 4620 St Barnabas Rd, Suite #B, a short run north of the base off Branch Avenue. Coming up MD-5 to the St Barnabas Road exit, it is a straightforward drive rather than a detour deep into the city, which is the main reason this works as a regular option rather than an occasional one. We run late too, until 10PM Sunday through Wednesday and all the way to midnight Thursday through Saturday, which covers the back half of most shifts.`),
+      h("What to order on a short window"),
+      p(`**Fifteen minutes or less.** Order ahead online and collect. Chicken Hibachi at $9.85 or a combo gets you a full plate, hot, with almost no wait once you arrive, because everything is cooked when the ticket comes in rather than held.`),
+      p(`**Eating at a desk or in quarters.** A bento box at $12.85 to $15.85 is the better choice over an open plate. It is sealed, holds heat, and includes sushi that does not need reheating at all.`),
+      p(`**Feeding a group or a barracks room.** Wings in twenty, thirty or fifty piece counts, split across flavors, or Build Your Own Platter for a mixed group. Call ahead for anything over thirty pieces rather than ordering online, so timing can be confirmed.`),
+      p(`**A night off, sitting down properly.** This is also a real dine-in option, not just a pickup counter. The grill is visible and the food is cooked to order either way.`),
+      h("What travels back to base well"),
+      p(`If you are picking up on the way rather than eating on site, bone-in wings and bento boxes hold their heat and texture far better than boneless wings or open plates. Sushi is the most forgiving thing on the menu for any kind of delay, since it is meant to be eaten cool.`),
+      p(`Loaded fries are the one item to eat immediately rather than transport. They have roughly a ten-minute window before the texture goes.`),
+      h("Covering a mixed group without extra planning"),
+      p(`The entire menu is halal, with no pork served, stored or cooked anywhere in the building, and our sauces are made in house rather than bought in. For anyone ordering for a group with mixed dietary needs, that removes the usual back and forth about what everyone can eat. Vegetarian options run through Tofu Hibachi at $9.85, Tofu Bento at $12.85 and the avocado rolls at $7.85.`),
+      h("Finding us from the base"),
+      p(`We are at 4620 St Barnabas Rd, Suite #B, Marlow Heights, MD 20748, by the Iverson Mall area just off Branch Avenue. Branch Ave Metro is a few minutes down the road, Suitland and Camp Springs are a short run east, and Southeast DC sits straight up Branch Avenue on the other side of the Beltway.`),
+      links([
+        { label: "Marlow Heights hibachi menu", href: "/menu/marlow-heights-md" },
+        { label: "Start an order", href: orderUrlFor("marlow-heights-md") }
+      ]),
+      h("Visit us"),
+      p(`Flame Japanese Hibachi Marlow Heights, 4620 St Barnabas Rd, Suite #B, Marlow Heights, MD 20748. 240-619-4586. Sun to Wed 11AM to 10PM, Thu to Sat 11AM to 12AM.`),
+      links([
+        { label: "Order now", href: orderUrlFor("marlow-heights-md") },
+        { label: "See the Marlow Heights location", href: "/store/marlow-heights-md" },
+        { label: "Read: Marlow Heights Halal Hibachi guide", href: "/blog/is-hibachi-halal-marlow-heights-md" }
+      ])
+    ],
+    faq: [
+      faqItem("jba-1", "What restaurants are near Joint Base Andrews that are not fast food?", "We are a short drive north in the Marlow Heights area, at 4620 St Barnabas Rd, Suite #B, with a full hibachi and sushi menu cooked to order."),
+      faqItem("jba-2", "How fast is pickup near the base?", "About two minutes if you order ahead online. Everything is cooked when the order comes in, so a walk-in at a busy hour takes longer."),
+      faqItem("jba-3", "Can I order for a group?", "Yes. Wings in larger counts and Build Your Own Platter both work well for groups, and calling ahead for anything over thirty pieces is worth doing."),
+      faqItem("jba-4", "Is the food halal?", "Yes, the entire menu, at every location, with no pork on the premises."),
+      faqItem("jba-5", "How late are you open?", "Sunday through Wednesday until 10PM and Thursday through Saturday until midnight, which covers the back half of most shifts."),
+      faqItem("jba-6", "Is there a place to sit down and eat?", "Yes, this is a full dine-in restaurant as well as a pickup counter.")
     ]
   },
 
