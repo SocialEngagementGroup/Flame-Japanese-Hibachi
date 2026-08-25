@@ -500,7 +500,14 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                             ["Seven Corners, VA", "6379 Seven Corners Center"],
                             ["Philadelphia, PA", "101 E Olney Avenue"],
                             ["Royal Palm Beach, FL", "9940 Belvedere Rd #F"],
-                            ["Aberdeen, MD", "939 Beards Hill Rd"]
+                            ["Aberdeen, MD", "939 Beards Hill Rd"],
+                            ["Mechanicsville, VA", "7354 Bell Creek Rd"],
+                            ["Bristow, VA", "10286 Bristow Center Dr"],
+                            ["Norfolk, VA", "5802 E Virginia Blvd, Space #130"],
+                            ["Marlow Heights, MD", "4620 St Barnabas Rd, Suite #B"],
+                            ["Bowie, MD", "3548 Crain Hwy"],
+                            ["Cockeysville, MD", "10128 York Rd Ste A"],
+                            ["Coral Springs, FL", "6291 W Sample Rd"]
                         ]
                     }
                 ]
