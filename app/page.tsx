@@ -27,7 +27,7 @@ const organizationSchema = {
   url: "https://www.flamehibachi.com",
   logo: "https://www.flamehibachi.com/site-logo/FJH-logo-white.png",
   image: "https://www.flamehibachi.com/homepage/hero/hero-bg-desk.png",
-  email: "daiyan05@yahoo.com",
+  email: "info@flamehibachi.com",
   telephone: "+1-888-786-5411",
   address: {
     "@type": "PostalAddress",

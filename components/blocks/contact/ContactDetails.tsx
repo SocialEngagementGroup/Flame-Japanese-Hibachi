@@ -40,10 +40,10 @@ const ContactDetails = () => {
       icon: <Mail size={22} />,
       text: (
         <a
-          href="mailto:daiyan05@yahoo.com"
+          href="mailto:info@flamehibachi.com"
           className="hover:text-primary transition-colors"
         >
-          daiyan05@yahoo.com
+          info@flamehibachi.com
         </a>
       ),
     },
