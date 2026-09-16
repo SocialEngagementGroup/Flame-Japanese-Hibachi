@@ -383,7 +383,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                     },
                     {
                         type: "paragraph",
-                        content: `Before filing any formal claim, you agree to first contact us at daiyan05@yahoo.com and provide a brief written description of your concern. We will attempt in good faith to resolve the matter informally within thirty (30) days of receiving your notice. Most concerns can be resolved this way.`
+                        content: `Before filing any formal claim, you agree to first contact us at info@flamehibachi.com and provide a brief written description of your concern. We will attempt in good faith to resolve the matter informally within thirty (30) days of receiving your notice. Most concerns can be resolved this way.`
                     },
                     {
                         type: "subheading",
@@ -500,7 +500,14 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                             ["Seven Corners, VA", "6379 Seven Corners Center"],
                             ["Philadelphia, PA", "101 E Olney Avenue"],
                             ["Royal Palm Beach, FL", "9940 Belvedere Rd #F"],
-                            ["Aberdeen, MD", "939 Beards Hill Rd"]
+                            ["Aberdeen, MD", "939 Beards Hill Rd"],
+                            ["Mechanicsville, VA", "7354 Bell Creek Rd"],
+                            ["Bristow, VA", "10286 Bristow Center Dr"],
+                            ["Norfolk, VA", "5802 E Virginia Blvd, Space #130"],
+                            ["Marlow Heights, MD", "4620 St Barnabas Rd, Suite #B"],
+                            ["Bowie, MD", "3548 Crain Hwy"],
+                            ["Cockeysville, MD", "10128 York Rd Ste A"],
+                            ["Coral Springs, FL", "6291 W Sample Rd"]
                         ]
                     }
                 ]
@@ -522,7 +529,7 @@ export const termsConditionsSections: AccordionRendererSection[] = [
                     {
                         type: "list",
                         items: [
-                            "Email: daiyan05@yahoo.com",
+                            "Email: info@flamehibachi.com",
                             "Phone: +1 888-786-5411",
                             "Website: www.flamehibachi.com/contact",
                             "Mail: Flame Japanese Hibachi, 5411C Backlick road, Springfield, VA 22151, USA"

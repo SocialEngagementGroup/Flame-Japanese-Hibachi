@@ -27,7 +27,7 @@ export interface StoreLocationContent {
 /** Content date for the first complete 14-location store-page release.
  * Sitemap generation uses this stable value instead of pretending every
  * deployment changed the pages. Update it only when store-page content changes. */
-export const STORE_PAGES_LAST_MODIFIED = "2026-08-14";
+export const STORE_PAGES_LAST_MODIFIED = "2026-08-26";
 
 export const storeLocationContent: Record<string, StoreLocationContent> = {
   "baltimore-md": {
@@ -455,9 +455,90 @@ export const storeLocationContent: Record<string, StoreLocationContent> = {
       },
     ],
   },
+
+  "bowie-md": {
+    metaDescription:
+      "Halal hibachi, sushi and boba in Bowie, MD at 3548 Crain Hwy. Order online for pickup, delivery or catering, or call +1 240-206-8269 today.",
+    faqs: [
+      {
+        question: "Is Flame Japanese Hibachi in Bowie halal?",
+        answer:
+          "Yes, the entire menu is halal, with no pork served, stored or cooked on the premises, and sauces made in house rather than bought from a distributor.",
+      },
+      {
+        question: "Where is Flame Japanese Hibachi located in Bowie?",
+        answer:
+          "We're at 3548 Crain Hwy, Bowie, MD 20716, along Route 3 close to Bowie State University, Six Flags America and Crofton.",
+      },
+      {
+        question: "Do you deliver near Bowie State University?",
+        answer:
+          "Yes, delivery and pickup are both available through our online ordering, and we're a short drive from Bowie State University, Mitchellville and Crofton.",
+      },
+      {
+        question: "What are your hours?",
+        answer:
+          "Open daily 11AM to 10PM. Hours can shift on holidays, so check our Google Business Profile if you're planning a late visit.",
+      },
+    ],
+  },
+
+  "cockeysville-md": {
+    metaDescription:
+      "Halal hibachi, sushi and boba in Cockeysville, MD at 10128 York Rd Ste A. Order online for pickup, delivery or catering, or call +1 410-891-8087 today.",
+    faqs: [
+      {
+        question: "Is Flame Japanese Hibachi in Cockeysville halal?",
+        answer:
+          "Yes, the entire menu is halal, with no pork served, stored or cooked on the premises, and sauces made in house rather than bought from a distributor.",
+      },
+      {
+        question: "Where is Flame Japanese Hibachi located in Cockeysville?",
+        answer:
+          "We're at 10128 York Rd Ste A, Cockeysville, MD 21030, just off York Road close to Hunt Valley, Timonium and Towson.",
+      },
+      {
+        question: "Do you deliver near Hunt Valley or Timonium?",
+        answer:
+          "Yes, delivery and pickup are both available through our online ordering, and we're a short drive from Hunt Valley, Timonium and Towson.",
+      },
+      {
+        question: "What are your hours?",
+        answer:
+          "Sunday noon to midnight, and Monday through Saturday 11AM to midnight. Hours can shift on holidays, so check our Google Business Profile if you're planning a late visit.",
+      },
+    ],
+  },
+
+  "coral-springs-fl": {
+    metaDescription:
+      "Halal hibachi, sushi and boba in Coral Springs, FL at 6291 W Sample Rd. Order online for pickup, delivery or catering, or call +1 754-229-6565 today.",
+    faqs: [
+      {
+        question: "Is Flame Japanese Hibachi in Coral Springs halal?",
+        answer:
+          "Yes, the entire menu is halal, with no pork served, stored or cooked on the premises, and sauces made in house rather than bought from a distributor.",
+      },
+      {
+        question: "Where is Flame Japanese Hibachi located in Coral Springs?",
+        answer:
+          "We're at 6291 W Sample Rd, Coral Springs, FL 33067, close to Parkland, Coconut Creek and Margate.",
+      },
+      {
+        question: "Do you deliver near Parkland or Coconut Creek?",
+        answer:
+          "Yes, delivery and pickup are both available through our online ordering, and we're a short drive from Parkland, Coconut Creek and Margate.",
+      },
+      {
+        question: "What are your hours?",
+        answer:
+          "Sunday noon to midnight, and Monday through Saturday 11AM to midnight. Hours can shift on holidays, so check our Google Business Profile if you're planning a late visit.",
+      },
+    ],
+  },
 };
 
-/** All active stores currently have unique content here (16/16). Falls back
+/** All active stores currently have unique content here (19/19). Falls back
  * gracefully - a future store without an entry just skips the FAQ schema and
  * meta description falls back to a generated default, since /store/[location]
  * itself keys off `data/locationsData.ts`, not this file. */
