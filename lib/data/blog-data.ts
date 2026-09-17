@@ -3578,12 +3578,9 @@ export const blogPosts: BlogPost[] = [
     author: "Flame Japanese Hibachi Team",
     date: "September 17, 2026",
     readTime: "6 min read",
-    // TODO: placeholder art. Swap in the Coral Springs storefront photo with the
-    // same caption treatment as the Bowie and Cockeysville featured images, and
-    // update featuredImageAlt to match whatever the final photo shows.
     featuredImage: "/blog/featured/is-hibachi-halal-coral-springs-fl.jpg",
     featuredImageAlt:
-      "Halal shrimp and chicken hibachi plate at Flame Japanese Hibachi on West Sample Road in Coral Springs, Florida",
+      "Storefront of Flame Japanese Hibachi on West Sample Road in Coral Springs, Florida",
     intro:
       "Yes, and North Broward is a place that will hold you to it. The Muslim communities across Coral Springs, Parkland, Coconut Creek, Margate and North Lauderdale have built real depth in halal dining here, spread across several cuisines. The gap has always been Japanese. You can eat halal within a few minutes of Sample Road at a dozen counters, and almost none of them are running a hibachi grill. We are at 6291 W Sample Rd, and we are open until midnight. Here is what makes hibachi halal, and how ours is built.",
     body: [
