@@ -1805,7 +1805,7 @@ export const blogPosts: BlogPost[] = [
       faqItem("mift-5", "Is everything halal?", "Yes, the entire menu, with no pork served, stored or cooked on the premises."),
     ],
   },
-  
+
   // MANASSAS 2 - EID DINNER
   {
     slug: "eid-dinner-manassas-va",
@@ -1851,7 +1851,7 @@ export const blogPosts: BlogPost[] = [
       faqItem("meid-6", "Can you handle a same-day order on Eid itself?", "It depends on how busy the day is running. Calling ahead of the holiday to reserve a time is far more reliable than a same-day call."),
     ],
   },
-  
+
   // MANASSAS 3 - KIDS HALAL
   {
     slug: "kid-friendly-halal-food-manassas-va",
@@ -1951,7 +1951,7 @@ export const blogPosts: BlogPost[] = [
       faqItem("rhmap-6", "What is the best time to avoid traffic on Richmond Highway?", "Outside the weekday morning and evening rush. If ordering ahead, time pickup around those windows rather than through them.")
     ]
   },
-  
+
   // ALEXANDRIA 2 - DINNER NEAR FORT BELVOIR
   {
     slug: "restaurants-near-fort-belvoir-alexandria-va",
@@ -2001,7 +2001,7 @@ export const blogPosts: BlogPost[] = [
       faqItem("belv-6", "Is there a place to sit down and eat?", "Yes, this is a full dine-in restaurant as well as a pickup counter.")
     ]
   },
-  
+
   // ALEXANDRIA 3 - BENTO VS HIBACHI
   {
     slug: "bento-vs-hibachi-alexandria-va",
@@ -2118,7 +2118,7 @@ export const blogPosts: BlogPost[] = [
       faqItem("sc7-6-how-far-from-arlington", "How far is Seven Corners from Arlington or Tysons?", "Both are within about fifteen minutes."),
     ],
   },
-  
+
   // SEVEN CORNERS 2 - IS SUSHI HALAL
   {
     slug: "is-sushi-halal-seven-corners-va",
@@ -2180,7 +2180,7 @@ export const blogPosts: BlogPost[] = [
       faqItem("sush-6-is-shellfish-considered-halal", "Is shellfish considered halal?", "Views differ between schools of Islamic thought. This is worth checking against your own religious practice."),
     ],
   },
-  
+
   // SEVEN CORNERS 3 - OFFICE CATERING
   {
     slug: "office-catering-falls-church-va",
@@ -2483,7 +2483,7 @@ export const blogPosts: BlogPost[] = [
       faqItem("jrp-6", "Can I order for a group finishing a trail run together?", "Yes. Individual bento boxes work well for a group finishing at slightly different times.")
     ]
   },
-  
+
   // FOREST HILL 2 - FOREST HILL AVENUE GUIDE
   {
     slug: "forest-hill-avenue-restaurants-richmond-va",
@@ -2543,7 +2543,7 @@ export const blogPosts: BlogPost[] = [
       faqItem("fha-6", "What neighborhoods does this location serve?", "Forest Hill, Westover Hills, Stratford Hills, Woodland Heights and Bon Air, all within a few minutes.")
     ]
   },
-  
+
   // FOREST HILL 3 - BOBA EXPLAINED
   {
     slug: "boba-tea-explained-richmond-va",
@@ -2667,7 +2667,7 @@ export const blogPosts: BlogPost[] = [
       faqItem("hano-1-kosher", "Are you kosher?", "No, and we hold no kosher certification.")
     ]
   },
-  
+
   // MECHANICSVILLE 2 - RESTAURANTS NEAR RICHMOND RACEWAY
   {
     slug: "restaurants-near-richmond-raceway-mechanicsville-va",
@@ -2725,7 +2725,7 @@ export const blogPosts: BlogPost[] = [
       faqItem("race-1-group-order", "Can I order for a group watching locally?", "Yes. Wings in larger counts and Build Your Own Platter both work well for a group settling in for a few hours.")
     ]
   },
-  
+
   // MECHANICSVILLE 3 - WHAT IS HIBACHI
   {
     slug: "what-is-hibachi-mechanicsville-va",
@@ -2967,7 +2967,7 @@ export const blogPosts: BlogPost[] = [
       faqItem("sumr-6", "Do you deliver in Tamarac?", "Yes, through our online ordering. Pickup is often the better choice in peak summer heat for temperature-sensitive items.")
     ]
   },
-  
+
   // TAMARAC 2 - HURRICANE SEASON
   {
     slug: "hurricane-food-prep-broward-county-fl",
@@ -3013,7 +3013,7 @@ export const blogPosts: BlogPost[] = [
       faqItem("hurr-6", "Can I order for a group riding out a storm together?", "Yes, and ordering before conditions worsen, while the kitchen is running normally, is the practical approach.")
     ]
   },
-  
+
   // TAMARAC 3 - HALAL DINING
   {
     slug: "halal-restaurants-coral-springs-fl",
@@ -3442,6 +3442,190 @@ export const blogPosts: BlogPost[] = [
       faqItem("jba-5", "How late are you open?", "Sunday through Wednesday until 10PM and Thursday through Saturday until midnight, which covers the back half of most shifts."),
       faqItem("jba-6", "Is there a place to sit down and eat?", "Yes, this is a full dine-in restaurant as well as a pickup counter.")
     ]
+  },
+
+  // BOWIE, MD 1 - IS HIBACHI HALAL
+  {
+    slug: "is-hibachi-halal-bowie-md",
+    locationSlugs: ["bowie-md"],
+    category: "Halal Guide",
+    title: "Bowie Halal Hibachi: A Crain Highway Guide",
+    excerpt:
+      "Halal hibachi on Crain Highway in Bowie, MD. 100% halal menu, no pork on site, sauces made in house. Order online or call 240-206-8269.",
+    author: "Flame Japanese Hibachi Team",
+    date: "September 15, 2026",
+    readTime: "6 min read",
+    featuredImage: "/blog/featured/is-hibachi-halal-bowie-md.jpg",
+    featuredImageAlt:
+      "Halal chicken and beef hibachi plate at Flame Japanese Hibachi on Crain Highway in Bowie, Maryland",
+    intro:
+      "Yes, and in Prince George's County that is a question people know how to ask properly. Bowie sits in a part of Maryland where halal dining is not a novelty, and residents here have learned to ask about the supplier before they ask about the price. What Bowie has had less of is halal Japanese. You can eat halal across several cuisines within a few miles of Crain Highway, and almost none of those kitchens are running a hibachi flat top. We are at 3548 Crain Hwy. Here is what actually decides whether hibachi is halal, and how ours is built.",
+    body: [
+      h("The three things that decide it"),
+      p("Hibachi is a cooking method. It describes a flat steel grill and nothing else, which means the word carries no halal status of its own. Whether the plate in front of you qualifies comes down to three decisions the restaurant made long before you walked in."),
+      p("**The meat supplier.** Halal chicken, beef and lamb come from suppliers who slaughter to halal standard and can produce the paperwork. This is a purchasing decision that costs more per pound, which is the single most common reason hibachi restaurants skip it."),
+      p("**What else touches the grill.** A hibachi kitchen runs on one large flat top. If pork is on the menu, pork has been cooked on the same steel as your dinner, and wiping it down does not resolve that for anyone who takes halal seriously."),
+      p("**What is in the sauces.** Mirin and cooking sake are standard in commercial teriyaki and eel sauce. A halal chicken breast finished with a mirin glaze is not a halal plate. This is the step most diners never think to check, and the one most kitchens cannot answer."),
+      p("Flame answers all three the same way in Bowie and at every other location. The entire menu is halal. Pork is not served, stored or cooked anywhere on the property. Our sauces are made in our own kitchen rather than bought from a distributor, which is what lets us tell you what is in them."),
+      p("Those are the three questions worth putting to any hibachi restaurant in Prince George's County: the supplier, the grill and the sauce. Most cannot clear all three."),
+      h("At our Bowie location"),
+      p("We are at 3548 Crain Hwy, Bowie, MD 20716, on the US 301 run through town. Crain Highway is the spine of this part of Bowie, which makes us a stop on the way home rather than a destination you have to plan around. Bowie Town Center is minutes away. Route 50 puts Annapolis, Lanham and the Beltway all within a short drive, and Bowie State University is close enough that students make up a real share of the weeknight counter."),
+      p("Hours are 11AM to 10PM, seven days a week."),
+      p("Two patterns drive this store. Weeknight family pickup, where a bento or two plus a shared platter covers dinner without anyone cooking, and weekend group orders built around wings."),
+      h("Fall on Crain Highway"),
+      p("September changes the rhythm here. School is back, Bowie State is in session, football season has started at every level from high school through the pros, and the weeknight dinner window compresses into the hour between practice and homework."),
+      p("That shift shows up in what people order. Through the summer, the single hibachi plate carries most weeknights. From September on, the order sizes go up and the timing gets tighter. Bento boxes travel to sidelines. Wing counts move from ten pieces to thirty. The 5PM to 7PM pickup window gets dense."),
+      p("If you are working around a practice schedule this fall, ordering ahead is the difference between a ten minute stop and a twenty five minute one. Everything is cooked when the ticket lands, so a pre-order means you are collecting rather than waiting."),
+      h("What to order in Bowie"),
+      p("**Chicken Hibachi, $10.85.** Hibachi chicken with your choice of any two sides. The baseline order, and the one that decides whether you come back."),
+      p("**Chicken and Beef Bento, $14.85.** Hibachi, vegetables, rice or noodles, a 4-piece California Roll, dumplings and spring rolls, in a box built to travel. The practical order if dinner is happening in a car or on a field."),
+      p("**Chicken, Beef and Shrimp Combo, $15.85.** Three proteins on one plate with two sides. The order that feeds two people who do not want to argue about it."),
+      p("**20-Piece Wings, $28.99.** Fourteen flavors, including Old Bay, Rim Fire and Mango Habanero. The group order."),
+      p("**Green Dragon Roll, $10.85.** Halal sushi that stands on its own rather than existing as a side."),
+      p("**Brown Sugar Milk Tea, $7.49.** Ten boba toppings available, including crystal boba and coffee jelly."),
+      p("**How the plates are built:** every hibachi comes with any two sides, chosen from fried rice, white rice, lo mein noodles or vegetables. Extra chicken is $3.45 and extra salmon, beef or shrimp is $4.45, which is usually the cheapest way to stretch one plate across two people. Yum Yum sauce is $1.00."),
+      links([
+        { label: "Bowie hibachi menu", href: "/menu/bowie-md" },
+        { label: "Start an order", href: orderUrlFor("bowie-md") },
+      ]),
+      h("Visit us"),
+      p("Halal hibachi on Crain Highway, cooked fresh to order. Flame Japanese Hibachi Bowie, 3548 Crain Hwy, Bowie, MD 20716. 240-206-8269. Open 11AM to 10PM daily."),
+      links([
+        { label: "Order now", href: orderUrlFor("bowie-md") },
+        { label: "See our locations", href: "/locations" },
+        { label: "Read the Laurel guide", href: "/blog/is-hibachi-halal-laurel-md" },
+      ]),
+    ],
+    faq: [
+      faqItem("bowie-1", "Is everything halal?", "Yes, the entire menu at every location. No pork is served, stored or cooked on the premises."),
+      faqItem("bowie-2", "Is there halal hibachi in Bowie, MD?", "Yes, at 3548 Crain Hwy on the US 301 run. Halal dining in Prince George's County is well established across several cuisines, and Japanese has been the narrower category."),
+      faqItem("bowie-3", "Are the sauces halal?", "Our sauces are made in house rather than bought in. Commercial teriyaki and eel sauce commonly contain mirin or cooking sake, and a kitchen that buys its sauces in usually cannot tell you what is in them."),
+      faqItem("bowie-4", "Do you serve Bowie State University students?", "Yes. We are a short drive from campus, and hibachi plates start at $10.85 with two sides included."),
+      faqItem("bowie-5", "Do you deliver in Bowie?", "Delivery runs through our online ordering. Pickup on Crain Highway is faster if you are already on 301."),
+      faqItem("bowie-6", "Do you cater in Bowie and Prince George's County?", "Yes. Call 240-206-8269 to build an order. Wings run up to 100 pieces and hibachi platters scale for groups."),
+    ],
+  },
+
+  // COCKEYSVILLE, MD 1 - IS HIBACHI HALAL
+  {
+    slug: "is-hibachi-halal-cockeysville-md",
+    locationSlugs: ["cockeysville-md"],
+    category: "Halal Guide",
+    title: "Cockeysville Halal Hibachi: A York Road Guide",
+    excerpt:
+      "Halal hibachi on York Rd in Cockeysville, MD, open until midnight. 100% halal menu, no pork on site. Order online or call 410-891-8087.",
+    author: "Flame Japanese Hibachi Team",
+    date: "September 16, 2026",
+    readTime: "6 min read",
+    featuredImage: "/blog/featured/is-hibachi-halal-cockeysville-md.jpg",
+    featuredImageAlt:
+      "Halal steak hibachi plate at Flame Japanese Hibachi on York Road in Cockeysville, Maryland",
+    intro:
+      "Yes, and north Baltimore County is where that answer has been hardest to find. Halal dining in the Baltimore area concentrates in the city and along the Northern Parkway and Route 40 corridors. Push north up York Road through Towson, Timonium and Hunt Valley and the options thin out fast, which is why plenty of families in this part of the county have been driving south for a meal that should be fifteen minutes away. We are at 10128 York Rd Ste A, and we are open until midnight six nights a week. Here is what makes hibachi halal, and how ours is built.",
+    body: [
+      h("What actually makes hibachi halal"),
+      p("Hibachi names a grill, not a recipe. The word tells you how the food was cooked and nothing at all about what went into it. Three separate decisions determine whether the plate qualifies, and most hibachi kitchens fail at least one of them."),
+      p("**Sourcing.** Chicken, beef and lamb have to come from a supplier who slaughters to halal standard. A restaurant either holds that paperwork or it does not, and this is the step that costs money."),
+      p("**The grill itself.** Hibachi is cooked on a single shared flat top. A kitchen that also serves pork has run pork across that surface, and scraping between orders does not change that."),
+      p("**The sauces.** Mirin and cooking sake are ordinary ingredients in commercial teriyaki and eel sauce. Halal meat finished with a mirin glaze is no longer a halal plate, and a kitchen that buys its sauces from a distributor generally cannot tell you either way."),
+      p("Flame was set up so none of those apply. The full menu is halal. No pork comes through the door, which means the flat top has exactly one job. Sauces are made in our kitchen, not bought in."),
+      h("At our Cockeysville location"),
+      p("We are at 10128 York Rd Ste A, Cockeysville, MD 21030, on the main York Road run between Timonium and Hunt Valley. This stretch is the spine of north Baltimore County, which puts us within a short drive of Hunt Valley, Timonium, Lutherville, Sparks and Phoenix, and about fifteen minutes up the road from Towson."),
+      p("Hours are 11AM to midnight Monday through Saturday, and noon to midnight on Sunday."),
+      p("Those hours are the point. Very little on this corridor is still cooking at 11PM, and almost nothing that is also halal. If you are coming off a late shift at one of the Hunt Valley office parks, out of a game, or off the Light RailLink at the end of the line, we are open."),
+      h("Fall on York Road"),
+      p("The corridor gets busier in September. Towson University is back in session and its students spread up York Road further than people assume. High school football takes over Friday nights across the county. Ravens Sundays reorganize the entire weekend. Oregon Ridge and Loch Raven get their best weather of the year, which means Saturday afternoons end with people hungry and nobody wanting to cook."),
+      p("What that does to orders is predictable. Group sizes climb, wing counts climb faster, and the late window fills up. Through the summer our last hour is quiet. From September it is one of the busiest of the night."),
+      p("A practical note if you are ordering for a group this fall: wings scale further per dollar than individual plates. Thirty pieces at $40.99 feeds a room that four separate entrees would not."),
+      h("What to order in Cockeysville"),
+      p("**Steak Hibachi, $13.85.** Hibachi steak with any two sides. The order that tells you whether a hibachi kitchen knows what it is doing."),
+      p("**Chicken Hibachi, $10.85.** Under eleven dollars with two sides included. The weeknight default."),
+      p("**30-Piece Wings, $40.99.** Fourteen flavors including Old Bay, Honey Garlic, Thai Chilli and Rim Fire. The group order, and the one that makes the late hours worth it."),
+      p("**Chicken and Beef Bento, $14.85.** Hibachi, vegetables, rice or noodles, a 4-piece California Roll, dumplings and spring rolls. Closes and travels."),
+      p("**Dancing Shrimp Roll, $10.85.** Halal sushi north of Towson, which is not a sentence this corridor could say before."),
+      p("**Matcha Milk Tea, $8.15.** Ten toppings available. The late-night order that is not a soda."),
+      p("**How the plates are built:** every hibachi comes with any two sides from fried rice, white rice, lo mein noodles or vegetables. Extra chicken is $3.45, extra salmon, beef or shrimp is $4.45. Individual sides run $3.45 to $5.45."),
+      links([
+        { label: "Cockeysville hibachi menu", href: "/menu/cockeysville-md" },
+        { label: "Start an order", href: orderUrlFor("cockeysville-md") },
+      ]),
+      h("Visit us"),
+      p("Halal hibachi on York Road, open late. Flame Japanese Hibachi Cockeysville, 10128 York Rd Ste A, Cockeysville, MD 21030. 410-891-8087. Mon to Sat 11AM to 12AM, Sun 12PM to 12AM."),
+      links([
+        { label: "Order now", href: orderUrlFor("cockeysville-md") },
+        { label: "See our locations", href: "/locations" },
+        { label: "Read the Northern Parkway guide", href: "/blog/is-hibachi-halal-northern-pkwy-baltimore-md" },
+      ]),
+    ],
+    faq: [
+      faqItem("cockeysville-1", "Is everything halal?", "Yes, the entire menu at every location. No pork is served, stored or cooked on the premises."),
+      faqItem("cockeysville-2", "Is there halal food in Cockeysville or Hunt Valley?", "Yes, at 10128 York Rd Ste A. Halal dining thins out north of Towson, which is the specific gap this location fills."),
+      faqItem("cockeysville-3", "How late are you open?", "11AM to midnight Monday through Saturday, and noon to midnight on Sunday."),
+      faqItem("cockeysville-4", "Is there halal hibachi near Towson?", "Yes. We are about fifteen minutes north on York Road, which is the closest halal hibachi to the Towson area."),
+      faqItem("cockeysville-5", "Are the sauces halal?", "Our sauces are made in house rather than bought in. Commercial teriyaki and eel sauce commonly contain mirin or cooking sake."),
+      faqItem("cockeysville-6", "Do you cater in Baltimore County?", "Yes. Call 410-891-8087. Wings run up to 100 pieces and hibachi platters scale for groups."),
+    ],
+  },
+
+  // CORAL SPRINGS, FL 1 - IS HIBACHI HALAL
+  {
+    slug: "is-hibachi-halal-coral-springs-fl",
+    locationSlugs: ["coral-springs-fl"],
+    category: "Halal Guide",
+    title: "Coral Springs Halal Hibachi: A West Sample Road Guide",
+    excerpt:
+      "Halal hibachi on W Sample Rd in Coral Springs, FL, open until midnight. 100% halal menu, no pork on site. Order online or call 754-229-6565.",
+    author: "Flame Japanese Hibachi Team",
+    date: "September 17, 2026",
+    readTime: "6 min read",
+    featuredImage: "/blog/featured/is-hibachi-halal-coral-springs-fl.jpg",
+    featuredImageAlt:
+      "Storefront of Flame Japanese Hibachi on West Sample Road in Coral Springs, Florida",
+    intro:
+      "Yes, and North Broward is a place that will hold you to it. The Muslim communities across Coral Springs, Parkland, Coconut Creek, Margate and North Lauderdale have built real depth in halal dining here, spread across several cuisines. The gap has always been Japanese. You can eat halal within a few minutes of Sample Road at a dozen counters, and almost none of them are running a hibachi grill. We are at 6291 W Sample Rd, and we are open until midnight. Here is what makes hibachi halal, and how ours is built.",
+    body: [
+      h("The three things that decide it"),
+      p("Hibachi describes a cooking surface. It tells you nothing about what was cooked on it or what was poured over it. Three decisions made in the back of the house determine whether a hibachi plate is halal, and most restaurants fail at least one."),
+      p("**The meat.** Chicken, beef and lamb have to come from a halal supplier and be slaughtered to halal standard. This costs more per pound, which is why most hibachi restaurants do not bother."),
+      p("**The grill.** Hibachi runs on one shared flat top. A restaurant with pork on the menu has cooked pork on the same steel, and no amount of cleaning between orders settles that for a diner who takes halal seriously."),
+      p("**The sauces.** Mirin and cooking sake are standard in commercial teriyaki and eel sauce. Halal meat finished with a mirin-based glaze is not a halal plate, and most kitchens buying sauce from a distributor cannot tell you what is in the bottle."),
+      p("Flame clears all three. Every location serves a 100% halal menu. There is no pork anywhere in the building, so there is nothing on the grill to avoid. Our sauces are made in house rather than bought in, which is what lets us answer ingredient questions directly instead of reading a label back to you."),
+      h("At our Coral Springs location"),
+      p("We are at 6291 W Sample Rd, Coral Springs, FL 33067, on the western Sample Road run. Sample is one of the main east to west arteries through North Broward, which puts Parkland, Coconut Creek, Margate, North Lauderdale and Tamarac all within a short drive, and the Sawgrass Expressway close for anyone coming from further west."),
+      p("Hours are 11AM to midnight Monday through Saturday, and noon to midnight on Sunday."),
+      p("The late close matters here more than it would elsewhere. Broward runs late, and halal options that are still cooking after 10PM are rare in this part of the county."),
+      h("Fall in North Broward"),
+      p("Fall in South Florida is not a weather event. It is a schedule event. September brings school back, Friday night high school football back, and the tail end of hurricane season, and all three change how people eat."),
+      p("Friday nights are the clearest shift. Games across Coral Springs, Parkland and Coconut Creek end somewhere between 9:30 and 10:30, and a team, a band or a set of families comes off the field wanting food from a kitchen that is still open. That is the specific window our midnight close is built for."),
+      p("The second shift is quieter but larger. Storm weeks reorganize everything. When a system is being tracked, people stop planning meals and start solving the next one, and the practical question becomes what travels, what reheats, and what feeds six people from one order. Bento boxes and wing counts answer that better than individual plates do."),
+      h("What to order in Coral Springs"),
+      p("**Chicken and Shrimp Combo, $12.85.** Two proteins, any two sides. The order that covers a difference of opinion at the table."),
+      p("**Chicken Hibachi, $10.85.** Under eleven dollars with two sides included. The weeknight baseline."),
+      p("**30-Piece Wings, $40.99.** Fourteen flavors including Mango Habanero, Thai Chilli, Rim Fire and Honey Garlic. The after-game order."),
+      p("**Chicken, Beef and Shrimp Bento, $16.85.** The largest bento on the menu, and the one that reheats best the next day."),
+      p("**California Roll, $8.85.** Halal sushi at a price that makes it a side rather than a decision."),
+      p("**Mango Smoothie, $7.49.** Made to order, not poured from a machine."),
+      p("**How the plates are built:** every hibachi comes with any two sides from fried rice, white rice, lo mein noodles or vegetables. Extra chicken is $3.45 and extra salmon, beef or shrimp is $4.45, which is the cheapest way to stretch one plate across two people. Wings scale to 50 pieces at $67.99 and 100 pieces at $130.99."),
+      links([
+        { label: "Coral Springs hibachi menu", href: "/menu/coral-springs-fl" },
+        { label: "Start an order", href: orderUrlFor("coral-springs-fl") },
+      ]),
+      h("Visit us"),
+      p("Halal hibachi on West Sample Road, open until midnight. Flame Japanese Hibachi Coral Springs, 6291 W Sample Rd, Coral Springs, FL 33067. 754-229-6565. Mon to Sat 11AM to 12AM, Sun 12PM to 12AM."),
+      links([
+        { label: "Order now", href: orderUrlFor("coral-springs-fl") },
+        { label: "See our locations", href: "/locations" },
+        { label: "Read the Coral Springs halal dining guide", href: "/blog/halal-restaurants-coral-springs-fl" },
+      ]),
+    ],
+    faq: [
+      faqItem("coralsprings-1", "Is everything halal?", "Yes, the entire menu at every location. No pork is served, stored or cooked on the premises."),
+      faqItem("coralsprings-2", "Is there halal hibachi in Coral Springs?", "Yes, at 6291 W Sample Rd. North Broward has real depth in halal dining across several cuisines, and Japanese has been the narrow category."),
+      faqItem("coralsprings-3", "How late are you open?", "11AM to midnight Monday through Saturday, and noon to midnight on Sunday."),
+      faqItem("coralsprings-4", "Do you serve Parkland and Coconut Creek?", "Yes, both are a short drive on Sample Road, along with Margate, North Lauderdale and Tamarac."),
+      faqItem("coralsprings-5", "Are the sauces halal?", "Our sauces are made in house rather than bought in. Commercial teriyaki and eel sauce commonly contain mirin or cooking sake."),
+      faqItem("coralsprings-6", "Do you cater in Broward County?", "Yes. Call 754-229-6565. Wings run up to 100 pieces and hibachi platters scale for teams, masjid events and office lunches."),
+    ],
   },
 
 ];
